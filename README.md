@@ -4,7 +4,7 @@
 - 서버 배포 링크 : 
 - 프로젝트 wiki 바로가기 : 
 ## **👨‍🌾 LOGO**
-![Screenshot from 2023-02-13 17-39-58](https://user-images.githubusercontent.com/93567754/218410220-0b14790a-5f77-4f9f-934d-b33a97df028c.png)
+
 ## **✨Feature✨**
 ### 리스트 & 배너
 <details>
@@ -169,6 +169,7 @@
 
 ### 프론트엔드
 
+SWR SCSS
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"> <img src="https://img.shields.io/badge/React%20Query-FF4154?style=for-the-badge&logo=React%20Query&logoColor=white"> <img src="https://img.shields.io/badge/Styled Component-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"> <img src="https://img.shields.io/badge/Redux Toolkit-764ABC?style=for-the-badge&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
 
 ### 백엔드
