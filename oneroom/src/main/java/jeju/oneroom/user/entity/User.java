@@ -18,7 +18,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    @Column(name = "user_id")
+    @Column(name = "user_id",insertable = false, updatable = false)
     private Long userId;
 
     private String email;
@@ -29,10 +29,10 @@ public class User {
     @LastModifiedDate
     private LocalDateTime modifiedAt;
 
-    @OneToMany(mappedBy = "message")
+    @OneToMany(mappedBy = "sender")
     private List<Message> sends = new ArrayList<>();
 
-    @OneToMany(mappedBy = "message")
+    @OneToMany(mappedBy = "receiver")
     private List<Message> receives = new ArrayList<>();
 
 //    @OneToOne
