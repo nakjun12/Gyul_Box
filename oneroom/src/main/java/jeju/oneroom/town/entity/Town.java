@@ -25,9 +25,9 @@ public class Town {
 
     @CreatedBy
     @Column(updatable = false)
-    private String createdBy;
+    private String createdAt;
     @LastModifiedBy
-    private String lastModifiedBy;
+    private String ModifiedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "si_id")

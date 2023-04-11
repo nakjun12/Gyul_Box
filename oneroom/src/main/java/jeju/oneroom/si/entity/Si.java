@@ -24,9 +24,9 @@ public class Si {
 
     @CreatedBy
     @Column(updatable = false)
-    private String createdBy;
+    private String createdAt;
     @LastModifiedBy
-    private String lastModifiedBy;
+    private String ModifiedAT;
 
     @OneToMany(mappedBy = "si")
     private List<Town> towns = new ArrayList<>();
