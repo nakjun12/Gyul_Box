@@ -1,8 +1,8 @@
 package jeju.oneroom.houseInfo.entity;
 
-import jeju.oneroom.coordinate.entity.Coordinate;
+import jeju.oneroom.common.entity.Coordinate;
+import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.review.entity.Review;
-import jeju.oneroom.si.entity.Si;
 import jeju.oneroom.town.entity.Town;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -31,6 +31,10 @@ public class HouseInfo {
     private int grndFloor;
     private int ugrndFloor;
     private int elevator;
+    private String platPlc;
+
+    @Embedded
+    private Rate rate;
 
     @CreatedBy
     @Column(updatable = false)
