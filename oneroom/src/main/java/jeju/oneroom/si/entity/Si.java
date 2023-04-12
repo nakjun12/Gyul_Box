@@ -1,6 +1,6 @@
 package jeju.oneroom.si.entity;
 
-import jeju.oneroom.coordinate.entity.Coordinate;
+import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.town.entity.Town;
 import lombok.AccessLevel;
 import lombok.Getter;

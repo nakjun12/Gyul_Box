@@ -1,7 +1,9 @@
 package jeju.oneroom.review.entity;
 
+import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.town.entity.Town;
+import jeju.oneroom.user.entity.User;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,14 +25,11 @@ public class Review {
     private String advantage;
     private String disadvantage;
     private String adminCost;
-    private int interiorRate;
-    private int buildingRate;
-    private int trafficRate;
-    private int securityRate;
-    private int locationRate;
     private String residenceYear;
     private String floor;
-    private int avgRate;
+
+    @Embedded
+    private Rate rate;
 
     @CreatedBy
     @Column(updatable = false)
@@ -41,4 +40,8 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "houseInfo_id")
     private HouseInfo houseInfo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }
