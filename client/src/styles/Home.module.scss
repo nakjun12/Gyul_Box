@@ -1,0 +1,29 @@
+$primary-color: #007b0f;
+$btn-border-radius: 4px;
+
+// 스타일 설정
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid $primary-color;
+  border-radius: $btn-border-radius;
+  background-color: $primary-color;
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    border-color: darken($primary-color, 10%);
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+}
