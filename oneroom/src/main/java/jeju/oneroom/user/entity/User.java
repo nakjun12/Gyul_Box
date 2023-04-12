@@ -1,6 +1,8 @@
 package jeju.oneroom.user.entity;
 
 import jeju.oneroom.message.entity.Message;
+import jeju.oneroom.review.entity.Review;
+import jeju.oneroom.town.entity.Town;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,13 +31,17 @@ public class User {
     @LastModifiedDate
     private LocalDateTime modifiedAt;
 
-    @OneToMany(mappedBy = "message")
+    @OneToMany(mappedBy = "sender")
     private List<Message> sends = new ArrayList<>();
 
-    @OneToMany(mappedBy = "message")
+    @OneToMany(mappedBy = "receiver")
     private List<Message> receives = new ArrayList<>();
 
-//    @OneToOne
-//    @JoinColumn("town_code")
-//    private Town town;
+    @OneToOne
+    @JoinColumn(name = "town_id")
+    private Town town;
+
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews = new ArrayList<>();
+
 }
