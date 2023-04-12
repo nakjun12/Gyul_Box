@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 public class HouseInfoController {
-    @PostMapping
+    @PostMapping("/houseInfos")
     public ResponseEntity<?> post(){
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
