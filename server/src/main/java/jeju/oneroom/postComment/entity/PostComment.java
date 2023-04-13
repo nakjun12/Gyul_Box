@@ -18,16 +18,16 @@ public class PostComment {
     @Id
     @GeneratedValue
     @Column(name = "postComment_id")
-    private Long id;
+    private Long id; // id;
 
-    private String content;
+    private String content; // 내용
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
-    private Post post;
+    private Post post; // 양도게시글과 매핑
 
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt; // 작성 날짜
     @LastModifiedDate
-    private LocalDateTime modifiedAt;
+    private LocalDateTime modifiedAt; // 수정 날짜
 }

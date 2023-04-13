@@ -11,22 +11,22 @@ import javax.validation.constraints.Positive;
 public class UserController {
 
     @PostMapping
-    public ResponseEntity post(){
+    public ResponseEntity<?> post(){
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PatchMapping("/{user-id}")
-    public ResponseEntity patch(@PathVariable("user-id") @Positive long Id){
+    public ResponseEntity<?> patch(@PathVariable("user-id") @Positive long Id){
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/{user-id}")
-    public ResponseEntity get(@PathVariable("user-id") @Positive long Id){
+    public ResponseEntity<?> get(@PathVariable("user-id") @Positive long Id){
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{user-id}")
-    public ResponseEntity delete(){
+    public ResponseEntity<?> delete(){
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

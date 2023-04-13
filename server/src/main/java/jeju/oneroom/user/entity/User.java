@@ -21,10 +21,11 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name = "user_id",insertable = false, updatable = false)
-    private Long userId;
+    private Long id;
 
     private String email;
     private String nickname;
+    private String profileImageUrl;
 
     @CreatedDate
     private LocalDateTime createdAt;
