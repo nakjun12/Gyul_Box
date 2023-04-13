@@ -1,6 +1,7 @@
 package jeju.oneroom.Post.entitiy;
 
 import jeju.oneroom.houseInfo.entity.HouseInfo;
+import jeju.oneroom.postComment.entity.PostComment;
 import jeju.oneroom.user.entity.User;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,7 +26,7 @@ public class Post {
     private String content;
     private int views;
     private int likes;
-    // 게시글에 달린 댓글 수는 DTO에 추가
+    private String houseAddress;
 
     @CreatedDate
     private LocalDateTime createdAt;
@@ -35,7 +37,6 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "houseInfo_id")
-    private HouseInfo houseInfo;
+    @OneToMany(mappedBy = "post")
+    private List<PostComment> postComments;
 }
