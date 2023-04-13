@@ -1,5 +1,11 @@
-type Props = {};
-
-export default function main({}: Props) {
-  return <div className="btn">main</div>;
+import Gyul from "../component/atoms/Lottie/Gyul";
+export default function main({}) {
+  return (
+    <>
+      <div className="lottie">
+        <Gyul />
+      </div>
+      <div className="btn">main</div>
+    </>
+  );
 }
