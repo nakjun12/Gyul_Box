@@ -2,7 +2,6 @@ package jeju.oneroom.review.entity;
 
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
-import jeju.oneroom.town.entity.Town;
 import jeju.oneroom.user.entity.User;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -21,12 +20,14 @@ public class Review {
     @GeneratedValue
     private Long id;
 
-    private String title;
+    private String buildingName;
+    private String address;
     private String advantage;
     private String disadvantage;
     private String adminCost;
     private String residenceYear;
     private String floor;
+    private int likes;
 
     @Embedded
     private Rate rate;
