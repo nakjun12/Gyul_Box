@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import styles from "../Button/button.module.scss";
 
-type Props = {}
+type Props = {};
 
 export default function Button({}: Props) {
-  return (
-    <div>Button</div>
-  )
+  return <button className={styles.btn}>버튼</button>;
 }
