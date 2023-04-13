@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Positive;
+
 @RestController
 @RequiredArgsConstructor
 public class ReviewController {
@@ -23,25 +25,18 @@ public class ReviewController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @PutMapping("/reviews/likes/{review-id}")
+    public ResponseEntity<?> putLikes(@PathVariable("review-id") @Positive long reviewId){
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     //  리뷰 단일 조회
     @GetMapping("/reviews/{review-id}")
     public ResponseEntity<?> findReview(@PathVariable("review-id") long reviewId){
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // 최신 리뷰 5개
-    @GetMapping("/reviews/latest5")
-    public ResponseEntity<?> findTop5LatestReviews(){
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    // 추천 순 리뷰 5개
-    @GetMapping("/reviews/hottest5")
-    public ResponseEntity<?> findTop5HottestReviews(){
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    // 유저 관심 지역 리뷰 5개
+    // 유저 관심 지역 추천 순 리뷰 5개
     @GetMapping("users/{user-id}/user-towns/reviews")
     public ResponseEntity<?> findUserTownReviews(@PathVariable("user-id") long userId){
         return new ResponseEntity<>(HttpStatus.OK);
