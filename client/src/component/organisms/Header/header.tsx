@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import styles from "../Header/Header.module.scss";
 
-type Props = {}
+type Props = {};
 
-export default function header({}: Props) {
-  return (
-    <div>header</div>
-  )
+export default function Header({}: Props) {
+  return <div className={styles.wrapper}>Header</div>;
 }

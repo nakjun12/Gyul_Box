@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Map/map.module.scss";
+import styles from "../Map/Map.module.scss";
 
 type Props = {};
 

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../OrangeButton/orangebutton.module.scss";
+import styles from "../OrangeButton/OrangeButton.module.scss";
 
 type Props = {};
 

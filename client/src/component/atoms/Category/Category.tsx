@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Category/category.module.scss";
+import styles from "../Category/Category.module.scss";
 
 type Props = {};
 

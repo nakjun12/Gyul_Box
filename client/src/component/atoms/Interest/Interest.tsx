@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Interest/interest.module.scss";
+import styles from "../Interest/Interest.module.scss";
 
 type Props = {};
 
