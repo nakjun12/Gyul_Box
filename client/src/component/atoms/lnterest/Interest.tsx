@@ -1,5 +1,6 @@
 import styles from "./lnterest.module.scss";
 
+
 type Props = {};
 
 export default function Interest({}: Props) {
