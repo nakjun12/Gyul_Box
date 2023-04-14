@@ -28,6 +28,25 @@
   font-style: normal;
 }
 
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
 :root {
   font-family: "Pretendard-Regular", sans-serif;
   --pretendard: "Pretendard-Regular", sans-serif;
@@ -36,7 +55,6 @@
   --beVietnamPro: "Be Vietnam Pro", sans-serif;
   --gmarketSansBold: "GmarketSansBold", sans-serif;
   --leferiPointWhiteObliqueA: "LeferiPoint-WhiteObliqueA", sans-serif;
-
   --orange: #ff6000;
   --green: #019267;
   --whiteOrange: #ffe6c7;
