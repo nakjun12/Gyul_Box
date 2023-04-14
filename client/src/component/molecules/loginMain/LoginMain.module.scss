@@ -1,0 +1,91 @@
+@import "@/styles/_variables.scss";
+
+.login {
+  @include c-center();
+  background-color: var(--lightGreen);
+  height: 30rem;
+  overflow: hidden;
+  width: 50%;
+  padding-bottom: 1rem;
+}
+
+.loginH1 {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--beVietnamPro);
+
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+.loginButton,
+.kakao {
+  @include center();
+  width: 90%;
+  height: 3rem;
+  background-color: var(--gray);
+  border-radius: 10px;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  font-family: var(--pretendard);
+  color: var(--white);
+  margin-top: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: var(--gray);
+    background-color: var(--orange);
+  }
+}
+
+.bgButton {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: var(--poppins);
+  color: var(--gray);
+  margin-top: 1.2rem;
+
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: black;
+  }
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--gray);
+  .input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+    cursor: pointer;
+    &:checked {
+      background-color: #2196f3;
+      border-color: #2196f3;
+
+      &::before {
+        content: "✔";
+        font-size: 14px;
+        color: #fff;
+        display: block;
+        text-align: center;
+        line-height: 1;
+      }
+    }
+  }
+  .label {
+    font-size: 16px;
+    cursor: pointer;
+  }
+}

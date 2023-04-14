@@ -1,29 +1,65 @@
 @import "@/styles/_variables.scss";
-$main-color: #f00;
 
 .container {
-  @include center();
-
-  background-color: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+  transition: opacity 1s linear;
+  background-color: var(--gray);
   padding: 20px;
 
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+  opacity: 0.4;
+  pointer-events: auto;
+  z-index: 10;
+  .none {
+    display: none;
   }
 
-  .button {
-    background-color: $main-color;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  .open & {
+    //모달이 열릴때 적용
+    opacity: 0;
+    transition: opacity 0.5s linear;
+  }
+}
 
-    &:hover {
-      background-color: darken($main-color, 10%);
+.modalcontainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  @include center();
+  pointer-events: none;
+}
+
+.modal {
+  @include center-se();
+  position: relative;
+  width: 50rem;
+  height: 30rem;
+  background-color: var(--gray);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  transform: scale(0.8);
+  opacity: 1;
+  pointer-events: auto;
+  animation: modal 0.5s forwards;
+  z-index: 110;
+
+  @keyframes modal {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
     }
   }
 }
