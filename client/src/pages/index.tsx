@@ -7,9 +7,10 @@ import ReviewBox from "@/component/atoms/reviewBox/ReviewBox";
 import TextInput from "@/component/atoms/textInput/TextInput";
 import WhiteButton from "@/component/atoms/whiteButton/WhiteButton";
 import YellowStar from "@/component/atoms/yellowStar/YellowStart";
-import Header from "@/component/organisms/header/Header";
+import Header from "@/component/organisms/header/header";
 import Gyul from "../component/atoms/lottie/Gyul";
 import styles from "../styles/Home.module.scss";
+import Footer from "@/component/organisms/footer/footer";
 
 type Props = {};
 
@@ -29,6 +30,7 @@ export default function main({}: Props) {
       <TextInput />
       <YellowStar />
       <GrayStar />
+      <Footer />
     </>
   );
 }
