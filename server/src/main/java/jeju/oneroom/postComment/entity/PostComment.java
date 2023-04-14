@@ -1,9 +1,7 @@
 package jeju.oneroom.postComment.entity;
 
 import jeju.oneroom.Post.entitiy.Post;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -30,4 +28,12 @@ public class PostComment {
     private LocalDateTime createdAt; // 작성 날짜
     @LastModifiedDate
     private LocalDateTime modifiedAt; // 수정 날짜
+
+    @Builder
+    public PostComment(String content, Post post, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.content = content;
+        this.post = post;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
+    }
 }
