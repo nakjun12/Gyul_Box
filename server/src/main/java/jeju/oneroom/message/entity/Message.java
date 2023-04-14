@@ -1,9 +1,7 @@
 package jeju.oneroom.message.entity;
 
 import jeju.oneroom.user.entity.User;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -31,4 +29,13 @@ public class Message {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private User receiver;
+
+    @Builder
+    public Message(String content, Boolean readed, LocalDateTime dispatchTime, User sender, User receiver) {
+        this.content = content;
+        this.readed = readed;
+        this.dispatchTime = dispatchTime;
+        this.sender = sender;
+        this.receiver = receiver;
+    }
 }
