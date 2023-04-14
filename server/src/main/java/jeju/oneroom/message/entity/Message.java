@@ -1,16 +1,15 @@
 package jeju.oneroom.message.entity;
 
+import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.user.entity.User;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Message {
+public class Message extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "message_id")
@@ -18,9 +17,6 @@ public class Message {
 
     private String content;
     private Boolean readed;
-
-    @CreatedDate
-    private LocalDateTime dispatchTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
@@ -31,10 +27,9 @@ public class Message {
     private User receiver;
 
     @Builder
-    public Message(String content, Boolean readed, LocalDateTime dispatchTime, User sender, User receiver) {
+    public Message(String content, Boolean readed, User sender, User receiver) {
         this.content = content;
         this.readed = readed;
-        this.dispatchTime = dispatchTime;
         this.sender = sender;
         this.receiver = receiver;
     }
