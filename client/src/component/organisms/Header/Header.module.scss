@@ -10,7 +10,7 @@
 
 .logoWrapper {
   background-color: yellow;
-  width: 300px;
+  width: 25%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -20,15 +20,26 @@
 
 .ulWrapper {
   background-color: green;
+  width: 50%;
+  height: 100%;
 }
 
 .loginWrapper {
   background-color: blue;
+  width: 25%;
 }
 
 .ul {
   display: flex;
+  align-items: center;
+  text-align: center;
   flex-direction: row;
   background-color: white;
   margin: 20px;
+}
+
+.li {
+  background-color: gray;
+  width: 100%;
+  height: 100%;
 }

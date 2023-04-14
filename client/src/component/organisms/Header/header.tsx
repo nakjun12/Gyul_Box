@@ -9,10 +9,10 @@ export default function Header({}: Props) {
       <div className={styles.logoWrapper}>dd</div>
       <div className={styles.ulWrapper}>
         <ul className={styles.ul}>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
+          <li className={styles.li}>1</li>
+          <li className={styles.li}>2</li>
+          <li className={styles.li}>3</li>
+          <li className={styles.li}>4</li>
         </ul>
       </div>
       <div className={styles.loginWrapper}>dd</div>
