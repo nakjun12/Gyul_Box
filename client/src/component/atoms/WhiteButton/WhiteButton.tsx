@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../WhiteButton/whitebutton.module.scss";
+import styles from "../WhiteButton/WhiteButton.module.scss";
 
 type Props = {};
 
