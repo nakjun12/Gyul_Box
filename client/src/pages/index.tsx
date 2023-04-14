@@ -1,16 +1,16 @@
-import React from "react";
-import styles from "../styles/Home.module.scss";
-import Button from "@/component/atoms/orangeButton/OrangeButton";
 import Category from "@/component/atoms/category/Category";
-import Map from "@/component/atoms/map/Map";
-import Gyul from "../component/atoms/lottie/Gyul";
+import GrayStar from "@/component/atoms/grayStar/GrayStart";
 import Interest from "@/component/atoms/interest/Interest";
-import WhiteButton from "@/component/atoms/whiteButton/WhiteButton";
+import Map from "@/component/atoms/map/Map";
+import Button from "@/component/atoms/orangeButton/OrangeButton";
 import ReviewBox from "@/component/atoms/reviewBox/ReviewBox";
 import TextInput from "@/component/atoms/textInput/TextInput";
+import WhiteButton from "@/component/atoms/whiteButton/WhiteButton";
 import YellowStar from "@/component/atoms/yellowStar/YellowStart";
-import GrayStar from "@/component/atoms/grayStar/GrayStart";
 import Header from "@/component/organisms/header/Header";
+import Modal from "@/component/templates/modal/Modal";
+import Gyul from "../component/atoms/lottie/Gyul";
+import styles from "../styles/Home.module.scss";
 
 type Props = {};
 
@@ -19,6 +19,8 @@ export default function main({}: Props) {
     <>
       <Header />
       <div className={styles.btn}>main</div>
+      <Modal isOpen={true}>하이</Modal>
+      그치
       <Button />
       <Category />
       <Map />
