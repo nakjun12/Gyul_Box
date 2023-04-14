@@ -1,0 +1,29 @@
+@import "@/styles/_variables.scss";
+$main-color: #f00;
+
+.container {
+  @include center();
+
+  background-color: red;
+  padding: 20px;
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .button {
+    background-color: $main-color;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($main-color, 10%);
+    }
+  }
+}

@@ -1,8 +1,14 @@
-import React from "react";
 import styles from "../OrangeButton/orangebutton.module.scss";
 
-type Props = {};
+type Props = {
+  onClick?: () => void;
+  children?: React.ReactNode;
+};
 
-export default function OrangeButton({}: Props) {
-  return <button className={styles.btn}>버튼</button>;
+export default function OrangeButton({ onClick, children }: Props) {
+  return (
+    <button className={styles.btn} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
