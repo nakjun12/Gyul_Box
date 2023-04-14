@@ -1,20 +1,20 @@
 package jeju.oneroom.review.entity;
 
+import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.user.entity.User;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.LastModifiedBy;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Review {
+public class Review extends BaseEntity {
     @Id
     @Column(name = "review_id")
     @GeneratedValue
@@ -32,12 +32,6 @@ public class Review {
     @Embedded
     private Rate rate;
 
-    @CreatedBy
-    @Column(updatable = false)
-    private String createdAt;
-    @LastModifiedBy
-    private String ModifiedAt;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "houseInfo_id")
     private HouseInfo houseInfo;
@@ -45,4 +39,20 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Builder
+    public Review(String buildingName, String address, String advantage, String disadvantage, String adminCost,
+                  String residenceYear, String floor, int likes, Rate rate, HouseInfo houseInfo, User user) {
+        this.buildingName = buildingName;
+        this.address = address;
+        this.advantage = advantage;
+        this.disadvantage = disadvantage;
+        this.adminCost = adminCost;
+        this.residenceYear = residenceYear;
+        this.floor = floor;
+        this.likes = likes;
+        this.rate = rate;
+        this.houseInfo = houseInfo;
+        this.user = user;
+    }
 }
