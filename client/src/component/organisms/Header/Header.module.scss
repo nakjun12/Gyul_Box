@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   text-align: center;
+  justify-content: center;
   align-items: center;
   background-color: var(--orange);
   width: 100%;
@@ -10,11 +11,13 @@
 
 .logoWrapper {
   background-color: yellow;
+  color: var(--orange);
   width: 25%;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
+  justify-content: center;
   align-items: center;
 }
 
@@ -22,6 +25,9 @@
   background-color: green;
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .loginWrapper {
