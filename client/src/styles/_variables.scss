@@ -43,6 +43,9 @@ $Gray-C: #eeeeee;
 $InputGray-C: #f8f8f8;
 $TextGray-C: #b2b2b2;
 
+// import해서 _variables.scss 가져오고
+// css파일에 @include center(); 가져오면 됩니다.
+
 @mixin center() {
   display: flex;
   align-items: center;

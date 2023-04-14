@@ -21,6 +21,21 @@
   font-style: normal;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 :root {
   font-family: "Pretendard-Regular", sans-serif;
   --pretendard: "Pretendard-Regular", sans-serif;
@@ -30,6 +45,7 @@
   --gmarketSansBold: "GmarketSansBold", sans-serif;
   --leferiPointWhiteObliqueA: "LeferiPoint-WhiteObliqueA", sans-serif;
 
+  // 적용법 var(--orange)
   --orange: #ff6000;
   --green: #019267;
   --whiteOrange: #ffe6c7;
