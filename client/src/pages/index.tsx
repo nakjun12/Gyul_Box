@@ -1,6 +1,6 @@
 import Category from "@/component/atoms/category/Category";
 import GrayStar from "@/component/atoms/grayStar/GrayStart";
-import Interest from "@/component/atoms/interest/Interest";
+import Interest from "@/component/atoms/lnterest/Interest";
 import Map from "@/component/atoms/map/Map";
 import Button from "@/component/atoms/orangeButton/OrangeButton";
 import ReviewBox from "@/component/atoms/reviewBox/ReviewBox";

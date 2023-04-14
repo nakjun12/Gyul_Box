@@ -1,4 +1,4 @@
-import OrangeButton from "@/component/atoms/OrangeButton/OrangeButton";
+import OrangeButton from "@/component/atoms/orangeButton/OrangeButton";
 import React, { useState } from "react";
 import styles from "./Modal.module.scss";
 
