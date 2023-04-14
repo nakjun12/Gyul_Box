@@ -1,6 +1,7 @@
 package jeju.oneroom.common.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +18,7 @@ public class Rate {
     private double locationRate;
     private double avgRate;
 
+    @Builder
     public Rate(double interiorRate, double buildingRate, double trafficRate, double securityRate, double locationRate, double avgRate) {
         this.interiorRate = interiorRate;
         this.buildingRate = buildingRate;
