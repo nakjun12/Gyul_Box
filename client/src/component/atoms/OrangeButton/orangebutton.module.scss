@@ -1,5 +1,5 @@
 .btn {
-  background-color: #ff6000;
+  background-color: var(--orange);
   border-radius: 20px;
   width: 100px;
   height: 30px;
@@ -8,6 +8,6 @@
   cursor: pointer;
 
   &:hover {
-    background-color: #019267;
+    background-color: var(--green);
   }
 }

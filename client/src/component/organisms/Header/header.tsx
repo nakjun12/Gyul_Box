@@ -1,6 +1,7 @@
-import React from "react";
 import styles from "../Header/Header.module.scss";
-import logoGyul from "../../icon/gyul_main.png";
+import gyulLogo from "../../../../public/icon/gyulLogo.png";
+import Image from "next/image";
+import OrangeButton from "@/component/atoms/orangeButton/OrangeButton";
 
 type Props = {};
 
@@ -8,17 +9,19 @@ export default function Header({}: Props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.logoWrapper}>
-        <img src={logoGyul} alt="귤 로고"></img>귤박스
+        <Image src={gyulLogo} alt="귤 로고" width={80} height={50} />
+        귤박스
       </div>
       <div className={styles.ulWrapper}>
         <ul className={styles.ul}>
-          <li className={styles.li}>1</li>
-          <li className={styles.li}>2</li>
-          <li className={styles.li}>3</li>
-          <li className={styles.li}>4</li>
+          <li className={styles.li}>리뷰</li>
+          <li className={styles.li}>게시판</li>
+          <li className={styles.li}>지도</li>
         </ul>
       </div>
-      <div className={styles.loginWrapper}>dd</div>
+      <div className={styles.loginWrapper}>
+        <OrangeButton>로그인</OrangeButton>
+      </div>
     </div>
   );
 }
