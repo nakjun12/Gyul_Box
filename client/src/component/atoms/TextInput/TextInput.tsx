@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../TextInput/textinput.module.scss";
+import styles from "../TextInput/TextInput.module.scss";
 
 type Props = {};
 

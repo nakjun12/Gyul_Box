@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../ReviewBox/reviewbox.module.scss";
+import styles from "../ReviewBox/ReviewBox.module.scss";
 
 type Props = {};
 

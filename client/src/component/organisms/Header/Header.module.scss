@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  background-color: var(--orange);
+  width: 100%;
+  height: 100px;
+}
+
+.logoWrapper {
+  background-color: yellow;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.ulWrapper {
+  background-color: green;
+}
+
+.loginWrapper {
+  background-color: blue;
+}
+
+.ul {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  margin: 20px;
+}
