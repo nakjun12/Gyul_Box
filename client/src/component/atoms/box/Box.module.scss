@@ -1,0 +1,38 @@
+@import "@/styles/_variables.scss";
+
+.box {
+  @include c-center();
+  width: 20rem;
+  height: 100%;
+  border-top: 0.2rem solid var(--orange);
+  border-bottom: 0.2rem solid var(--orange);
+
+  li {
+    @include center-sb();
+    width: 100%;
+    height: 2rem;
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    font-weight: 400;
+    &:first-child {
+      border-bottom: 1px solid var(--textGray);
+    }
+  }
+
+  .first_row {
+    @include center();
+    text-align: center;
+    height: 100%;
+    width: 20%;
+    background-color: var(--gray);
+  }
+  .second_row {
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+  }
+}

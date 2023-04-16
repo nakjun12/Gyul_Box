@@ -1,0 +1,11 @@
+@import "@/styles/_variables.scss";
+
+.tab_panel {
+  @include c-center();
+
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border: none;
+}

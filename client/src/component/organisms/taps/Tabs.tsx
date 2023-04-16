@@ -1,7 +1,7 @@
 import Tab from "@/component/atoms/tab/Tab";
+import MyPagePanel from "@/component/molecules/tabPanel/MypagePanel";
 import { useState } from "react";
 import styles from "./Tabs.module.scss";
-
 interface TabsProps {}
 
 const Tabs = ({}: TabsProps) => {
@@ -28,10 +28,14 @@ const Tabs = ({}: TabsProps) => {
           active={tabNumber === 2}
         />
       </nav>
-      <section>
-        {tabNumber === 1 && <div>회원정보</div>}
+      <main>
+        {tabNumber === 1 && (
+          <>
+            <MyPagePanel />
+          </>
+        )}
         {tabNumber === 2 && <div>내가 쓴 글</div>}
-      </section>
+      </main>
     </>
   );
 };
