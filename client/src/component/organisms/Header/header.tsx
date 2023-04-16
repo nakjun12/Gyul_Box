@@ -9,8 +9,9 @@ export default function Header({}: Props) {
   return (
     <header className={styles.wrapper}>
       <div className={styles.logoWrapper}>
-        <Image src={gyulLogo} alt="귤 로고" width={80} height={50} />
-        귤박스
+        <div className={styles.imgDiv}>
+          <Image src={gyulLogo} alt="귤 로고" width={75} height={78} />
+        </div>
       </div>
       <div className={styles.ulWrapper}>
         <ul className={styles.ul}>

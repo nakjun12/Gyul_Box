@@ -1,17 +1,49 @@
-import Category from "@/component/atoms/category/Category";
-import GrayStar from "@/component/atoms/grayStar/GrayStart";
-import Interest from "@/component/atoms/lnterest/Interest";
-import Map from "@/component/atoms/map/Map";
-import Button from "@/component/atoms/orangeButton/OrangeButton";
-import ReviewBox from "@/component/atoms/reviewBox/ReviewBox";
-import TextInput from "@/component/atoms/textInput/TextInput";
-import WhiteButton from "@/component/atoms/whiteButton/WhiteButton";
-import YellowStar from "@/component/atoms/yellowStar/YellowStart";
-import Gyul from "../component/atoms/lottie/Gyul";
-import styles from "../styles/Home.module.scss";
+import styles from "../pages/home.module.scss";
+import gyulMain from "../../public/icon/mainGyul.jpg";
+import Image from "next/image";
+import MainLottie from "@/component/atoms/lottie/MainLottie";
+import SearchBar from "@/component/molecules/searchBar/SearchBar";
 
 type Props = {};
 
-export default function main({}: Props) {
-  return <div>hi</div>;
+export default function home({}: Props) {
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.gyulMain}>
+        <Image src={gyulMain} alt="메인 로고" height={250} width={800} />
+      </div>
+      <div className={styles.lottieWrapper}>
+        <div className={styles.lottieDiv}>
+          <MainLottie />
+        </div>
+
+        <div className={styles.whereDiv}>어디로 가볼까?</div>
+      </div>
+      <SearchBar />
+      <div className={styles.boardWrapper}>
+        <div className={styles.boardCategoryWrapper}>
+          <div className={styles.boardCategoryDiv}>최신순</div>
+          <div className={styles.boardCategoryDiv}>추천순</div>
+        </div>
+        <div className={styles.boardContentWrapper}>
+          <div className={styles.boardContentDiv}>
+            <div className={styles.boardContentDiv}>
+              <div className={styles.boardTitle}>
+                <div>공지사항</div>
+                <button className={styles.moreButton}>더보기</button>
+              </div>
+            </div>
+          </div>
+          <div className={styles.boardContentDiv}>
+            <div className={styles.boardContentDiv}>
+              <div className={styles.boardTitle}>
+                <div>공지사항</div>
+                <button className={styles.moreButton}>더보기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -1,3 +1,113 @@
+@import "../styles/variables";
+
+.bodyWrapper {
+  width: 1180px;
+  margin: auto;
+  height: 2000px;
+}
+
 .home {
-  padding-top: 100px;
+  padding-top: 80px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: green;
+  width: 100%;
+  height: 2000px;
+}
+
+.gyulMain {
+  @include center();
+  background-color: orange;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lottieWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 110px;
+  background-color: antiquewhite;
+}
+
+.lottieDiv {
+  @include center();
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  background-color: black;
+}
+
+.whereDiv {
+  @include center();
+  background-color: coral;
+  height: 100px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.boardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  background-color: yellow;
+  margin-top: 150px;
+
+  .boardCategoryWrapper {
+    width: 80%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: aqua;
+
+    .boardCategoryDiv {
+      color: var(--orange);
+      font-size: 25px;
+      font-weight: 700;
+    }
+  }
+  .boardContentWrapper {
+    background-color: crimson;
+    width: 80%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    .boardContentDiv {
+      @include center-se();
+      flex-direction: column;
+      background-color: indigo;
+
+      .boardTitle {
+        @include center-sb();
+        flex-direction: row;
+        width: 300px;
+        font-size: 20px;
+        font-weight: 400;
+        border-bottom: 1px solid var(gray);
+      }
+      .moreButton {
+        background-color: var(gray);
+        color: gray;
+        border: none;
+        width: 80px;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+    }
+  }
 }
