@@ -13,7 +13,9 @@ export default function Footer({}: Props) {
     <footer className={styles.wrapper}>
       <div className={styles.infoWrapper}>
         <h2 className={styles.mainContent}>
-          <Image src={gyulLogo} alt="귤 로고" width={40} height={30} />
+          <div className={styles.gyulLogo}>
+            <Image src={gyulLogo} alt="귤 로고" width={40} height={40} />
+          </div>
           GyulBox
         </h2>
         <div className={styles.subContent}>
@@ -33,7 +35,7 @@ export default function Footer({}: Props) {
       </div>
       <div className={styles.logoWrapper}>
         <div className={styles.imageDiv}>
-          <Image src={facebook} alt="페이스북 아이콘" width={40} height={40} />
+          <Image src={facebook} alt="페이스북 아이콘" width={35} height={40} />
         </div>
         <div className={styles.imageDiv}>
           <Image
