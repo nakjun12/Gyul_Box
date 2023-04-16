@@ -7,11 +7,27 @@ import ReviewBox from "@/component/atoms/reviewBox/ReviewBox";
 import TextInput from "@/component/atoms/textInput/TextInput";
 import WhiteButton from "@/component/atoms/whiteButton/WhiteButton";
 import YellowStar from "@/component/atoms/yellowStar/YellowStart";
-import Gyul from "../component/atoms/lottie/Gyul";
-import styles from "../styles/Home.module.scss";
+import Gyul from "@/component/atoms/lottie/Gyul";
+import styles from "@/styles/Home.module.scss";
 
 type Props = {};
 
-export default function main({}: Props) {
-  return <div>hi</div>;
+export default function index({}: Props) {
+  return (
+    <>
+      <div className={styles.btn}>main</div>
+      <div>
+        <Button /> 버튼
+      </div>
+      <Category />
+      <Map />
+      <Gyul />
+      <Interest />
+      <WhiteButton />
+      <ReviewBox />
+      <TextInput />
+      <YellowStar />
+      <GrayStar />
+    </>
+  );
 }
