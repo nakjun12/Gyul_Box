@@ -7,7 +7,7 @@ type Props = {};
 
 export default function Header({}: Props) {
   return (
-    <div className={styles.wrapper}>
+    <header className={styles.wrapper}>
       <div className={styles.logoWrapper}>
         <Image src={gyulLogo} alt="귤 로고" width={80} height={50} />
         귤박스
@@ -22,6 +22,6 @@ export default function Header({}: Props) {
       <div className={styles.loginWrapper}>
         <OrangeButton>로그인</OrangeButton>
       </div>
-    </div>
+    </header>
   );
 }
