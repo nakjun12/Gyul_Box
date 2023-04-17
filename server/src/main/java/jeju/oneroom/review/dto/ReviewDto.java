@@ -1,10 +1,19 @@
 package jeju.oneroom.review.dto;
 
 import jeju.oneroom.common.entity.Rate;
+import jeju.oneroom.user.dto.UserDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 public class ReviewDto {
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Post{
         private String buildingName;
         private String advantage;
@@ -20,6 +29,10 @@ public class ReviewDto {
     }
 
     // 리뷰하는 건물이 달라지는 경우는 delete 후 새로 post
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Patch{
         private String advantage;
         private String disadvantage;
@@ -30,6 +43,10 @@ public class ReviewDto {
         private int likes;
     }
 
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Response{
         private String buildingName;
         private String advantage;
@@ -44,9 +61,14 @@ public class ReviewDto {
         private LocalDateTime modifiedAt;
 
         // 작성자 정보는 머지 후 추가
+        private UserDto.SimpleResponseDto writer;
     }
 
     // 특정 동의 추천 순 리뷰 30개
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class SimpleResponse{
         private String advantage;
         private String disadvantage;

@@ -1,12 +1,16 @@
 package jeju.oneroom.si.dto;
 
 import jeju.oneroom.common.entity.Coordinate;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@ToString
+@Builder
 @Getter
-@NoArgsConstructor
 public class SiDto {
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Response{
         private Long siCode;
         private String siName;

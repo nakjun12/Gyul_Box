@@ -3,11 +3,19 @@ package jeju.oneroom.houseInfo.dto;
 import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.review.dto.ReviewDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HouseInfoDto {
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Response{
         private Long id;
         // 건물 이름 없을 경우?
@@ -24,6 +32,6 @@ public class HouseInfoDto {
         private Coordinate coordinate;
         private Rate rate;
 
-        private List<ReviewDto.Response> reviews = new ArrayList<>();
+        private List<ReviewDto.Response> reviews;
     }
 }
