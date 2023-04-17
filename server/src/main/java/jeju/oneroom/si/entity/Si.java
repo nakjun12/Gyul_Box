@@ -23,7 +23,7 @@ public class Si extends BaseEntity {
     private String siName;
 
     @OneToMany(mappedBy = "si")
-    private List<Town> towns = new ArrayList<>();
+    private List<Town> towns;
 
     @Embedded
     private Coordinate coordinate;
