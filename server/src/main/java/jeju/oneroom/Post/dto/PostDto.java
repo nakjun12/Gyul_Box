@@ -1,27 +1,39 @@
 package jeju.oneroom.Post.dto;
 
 import jeju.oneroom.postComment.dto.PostCommentDto;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Getter
 public class PostDto {
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    @NoArgsConstructor
     public static class Post {
         private String title; // 제목
         private String content; // 내용
         private String houseAddress; // 주소
     }
 
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    @NoArgsConstructor
     public static class Patch {
         private String title; // 제목
         private String content; // 내용
     }
 
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    @NoArgsConstructor
     public static class Response {
         private Long id; // postId
-        private String nickname;  // 글쓴이 넣기
+        private SimpleResponseDto writer;
         private String title; // 제목
         private String content; // 내용
         private String houseAddress;
@@ -34,6 +46,10 @@ public class PostDto {
     }
 
     //심플 게시글 리스트
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    @NoArgsConstructor
     public static class SimpleResponseDto {
         private Long id; // postId;
         private String nickname;  // 글쓴이 넣기
