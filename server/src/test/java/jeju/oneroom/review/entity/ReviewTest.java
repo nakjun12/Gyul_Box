@@ -2,6 +2,7 @@ package jeju.oneroom.review.entity;
 
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.review.repository.ReviewRepository;
+import jeju.oneroom.user.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ class ReviewTest {
     @Test
     public void Review_생성_테스트() throws Exception{
         //given
+        User user = getUser();
         Rate rate = getRate();
 
         Review review = Review.builder()
@@ -32,6 +34,7 @@ class ReviewTest {
                 .residenceYear("약 2년")
                 .address("인천 연수구 먼우금로")
                 .likes(1)
+                .user(user)
                 .rate(rate)
                 .build();
 
@@ -40,6 +43,12 @@ class ReviewTest {
         Review findReview = reviewRepository.findById(review.getId()).orElse(null);
         //then
         Assertions.assertEquals(findReview.getBuildingName(), review.getBuildingName());
+    }
+
+    private User getUser() {
+        return User.builder()
+                .email("aaa@gmail.com")
+                .nickname("홍길동").build();
     }
 
     private Rate getRate() {
