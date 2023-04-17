@@ -1,5 +1,9 @@
 package jeju.oneroom.Post.controller;
 
+import jeju.oneroom.Post.entitiy.Post;
+import jeju.oneroom.Post.mapper.PostMapper;
+import jeju.oneroom.Post.repository.PostRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -7,7 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Positive;
 
 @RestController
+@RequiredArgsConstructor
 public class PostController {
+
+    private final PostMapper mapper;
+    private final PostRepository repository;
+
     @PostMapping("/posts") // 게시글을 작성할 수 있다.
     public ResponseEntity<?> post() {
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -25,7 +34,8 @@ public class PostController {
 
     @GetMapping("/posts/{post-id}") // 게시글을 가져올 수 있다.
     public ResponseEntity<?> findPost(@PathVariable("post-id") @Positive long postId) {
-        return new ResponseEntity<>(HttpStatus.OK);
+        Post findPost = repository.findById(postId).orElse(null);
+        return new ResponseEntity<>(mapper.postToResponseDto(findPost), HttpStatus.OK);
     }
 
     @GetMapping("/user/{user-id}/posts") // user-id로 유저 검색 후 유저가 작성한 글 가져오기
