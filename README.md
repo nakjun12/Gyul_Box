@@ -1,12 +1,12 @@
 
     
 # **프로젝트 소개**
-  제두도 한달살이
+ ## 제두도 한달살이
 
 - 배포 링크 : 준비중
 - 서버 배포 링크 : 준비중
 - 프로젝트 wiki 바로가기 : 준비중
-## **🍊 LOGO**
+## **🍊 LOGO 🍊**
 
 ## **✨Feature✨**
 
@@ -15,8 +15,11 @@
 
 ### 프론트엔드
 
-SWR SCSS NEXT.JS, Recoil
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"> 
+<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
+<img src="https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=Sass&logoColor=white">
+<img src="https://img.shields.io/badge/SWR-000000?style=for-the-badge">
+<img src="https://img.shields.io/badge/Recoil-61DAFB?style=for-the-badge">
 
 ### 백엔드
 <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white"> <img src="https://img.shields.io/badge/Spring Data Jpa-6DB33F?style=for-the-badge"> <img src="https://img.shields.io/badge/Query%20Dsl-59666C?style=for-the-badge&logo=&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"> <img src="https://img.shields.io/badge/JSON%20Web%20Tokens-000000?style=for-the-badge&logo=JSON%20Web%20Tokens&logoColor=white"> <img src="https://img.shields.io/badge/OAuth2.0-000000?style=for-the-badge&logo=&logoColor=white">
