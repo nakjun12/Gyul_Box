@@ -1,5 +1,7 @@
 package jeju.oneroom.town.controller;
 
+import jeju.oneroom.common.dto.ListResponseDto;
+import jeju.oneroom.common.dto.MultiResponseDto;
 import jeju.oneroom.si.dto.SiDto;
 import jeju.oneroom.si.entity.Si;
 import jeju.oneroom.town.dto.TownDto;
@@ -10,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -41,6 +46,7 @@ public class TownController {
 
     @GetMapping("sies/{si-id}/towns")
     public ResponseEntity<?> findTownsBySi(@PathVariable("si-id") long siCode) {
-        return new ResponseEntity<>(HttpStatus.OK);
+        List<TownDto.Response> responses = townRepository.findBySi_SiCode(siCode).stream().map(townMapper ::townToResponseDto).collect(Collectors.toList());
+        return new ResponseEntity<>(new ListResponseDto<>(responses),HttpStatus.OK);
     }
 }
