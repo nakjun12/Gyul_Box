@@ -28,17 +28,6 @@ public class PostCommentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/{postComment-id}")
-    public ResponseEntity<?> find(@PathVariable("post-id") @Positive long postId, @PathVariable("postComment-id") @Positive long postCommentId) {
-        PostComment findPostComment = postCommentRepository.findById(4L).orElse(null);
-        return new ResponseEntity<>(mapper.postCommentToResponseDto(findPostComment), HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<?> finds(@PathVariable("post-id") @Positive long postId) {
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     @DeleteMapping("/{postComment-id}")
     public ResponseEntity<?> delete(@PathVariable("post-id") @Positive long postId, @PathVariable("postComment-id") @Positive long postCommentId) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

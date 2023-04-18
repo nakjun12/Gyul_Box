@@ -2,12 +2,20 @@ package jeju.oneroom.postComment.entity;
 
 import jeju.oneroom.Post.entitiy.Post;
 import jeju.oneroom.Post.repository.PostRepository;
+import jeju.oneroom.common.entity.Coordinate;
+import jeju.oneroom.message.entity.Message;
 import jeju.oneroom.postComment.repository.PostCommentRepository;
+import jeju.oneroom.town.entity.Town;
+import jeju.oneroom.user.entity.User;
+import jeju.oneroom.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,16 +28,19 @@ class PostCommentTest {
     PostCommentRepository postCommentRepository;
     @Autowired
     PostRepository postRepository;
+    @Autowired
+    UserRepository userRepository;
+
 
     @Test
     public void 양도게시글댓글_생성() throws Exception {
 
-        Post post = postRepository.findById(2L).orElse(null);
         //given
-        PostComment postComment = getPostComment();
-        postComment.builder()
-                .post(post)
-                .build();
+        User user = getUser(getTown(getCoordinate()));
+        User savedUser = userRepository.save(user);
+        Post post = getPost(savedUser);
+        Post savedPost = postRepository.save(post);
+        PostComment postComment = getPostComment(savedPost);
 
         //then
         PostComment savedPostComment = postCommentRepository.save(postComment);  // db에 저장
@@ -38,12 +49,43 @@ class PostCommentTest {
         assertEquals(postComment.getContent(), findPostComment.getContent()); // 직접 만든 PostComment와 db에 저장 후 찾아온 것 비교
     }
 
-    private PostComment getPostComment() {
+    private PostComment getPostComment(Post post) {
         PostRepository postRepository;
         PostComment postComment = PostComment.builder()
                 .content("제가 양도 받고 싶어요")
+                .post(post)
                 .build();
         return postComment;
     }
 
+    private Post getPost(User savedUser) {
+        return Post.builder()
+                .title("안녕하세요")
+                .user(savedUser)
+                .content("양도 원합니다")
+                .build();
+    }
+
+    private User getUser(Town town) {
+        User user = User.builder()
+                .nickname("망나니 개발자")
+                .email("aaa@naver.com")
+                .town(town)
+                .build();
+        return user;
+    }
+
+    private Coordinate getCoordinate() {
+        Coordinate coordinate = new Coordinate(11.11111, 11.11111);
+        return coordinate;
+    }
+
+    private Town getTown(Coordinate coordinate) {
+        Town town = Town.builder()
+                .townCode(11111L)
+                .townName("동춘동")
+                .coordinate(coordinate)
+                .build();
+        return town;
+    }
 }

@@ -19,6 +19,7 @@ public class UserDto {
     @NoArgsConstructor
     public static class Patch {
         private String nickname; // 닉네임
+        //관심 지역 추후에 추가
     }
 
     @Getter
