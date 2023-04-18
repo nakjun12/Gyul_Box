@@ -1,11 +1,10 @@
-import Tabs from "@/component/organisms/taps/Tabs";
+import MyPagePanel from "@/component/molecules/tabPanel/MypagePanel";
 type Props = {};
 
 export default function index({}: Props) {
   return (
     <>
-      감자
-      <Tabs />
+      <MyPagePanel />
       <div>index</div>
     </>
   );

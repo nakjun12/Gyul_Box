@@ -1,8 +1,9 @@
-import React from "react";
 import styles from "../Category/Category.module.scss";
 
-type Props = {};
+type Props = {
+  text?: string;
+};
 
-export default function Category({}: Props) {
-  return <button className={styles.category}>Category</button>;
+export default function Category({ text }: Props) {
+  return <button className={styles.category}>{text}</button>;
 }
