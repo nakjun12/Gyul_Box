@@ -1,0 +1,10 @@
+@import "@/styles/_variables.scss";
+
+.tabs {
+  @include center-sb();
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  border: none;
+  box-sizing: border-box;
+}

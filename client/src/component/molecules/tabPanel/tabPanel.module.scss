@@ -1,0 +1,22 @@
+@import "@/styles/_variables.scss";
+
+.tab_panel {
+  @include c-center();
+  margin-top: 3rem;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: none;
+
+  label {
+    @include center-sb();
+    width: 40rem;
+
+    height: 100%;
+    box-sizing: border-box;
+    font-family: var(--pretendard);
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin: 1.5rem auto;
+  }
+}
