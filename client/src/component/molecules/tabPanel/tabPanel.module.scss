@@ -26,13 +26,14 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  margin: 2rem auto;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
   padding: 0 2rem;
   border: none;
   border-radius: 1rem;
 
   font-family: var(--pretendard);
-  font-weight: 800;
+  font-weight: 500;
   font-size: 1.2rem;
 
   cursor: pointer;
@@ -41,8 +42,35 @@
     margin: 0 4rem;
   }
 }
-.box {
-  //
-  width: 100%;
+
+.cardbox {
+  @include c-center();
+  width: 15%;
   height: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 1rem;
+  color: var(--gray);
+  padding: 1rem 0;
+  margin: 0 1rem;
+  border-radius: 50px;
+  background-color: var(--orange);
+  font-family: var(--pretendard);
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-1rem);
+    background-color: var(--green);
+  }
+}
+.text {
+  @include center();
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+.box {
+  @include center-sb();
+  margin: 2rem auto;
+  width: 40%;
 }
