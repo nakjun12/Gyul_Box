@@ -17,7 +17,7 @@ export default function home({}: Props) {
         <div className={styles.lottieDiv}>
           <MainLottie />
         </div>
-        <div className={styles.whereDiv}>어디로 가볼까??</div>
+        <div className={styles.whereDiv}>어디로 가볼까????</div>
       </div>
       <SearchBar />
       <div className={styles.boardParts}>
