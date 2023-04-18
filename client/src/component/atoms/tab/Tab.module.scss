@@ -1,0 +1,19 @@
+//fix css
+@import "@/styles/_variables.scss";
+.tab,
+.active {
+  @include center();
+  background-color: var(--inputGray);
+  width: 100%;
+  height: 4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-bottom: 3px solid var(--inputGray);
+  font-family: var(--pretendard);
+
+  &.active {
+    border-bottom-color: var(--green);
+  }
+}
