@@ -3,12 +3,16 @@ package jeju.oneroom.Post.controller;
 import jeju.oneroom.Post.entitiy.Post;
 import jeju.oneroom.Post.mapper.PostMapper;
 import jeju.oneroom.Post.repository.PostRepository;
+import jeju.oneroom.user.entity.User;
+import jeju.oneroom.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Positive;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,6 +20,7 @@ public class PostController {
 
     private final PostMapper mapper;
     private final PostRepository repository;
+    private final UserRepository userRepository;
 
     @PostMapping("/posts") // 게시글을 작성할 수 있다.
     public ResponseEntity<?> post() {
@@ -40,7 +45,9 @@ public class PostController {
 
     @GetMapping("/user/{user-id}/posts") // user-id로 유저 검색 후 유저가 작성한 글 가져오기
     public ResponseEntity<?> findUserPost(@PathVariable("user-id") @Positive long userId) {
-        return new ResponseEntity<>(HttpStatus.OK);
+        User findUser = userRepository.findById(userId).orElse(null);
+        Post findPost = repository.findByUser(findUser).orElse(null);
+        return new ResponseEntity<>(mapper.postToSimpleResponseDto(findPost),HttpStatus.OK);
     }
 
     @GetMapping("/posts") // 게시글을 페이지네이션으로 가져오고 최신순 추천순으로 정렬을 할 수 있다.
@@ -52,10 +59,10 @@ public class PostController {
     }
 
     @GetMapping("/posts/search")  // 게시글을 제목으로 검색할 수 있다.
-    public ResponseEntity<?> findPost(@RequestParam String query) {
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> findPost(@RequestParam("query") String query) {
+        List<Post> byTitleContaining = repository.findByTitleContaining(query);
+        return new ResponseEntity<>(byTitleContaining.stream().map(m->mapper.postToSimpleResponseDto(m)).collect(Collectors.toList()),HttpStatus.OK);
     }
-
     @GetMapping("/posts/latest5") // 최신순 5개
     public ResponseEntity<?> findTop5LatestReviews() {
         return new ResponseEntity<>(HttpStatus.OK);
