@@ -23,6 +23,8 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "react-icons": "^4.8.0",
     "sass": "^1.61.0",
     "sass-loader": "^13.2.2"
   }
