@@ -1,9 +1,9 @@
+import Footer from "@/component/organisms/footer/footer";
+import Header from "@/component/organisms/header/header";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import "../styles/globals.scss";
-import Header from "@/component/organisms/header/header";
-import Footer from "@/component/organisms/footer/footer";
 import styles from "../pages/home.module.scss";
+import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

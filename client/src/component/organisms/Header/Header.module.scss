@@ -1,14 +1,8 @@
-// 로고의 폰트 정보
-//  font-weight: 700;
-//  font-size: 20px;
-
-@import "../../../styles/variables";
-
+@import "@/styles/_variables.scss";
 .wrapper {
-  @include center();
-  flex-direction: row;
-  align-items: center;
-  width: 1180px;
+  @include center-sb();
+  width: 100%;
+  max-width: 1180px;
   height: 80px;
   border-bottom: 2px solid var(--orange);
   position: fixed;
@@ -17,10 +11,7 @@
 }
 
 .logoWrapper {
-  // @include center();
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include center();
   color: var(--orange);
   font-weight: 700;
   font-size: 18px;

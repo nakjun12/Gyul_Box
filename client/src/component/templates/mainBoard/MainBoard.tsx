@@ -1,6 +1,5 @@
-import React from "react";
+import BoardContents from "../../molecules/boardContents/BoardContents";
 import styles from "../mainBoard/MianBpard.module.scss";
-import BoardContents from "./boardContents/BoardContents";
 
 type Props = {};
 

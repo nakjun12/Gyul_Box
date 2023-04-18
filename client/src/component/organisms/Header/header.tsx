@@ -1,8 +1,7 @@
-import styles from "../Header/Header.module.scss";
-import gyulLogo from "../../../../public/icon/gyulLogo.png";
+import Modal from "@/component/templates/modal/Modal";
 import Image from "next/image";
-import OrangeButton from "@/component/atoms/orangeButton/OrangeButton";
-
+import gyulLogo from "../../../../public/icon/gyulLogo.png";
+import styles from "../Header/Header.module.scss";
 type Props = {};
 
 export default function Header({}: Props) {
@@ -20,9 +19,8 @@ export default function Header({}: Props) {
           <li className={styles.li}>지도</li>
         </ul>
       </div>
-      <div className={styles.loginWrapper}>
-        <OrangeButton>로그인</OrangeButton>
-      </div>
+
+      <Modal isOpen={false} />
     </header>
   );
 }
