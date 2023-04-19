@@ -27,6 +27,7 @@ class HouseInfoTest {
         Town town = getTownWithoutSi(coordinate);
         HouseInfo houseInfo = getHouseInfo(coordinate, rate, town);
 
+
         houseInfoRepository.save(houseInfo);
 
         //when
@@ -70,7 +71,6 @@ class HouseInfoTest {
 
     private Rate getRate() {
         return Rate.builder()
-                .avgRate(5)
                 .buildingRate(5)
                 .interiorRate(5)
                 .locationRate(5)

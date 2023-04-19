@@ -19,12 +19,12 @@ public class Rate {
     private double avgRate;
 
     @Builder
-    public Rate(double interiorRate, double buildingRate, double trafficRate, double securityRate, double locationRate, double avgRate) {
+    public Rate(double interiorRate, double buildingRate, double trafficRate, double securityRate, double locationRate) {
         this.interiorRate = interiorRate;
         this.buildingRate = buildingRate;
         this.trafficRate = trafficRate;
         this.securityRate = securityRate;
         this.locationRate = locationRate;
-        this.avgRate = avgRate;
+        this.avgRate = (interiorRate + buildingRate + trafficRate + securityRate + locationRate) / 5;
     }
 }

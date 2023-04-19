@@ -54,7 +54,7 @@ public class ReviewDto {
         private String adminCost;
         private String residenceYear;
         private String floor;
-        private String avgRate;
+        private double avgRate;
         private int likes;
 
         private LocalDateTime createdAt;

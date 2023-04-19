@@ -5,6 +5,7 @@ import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.houseInfo.repository.HouseInfoRepository;
 import jeju.oneroom.review.repository.ReviewRepository;
+import jeju.oneroom.town.entity.Town;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
@@ -36,7 +37,8 @@ class ReviewTest {
         userRepository.save(user);
         Rate rate = getRate();
         Coordinate coordinate = new Coordinate(11.11111, 11.11111);
-        HouseInfo houseInfo = getHouseInfoWithoutTown(coordinate, rate);
+        Town town = getTownWithoutSi(coordinate);
+        HouseInfo houseInfo = getHouseInfo(coordinate, rate, town);
         houseInfoRepository.save(houseInfo);
 
         Review review = getReview(user, rate, houseInfo);
@@ -72,7 +74,6 @@ class ReviewTest {
 
     private Rate getRate() {
         return Rate.builder()
-                .avgRate(5)
                 .buildingRate(5)
                 .interiorRate(5)
                 .locationRate(5)
@@ -81,7 +82,16 @@ class ReviewTest {
                 .build();
     }
 
-    private HouseInfo getHouseInfoWithoutTown(Coordinate coordinate, Rate rate) {
+    private Town getTownWithoutSi(Coordinate coordinate) {
+        Town town = Town.builder()
+                .townCode(11111L)
+                .townName("동춘동")
+                .coordinate(coordinate)
+                .build();
+        return town;
+    }
+
+    private HouseInfo getHouseInfo(Coordinate coordinate, Rate rate, Town town) {
         return HouseInfo.builder()
                 .houseHold(1)
                 .houseName("태성빌라")
@@ -92,6 +102,7 @@ class ReviewTest {
                 .grndFloor(5)
                 .ugrndFloor(2)
                 .useAprDay("2002-02-02")
+                .town(town)
                 .rate(rate)
                 .coordinate(coordinate)
                 .build();

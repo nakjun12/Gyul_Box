@@ -4,6 +4,7 @@ import jeju.oneroom.common.dto.ListResponseDto;
 import jeju.oneroom.common.dto.MultiResponseDto;
 import jeju.oneroom.si.dto.SiDto;
 import jeju.oneroom.si.entity.Si;
+import jeju.oneroom.si.repository.SiRepository;
 import jeju.oneroom.town.dto.TownDto;
 import jeju.oneroom.town.entity.Town;
 import jeju.oneroom.town.mapper.TownMapper;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 public class TownController {
     private final TownRepository townRepository;
     private final TownMapper townMapper;
+    private final SiRepository siRepository;
 
     @PostMapping("/towns")
     public ResponseEntity<?> post() {
@@ -46,7 +48,8 @@ public class TownController {
 
     @GetMapping("sies/{si-id}/towns")
     public ResponseEntity<?> findTownsBySi(@PathVariable("si-id") long siCode) {
-        List<TownDto.Response> responses = townRepository.findBySi_SiCode(siCode).stream().map(townMapper ::townToResponseDto).collect(Collectors.toList());
+        Si si = siRepository.findById(siCode).orElse(null);
+        List<TownDto.Response> responses = townRepository.findBySi(si).stream().map(townMapper ::townToResponseDto).collect(Collectors.toList());
         return new ResponseEntity<>(new ListResponseDto<>(responses),HttpStatus.OK);
     }
 }
