@@ -71,6 +71,4 @@ class UserTest {
                 .readed(Boolean.FALSE)
                 .build();
     }
-
-
 }
