@@ -14,8 +14,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": ["kakao.maps.d.ts"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"] //배운점
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

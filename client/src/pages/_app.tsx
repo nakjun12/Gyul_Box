@@ -1,5 +1,5 @@
 import Footer from "@/component/organisms/footer/footer";
-import Header from "@/component/organisms/header/header";
+import Header from "@/component/organisms/header/Header";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import styles from "../pages/home.module.scss";
