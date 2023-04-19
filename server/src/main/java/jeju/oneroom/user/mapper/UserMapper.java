@@ -1,8 +1,10 @@
 package jeju.oneroom.user.mapper;
 
+import jeju.oneroom.town.entity.Town;
 import jeju.oneroom.user.dto.UserDto;
 import jeju.oneroom.user.entity.User;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
@@ -13,20 +15,14 @@ public interface UserMapper {
 
     User patchDtoToUser(UserDto.Patch patchDto);
 
+    //@Mapping(target = "town", expression = "user.get")
     UserDto.Response userToResponseDto(User user);
 
     List<UserDto.Response> usersToResponseDtos(List<User> users);
 
     UserDto.SimpleResponseDto userToSimpleResponseDto(User user);
 
-//    default UserDto.Response userToResponseDto(User user) {
-//        UserDto.Response response = new UserDto.Response();
-//        response.builder()
-//                .id(user.getId())
-//                .email(user.getEmail())
-//                .town(user.getTown().getTownName())
-//                .writer(userToSimpleResponseDto(user))
-//                .build();
-//        return response;
-//    }
+    default String toString(Town town){
+        return town.getTownName();
+    }
 }

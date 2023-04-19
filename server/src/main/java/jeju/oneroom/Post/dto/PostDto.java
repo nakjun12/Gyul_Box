@@ -1,6 +1,7 @@
 package jeju.oneroom.Post.dto;
 
 import jeju.oneroom.postComment.dto.PostCommentDto;
+import jeju.oneroom.user.dto.UserDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -33,7 +34,7 @@ public class PostDto {
     @NoArgsConstructor
     public static class Response {
         private Long id; // postId
-        private SimpleResponseDto writer;
+        private UserDto.SimpleResponseDto writer;
         private String title; // 제목
         private String content; // 내용
         private String houseAddress;
@@ -52,7 +53,7 @@ public class PostDto {
     @NoArgsConstructor
     public static class SimpleResponseDto {
         private Long id; // postId;
-        private String nickname;  // 글쓴이 넣기
+        private String nickname;  // 글쓴이 닉네임
         private String title; // 제목
         private String content; // 내용
         private LocalDateTime createdAt; // 작성 날짜

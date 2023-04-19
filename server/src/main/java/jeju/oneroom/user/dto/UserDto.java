@@ -29,8 +29,9 @@ public class UserDto {
     public static class Response {
         private Long id; // id
         private String email; // 이메일
-        //private String town; // user -> ResponseDto 변환 과정에서 어떻게 처리할 지 모르겠음.
-        private UserDto.SimpleResponseDto writer;
+        private String town;
+        private String nickname; //닉네임
+        private String profileImageUrl;
     }
 
     @Getter
