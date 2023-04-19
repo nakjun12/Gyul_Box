@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HouseInfoDto {
@@ -33,5 +32,33 @@ public class HouseInfoDto {
         private Rate rate;
 
         private List<ReviewDto.Response> reviews;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class SimpleResponse{
+        private Long id;
+        // 건물 이름 없을 경우?
+        // 주소 명으로 대체
+        private String houseName;
+        private String platPlc;
+        private double avgRate;
+        private int reviewCount;
+
+        private Coordinate coordinate;
+
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class SimpleCountResponse{
+        private Long id;
+        private int reviewCount;
+
+        private Coordinate coordinate;
     }
 }

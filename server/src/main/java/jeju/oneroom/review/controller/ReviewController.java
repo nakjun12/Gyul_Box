@@ -1,10 +1,15 @@
 package jeju.oneroom.review.controller;
 
+import jeju.oneroom.common.dto.ListResponseDto;
 import jeju.oneroom.common.dto.MultiResponseDto;
+import jeju.oneroom.houseInfo.entity.HouseInfo;
+import jeju.oneroom.houseInfo.repository.HouseInfoRepository;
 import jeju.oneroom.review.dto.ReviewDto;
 import jeju.oneroom.review.entity.Review;
 import jeju.oneroom.review.mapper.ReviewMapper;
 import jeju.oneroom.review.repository.ReviewRepository;
+import jeju.oneroom.town.entity.Town;
+import jeju.oneroom.town.repository.TownRepository;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +20,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Positive;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +31,8 @@ public class ReviewController {
     private final ReviewRepository reviewRepository;
     private final ReviewMapper reviewMapper;
     private final UserRepository userRepository;
+    private final TownRepository townRepository;
+    private final HouseInfoRepository houseInfoRepository;
 
     @PostMapping("/reviews")
     public ResponseEntity<?> post() {
@@ -56,9 +66,14 @@ public class ReviewController {
     @GetMapping("users/{user-id}/user-towns/reviews")
     public ResponseEntity<?> findUserTownReviews(@PathVariable("user-id") long userId) {
         User user = userRepository.findById(userId).orElse(null);
-        long userTownCode = user.getTown().getTownCode();
-        // 추후 작성
-        return new ResponseEntity<>(HttpStatus.OK);
+        Town town = user.getTown();
+        List<HouseInfo> houseInfos = houseInfoRepository.findByTown(town);
+        List<ReviewDto.SimpleResponse> responses = new ArrayList<>();
+        for (HouseInfo houseInfo:  houseInfos) {
+            List<ReviewDto.SimpleResponse>  tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
+            responses.addAll(tmp);
+        }
+        return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
     }
 
     // 유저 리뷰 찾기  추후 findUserTownReviews 메서드와 통합 시도.
@@ -66,7 +81,8 @@ public class ReviewController {
     public ResponseEntity<?> findUserReviews(@RequestParam int page,
                                              @RequestParam int size,
                                              @PathVariable("user-id") long userId) {
-        Page<ReviewDto.SimpleResponse> responses = reviewRepository.findByUser_Id(userId, PageRequest.of(page - 1, size)).map(reviewMapper::reviewToSimpleResponseDto);
+        User user = userRepository.findById(userId).orElse(null);
+        Page<ReviewDto.SimpleResponse> responses = reviewRepository.findByUser(user, PageRequest.of(page - 1, size)).map(reviewMapper::reviewToSimpleResponseDto);
 
         return new ResponseEntity<>(new MultiResponseDto<>(responses), HttpStatus.OK);
     }
@@ -76,7 +92,13 @@ public class ReviewController {
     public ResponseEntity<?> findTownReviews(@RequestParam int page,
                                              @RequestParam int size,
                                              @PathVariable("town-id") long townCode) {
-        Page<ReviewDto.SimpleResponse> responses = reviewRepository.findByHouseInfo_Town_TownCode(townCode, PageRequest.of(page - 1, size)).map(reviewMapper::reviewToSimpleResponseDto);
-        return new ResponseEntity<>(new MultiResponseDto<>(responses), HttpStatus.OK);
+        Town town = townRepository.findById(townCode).orElse(null);
+        List<HouseInfo> houseInfos = houseInfoRepository.findByTown(town);
+        List<ReviewDto.SimpleResponse> responses = new ArrayList<>();
+        for (HouseInfo houseInfo:  houseInfos) {
+            List<ReviewDto.SimpleResponse>  tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
+            responses.addAll(tmp);
+        }
+        return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
     }
 }
