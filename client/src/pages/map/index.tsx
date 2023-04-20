@@ -10,6 +10,8 @@ interface SearchResult {
   y: number;
 }
 const Map = () => {
+  const [XBoundary, setXBoundary] = useState([0, 0]);
+  const [YBoundary, setYBoundary] = useState([0, 0]);
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
   const mapRef = useRef<HTMLDivElement>(null);
 
@@ -18,6 +20,8 @@ const Map = () => {
     null
   );
 
+  // lat: 33.48972486175701,33.450701, 126.570667
+  // lng: 126.49657010389818,
   const [position, setPosition] = useState<Position | null>({
     lat: 33.48972486175701,
     lng: 126.49657010389818,
@@ -30,7 +34,7 @@ const Map = () => {
     console.log("기치");
     const script = document.createElement("script");
     script.async = true;
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAKO_JAVASCRIPT}&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAKO_JAVASCRIPT}&autoload=true`;
     document.head.appendChild(script);
 
     script.onload = () => {
@@ -116,14 +120,35 @@ const Map = () => {
       // console.log("map", map);
       // console.log("infoWindow", infoWindow);
       // console.log("marker", marker);
+      // 지도에 컨트롤 추가
+      const mapTypeControl = new kakao.maps.MapTypeControl(); // 맵타입?
+      map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+      const zoomControl = new kakao.maps.ZoomControl(); //줌아웃 인,?
+      map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-      kakao.maps.event.addListener(marker, "mouseover", function () {
-        infoWindow.open(map, marker);
+      // 맵 이벤트 핸들러 추가
+      kakao.maps.event.addListener(map, "zoom_changed", () => {
+        const bounds = map.getBounds();
+        const sePoint = bounds.getSouthWest();
+        const nePoint = bounds.getNorthEast();
+
+        const XBoundaryValue = [sePoint.getLat(), nePoint.getLat()];
+        const YBoundaryValue = [sePoint.getLng(), nePoint.getLng()];
+
+        setXBoundary(XBoundaryValue);
+        setYBoundary(YBoundaryValue);
       });
 
-      // 마커에 마우스 아웃 이벤트 등록
-      kakao.maps.event.addListener(marker, "mouseout", function () {
-        infoWindow.close();
+      kakao.maps.event.addListener(map, "dragend", () => {
+        const bounds = map.getBounds();
+        const sePoint = bounds.getSouthWest();
+        const nePoint = bounds.getNorthEast();
+
+        const XBoundaryValue = [sePoint.getLat(), nePoint.getLat()];
+        const YBoundaryValue = [sePoint.getLng(), nePoint.getLng()];
+
+        setXBoundary(XBoundaryValue);
+        setYBoundary(YBoundaryValue);
       });
     }
   }, [map, position]);
