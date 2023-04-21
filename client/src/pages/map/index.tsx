@@ -16,7 +16,7 @@ const Map = () => {
   const [YBoundary, setYBoundary] = useState([0, 0]);
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
   const mapRef = useRef<HTMLDivElement>(null);
-  const [name, setName] = useState<kakao.maps.LatLng | null>(null);
+  const [name, setName] = useState<string | null>(null);
   const [marker, setMarker] = useState<kakao.maps.Marker | null>(null);
   const [infoWindow, setInfoWindow] = useState<kakao.maps.InfoWindow | null>(
     null
@@ -101,6 +101,7 @@ const Map = () => {
       const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
       const latlng = new kakao.maps.LatLng(position.lat, position.lng);
       const num = 1;
+      const id = 24;
 
       const popupWindow = new kakao.maps.CustomOverlay({
         position: latlng,
@@ -109,10 +110,10 @@ const Map = () => {
       //id단축
       const markerBox = document.createElement("button");
       markerBox.setAttribute("class", "marker_box");
-
+      markerBox.setAttribute("value", `${id}`);
       markerBox.onclick = function () {
         console.log("마커마커");
-        setName(popupWindow.getPosition());
+        setName(markerBox.value);
       };
       markerBox.textContent = String(num);
 
