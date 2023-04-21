@@ -54,3 +54,24 @@ a {
   --inputGray: #f8f8f8;
   --textGray: #b2b2b2;
 }
+
+.marker_box {
+  background-color: white;
+  color: #ff6000;
+  border: 1px solid #ff6000;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-right: 1px;
+  &:hover,
+  &:focus {
+    color: white;
+    cursor: pointer;
+    background-color: #ff6000;
+  }
+}

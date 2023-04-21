@@ -11,7 +11,6 @@ const Tabs = ({}: TabsProps) => {
     setTabNumber(index);
   };
 
-  console.log(tabNumber);
   return (
     <>
       <nav className={styles.tabs}>

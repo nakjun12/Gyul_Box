@@ -12,7 +12,7 @@ const InterestModal: React.FC<ModalProps> = ({ isOpen = false, children }) => {
   const handler = () => {
     setShow(!show);
   };
-  console.log(show);
+
   return (
     <>
       <div className={styles.button_modal} onClick={handler}>

@@ -14,7 +14,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen }) => {
   const handler = () => {
     setShow(!show);
   };
-  console.log(show);
+
   return (
     <>
       <OrangeButton onClick={handler}>로그인</OrangeButton>

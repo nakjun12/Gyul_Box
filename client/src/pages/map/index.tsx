@@ -1,4 +1,6 @@
+import MapButton from "@/component/atoms/mapButton/MapButton";
 import { KAKAKO_JAVASCRIPT } from "@/lib/ConfigHelper";
+
 import { useEffect, useRef, useState } from "react";
 interface Position {
   lat: number;
@@ -14,11 +16,12 @@ const Map = () => {
   const [YBoundary, setYBoundary] = useState([0, 0]);
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
   const mapRef = useRef<HTMLDivElement>(null);
-
+  const [name, setName] = useState<kakao.maps.LatLng | null>(null);
   const [marker, setMarker] = useState<kakao.maps.Marker | null>(null);
   const [infoWindow, setInfoWindow] = useState<kakao.maps.InfoWindow | null>(
     null
   );
+  const isCheck = useRef<boolean>(false);
 
   // lat: 33.48972486175701,33.450701, 126.570667
   // lng: 126.49657010389818,
@@ -31,10 +34,9 @@ const Map = () => {
   // 마커 이미지의 이미지 주소입니다
 
   useEffect(() => {
-    console.log("기치");
     const script = document.createElement("script");
     script.async = true;
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAKO_JAVASCRIPT}&autoload=true`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAKO_JAVASCRIPT}&autoload=false`;
     document.head.appendChild(script);
 
     script.onload = () => {
@@ -83,8 +85,12 @@ const Map = () => {
   //     );
   //   }
   // }, [map]);
+  console.log(name);
   useEffect(() => {
+    console.log(isCheck.current);
     if (map !== null && position !== null) {
+      //체크필요
+
       const imageSrc =
         "https://velog.velcdn.com/images/wns450/post/6bbc8c55-8607-430c-b3f4-bf2ab143145d/image.png";
 
@@ -94,14 +100,35 @@ const Map = () => {
       // 마커 이미지를 생성합니다
       const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
       const latlng = new kakao.maps.LatLng(position.lat, position.lng);
+      const num = 1;
 
+      const popupWindow = new kakao.maps.CustomOverlay({
+        position: latlng,
+        clickable: true,
+      });
+      //id단축
+      const markerBox = document.createElement("button");
+      markerBox.setAttribute("class", "marker_box");
+
+      markerBox.onclick = function () {
+        console.log("마커마커");
+        setName(popupWindow.getPosition());
+      };
+      markerBox.textContent = String(num);
+
+      popupWindow.setContent(markerBox);
+      popupWindow.setMap(map);
       const options = {
-        content: "현재 위치",
+        map: map,
+        clickable: true,
+        content: `<div style="cursor: pointer; font-weight: bold; height: 30px; width: 30px; background-color: white;  color: #ff6000; border: 1px solid #ff6000; border-radius: 50%; "
+        onmouseover="this.style.color='white'; this.style.backgroundColor='#ff6000';"
+    onmouseout="this.style.color='#ff6000'; this.style.backgroundColor='white';"
+   >${num}</div>`,
         position: latlng,
       };
 
-      const infoWindow = new kakao.maps.InfoWindow(options);
-      setInfoWindow(infoWindow);
+      // const customOverlay = new kakao.maps.CustomOverlay(options);
 
       const marker = new kakao.maps.Marker({
         position: latlng,
@@ -109,11 +136,11 @@ const Map = () => {
         title: "현재 위치",
         image: markerImage,
       });
+
       setMarker(marker);
 
       map.setCenter(latlng); //위치 고정
-      infoWindow.open(map, marker);
-      marker.setMap(map);
+      // customOverlay.setMap(map);
 
       // console.log("position", position);
       // console.log("latlng", latlng);
@@ -121,10 +148,14 @@ const Map = () => {
       // console.log("infoWindow", infoWindow);
       // console.log("marker", marker);
       // 지도에 컨트롤 추가
-      const mapTypeControl = new kakao.maps.MapTypeControl(); // 맵타입?
-      map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-      const zoomControl = new kakao.maps.ZoomControl(); //줌아웃 인,?
-      map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+      if (!isCheck.current) {
+        const mapTypeControl = new kakao.maps.MapTypeControl(); // 맵타입?
+        map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+        const zoomControl = new kakao.maps.ZoomControl(); //줌아웃 인,?
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+        isCheck.current = true;
+      }
 
       // 맵 이벤트 핸들러 추가
       kakao.maps.event.addListener(map, "zoom_changed", () => {
@@ -153,7 +184,12 @@ const Map = () => {
     }
   }, [map, position]);
 
-  return <div ref={mapRef} style={{ width: "100%", height: "700px" }} />;
+  return (
+    <>
+      <MapButton />
+      <div ref={mapRef} style={{ width: "100%", height: "700px" }} />
+    </>
+  );
 };
 
 export default Map;

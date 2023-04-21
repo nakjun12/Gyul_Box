@@ -10,9 +10,9 @@ export default function Header({}: Props) {
       <Image src={gyulLogo} alt="귤 로고" width={75} height={78} />
       <div className={styles.ulWrapper}>
         <ul className={styles.ul}>
-          <li className={styles.li}>리뷰</li>
-          <li className={styles.li}>게시판</li>
+          <li className={styles.li}>원룸 리뷰</li>
           <li className={styles.li}>지도</li>
+          <li className={styles.li}>양도 게시판</li>
         </ul>
       </div>
 

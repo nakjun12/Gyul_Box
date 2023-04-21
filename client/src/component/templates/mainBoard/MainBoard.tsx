@@ -1,19 +1,18 @@
 import BoardContents from "../../molecules/boardContents/BoardContents";
-import styles from "../mainBoard/MianBpard.module.scss";
+import styles from "../mainBoard/MainBoard.module.scss";
 
-type Props = {};
+type Props = {
+  title: string;
+};
 
-export default function MainBoard({}: Props) {
+export default function MainBoard({ title }: Props) {
   return (
     <div className={styles.boardWrapper}>
-      <div className={styles.boardCategoryWrapper}>
-        <div className={styles.boardCategoryDiv}>최신순</div>
-      </div>
       <div className={styles.boardContentWrapper}>
         <div className={styles.boardContentDiv}>
           <div className={styles.boardTitle}>
             <div className={styles.boardTitle}>
-              <div>공지사항</div>
+              <div className={styles.boardCategoryDiv}>{title}</div>
               <button className={styles.moreButton}>더보기</button>
             </div>
           </div>
