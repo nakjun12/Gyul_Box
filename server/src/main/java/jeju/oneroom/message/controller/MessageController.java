@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Positive;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -51,10 +52,7 @@ public class MessageController {
         User receiver = userRepository.findById(receiverId).orElse(null);
         User sender = userRepository.findById(senderId).orElse(null);
         List<Message> messages = messageRepository.findByReceiverAndSender(receiver, sender);
-        List<MessageDto.Response> result = new ArrayList<>();
-        for (Message m : messages) {
-            result.add(messageMapper.messageToResponseDto(m));
-        }
+        List<MessageDto.Response> result = messages.stream().map(m->messageMapper.messageToResponseDto(m)).collect(Collectors.toList());
         return new ResponseEntity<>(new ListResponseDto<>(result), HttpStatus.OK);
     }
 
