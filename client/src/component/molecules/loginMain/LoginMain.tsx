@@ -17,7 +17,6 @@ export default function LoginMain() {
     }
   }, []);
 
-  console.log(isChecked);
   return (
     <section className={styles.login}>
       <h1 className={styles.loginH1}>로그인</h1>

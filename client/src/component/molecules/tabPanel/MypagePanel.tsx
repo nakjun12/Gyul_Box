@@ -1,6 +1,6 @@
 //my page
 import UserBox from "@/component/atoms/box/UserBox";
-import InterestModal from "@/component/templates/modal/InterestModal";
+import InterestModal from "@/component/organisms/modal/InterestModal";
 import { BiMap } from "react-icons/bi";
 import { FaPeopleArrows } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";

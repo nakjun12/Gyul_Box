@@ -14,23 +14,24 @@ const Modal: React.FC<ModalProps> = ({ isOpen }) => {
   const handler = () => {
     setShow(!show);
   };
-  console.log(show);
+
   return (
     <>
       <OrangeButton onClick={handler}>로그인</OrangeButton>
 
-      <div
-        className={show ? styles.container : styles.none}
-        onClick={handler}
-      ></div>
-
       {show && (
-        <div className={styles.modalcontainer}>
-          <div className={styles.modal}>
-            <LoginMain />
-            <Gyul />
+        <>
+          <div className={styles.modalcontainer}>
+            <div className={styles.modal}>
+              <LoginMain />
+              <Gyul />
+            </div>
           </div>
-        </div>
+          <div
+            className={show ? styles.container : styles.none}
+            onClick={handler}
+          />
+        </>
       )}
     </>
   );
