@@ -3,7 +3,6 @@ package jeju.oneroom.postComment.entity;
 import jeju.oneroom.Post.entitiy.Post;
 import jeju.oneroom.Post.repository.PostRepository;
 import jeju.oneroom.common.entity.Coordinate;
-import jeju.oneroom.message.entity.Message;
 import jeju.oneroom.postComment.repository.PostCommentRepository;
 import jeju.oneroom.town.entity.Town;
 import jeju.oneroom.user.entity.User;
@@ -14,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,7 +37,7 @@ class PostCommentTest {
         User savedUser = userRepository.save(user);
         Post post = getPost(savedUser);
         Post savedPost = postRepository.save(post);
-        PostComment postComment = getPostComment(savedPost);
+        PostComment postComment = getPostComment(savedPost, savedUser);
 
         //then
         PostComment savedPostComment = postCommentRepository.save(postComment);  // db에 저장
@@ -49,11 +46,11 @@ class PostCommentTest {
         assertEquals(postComment.getContent(), findPostComment.getContent()); // 직접 만든 PostComment와 db에 저장 후 찾아온 것 비교
     }
 
-    private PostComment getPostComment(Post post) {
-        PostRepository postRepository;
+    private PostComment getPostComment(Post post, User user) {
         PostComment postComment = PostComment.builder()
                 .content("제가 양도 받고 싶어요")
                 .post(post)
+                .user(user)
                 .build();
         return postComment;
     }
@@ -68,8 +65,8 @@ class PostCommentTest {
 
     private User getUser(Town town) {
         User user = User.builder()
-                .nickname("망나니 개발자")
-                .email("aaa@naver.com")
+                .nickname("망나das니 개발자")
+                .email("adsdaa@naver.com")
                 .town(town)
                 .build();
         return user;
