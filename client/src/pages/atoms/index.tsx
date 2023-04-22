@@ -8,7 +8,7 @@ import ReviewBox from "@/component/atoms/reviewBox/ReviewBox";
 import TextInput from "@/component/atoms/textInput/TextInput";
 import WhiteButton from "@/component/atoms/whiteButton/WhiteButton";
 import YellowStar from "@/component/atoms/yellowStar/YellowStart";
-import styles from "@/styles/Home.module.scss";
+import styles from "@/styles/home.module.scss";
 
 type Props = {};
 

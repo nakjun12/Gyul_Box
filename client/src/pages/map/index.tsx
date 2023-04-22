@@ -110,7 +110,7 @@ const Map = () => {
       //id단축
       const markerBox = document.createElement("button");
       markerBox.setAttribute("class", "marker_box");
-      markerBox.setAttribute("value", `${id}`);
+      markerBox.setAttribute("value", `${"이름"}`);
       markerBox.onclick = function () {
         console.log("마커마커");
         setName(markerBox.value);
@@ -118,7 +118,8 @@ const Map = () => {
       markerBox.textContent = String(num);
 
       popupWindow.setContent(markerBox);
-      popupWindow.setMap(map);
+      // popupWindow.setMap(map);
+
       const options = {
         map: map,
         clickable: true,
@@ -139,7 +140,9 @@ const Map = () => {
       });
 
       setMarker(marker);
+      const markers = [marker, marker, marker, marker, marker];
 
+      // clusterer.setMap(map);
       map.setCenter(latlng); //위치 고정
       // customOverlay.setMap(map);
 
