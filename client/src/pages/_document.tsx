@@ -25,9 +25,10 @@ class MyDocument extends Document {
           <script
             defer
             type="text/javascript"
-            src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAKO_JAVASCRIPT}&autoload=false&libraries=services`}
+            src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAKO_JAVASCRIPT}&autoload=false&libraries=services,clusterer,drawing`}
           />
         </Head>
+
         <body>
           <Main />
           <NextScript />
