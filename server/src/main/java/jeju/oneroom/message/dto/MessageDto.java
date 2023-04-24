@@ -1,30 +1,34 @@
 package jeju.oneroom.message.dto;
 
 import jeju.oneroom.user.dto.UserDto;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Getter
 public class MessageDto {
+
     @Getter
     @AllArgsConstructor
     @Builder
     @NoArgsConstructor
-    public static class Post {
-        private String content; // 내용
-        private Long sender_id; // 보낸사람
-        private Long receiver_id; // 받는 사람
+    public static class Post{
+        private Long senderId;
+        private Long receiveId;
+        private String content;
     }
 
     @Getter
     @AllArgsConstructor
     @Builder
     @NoArgsConstructor
-    public static class Response {
+    public static class Response{
         private Long id; // messageId
         private String content; // 내용
-        private UserDto.SimpleResponseDto receiver; // 받는 사람
         private LocalDateTime createdAt; // 보낸시간
+        private UserDto.SimpleResponseDto user;
     }
 }
+

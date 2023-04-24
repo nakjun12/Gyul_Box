@@ -2,6 +2,7 @@ package jeju.oneroom.postComment.entity;
 
 import jeju.oneroom.Post.entitiy.Post;
 import jeju.oneroom.common.entity.BaseEntity;
+import jeju.oneroom.user.entity.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,9 +23,14 @@ public class PostComment extends BaseEntity {
     @JoinColumn(name = "post_id")
     private Post post; // 양도게시글과 매핑
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user; // 멤버와 매핑
+
     @Builder
-    public PostComment(String content, Post post) {
+    public PostComment(String content, Post post, User user) {
         this.content = content;
         this.post = post;
+        this.user = user;
     }
 }
