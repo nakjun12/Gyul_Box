@@ -1,0 +1,19 @@
+.interest,
+.click_able {
+  background-color: var(--orange);
+  border-radius: 20px;
+  width: 24rem;
+  height: 2rem;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-family: var(--pretendard);
+  margin: 1rem auto;
+}
+
+.click_able {
+  cursor: pointer;
+  &:hover {
+    background-color: var(--green);
+  }
+}

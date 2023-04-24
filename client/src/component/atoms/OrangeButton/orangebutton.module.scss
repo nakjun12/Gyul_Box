@@ -1,0 +1,13 @@
+.btn {
+  background-color: var(--orange);
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--green);
+  }
+}

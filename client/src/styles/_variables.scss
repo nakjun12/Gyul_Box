@@ -1,0 +1,92 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+// font-family: 'Noto Sans KR', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+// font-family: 'Poppins', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+// font-family: 'Be Vietnam Pro', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+// font-family: "GmarketSansBold";
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+// font-family: "LeferiPoint-WhiteObliqueA";
+@font-face {
+  font-family: "LeferiPoint-WhiteObliqueA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-Pretendard: "Pretendard-Regular", sans-serif;
+$font-NotoSansKR: "Noto Sans KR", sans-serif;
+$font-Poppins: "Poppins", sans-serif;
+$font-BeVietnamPro: "Be Vietnam Pro", sans-serif;
+$font-GmarketSansBold: "GmarketSansBold", sans-serif;
+$font-LeferiPointWhiteObliqueA: "LeferiPoint-WhiteObliqueA", sans-serif;
+
+$Orange-C: #ff6000;
+$Green-C: #019267;
+
+$WhiteOrange-C: #ffe6c7;
+$Gray-C: #eeeeee;
+$InputGray-C: #f8f8f8;
+$TextGray-C: #b2b2b2;
+
+// import해서 _variables.scss 가져오고
+// css파일에 @include center(); 가져오면 됩니다.
+
+@mixin center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+//flexbox를 사용하여 요소를 수평 및 수직으로 가운데 정렬합니다.
+@mixin center-sb() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+//flexbox를 사용하여 요소를 수평으로 가운데 정렬하고 요소 사이의 간격을 균등하게 분배합니다.
+
+@mixin center-se() {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+//flexbox를 사용하여 요소를 수평으로 가운데 정렬하고 요소 사이의 간격을 균등하게 분배합니다. 또한 첫번째 요소와 마지막 요소를 컨테이너의 양 끝에 배치합니다.
+
+@mixin c-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+//center()와 비슷하지만 flexbox의 flex-direction 속성을 column으로 설정하여 요소를 수직 방향으로 정렬합니다.
+
+@mixin c-center-sb() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+//center-sb()와 비슷하지만 flexbox의 flex-direction 속성을 column으로 설정하여 요소를 수직 방향으로 정렬합니다.
+
+@mixin c-center-se() {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+//center-se()와 비슷하지만 flexbox의 flex-direction 속성을 column으로 설정하여 요소를 수직 방향으로 정렬합니다.
+//@import "@/styles/_variables.scss";

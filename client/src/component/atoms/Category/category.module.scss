@@ -1,0 +1,13 @@
+.category {
+  background-color: #ff6000;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #019267;
+  }
+}

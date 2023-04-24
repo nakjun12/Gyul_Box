@@ -1,0 +1,55 @@
+@import "@/styles/_variables.scss";
+
+.box {
+  @include c-center();
+  width: 40rem;
+  height: 7.5rem;
+  border-top: 0.2rem solid var(--orange);
+  border-bottom: 0.2rem solid var(--orange);
+
+  margin: 0 auto;
+  li {
+    @include center-sb();
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+    font-family: var(--pretendard);
+    font-weight: 800;
+    font-size: 1.2rem;
+
+    &:first-child {
+      border-bottom: 1px solid var(--textGray);
+    }
+  }
+
+  .first_row {
+    @include center();
+    text-align: center;
+    height: 100%;
+    width: 30%;
+    background-color: var(--gray);
+  }
+  .second_row {
+    width: 70%;
+
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+  }
+}
+
+.withdrawal {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  width: 40rem;
+  background-color: white;
+  border: none;
+  font-family: var(--pretendard);
+  color: var(--textGray);
+  margin-top: 0.5rem;
+  &:hover {
+    color: var(--orange);
+  }
+}
