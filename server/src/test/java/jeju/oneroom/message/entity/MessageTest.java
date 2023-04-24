@@ -1,7 +1,6 @@
 package jeju.oneroom.message.entity;
 
 import jeju.oneroom.message.repository.MessageRepository;
-import jeju.oneroom.town.entity.Town;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -9,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,7 +41,7 @@ class MessageTest {
 
     private Message getMessage(User user, User user2) {
         return Message.builder()
-                .content("양도때매 쪽지 드립니다.")
+                .content("양도때dsad매 쪽지 드립니다.")
                 .receiver(user)
                 .sender(user2)
                 .readed(Boolean.FALSE)
