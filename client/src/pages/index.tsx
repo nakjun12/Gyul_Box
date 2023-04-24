@@ -1,10 +1,10 @@
 import MainLottie from "@/component/atoms/lottie/MainLottie";
 import SearchBar from "@/component/molecules/searchBar/SearchBar";
+import MainCarousel from "@/component/organisms/carousel/MainCarousel";
 import MainBoard from "@/component/templates/mainBoard/MainBoard";
 import styles from "@/styles/home.module.scss";
 import Image from "next/image";
 import gyulMain from "../../public/icon/mainGyul.jpg";
-
 type Props = {};
 
 export default function home({}: Props) {
@@ -25,7 +25,20 @@ export default function home({}: Props) {
           <MainBoard title={"최신"} />
           <MainBoard title={"추천"} />
         </div>
-        <div className={styles.carouselParts}></div>
+
+        <MainCarousel
+          items={[
+            "김치",
+            "짜장",
+            "짬뽕",
+            "김치",
+            "짜장",
+            "짬뽕",
+            "김치",
+            "짜장",
+            "짬뽕",
+          ]}
+        />
       </div>
     </>
   );

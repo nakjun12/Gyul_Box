@@ -1,0 +1,35 @@
+.carousel_wrapper {
+  position: relative;
+  width: 920px;
+  overflow: hidden;
+  border: 2px solid black;
+  margin: 0 auto;
+  margin-bottom: 50px;
+
+  .carousel_container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 3000px;
+    .carousel_item {
+      width: 300px;
+      height: 200px;
+      margin-right: 10px;
+      background-color: wheat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .carousel_controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
