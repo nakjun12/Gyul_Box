@@ -8,7 +8,7 @@ interface CarouselProps {
 const MainCarousel: React.FC<CarouselProps> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const itemWidth = 300; // 각 아이템의 너비
+  const itemWidth = 310; // 각 아이템의 너비
 
   useEffect(() => {
     if (containerRef.current) {
@@ -25,10 +25,12 @@ const MainCarousel: React.FC<CarouselProps> = ({ items }) => {
   };
 
   const handleClickNext = () => {
-    if (currentIndex < items.length - 1) {
+    if (currentIndex < items.length - 3) {
       setCurrentIndex(currentIndex + 1);
     }
   };
+  console.log("items", items);
+  console.log("currentIndex", currentIndex);
 
   return (
     <div className={styles.carousel_wrapper}>
