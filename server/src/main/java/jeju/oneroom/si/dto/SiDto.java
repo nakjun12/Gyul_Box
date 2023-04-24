@@ -11,7 +11,7 @@ public class SiDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Response{
+    public static class Response {
         private Long siCode;
         private String siName;
         private Coordinate coordinate;

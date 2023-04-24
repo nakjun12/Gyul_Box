@@ -13,7 +13,7 @@ public class TownDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Response{
+    public static class Response {
         private Long townCode;
         private String townName;
         private Coordinate coordinate;

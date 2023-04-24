@@ -14,7 +14,7 @@ public class ReviewDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Post{
+    public static class Post {
         private String buildingName;
         private String advantage;
         private String disadvantage;
@@ -33,21 +33,20 @@ public class ReviewDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Patch{
+    public static class Patch {
         private String advantage;
         private String disadvantage;
         private String adminCost;
         private String residenceYear;
         private String floor;
         private Rate rate;
-        private int likes;
     }
 
     @Getter
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Response{
+    public static class Response {
         private String buildingName;
         private String advantage;
         private String disadvantage;
@@ -69,7 +68,7 @@ public class ReviewDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class SimpleResponse{
+    public static class SimpleResponse {
         private String advantage;
         private String disadvantage;
         // 최다 추천 리뷰의 평균 별점

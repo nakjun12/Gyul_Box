@@ -69,8 +69,8 @@ public class ReviewController {
         Town town = user.getTown();
         List<HouseInfo> houseInfos = houseInfoRepository.findByTown(town);
         List<ReviewDto.SimpleResponse> responses = new ArrayList<>();
-        for (HouseInfo houseInfo:  houseInfos) {
-            List<ReviewDto.SimpleResponse>  tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
+        for (HouseInfo houseInfo : houseInfos) {
+            List<ReviewDto.SimpleResponse> tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
             responses.addAll(tmp);
         }
         return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
@@ -95,8 +95,8 @@ public class ReviewController {
         Town town = townRepository.findById(townCode).orElse(null);
         List<HouseInfo> houseInfos = houseInfoRepository.findByTown(town);
         List<ReviewDto.SimpleResponse> responses = new ArrayList<>();
-        for (HouseInfo houseInfo:  houseInfos) {
-            List<ReviewDto.SimpleResponse>  tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
+        for (HouseInfo houseInfo : houseInfos) {
+            List<ReviewDto.SimpleResponse> tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
             responses.addAll(tmp);
         }
         return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
