@@ -4,6 +4,7 @@ import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.houseInfo.repository.HouseInfoRepository;
+import jeju.oneroom.message.entity.Message;
 import jeju.oneroom.review.repository.ReviewRepository;
 import jeju.oneroom.town.entity.Town;
 import jeju.oneroom.user.entity.User;
@@ -14,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @SpringBootTest
@@ -33,13 +37,12 @@ class ReviewTest {
     @Test
     public void Review_생성_테스트() throws Exception{
         //given
-        User user = getUser();
-        userRepository.save(user);
+
         Rate rate = getRate();
         Coordinate coordinate = new Coordinate(11.11111, 11.11111);
         Town town = getTownWithoutSi(coordinate);
-        HouseInfo houseInfo = getHouseInfo(coordinate, rate, town);
-        houseInfoRepository.save(houseInfo);
+        User user = userRepository.findById(1L).orElse(null);
+        HouseInfo houseInfo = houseInfoRepository.findById(4L).orElse(null);
 
         Review review = getReview(user, rate, houseInfo);
 
@@ -52,7 +55,7 @@ class ReviewTest {
 
     private Review getReview(User user, Rate rate, HouseInfo houseInfo) {
         return Review.builder()
-                .buildingName("태성빌라")
+                .buildingName("빌라빌라")
                 .adminCost("3000/50")
                 .advantage("넓어요!")
                 .disadvantage("드러워요!")
@@ -66,10 +69,15 @@ class ReviewTest {
                 .build();
     }
 
-    private User getUser() {
-        return User.builder()
-                .email("aaa@gmail.com")
-                .nickname("홍길동").build();
+    private User getUser(Town town) {
+        List<Message> sends = new ArrayList<>();
+        User user = User.builder()
+                .nickname("망나니 개발자")
+                .email("aaa@naver.com")
+                .town(town)
+                .sends(sends)
+                .build();
+        return user;
     }
 
     private Rate getRate() {
@@ -107,6 +115,4 @@ class ReviewTest {
                 .coordinate(coordinate)
                 .build();
     }
-
-
 }

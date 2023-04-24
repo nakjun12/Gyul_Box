@@ -44,7 +44,7 @@ public class HouseInfoController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/houseInfos/{houseInfo-id}/count")
+    @GetMapping("/houseInfos/{houseInfo-id}/simple")
     public ResponseEntity<?> findHouseInfoCount(@PathVariable("houseInfo-id") long houseInfoId) {
         HouseInfo houseInfo = houseInfoRepository.findById(houseInfoId).orElse(null);
         HouseInfoDto.SimpleResponse response = houseInfoMapper.houseInfoToSimpleResponseDto(houseInfo);
