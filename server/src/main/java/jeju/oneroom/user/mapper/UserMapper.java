@@ -1,6 +1,6 @@
 package jeju.oneroom.user.mapper;
 
-import jeju.oneroom.area.entity.Town;
+import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.user.dto.UserDto;
 import jeju.oneroom.user.entity.User;
 import org.mapstruct.Mapper;
@@ -21,7 +21,7 @@ public interface UserMapper {
 
     UserDto.SimpleResponseDto userToSimpleResponseDto(User user);
 
-    default String toString(Town town){
-        return town.getTownName();
+    default String toString(Area area){
+        return area.getTownName();
     }
 }

@@ -1,9 +1,9 @@
 package jeju.oneroom.user.entity;
 
+import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.message.entity.Message;
 import jeju.oneroom.review.entity.Review;
-import jeju.oneroom.area.entity.Town;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,19 +31,19 @@ public class User extends BaseEntity {
     private List<Message> receives = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "town_id")
-    private Town town;
+    @JoinColumn(name = "area_id")
+    private Area area;
 
     @OneToMany(mappedBy = "user")
     private List<Review> reviews = new ArrayList<>();
 
     @Builder
-    public User(Long id, String email, String nickname, List<Message> sends, List<Message> receives, Town town, List<Review> reviews) {
+    public User(Long id, String email, String nickname, List<Message> sends, List<Message> receives, Area area, List<Review> reviews) {
         this.email = email;
         this.nickname = nickname;
         this.sends = sends;
         this.receives = receives;
-        this.town = town;
+        this.area = area;
         this.reviews = reviews;
     }
 }

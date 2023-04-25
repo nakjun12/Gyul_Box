@@ -3,7 +3,6 @@ package jeju.oneroom.area.entity;
 import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
-import jeju.oneroom.si.entity.Si;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,10 +22,6 @@ public class Area extends BaseEntity {
 
     private String townName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "si_id")
-    private Si si;
-
     @OneToMany(mappedBy = "area")
     private List<HouseInfo> houseInfos = new ArrayList<>();
 
@@ -34,10 +29,9 @@ public class Area extends BaseEntity {
     private Coordinate coordinate;
 
     @Builder
-    public Area(Long townCode, String townName, Si si, List<HouseInfo> houseInfos, Coordinate coordinate) {
+    public Area(Long townCode, String townName, List<HouseInfo> houseInfos, Coordinate coordinate) {
         this.townCode = townCode;
         this.townName = townName;
-        this.si = si;
         this.houseInfos = houseInfos;
         this.coordinate = coordinate;
     }

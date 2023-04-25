@@ -1,5 +1,7 @@
 package jeju.oneroom.review.controller;
 
+import jeju.oneroom.area.entity.Area;
+import jeju.oneroom.area.repository.AreaRepository;
 import jeju.oneroom.common.dto.ListResponseDto;
 import jeju.oneroom.common.dto.MultiResponseDto;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
@@ -8,8 +10,6 @@ import jeju.oneroom.review.dto.ReviewDto;
 import jeju.oneroom.review.entity.Review;
 import jeju.oneroom.review.mapper.ReviewMapper;
 import jeju.oneroom.review.repository.ReviewRepository;
-import jeju.oneroom.area.entity.Town;
-import jeju.oneroom.area.repository.TownRepository;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,7 @@ public class ReviewController {
     private final ReviewRepository reviewRepository;
     private final ReviewMapper reviewMapper;
     private final UserRepository userRepository;
-    private final TownRepository townRepository;
+    private final AreaRepository areaRepository;
     private final HouseInfoRepository houseInfoRepository;
 
     @PostMapping("/reviews")
@@ -75,11 +75,11 @@ public class ReviewController {
     }
 
     // 유저 관심 지역 추천 순 리뷰 5개
-    @GetMapping("users/{user-id}/user-towns/reviews")
-    public ResponseEntity<?> findUserTownReviews(@PathVariable("user-id") long userId) {
+    @GetMapping("users/{user-id}/user-areas/reviews")
+    public ResponseEntity<?> findUserAreaReviews(@PathVariable("user-id") long userId) {
         User user = userRepository.findById(userId).orElse(null);
-        Town town = user.getTown();
-        List<HouseInfo> houseInfos = houseInfoRepository.findByTown(town);
+        Area area = user.getArea();
+        List<HouseInfo> houseInfos = houseInfoRepository.findByArea(area);
         List<ReviewDto.SimpleResponse> responses = new ArrayList<>();
         for (HouseInfo houseInfo : houseInfos) {
             List<ReviewDto.SimpleResponse> tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
@@ -100,12 +100,12 @@ public class ReviewController {
     }
 
     // Town에 따른 거주 리뷰 아마 30개?
-    @GetMapping("towns/{town-id}/reviews")
-    public ResponseEntity<?> findTownReviews(@RequestParam int page,
+    @GetMapping("areas/{area-id}/reviews")
+    public ResponseEntity<?> findAreaReviews(@RequestParam int page,
                                              @RequestParam int size,
-                                             @PathVariable("town-id") long townCode) {
-        Town town = townRepository.findById(townCode).orElse(null);
-        List<HouseInfo> houseInfos = houseInfoRepository.findByTown(town);
+                                             @PathVariable("area-id") long areaCode) {
+        Area area = areaRepository.findById(areaCode).orElse(null);
+        List<HouseInfo> houseInfos = houseInfoRepository.findByArea(area);
         List<ReviewDto.SimpleResponse> responses = new ArrayList<>();
         for (HouseInfo houseInfo : houseInfos) {
             List<ReviewDto.SimpleResponse> tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
