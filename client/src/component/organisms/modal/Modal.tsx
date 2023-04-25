@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Gyul from "./../../atoms/lottie/Gyul";
+import ModalGyul from "../../atoms/lottie/ModalGyul";
 import OrangeButton from "./../../atoms/orangeButton/OrangeButton";
 import LoginMain from "./../../molecules/loginMain/LoginMain";
 import styles from "./Modal.module.scss";
@@ -24,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen }) => {
           <div className={styles.modalcontainer}>
             <div className={styles.modal}>
               <LoginMain />
-              <Gyul />
+              <ModalGyul />
             </div>
           </div>
           <div

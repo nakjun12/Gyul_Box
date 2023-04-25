@@ -1,4 +1,4 @@
-import styles from "../Lottie/gyul.module.scss";
+import styles from "./ModalGyul.module.scss";
 
 import Lottie from "react-lottie-player";
 import lottieJson from "../../../../public/Lottie/Gyul.json";

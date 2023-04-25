@@ -112,7 +112,6 @@ const Map = () => {
       markerBox.setAttribute("class", "marker_box");
       markerBox.setAttribute("value", `${"이름"}`);
       markerBox.onclick = function () {
-        console.log("마커마커");
         setName(markerBox.value);
       };
       markerBox.textContent = String(num);
