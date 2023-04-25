@@ -2,9 +2,10 @@ package jeju.oneroom.postComment.entity;
 
 import jeju.oneroom.Post.entitiy.Post;
 import jeju.oneroom.Post.repository.PostRepository;
+import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.Coordinate;
+import jeju.oneroom.postComment.entity.PostComment;
 import jeju.oneroom.postComment.repository.PostCommentRepository;
-import jeju.oneroom.area.entity.Town;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -13,8 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Transactional
@@ -63,11 +63,11 @@ class PostCommentTest {
                 .build();
     }
 
-    private User getUser(Town town) {
+    private User getUser(Area area) {
         User user = User.builder()
                 .nickname("망나das니 개발자")
                 .email("adsdaa@naver.com")
-                .town(town)
+                .area(area)
                 .build();
         return user;
     }
@@ -77,12 +77,12 @@ class PostCommentTest {
         return coordinate;
     }
 
-    private Town getTown(Coordinate coordinate) {
-        Town town = Town.builder()
+    private Area getTown(Coordinate coordinate) {
+        Area area = Area.builder()
                 .townCode(11111L)
                 .townName("동춘동")
                 .coordinate(coordinate)
                 .build();
-        return town;
+        return area;
     }
 }
