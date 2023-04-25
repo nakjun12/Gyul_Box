@@ -1,5 +1,5 @@
 import List from "../../component/atoms/list/List";
-import GrayStar from "./../../component/atoms/grayStar/GrayStart";
+import GrayStar from "./../../component/atoms/grayStar/GrayStar";
 import Interest from "./../../component/atoms/lnterest/Interest";
 import Button from "./../../component/atoms/loginButton/LoginButton";
 import Gyul from "./../../component/atoms/lottie/ModalGyul";
