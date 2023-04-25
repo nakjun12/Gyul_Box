@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import { KAKAKO_JAVASCRIPT } from "../../lib/ConfigHelper";
 const kakao = typeof window !== "undefined" ? (window as any).kakao : null;
 
 interface Position {
@@ -8,6 +8,7 @@ interface Position {
 }
 
 export default function Ex() {
+  console.log(KAKAKO_JAVASCRIPT);
   const [position, setPosition] = useState<Position>({
     lat: 33.48972486175701,
     lng: 126.49657010389818,
