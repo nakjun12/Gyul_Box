@@ -1,7 +1,7 @@
-import OrangeButton from "@/component/atoms/orangeButton/OrangeButton";
-import LoginMain from "@/component/molecules/loginMain/LoginMain";
 import React, { useState } from "react";
 import Gyul from "./../../atoms/lottie/Gyul";
+import OrangeButton from "./../../atoms/orangeButton/OrangeButton";
+import LoginMain from "./../../molecules/loginMain/LoginMain";
 import styles from "./Modal.module.scss";
 interface ModalProps {
   isOpen: boolean;
