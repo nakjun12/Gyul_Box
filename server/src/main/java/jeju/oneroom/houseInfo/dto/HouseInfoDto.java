@@ -57,7 +57,6 @@ public class HouseInfoDto {
     @AllArgsConstructor
     public static class SimpleCountResponse{
         private Long id;
-        private String houseName;
         private int reviewCount;
 
         private Coordinate coordinate;

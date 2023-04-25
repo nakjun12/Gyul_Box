@@ -1,10 +1,10 @@
 package jeju.oneroom.houseInfo.entity;
 
+import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.review.entity.Review;
-import jeju.oneroom.town.entity.Town;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,7 +42,7 @@ public class HouseInfo extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "town_id")
-    private Town town;
+    private Area area;
 
     @OneToMany(mappedBy = "houseInfo")
     private List<Review> reviews = new ArrayList<>();
@@ -52,7 +52,7 @@ public class HouseInfo extends BaseEntity {
 
     @Builder
     public HouseInfo(String houseName, String buildUes, String buildingStructure, int houseHold, String useAprDay, int grndFloor, int ugrndFloor,
-                     int elevator, String platPlc, Rate rate, Town town, List<Review> reviews, Coordinate coordinate) {
+                     int elevator, String platPlc, Rate rate, Area area, List<Review> reviews, Coordinate coordinate) {
         this.houseName = houseName;
         this.buildUes = buildUes;
         this.buildingStructure = buildingStructure;
@@ -63,8 +63,14 @@ public class HouseInfo extends BaseEntity {
         this.elevator = elevator;
         this.platPlc = platPlc;
         this.rate = rate;
-        this.town = town;
+        this.area = area;
         this.reviews = reviews;
         this.coordinate = coordinate;
     }
 }
+/*
+level >= 9 -> 해당 시의 review 추천순 top 20에 해당하는 houseInfo 제공
+findTop20byReviewLikes
+
+level <= 8 -> 해당 동의 모든 houseInfo 제공
+ */

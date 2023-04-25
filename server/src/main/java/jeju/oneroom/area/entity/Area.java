@@ -1,4 +1,4 @@
-package jeju.oneroom.town.entity;
+package jeju.oneroom.area.entity;
 
 import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.common.entity.Coordinate;
@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Town extends BaseEntity {
+public class Area extends BaseEntity {
     @Id
     @Column(name = "town_id")
     private Long townCode;
@@ -27,14 +27,14 @@ public class Town extends BaseEntity {
     @JoinColumn(name = "si_id")
     private Si si;
 
-    @OneToMany(mappedBy = "town")
+    @OneToMany(mappedBy = "area")
     private List<HouseInfo> houseInfos = new ArrayList<>();
 
     @Embedded
     private Coordinate coordinate;
 
     @Builder
-    public Town(Long townCode, String townName, Si si, List<HouseInfo> houseInfos, Coordinate coordinate) {
+    public Area(Long townCode, String townName, Si si, List<HouseInfo> houseInfos, Coordinate coordinate) {
         this.townCode = townCode;
         this.townName = townName;
         this.si = si;

@@ -2,7 +2,7 @@ package jeju.oneroom.review.mapper;
 
 import jeju.oneroom.review.dto.ReviewDto;
 import jeju.oneroom.review.entity.Review;
-import jeju.oneroom.town.entity.Town;
+import jeju.oneroom.area.entity.Town;
 import jeju.oneroom.user.mapper.UserMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
