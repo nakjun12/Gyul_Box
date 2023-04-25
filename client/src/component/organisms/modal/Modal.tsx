@@ -1,7 +1,6 @@
 import React, { useState } from "react";
+import LoginButton from "../../atoms/loginButton/LoginButton";
 import ModalGyul from "../../atoms/lottie/ModalGyul";
-
-import OrangeButton from "./../../atoms/orangebutton/OrangeButton";
 import LoginMain from "./../../molecules/loginMain/LoginMain";
 import styles from "./Modal.module.scss";
 interface ModalProps {
@@ -18,7 +17,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen }) => {
 
   return (
     <>
-      <OrangeButton onClick={handler}>로그인</OrangeButton>
+      <LoginButton onClick={handler}>로그인</LoginButton>
 
       {show && (
         <>
