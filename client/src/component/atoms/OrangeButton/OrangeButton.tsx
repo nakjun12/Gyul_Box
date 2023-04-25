@@ -1,4 +1,4 @@
-import styles from "./Orangebutton.module.scss";
+import styles from "./OrangeButton.module.scss";
 
 type Props = {
   onClick?: () => void;

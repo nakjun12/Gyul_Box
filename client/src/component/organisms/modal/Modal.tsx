@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ModalGyul from "../../atoms/lottie/ModalGyul";
-import OrangeButton from "./../../atoms/orangeButton/OrangeButton";
+
+import OrangeButton from "./../../atoms/orangebutton/OrangeButton";
 import LoginMain from "./../../molecules/loginMain/LoginMain";
 import styles from "./Modal.module.scss";
 interface ModalProps {

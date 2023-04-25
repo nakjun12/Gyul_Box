@@ -3,7 +3,7 @@ import GrayStar from "@/component/atoms/grayStar/GrayStart";
 import Interest from "@/component/atoms/lnterest/Interest";
 import Gyul from "@/component/atoms/lottie/ModalGyul";
 import MapButton from "@/component/atoms/mapButton/MapButton";
-import Button from "@/component/atoms/orangeButton/OrangeButton";
+import Button from "@/component/atoms/orangebutton/OrangeButton";
 import ReviewBox from "@/component/atoms/reviewBox/ReviewBox";
 import TextInput from "@/component/atoms/textInput/TextInput";
 import WhiteButton from "@/component/atoms/whiteButton/WhiteButton";
