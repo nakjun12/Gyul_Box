@@ -7,7 +7,7 @@ import styles from "./Footer.module.scss";
 
 type Props = {};
 
-export default function Footer({}: Props) {
+export function Footer({}: Props) {
   return (
     <footer className={styles.wrapper}>
       <div className={styles.infoWrapper}>
