@@ -1,4 +1,4 @@
-import Category from "./../../component/atoms/category/Category";
+import List from "../../component/atoms/list/List";
 import GrayStar from "./../../component/atoms/grayStar/GrayStart";
 import Interest from "./../../component/atoms/lnterest/Interest";
 import Button from "./../../component/atoms/loginButton/LoginButton";
@@ -19,7 +19,7 @@ export default function index({}: Props) {
       <div>
         <Button /> 버튼
       </div>
-      <Category />
+      <List />
       <MapButton />
       <Gyul />
       <Interest />
