@@ -1,6 +1,6 @@
 import Image from "next/image";
 import gyulMain from "../../public/icon/mainGyul.jpg";
-import MainLottie from "../component/atoms/lottie/MainLottie";
+import MiniLottie from "../component/atoms/lottie/MiniLottie";
 import SearchBar from "../component/molecules/searchBar/SearchBar";
 import MainCarousel from "../component/organisms/carousel/MainCarousel";
 import MainBoard from "../component/templates/mainBoard/MainBoard";
@@ -16,7 +16,7 @@ export default function home({}: Props) {
         </div>
         <div className={styles.lottieWrapper}>
           <div className={styles.lottieDiv}>
-            <MainLottie />
+            <MiniLottie />
           </div>
           <div className={styles.whereDiv}>어디를 알아볼까?</div>
         </div>
