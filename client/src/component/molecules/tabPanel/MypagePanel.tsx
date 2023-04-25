@@ -6,7 +6,7 @@ import { MdOutlineRateReview } from "react-icons/md";
 import { RiMessengerLine } from "react-icons/ri";
 import UserBox from "./../../atoms/box/UserBox";
 import InterestModal from "./../../organisms/modal/InterestModal";
-import styles from "./TabPanel.module.scss";
+import styles from "./MypagePanel.module.scss";
 const MyPagePanel = () => {
   return (
     <section className={styles.tab_panel}>
