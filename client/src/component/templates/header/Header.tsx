@@ -1,17 +1,39 @@
 import Modal from "@/component/organisms/modal/Modal";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import gyulLogo from "../../../../public/icon/gyulLogo.png";
 import styles from "./Header.module.scss";
 type Props = {};
 
 export default function Header({}: Props) {
+  const router = useRouter();
+
+  const { pathname } = router;
+  console.log(pathname);
+  const handler = (path: string) => {
+    router.push(`/${path}`);
+  };
+
   return (
     <header className={styles.wrapper}>
-      <Image src={gyulLogo} alt="귤 로고" width={75} height={78} />
+      <div>
+        <Image
+          src={gyulLogo}
+          alt="귤 로고"
+          width={75}
+          height={78}
+          className={styles.logo}
+          onClick={() => handler("")}
+        />
+      </div>
       <div className={styles.ulWrapper}>
         <ul className={styles.ul}>
-          <li className={styles.li}>원룸 리뷰</li>
-          <li className={styles.li}>지도</li>
+          <li className={styles.li} onClick={() => handler("mypage")}>
+            원룸 리뷰
+          </li>
+          <li className={styles.li} onClick={() => handler("map")}>
+            지도
+          </li>
           <li className={styles.li}>양도 게시판</li>
         </ul>
       </div>

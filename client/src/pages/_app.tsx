@@ -1,4 +1,4 @@
-import Footer from "@/component/organisms/footer/footer";
+import Footer from "@/component/organisms/footer/Footer";
 import Header from "@/component/templates/header/Header";
 
 import styles from "@/styles/home.module.scss";
