@@ -1,4 +1,4 @@
-import styles from "./WhiteButton.module.scss";
+import styles from "./Whitebutton.module.scss";
 
 type Props = {};
 
