@@ -1,10 +1,9 @@
-import React from "react";
-import styles from "../footer/Footer.module.scss";
 import Image from "next/image";
 import gyulLogo from "../../../../public/icon/gyulLogo.png";
 import facebook from "../../../../public/svg/facebook.svg";
 import instagram from "../../../../public/svg/instagram.svg";
 import youtube from "../../../../public/svg/youtube.svg";
+import styles from "./Footer.module.scss";
 
 type Props = {};
 

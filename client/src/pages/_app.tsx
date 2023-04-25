@@ -1,7 +1,7 @@
 import Footer from "@/component/organisms/footer/Footer";
 import Header from "@/component/templates/header/Header";
 
-import styles from "@/styles/home.module.scss";
+import styles from "@/styles/Home.module.scss";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import "../styles/globals.scss";

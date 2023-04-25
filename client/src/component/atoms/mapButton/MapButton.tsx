@@ -1,4 +1,4 @@
-import styles from "../mapButton/MapButton.module.scss";
+import styles from "./MapButton.module.scss";
 
 type Props = {};
 

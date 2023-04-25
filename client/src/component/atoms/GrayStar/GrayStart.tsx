@@ -1,5 +1,4 @@
-import React from "react";
-import styles from "../GrayStar/GrayStar.module.scss";
+import styles from "./GrayStar.module.scss";
 
 type Props = {};
 

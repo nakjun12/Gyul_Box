@@ -1,4 +1,4 @@
-import styles from "../Category/Category.module.scss";
+import styles from "./Category.module.scss";
 
 type Props = {
   text?: string;
