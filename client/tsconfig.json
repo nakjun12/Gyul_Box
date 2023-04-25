@@ -16,7 +16,7 @@
     "incremental": true,
     "types": ["kakao.maps.d.ts"],
     "paths": {
-      "@/*": ["./src/*"] //배운점
+      "@/*": ["./src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
