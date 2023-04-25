@@ -62,6 +62,18 @@ public class ReviewController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/reviews/latest5") // 최신순 5개
+    public ResponseEntity<?> findTop5LatestReviews() {
+        List<Review> top5ByOrderByCreatedAtDesc = reviewRepository.findTop5ByOrderByCreatedAtDesc();
+        return new ResponseEntity<>(new ListResponseDto<>(top5ByOrderByCreatedAtDesc.stream().map(m -> reviewMapper.reviewToSimpleResponseDto(m)).collect(Collectors.toList())), HttpStatus.OK);
+    }
+
+    @GetMapping("/reviews/hottest5") // 추천순 5개
+    public ResponseEntity<?> findTop5HottestReviews() {
+        List<Review> top5ByOrderByCreatedAtDesc = reviewRepository.findTop5ByOrderByCreatedAtDesc();
+        return new ResponseEntity<>(new ListResponseDto<>(top5ByOrderByCreatedAtDesc.stream().map(m -> reviewMapper.reviewToSimpleResponseDto(m)).collect(Collectors.toList())), HttpStatus.OK);
+    }
+
     // 유저 관심 지역 추천 순 리뷰 5개
     @GetMapping("users/{user-id}/user-towns/reviews")
     public ResponseEntity<?> findUserTownReviews(@PathVariable("user-id") long userId) {
