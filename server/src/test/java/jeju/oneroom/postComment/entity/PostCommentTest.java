@@ -4,7 +4,7 @@ import jeju.oneroom.Post.entitiy.Post;
 import jeju.oneroom.Post.repository.PostRepository;
 import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.postComment.repository.PostCommentRepository;
-import jeju.oneroom.town.entity.Town;
+import jeju.oneroom.area.entity.Town;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;

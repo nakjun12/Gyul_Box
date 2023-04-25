@@ -3,11 +3,10 @@ package jeju.oneroom.user.entity;
 import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.message.entity.Message;
 import jeju.oneroom.review.entity.Review;
-import jeju.oneroom.town.entity.Town;
+import jeju.oneroom.area.entity.Town;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

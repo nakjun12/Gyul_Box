@@ -1,4 +1,4 @@
-package jeju.oneroom.town.dto;
+package jeju.oneroom.area.dto;
 
 import jeju.oneroom.common.entity.Coordinate;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class TownDto {
+public class AreaDto {
     @Getter
     @Builder
     @NoArgsConstructor

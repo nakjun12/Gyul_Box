@@ -22,7 +22,6 @@ public class ReviewDto {
         private String residenceYear;
         private String floor;
         private Rate rate;
-        private int likes;
 
         // houseInfo와 매핑하기 위한 주소
         private String address;
@@ -80,5 +79,6 @@ public class ReviewDto {
 
         //매핑 된 HouseInfo의 주소
         private String address;
+        // houseInfo Id 제공해야함.
     }
 }
