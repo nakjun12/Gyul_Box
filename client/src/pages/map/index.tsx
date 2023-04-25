@@ -1,5 +1,5 @@
-import WhiteButton from "@/component/atoms/whiteButton/WhiteButton";
 import { useEffect, useRef, useState } from "react";
+import WhiteButton from "./../../component/atoms/whiteButton/WhiteButton";
 
 const kakao = typeof window !== "undefined" ? (window as any).kakao : null;
 

@@ -1,5 +1,4 @@
-import React from "react";
-import styles from "../boardContents/BoardContents.module.scss";
+import styles from "./BoardContents.module.scss";
 
 type Props = {};
 

@@ -1,7 +1,7 @@
-import Modal from "@/component/organisms/modal/Modal";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import gyulLogo from "../../../../public/icon/gyulLogo.png";
+import Modal from "./../../organisms/modal/Modal";
 import styles from "./Header.module.scss";
 type Props = {};
 

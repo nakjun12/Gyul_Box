@@ -1,10 +1,10 @@
 import { Footer } from "../component/templates/footer/Footer";
 import Header from "../component/templates/header/Header";
 
-import styles from "@/styles/Home.module.scss";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import "../styles/globals.scss";
+import styles from "./../styles/Home.module.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

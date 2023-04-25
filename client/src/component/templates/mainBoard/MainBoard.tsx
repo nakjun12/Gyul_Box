@@ -1,5 +1,5 @@
 import BoardContents from "../../molecules/boardContents/BoardContents";
-import styles from "../mainBoard/MainBoard.module.scss";
+import styles from "./MainBoard.module.scss";
 
 type Props = {
   title: string;

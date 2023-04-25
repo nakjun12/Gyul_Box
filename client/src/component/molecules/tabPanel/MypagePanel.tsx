@@ -1,11 +1,11 @@
 //my page
-import UserBox from "@/component/atoms/box/UserBox";
-import InterestModal from "@/component/organisms/modal/InterestModal";
 import { BiMap } from "react-icons/bi";
 import { FaPeopleArrows } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import { MdOutlineRateReview } from "react-icons/md";
 import { RiMessengerLine } from "react-icons/ri";
+import UserBox from "./../../atoms/box/UserBox";
+import InterestModal from "./../../organisms/modal/InterestModal";
 import styles from "./TabPanel.module.scss";
 const MyPagePanel = () => {
   return (

@@ -1,7 +1,7 @@
-import { KAKAKO_JAVASCRIPT } from "@/lib/ConfigHelper";
 import type { DocumentContext, DocumentInitialProps } from "next/document";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import type { ReactElement } from "react";
+import { KAKAKO_JAVASCRIPT } from "../lib/ConfigHelper";
 class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
