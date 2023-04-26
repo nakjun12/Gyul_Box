@@ -3,7 +3,6 @@ package jeju.oneroom.user.entity;
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.message.entity.Message;
-import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ class UserTest {
         User findUser = userRepository.findById(savedUser.getId()).orElse(null); // db에서 id로 찾아옴
 
         assertEquals(user.getNickname(), findUser.getNickname()); // 직접 만든 User와 db에 저장 후 찾아온 것 비교
-        assertEquals(user.getArea().getTownName(), findUser.getArea().getTownName());
+        assertEquals(user.getArea().getAreaName(), findUser.getArea().getAreaName());
         assertEquals(user.getSends().size(), findUser.getSends().size());
 
     }
@@ -55,8 +54,8 @@ class UserTest {
 
     private Area getTown(Coordinate coordinate) {
         Area area = Area.builder()
-                .townCode(11111L)
-                .townName("동춘동")
+                .areaCode(11111L)
+                .areaName("동춘동")
                 .coordinate(coordinate)
                 .build();
         return area;

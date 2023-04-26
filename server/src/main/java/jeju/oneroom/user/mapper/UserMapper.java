@@ -22,6 +22,6 @@ public interface UserMapper {
     UserDto.SimpleResponseDto userToSimpleResponseDto(User user);
 
     default String toString(Area area){
-        return area.getTownName();
+        return area.getAreaName();
     }
 }

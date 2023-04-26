@@ -1,6 +1,5 @@
 package jeju.oneroom.area.entity;
 
-import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.area.repository.AreaRepository;
 import jeju.oneroom.common.entity.Coordinate;
 import org.junit.jupiter.api.Assertions;
@@ -27,9 +26,9 @@ class AreaTest {
         areaRepository.save(area);
 
         //when
-        Area findTown = areaRepository.findById(area.getTownCode()).orElse(null);
+        Area findTown = areaRepository.findById(area.getAreaCode()).orElse(null);
         //then
-        Assertions.assertEquals(findTown.getTownName(), area.getTownName());
+        Assertions.assertEquals(findTown.getAreaName(), area.getAreaName());
     }
 
     private Coordinate getCoordinate() {
@@ -39,8 +38,8 @@ class AreaTest {
 
     private Area getTownWithoutSi(Coordinate coordinate) {
         Area town = Area.builder()
-                .townCode(11111L)
-                .townName("동춘동")
+                .areaCode(11111L)
+                .areaName("동춘동")
                 .coordinate(coordinate)
                 .build();
         return town;
@@ -48,8 +47,8 @@ class AreaTest {
 
     private Area getTown(Coordinate coordinate) {
         Area area = Area.builder()
-                .townCode(11111L)
-                .townName("동춘동")
+                .areaCode(11111L)
+                .areaName("동춘동")
                 .coordinate(coordinate)
                 .build();
         return area;

@@ -14,8 +14,8 @@ public class AreaDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-        private Long townCode;
-        private String townName;
+        private Long areaCode;
+        private String areaName;
         private Coordinate coordinate;
     }
 }

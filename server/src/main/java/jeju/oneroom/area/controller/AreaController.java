@@ -21,17 +21,18 @@ public class AreaController {
     }
 
     @PatchMapping("/areas/{area-id}")
-    public ResponseEntity<?> patch(@PathVariable("town-id") long areaCode) {
+    public ResponseEntity<?> patch(@PathVariable("area-id") long areaCode) {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/areas/{area-id}")
-    public ResponseEntity<?> delete(@PathVariable("town-id") long areaCode) {
+    public ResponseEntity<?> delete(@PathVariable("area-id") long areaCode) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    // 프론트에서 동면읍, 시에 대한 정보를 데이터로 갖고 잊을건지?
     @GetMapping("/areas/{area-id}")
-    public ResponseEntity<?> findTown(@PathVariable("town-id") long areaCode) {
+    public ResponseEntity<?> findTown(@PathVariable("area-id") long areaCode) {
         Area area = areaRepository.findById(areaCode).orElse(null);
         AreaDto.Response response = areaMapper.areaToResponseDto(area);
         return new ResponseEntity<>(response, HttpStatus.OK);
