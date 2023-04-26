@@ -18,17 +18,17 @@ class AreaTest {
     AreaRepository areaRepository;
 
     @Test
-    public void Town_생성_테스트() throws Exception{
+    public void Area_생성_테스트() throws Exception{
         //given
         Coordinate coordinate = getCoordinate();
-        Area area = getTown(coordinate);
+        Area area = getArea(coordinate);
 
         areaRepository.save(area);
 
         //when
-        Area findTown = areaRepository.findById(area.getAreaCode()).orElse(null);
+        Area findArea = areaRepository.findById(area.getAreaCode()).orElse(null);
         //then
-        Assertions.assertEquals(findTown.getAreaName(), area.getAreaName());
+        Assertions.assertEquals(findArea.getAreaName(), area.getAreaName());
     }
 
     private Coordinate getCoordinate() {
@@ -36,16 +36,16 @@ class AreaTest {
         return coordinate;
     }
 
-    private Area getTownWithoutSi(Coordinate coordinate) {
-        Area town = Area.builder()
+    private Area getAreaWithoutSi(Coordinate coordinate) {
+        Area area = Area.builder()
                 .areaCode(11111L)
                 .areaName("동춘동")
                 .coordinate(coordinate)
                 .build();
-        return town;
+        return area;
     }
 
-    private Area getTown(Coordinate coordinate) {
+    private Area getArea(Coordinate coordinate) {
         Area area = Area.builder()
                 .areaCode(11111L)
                 .areaName("동춘동")
