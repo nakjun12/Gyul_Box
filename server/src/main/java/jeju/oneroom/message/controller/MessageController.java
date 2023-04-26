@@ -24,8 +24,8 @@ public class MessageController {
     // 메세지 보내기
     @PostMapping
     public ResponseEntity<?> post(@Valid @RequestBody MessageDto.Post postDto) {
-        MessageDto.Response createMessage = messageService.createMessage(postDto);
-        return new ResponseEntity<>(createMessage, HttpStatus.CREATED);
+        MessageDto.Response response = messageService.createMessage(postDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     // userId로 받은 모든 메시지 리스트 가져오기
@@ -33,16 +33,16 @@ public class MessageController {
     public ResponseEntity<?> getMessageList(@PathVariable("receiver-id") @Positive long receiverId,
                                             @RequestParam int page,
                                             @RequestParam int size) {
-        Page<MessageDto.Response> messageList = messageService.findMessageList(receiverId, page, size);
-        return new ResponseEntity<>(new MultiResponseDto<>(messageList), HttpStatus.OK);
+        Page<MessageDto.Response> responses = messageService.findMessageList(receiverId, page, size);
+        return new ResponseEntity<>(new MultiResponseDto<>(responses), HttpStatus.OK);
     }
 
     // senderId와 receiverId로 주고 받은 모든 메시지 가져오기
     @GetMapping("users/{receiver-id}/{sender-id}/messages")
     public ResponseEntity<?> gets(@PathVariable("receiver-id") @Positive long receiverId,
                                   @PathVariable("sender-id") @Positive long senderId) {
-        List<MessageDto.Response> allMessages = messageService.findAllMessages(receiverId, senderId);
-        return new ResponseEntity<>(new ListResponseDto<>(allMessages), HttpStatus.OK);
+        List<MessageDto.Response> responses = messageService.findAllMessages(receiverId, senderId);
+        return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
     }
 
     // 메세지 삭제

@@ -1,5 +1,7 @@
 package jeju.oneroom.user.service;
 
+import jeju.oneroom.area.entity.Area;
+import jeju.oneroom.area.repository.AreaRepository;
 import jeju.oneroom.user.dto.UserDto;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.mapper.UserMapper;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final AreaRepository areaRepository;
 
     //회원 생성
     public UserDto.Response createUser(UserDto.Post postDto) {
@@ -24,6 +27,8 @@ public class UserService {
     //회원 정보 수정
     public UserDto.Response updateUser(UserDto.Patch patchDto) {
         User findUser = userMapper.patchDtoToUser(patchDto);
+        Area area = areaRepository.findById(patchDto.getAreaCode()).orElse(null);
+        findUser.setArea(area);
         return userMapper.userToResponseDto(findUser);
     }
 
