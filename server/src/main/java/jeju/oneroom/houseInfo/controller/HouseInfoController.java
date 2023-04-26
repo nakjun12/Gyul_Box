@@ -45,7 +45,7 @@ public class HouseInfoController {
     }
 
     @GetMapping("/houseInfos/{houseInfo-id}/simple")
-    public ResponseEntity<?> findHouseInfoCount(@PathVariable("houseInfo-id") long houseInfoId) {
+    public ResponseEntity<?> findHouseInfoSimple(@PathVariable("houseInfo-id") long houseInfoId) {
         HouseInfo houseInfo = houseInfoRepository.findById(houseInfoId).orElse(null);
         HouseInfoDto.SimpleResponse response = houseInfoMapper.houseInfoToSimpleResponseDto(houseInfo);
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -53,17 +53,15 @@ public class HouseInfoController {
 
     // 동, 면, 웁에 속해있는 건물 좌표와 리뷰 수
     @GetMapping("areas/{area-id}/houseInfos")
-    public ResponseEntity<?> findTownHouseInfos(@PathVariable("area-id") long areaCode) {
+    public ResponseEntity<?> findAreaHouseInfos(@PathVariable("area-id") long areaCode,
+                                                @RequestParam int level) {
         Area area = areaRepository.findById(areaCode).orElse(null);
-        List<HouseInfoDto.SimpleCountResponse> responses = houseInfoRepository.findByArea(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList());
-        return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
-    }
-
-    // 시에 속해있는 건물 좌표와 리뷰 수 by 리뷰 갯수 top20
-    @GetMapping("sies/{si-id}/houseInfos")
-    public ResponseEntity<?> findSiHouseInfos(@PathVariable("area-id") long areaCode) {
-        Area area = areaRepository.findById(areaCode).orElse(null);
-        List<HouseInfoDto.SimpleCountResponse> responses = houseInfoRepository.findTop20ByAreaOrderByReviewCount(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList());
+        List<HouseInfoDto.SimpleCountResponse> responses;
+        if (level >= 9){
+            responses = houseInfoRepository.findTop20ByAreaOrderByReviewCount(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList());
+        }else {
+            responses = houseInfoRepository.findByArea(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList());
+        }
         return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
     }
 }

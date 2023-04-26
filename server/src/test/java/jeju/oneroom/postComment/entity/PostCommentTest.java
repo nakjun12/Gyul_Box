@@ -79,8 +79,8 @@ class PostCommentTest {
 
     private Area getTown(Coordinate coordinate) {
         Area area = Area.builder()
-                .townCode(11111L)
-                .townName("동춘동")
+                .areaCode(11111L)
+                .areaName("동춘동")
                 .coordinate(coordinate)
                 .build();
         return area;

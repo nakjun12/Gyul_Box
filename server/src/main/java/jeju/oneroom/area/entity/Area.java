@@ -18,9 +18,9 @@ import java.util.List;
 public class Area extends BaseEntity {
     @Id
     @Column(name = "town_id")
-    private Long townCode;
+    private Long areaCode;
 
-    private String townName;
+    private String areaName;
 
     @OneToMany(mappedBy = "area")
     private List<HouseInfo> houseInfos = new ArrayList<>();
@@ -29,9 +29,9 @@ public class Area extends BaseEntity {
     private Coordinate coordinate;
 
     @Builder
-    public Area(Long townCode, String townName, List<HouseInfo> houseInfos, Coordinate coordinate) {
-        this.townCode = townCode;
-        this.townName = townName;
+    public Area(Long areaCode, String areaName, List<HouseInfo> houseInfos, Coordinate coordinate) {
+        this.areaCode = areaCode;
+        this.areaName = areaName;
         this.houseInfos = houseInfos;
         this.coordinate = coordinate;
     }

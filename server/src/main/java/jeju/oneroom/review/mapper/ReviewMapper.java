@@ -21,6 +21,6 @@ public interface ReviewMapper {
     ReviewDto.SimpleResponse reviewToSimpleResponseDto(Review review);
 
     default String toString(Area area) {
-        return area.getTownName();
+        return area.getAreaName();
     }
 }
