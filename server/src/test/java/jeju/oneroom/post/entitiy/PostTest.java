@@ -1,7 +1,6 @@
-package jeju.oneroom.Post.entitiy;
+package jeju.oneroom.post.entitiy;
 
-import jeju.oneroom.Post.entitiy.Post;
-import jeju.oneroom.Post.repository.PostRepository;
+import jeju.oneroom.post.repository.PostRepository;
 import jeju.oneroom.postComment.entity.PostComment;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;

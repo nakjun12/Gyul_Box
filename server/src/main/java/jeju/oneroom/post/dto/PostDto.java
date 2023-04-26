@@ -1,4 +1,4 @@
-package jeju.oneroom.Post.dto;
+package jeju.oneroom.post.dto;
 
 import jeju.oneroom.postComment.dto.PostCommentDto;
 import jeju.oneroom.user.dto.UserDto;
