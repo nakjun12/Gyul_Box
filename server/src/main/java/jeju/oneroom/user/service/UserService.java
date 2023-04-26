@@ -22,7 +22,7 @@ public class UserService {
     }
 
     //회원 정보 수정
-    public UserDto.Response updateUser(long userId, UserDto.Patch patchDto) {
+    public UserDto.Response updateUser(UserDto.Patch patchDto) {
         User findUser = userMapper.patchDtoToUser(patchDto);
         return userMapper.userToResponseDto(findUser);
     }

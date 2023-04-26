@@ -39,8 +39,9 @@ public class ReviewService {
     }
 
     //리뷰 수정
-    public Review updateReview(ReviewDto.Patch patchDto, long reviewId) {
-        return null;
+    public ReviewDto.Response updateReview(ReviewDto.Patch patchDto) {
+        Review findReview = reviewMapper.patchDtoToReview(patchDto);
+        return reviewMapper.reviewToResponseDto(findReview);
     }
 
     //단건 조회

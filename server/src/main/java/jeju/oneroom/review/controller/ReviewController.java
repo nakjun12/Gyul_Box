@@ -31,9 +31,8 @@ public class ReviewController {
     }
 
     @PatchMapping("/reviews/{review-id}")
-    public ResponseEntity<?> patch(@PathVariable("review-id") long reviewId,
-                                   @Valid @RequestBody ReviewDto.Patch patchDto) {
-        reviewService.updateReview(patchDto, reviewId);
+    public ResponseEntity<?> patch(@Valid @RequestBody ReviewDto.Patch patchDto) {
+        reviewService.updateReview(patchDto);
 
 //        ReviewDto.Patch patchDto2 = ReviewDto.Patch.builder()
 //                .reviewId(reviewId)

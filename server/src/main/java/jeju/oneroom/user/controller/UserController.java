@@ -27,9 +27,8 @@ public class UserController {
     }
 
     @PatchMapping("/{user-id}")
-    public ResponseEntity<?> patch(@PathVariable("user-id") @Positive long userId,
-                                   @Valid @RequestBody UserDto.Patch patchDto) {
-        UserDto.Response user = userService.updateUser(userId, patchDto);
+    public ResponseEntity<?> patch(@Valid @RequestBody UserDto.Patch patchDto) {
+        UserDto.Response user = userService.updateUser(patchDto);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
