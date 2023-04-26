@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Area extends BaseEntity {
     @Id
-    @Column(name = "town_id")
+    @Column(name = "area_id")
     private Long areaCode;
 
     private String areaName;
