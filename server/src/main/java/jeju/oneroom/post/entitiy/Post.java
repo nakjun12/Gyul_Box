@@ -1,4 +1,4 @@
-package jeju.oneroom.Post.entitiy;
+package jeju.oneroom.post.entitiy;
 
 import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.postComment.entity.PostComment;
@@ -6,7 +6,6 @@ import jeju.oneroom.user.entity.User;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity

@@ -1,7 +1,7 @@
-package jeju.oneroom.Post.mapper;
+package jeju.oneroom.post.mapper;
 
-import jeju.oneroom.Post.dto.PostDto;
-import jeju.oneroom.Post.entitiy.Post;
+import jeju.oneroom.post.dto.PostDto;
+import jeju.oneroom.post.entitiy.Post;
 import jeju.oneroom.postComment.mapper.PostCommentMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

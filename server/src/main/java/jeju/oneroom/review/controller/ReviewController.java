@@ -4,113 +4,104 @@ import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.area.repository.AreaRepository;
 import jeju.oneroom.common.dto.ListResponseDto;
 import jeju.oneroom.common.dto.MultiResponseDto;
-import jeju.oneroom.houseInfo.entity.HouseInfo;
-import jeju.oneroom.houseInfo.repository.HouseInfoRepository;
 import jeju.oneroom.review.dto.ReviewDto;
-import jeju.oneroom.review.entity.Review;
-import jeju.oneroom.review.mapper.ReviewMapper;
-import jeju.oneroom.review.repository.ReviewRepository;
-import jeju.oneroom.user.entity.User;
-import jeju.oneroom.user.repository.UserRepository;
+import jeju.oneroom.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
 public class ReviewController {
 
-    private final ReviewRepository reviewRepository;
-    private final ReviewMapper reviewMapper;
-    private final UserRepository userRepository;
-    private final AreaRepository areaRepository;
-    private final HouseInfoRepository houseInfoRepository;
+    private final ReviewService reviewService;
 
     @PostMapping("/reviews")
-    public ResponseEntity<?> post() {
+    public ResponseEntity<?> post(@Valid @RequestBody ReviewDto.Post postDto) {
+        reviewService.createReview(postDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PatchMapping("/reviews/{review-id}")
-    public ResponseEntity<?> patch(@PathVariable("review-id") long reviewId) {
+    public ResponseEntity<?> patch(@PathVariable("review-id") long reviewId,
+                                   @Valid @RequestBody ReviewDto.Patch patchDto) {
+        reviewService.updateReview(patchDto, reviewId);
+
+//        ReviewDto.Patch patchDto2 = ReviewDto.Patch.builder()
+//                .reviewId(reviewId)
+//                .advantage(patchDto.getAdvantage())
+//                .disadvantage(patchDto.getDisadvantage())
+//                .adminCost(patchDto.getAdminCost())
+//                .residenceYear(patchDto.getResidenceYear())
+//                .floor(patchDto.getFloor())
+//                .rate(patchDto.getRate())
+//                .build();
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/reviews/{review-id}")
     public ResponseEntity<?> delete(@PathVariable("review-id") long reviewId) {
+        reviewService.deleteReview(reviewId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/reviews/likes/{review-id}")
-    public ResponseEntity<?> putLikes(@PathVariable("review-id") @Positive long reviewId) {
+    @PutMapping("/reviews/likes/{review-id}/{user-id}")
+    public ResponseEntity<?> putLikes(@PathVariable("review-id") @Positive long reviewId,
+                                      @PathVariable("user-id") @Positive long userId) {
+        reviewService.likeReview(reviewId, userId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //  리뷰 단일 조회
     @GetMapping("/reviews/{review-id}")
-    public ResponseEntity<?> findReview(@PathVariable("review-id") long reviewId) {
-        Review review = reviewRepository.findById(reviewId).orElse(null);
-        ReviewDto.Response response = reviewMapper.reviewToResponseDto(review);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<?> getReview(@PathVariable("review-id") long reviewId) {
+        ReviewDto.Response findReview = reviewService.findReview(reviewId);
+        return new ResponseEntity<>(findReview, HttpStatus.OK);
     }
 
     @GetMapping("/reviews/latest5") // 최신순 5개
-    public ResponseEntity<?> findTop5LatestReviews() {
-        List<Review> top5ByOrderByCreatedAtDesc = reviewRepository.findTop5ByOrderByCreatedAtDesc();
-        return new ResponseEntity<>(new ListResponseDto<>(top5ByOrderByCreatedAtDesc.stream().map(m -> reviewMapper.reviewToSimpleResponseDto(m)).collect(Collectors.toList())), HttpStatus.OK);
+    public ResponseEntity<?> getTop5LatestReviews() {
+        List<ReviewDto.SimpleResponse> top5LatestReviews = reviewService.findTop5LatestReviews();
+        return new ResponseEntity<>(new ListResponseDto<>(top5LatestReviews), HttpStatus.OK);
     }
 
     @GetMapping("/reviews/hottest5") // 추천순 5개
-    public ResponseEntity<?> findTop5HottestReviews() {
-        List<Review> top5ByOrderByCreatedAtDesc = reviewRepository.findTop5ByOrderByCreatedAtDesc();
-        return new ResponseEntity<>(new ListResponseDto<>(top5ByOrderByCreatedAtDesc.stream().map(m -> reviewMapper.reviewToSimpleResponseDto(m)).collect(Collectors.toList())), HttpStatus.OK);
+    public ResponseEntity<?> getTop5HottestReviews() {
+        List<ReviewDto.SimpleResponse> top5HottestReviews = reviewService.findTop5HottestReviews();
+        return new ResponseEntity<>(new ListResponseDto<>(top5HottestReviews), HttpStatus.OK);
     }
 
     // 유저 관심 지역 추천 순 리뷰 5개
     @GetMapping("users/{user-id}/user-areas/reviews")
-    public ResponseEntity<?> findUserAreaReviews(@PathVariable("user-id") long userId) {
-        User user = userRepository.findById(userId).orElse(null);
-        Area area = user.getArea();
-        List<HouseInfo> houseInfos = houseInfoRepository.findByArea(area);
-        List<ReviewDto.SimpleResponse> responses = new ArrayList<>();
-        for (HouseInfo houseInfo : houseInfos) {
-            List<ReviewDto.SimpleResponse> tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
-            responses.addAll(tmp);
-        }
-        return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
+    public ResponseEntity<?> getUserAreaReviews(@PathVariable("user-id") long userId) {
+        List<ReviewDto.SimpleResponse> userAreaReviews = reviewService.findUserAreaReviews(userId);
+        return new ResponseEntity<>(new ListResponseDto<>(userAreaReviews), HttpStatus.OK);
     }
 
     // 유저 리뷰 찾기  추후 findUserTownReviews 메서드와 통합 시도.
     @GetMapping("users/{user-id}/reviews")
-    public ResponseEntity<?> findUserReviews(@RequestParam int page,
-                                             @RequestParam int size,
-                                             @PathVariable("user-id") long userId) {
-        User user = userRepository.findById(userId).orElse(null);
-        Page<ReviewDto.SimpleResponse> responses = reviewRepository.findByUser(user, PageRequest.of(page - 1, size)).map(reviewMapper::reviewToSimpleResponseDto);
-
-        return new ResponseEntity<>(new MultiResponseDto<>(responses), HttpStatus.OK);
+    public ResponseEntity<?> getUserReviews(@RequestParam int page,
+                                            @RequestParam int size,
+                                            @PathVariable("user-id") long userId) {
+        Page<ReviewDto.SimpleResponse> userReviews = reviewService.findUserReviews(userId, page, size);
+        return new ResponseEntity<>(new MultiResponseDto<>(userReviews), HttpStatus.OK);
     }
 
     // Town에 따른 거주 리뷰 아마 30개?
     @GetMapping("areas/{area-id}/reviews")
-    public ResponseEntity<?> findAreaReviews(@RequestParam int page,
-                                             @RequestParam int size,
-                                             @PathVariable("area-id") long areaCode) {
-        Area area = areaRepository.findById(areaCode).orElse(null);
-        List<HouseInfo> houseInfos = houseInfoRepository.findByArea(area);
-        List<ReviewDto.SimpleResponse> responses = new ArrayList<>();
-        for (HouseInfo houseInfo : houseInfos) {
-            List<ReviewDto.SimpleResponse> tmp = reviewRepository.findByHouseInfo(houseInfo).stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
-            responses.addAll(tmp);
-        }
-        return new ResponseEntity<>(new ListResponseDto<>(responses), HttpStatus.OK);
+    public ResponseEntity<?> getAreaReviews(@RequestParam int page,
+                                            @RequestParam int size,
+                                            @PathVariable("area-id") long areaCode) {
+        List<ReviewDto.SimpleResponse> areaReviews = reviewService.findAreaReviews(areaCode, page, size);
+        return new ResponseEntity<>(new ListResponseDto<>(areaReviews), HttpStatus.OK);
     }
 }

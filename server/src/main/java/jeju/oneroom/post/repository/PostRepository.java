@@ -1,6 +1,6 @@
-package jeju.oneroom.Post.repository;
+package jeju.oneroom.post.repository;
 
-import jeju.oneroom.Post.entitiy.Post;
+import jeju.oneroom.post.entitiy.Post;
 import jeju.oneroom.user.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

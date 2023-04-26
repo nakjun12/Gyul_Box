@@ -1,9 +1,9 @@
-package jeju.oneroom.Post.controller;
+package jeju.oneroom.post.controller;
 
-import jeju.oneroom.Post.dto.PostDto;
-import jeju.oneroom.Post.entitiy.Post;
-import jeju.oneroom.Post.mapper.PostMapper;
-import jeju.oneroom.Post.repository.PostRepository;
+import jeju.oneroom.post.dto.PostDto;
+import jeju.oneroom.post.entitiy.Post;
+import jeju.oneroom.post.mapper.PostMapper;
+import jeju.oneroom.post.repository.PostRepository;
 import jeju.oneroom.common.dto.ListResponseDto;
 import jeju.oneroom.common.dto.MultiResponseDto;
 import jeju.oneroom.user.entity.User;

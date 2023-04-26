@@ -60,7 +60,7 @@ class ReviewTest {
                 .floor("중층")
                 .residenceYear("약 2년")
                 .address("인천 연수구 먼우금로")
-                .likes(1)
+                .likes(44)
                 .user(user)
                 .rate(rate)
                 .houseInfo(houseInfo)

@@ -1,10 +1,9 @@
 package jeju.oneroom.postComment.entity;
 
-import jeju.oneroom.Post.entitiy.Post;
-import jeju.oneroom.Post.repository.PostRepository;
+import jeju.oneroom.post.entitiy.Post;
+import jeju.oneroom.post.repository.PostRepository;
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.Coordinate;
-import jeju.oneroom.postComment.entity.PostComment;
 import jeju.oneroom.postComment.repository.PostCommentRepository;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;

@@ -1,6 +1,6 @@
 package jeju.oneroom.postComment.entity;
 
-import jeju.oneroom.Post.entitiy.Post;
+import jeju.oneroom.post.entitiy.Post;
 import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.user.entity.User;
 import lombok.*;
