@@ -4,25 +4,26 @@
   width: 100%;
 
   max-width: 770px; //310 310
-  background-color: blanchedalmond;
 
   margin-bottom: 50px;
 }
 
 .carousel_viewer {
   overflow: hidden;
-  background-color: red;
 }
 
 .carousel_slider {
   display: flex;
   width: 3000px;
   user-select: none;
+  padding: 10px 10px;
+  background-color: brown;
   .carousel_slide {
+    background-color: red;
     width: 300px;
     height: 200px;
     margin-right: 10px;
-    background-color: blueviolet;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;

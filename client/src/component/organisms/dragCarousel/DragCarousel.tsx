@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { MainCard } from "../../molecules/mainCard/MainCard";
 import {
   inrange,
   registDragEvent,
   useCarouselSize,
 } from "./../../../utils/Drag";
 import styles from "./DragCarousel.module.scss";
-
 const imageList = [
   "https://blog.kakaocdn.net/dn/dpxiAT/btqUBv6Fvpn/E8xUMncq7AVuDeOim0LrMk/img.jpg",
   "https://blog.kakaocdn.net/dn/BGT7X/btqUzvTqi5h/flp39GdJH0GU6mo7cTbbhk/img.jpg",
@@ -48,7 +48,7 @@ export default function CarouselExample() {
               if (deltaX < -10) {
                 setCurrentIndex(inrange(currentIndex + 1, 0, maxIndex));
                 if (inrange(currentIndex + 1, 0, maxIndex) === maxIndex) {
-                  setTransX(160);
+                  setTransX(140);
                 } else {
                   setTransX(0);
                 }
@@ -62,7 +62,7 @@ export default function CarouselExample() {
         >
           {imageList.map((url, i) => (
             <div key={i} className={styles.carousel_slide}>
-              {i}
+              <MainCard />
             </div>
           ))}
         </div>

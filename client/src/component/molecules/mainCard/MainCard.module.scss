@@ -1,1 +1,49 @@
 @import "./../../../styles/variables";
+
+.wrapper {
+  background-color: wheat;
+  width: 100%;
+  height: 100%;
+  hr {
+    border: 0.5px solid var(--gray);
+    margin: 1em 0;
+  }
+}
+
+.box {
+  background-color: var(--lightGreen);
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.sub_title {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.content {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  height: 50px;
+  text-overflow: ellipsis;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.left {
+  display: flex;
+}
