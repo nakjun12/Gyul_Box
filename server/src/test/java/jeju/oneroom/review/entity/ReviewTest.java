@@ -34,11 +34,11 @@ class ReviewTest {
     @Test
     public void Review_생성_테스트() throws Exception{
         //given
-        User user = getUser();
-        userRepository.save(user);
         Rate rate = getRate();
         Coordinate coordinate = new Coordinate(11.11111, 11.11111);
         Area area = getTownWithoutSi(coordinate);
+        User user = getUser(area);
+        userRepository.save(user);
         HouseInfo houseInfo = getHouseInfo(coordinate, rate, area);
         houseInfoRepository.save(houseInfo);
 
@@ -67,9 +67,10 @@ class ReviewTest {
                 .build();
     }
 
-    private User getUser() {
+    private User getUser(Area area) {
         return User.builder()
                 .email("aaa@gmail.com")
+                .area(area)
                 .nickname("홍길동").build();
     }
 

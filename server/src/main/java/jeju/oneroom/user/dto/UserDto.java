@@ -20,7 +20,7 @@ public class UserDto {
     public static class Patch {
         private Long id;
         private String nickname; // 닉네임
-        private String area; // 관심지역
+        private Long areaCode; // 관심지역
     }
 
     @Getter

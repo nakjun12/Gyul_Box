@@ -22,20 +22,20 @@ public class UserController {
     //회원 생성
     @PostMapping
     public ResponseEntity<?> post(@Valid @RequestBody UserDto.Post postDto) {
-        UserDto.Response createUser = userService.createUser(postDto);
-        return new ResponseEntity<>(createUser, HttpStatus.CREATED);
+        UserDto.Response response = userService.createUser(postDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{user-id}")
     public ResponseEntity<?> patch(@Valid @RequestBody UserDto.Patch patchDto) {
-        UserDto.Response user = userService.updateUser(patchDto);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        UserDto.Response response = userService.updateUser(patchDto);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/{user-id}")
     public ResponseEntity<?> get(@PathVariable("user-id") @Positive long userId) {
-        UserDto.Response findMember = userService.getMember(userId);
-        return new ResponseEntity<>(findMember, HttpStatus.OK);
+        UserDto.Response response = userService.getMember(userId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @DeleteMapping("/{user-id}")

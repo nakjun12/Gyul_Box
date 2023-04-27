@@ -4,6 +4,7 @@ import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.user.dto.UserDto;
 import jeju.oneroom.user.entity.User;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public interface UserMapper {
     User postDtoToUser(UserDto.Post postDto);
 
+    @Mapping(target = "area", ignore=true)
     User patchDtoToUser(UserDto.Patch patchDto);
 
     //@Mapping(target = "town", expression = "user.get")

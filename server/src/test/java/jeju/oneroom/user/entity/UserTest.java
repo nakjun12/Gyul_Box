@@ -28,7 +28,7 @@ class UserTest {
 
 
         //given
-        User user = getUser(getTown(getCoordinate()),getMessage());
+        User user = getUser(getArea(getCoordinate()), getMessage());
 
         //then
         User savedUser = userRepository.save(user); // db에 저장
@@ -44,15 +44,15 @@ class UserTest {
         List<Message> sends = new ArrayList<>();
         sends.add(message);
         User user = User.builder()
-                .nickname("망나니 개발자")
-                .email("aaa@naver.com")
+                .nickname("망나니DD 개발자")
+                .email("aaSDDa@naver.com")
                 .area(area)
                 .sends(sends)
                 .build();
         return user;
     }
 
-    private Area getTown(Coordinate coordinate) {
+    private Area getArea(Coordinate coordinate) {
         Area area = Area.builder()
                 .areaCode(11111L)
                 .areaName("동춘동")

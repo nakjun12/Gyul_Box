@@ -45,5 +45,10 @@ public class User extends BaseEntity {
         this.receives = receives;
         this.area = area;
         this.reviews = reviews;
+        this.id = id;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
     }
 }
