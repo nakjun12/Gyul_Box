@@ -1,5 +1,5 @@
 import { HiOutlineArrowRight } from "react-icons/hi";
-import YellowStar from "../../atoms/yellowStar/YellowStart";
+import YellowStar from "../../atoms/yellowStars/YellowStars";
 import styles from "./MainCard.module.scss";
 export function MainCard() {
   return (

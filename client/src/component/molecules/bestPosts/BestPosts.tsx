@@ -1,5 +1,5 @@
 import Recommand from "../../atoms/recommand/Recommand";
-import YellowStar from "../../atoms/yellowStar/YellowStart";
+import YellowStar from "../../atoms/yellowStars/YellowStars";
 import styles from "./BestPosts.module.scss";
 type Props = {};
 
