@@ -1,6 +1,8 @@
 import Image from "next/image";
 import gyulMain from "../../public/icon/mainGyul.jpg";
 import MiniLottie from "../component/atoms/lottie/MiniLottie";
+
+import BestPosts from "../component/molecules/bestPosts/BestPosts";
 import SearchBar from "../component/molecules/searchBar/SearchBar";
 import DragCarousel from "../component/organisms/dragCarousel/DragCarousel";
 import styles from "./../styles/Home.module.scss";
@@ -26,7 +28,9 @@ export default function home({}: Props) {
           <div className={styles.whereDiv}>어디를 알아볼까?</div>
         </div>
         <SearchBar />
-        <div className={styles.boardParts}></div>
+        <div className={styles.boardParts}>
+          <BestPosts />
+        </div>
 
         <DragCarousel />
       </div>

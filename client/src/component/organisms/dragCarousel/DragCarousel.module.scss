@@ -1,4 +1,11 @@
-/* styles/MainCarousel.module.scss */
+.title {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  text-align: left;
+  width: 750px;
+}
+
 .carousel_wrapper {
   //w-full max-w-lg
   width: 100%;
@@ -17,18 +24,22 @@
   width: 3000px;
   user-select: none;
   padding: 10px 10px;
-  background-color: brown;
+
   .carousel_slide {
-    background-color: red;
     width: 300px;
-    height: 200px;
+    height: 180px;
     margin-right: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
     &:last-child {
       margin-right: 0;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: #ffab4f;
     }
   }
 }

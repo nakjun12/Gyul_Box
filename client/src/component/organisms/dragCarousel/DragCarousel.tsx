@@ -23,6 +23,7 @@ export default function CarouselExample() {
 
   return (
     <>
+      <h2 className={styles.title}>관심지역 🔍</h2>
       <div
         ref={ref}
         className={styles.carousel_wrapper}
