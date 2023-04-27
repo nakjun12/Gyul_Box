@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import {
   inrange,
   registDragEvent,
@@ -20,62 +19,50 @@ export default function CarouselExample() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [transX, setTransX] = useState(0);
 
-  const { ref, width, height } = useCarouselSize();
+  const { ref, width, height } = useCarouselSize(); //1:1 비율 유지하게 도와줌
 
   return (
     <>
-      <div className="p-4">
-        <div className="mb-2 whitespace-nowrap">
-          <h1 className="text-3xl font-bold">Carousel</h1>
-          <span>slide width darg</span>
-          <span className="ml-4">current index {currentIndex} </span>
-          <span className="ml-4">transX {transX}</span>
-
-          <div className="flex items-center gap-1">
-            <label htmlFor="hide">hide overflow</label>
-            <input
-              id="hide"
-              type="checkbox"
-              checked={hide}
-              onChange={() => setHide(!hide)}
-            />
-          </div>
-        </div>
-      </div>
-
       <div
         ref={ref}
         className={styles.carousel_wrapper}
         style={{
-          height,
           overflow: hide ? "hidden" : "visible",
         }}
       >
         <div
           className={styles.carousel_slider}
           style={{
-            transform: `translateX(${-currentIndex * width + transX}px)`,
-            transition: `transform ${transX ? 0 : 300}ms ease-in-out 0s`,
+            transform: `translateX(${-currentIndex * 310 + transX}px)`, //넘김수
+            transition: `transform ${300}ms ease-in-out 0s`, //시간초
           }}
           {...registDragEvent({
+            //...속성으로 추가함
             onDragChange: (deltaX: any) => {
-              setTransX(inrange(deltaX, -width, width));
+              setTransX(inrange(deltaX, -width, width)); //최대값 임시값임
             },
             onDragEnd: (deltaX: any) => {
-              const maxIndex = imageList.length - 1;
+              const maxIndex = imageList.length - 2;
+              console.log(maxIndex, "히히", transX);
 
-              if (deltaX < -100)
+              if (deltaX < -10) {
                 setCurrentIndex(inrange(currentIndex + 1, 0, maxIndex));
-              if (deltaX > 100)
+                if (inrange(currentIndex + 1, 0, maxIndex) === maxIndex) {
+                  setTransX(160);
+                } else {
+                  setTransX(0);
+                }
+              } else if (deltaX > 10) {
                 setCurrentIndex(inrange(currentIndex - 1, 0, maxIndex));
 
-              setTransX(0);
+                setTransX(0);
+              }
             },
           })}
         >
           {imageList.map((url, i) => (
             <div key={i} className={styles.carousel_slide}>
-              하이
+              {i}
             </div>
           ))}
         </div>

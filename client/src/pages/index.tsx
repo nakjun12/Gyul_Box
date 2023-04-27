@@ -27,6 +27,7 @@ export default function home({}: Props) {
         </div>
         <SearchBar />
         <div className={styles.boardParts}></div>
+
         <DragCarousel />
       </div>
     </>
