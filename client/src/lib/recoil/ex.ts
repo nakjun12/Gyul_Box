@@ -1,8 +1,9 @@
 import { atom } from "recoil";
 
 type User = {
+  id: Number;
   name: string;
-  age: number;
+  email: string;
 };
 
 export const userAtom = atom<User | null>({
