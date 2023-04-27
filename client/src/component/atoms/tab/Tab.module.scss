@@ -1,5 +1,5 @@
 //fix css
-@import "@/styles/_variables.scss";
+@import "./../../../styles/variables";
 .tab,
 .active {
   @include center();

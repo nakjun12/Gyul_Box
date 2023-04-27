@@ -1,4 +1,4 @@
-@import "@/styles/_variables.scss";
+@import "./../../../styles/variables";
 .wrapper {
   @include center-sb();
   width: 100%;
@@ -45,4 +45,8 @@
   @include center();
   width: 25%;
   padding-left: 30px;
+}
+
+.logo {
+  cursor: pointer;
 }

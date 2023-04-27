@@ -1,7 +1,7 @@
-import { KAKAKO_JAVASCRIPT } from "@/lib/ConfigHelper";
 import type { DocumentContext, DocumentInitialProps } from "next/document";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import type { ReactElement } from "react";
+import { KAKAKO_JAVASCRIPT } from "../utils/ConfigHelper";
 class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
@@ -25,9 +25,10 @@ class MyDocument extends Document {
           <script
             defer
             type="text/javascript"
-            src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAKO_JAVASCRIPT}&autoload=false&libraries=services`}
+            src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAKO_JAVASCRIPT}&autoload=false&libraries=services,clusterer,drawing`}
           />
         </Head>
+
         <body>
           <Main />
           <NextScript />

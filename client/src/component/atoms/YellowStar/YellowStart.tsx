@@ -1,5 +1,4 @@
-import React from "react";
-import styles from "../YellowStar/YellowStart.module.scss";
+import styles from "./YellowStart.module.scss";
 
 type Props = {};
 

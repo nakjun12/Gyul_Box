@@ -1,7 +1,6 @@
-import React from "react";
-import styles from "../searchBar/SearchBar.module.scss";
-import search from "../../../../public/svg/search.svg";
 import Image from "next/image";
+import search from "../../../../public/svg/search.svg";
+import styles from "./SearchBar.module.scss";
 
 type Props = {};
 
