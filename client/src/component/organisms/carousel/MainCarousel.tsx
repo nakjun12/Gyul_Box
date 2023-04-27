@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import MainBoard from "../../molecules/mainBoard/MainBoard";
 import styles from "./MainCarousel.module.scss";
-
 interface CarouselProps {
   items: string[];
 }
@@ -9,6 +9,7 @@ const MainCarousel: React.FC<CarouselProps> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const itemWidth = 310; // 각 아이템의 너비
+  //Drag carousel
 
   useEffect(() => {
     if (containerRef.current) {
@@ -37,7 +38,7 @@ const MainCarousel: React.FC<CarouselProps> = ({ items }) => {
       <div className={styles.carousel_container} ref={containerRef}>
         {items.map((item, index) => (
           <div key={index} className={styles.carousel_item}>
-            {item}
+            <MainBoard title={item} />
           </div>
         ))}
       </div>

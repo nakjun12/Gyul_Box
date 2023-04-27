@@ -1,0 +1,32 @@
+/* styles/MainCarousel.module.scss */
+.carousel_wrapper {
+  //w-full max-w-lg
+  width: 100%;
+  max-width: 920px;
+  background-color: blanchedalmond;
+}
+
+.carousel_viewer {
+  overflow: hidden;
+  background-color: red;
+}
+
+.carousel_slider {
+  display: flex;
+  width: 3000px;
+  .carousel_slide {
+    width: 300px;
+    height: 200px;
+    margin-right: 10px;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.carousel_ .carousel_slide {
+  flex-shrink: 0;
+}

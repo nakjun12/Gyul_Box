@@ -2,8 +2,7 @@ import Image from "next/image";
 import gyulMain from "../../public/icon/mainGyul.jpg";
 import MiniLottie from "../component/atoms/lottie/MiniLottie";
 import SearchBar from "../component/molecules/searchBar/SearchBar";
-import MainCarousel from "../component/organisms/carousel/MainCarousel";
-import MainBoard from "../component/templates/mainBoard/MainBoard";
+import DragCarousel from "../component/organisms/dragCarousel/DragCarousel";
 import styles from "./../styles/Home.module.scss";
 type Props = {};
 
@@ -12,7 +11,13 @@ export default function home({}: Props) {
     <>
       <div className={styles.wrapper}>
         <div className={styles.gyulMain}>
-          <Image src={gyulMain} alt="메인 로고" height={800} width={1200} />
+          <Image
+            src={gyulMain}
+            alt="메인 로고"
+            height={327}
+            width={1200}
+            priority
+          />
         </div>
         <div className={styles.lottieWrapper}>
           <div className={styles.lottieDiv}>
@@ -21,24 +26,8 @@ export default function home({}: Props) {
           <div className={styles.whereDiv}>어디를 알아볼까?</div>
         </div>
         <SearchBar />
-        <div className={styles.boardParts}>
-          <MainBoard title={"최신"} />
-          <MainBoard title={"추천"} />
-        </div>
-
-        <MainCarousel
-          items={[
-            "김치",
-            "짜장",
-            "짬뽕",
-            "김치",
-            "짜장",
-            "짬뽕",
-            "김치",
-            "짜장",
-            "짬뽕",
-          ]}
-        />
+        <div className={styles.boardParts}></div>
+        <DragCarousel />
       </div>
     </>
   );

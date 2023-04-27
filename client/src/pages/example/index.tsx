@@ -1,5 +1,5 @@
+import { KAKAKO_JAVASCRIPT } from "../../utils/ConfigHelper";
 import MapButton from "./../../component/atoms/mapButton/MapButton";
-import { KAKAKO_JAVASCRIPT } from "./../../lib/ConfigHelper";
 
 import { useEffect, useRef, useState } from "react";
 interface Position {

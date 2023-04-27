@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { sort_zone } from "./../../../lib/Dummy";
+import { sort_zone } from "../../../utils/Dummy";
 import styles from "./Modal.module.scss";
 interface ModalProps {
   isOpen?: boolean;
