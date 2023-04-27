@@ -1,5 +1,10 @@
 import { atom } from "recoil";
-import type { User } from "../../types/typelist";
+
+type User = {
+  id: Number;
+  name: string;
+  email: string;
+};
 
 export const userAtom = atom<User | null>({
   key: "userAtom",

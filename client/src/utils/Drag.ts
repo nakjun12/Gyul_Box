@@ -6,9 +6,9 @@ const isTouchScreen =
 //터치 스크린 지원 여부 확인
 
 export function registDragEvent({
-  onDragChange,
-  onDragEnd,
-  stopPropagation,
+  onDragChange, // 드래그가 발생한 방향과 거리
+  onDragEnd, // 드래그 이벤트가 종료
+  stopPropagation, // 이벤트 전파 막기 여부
 }: {
   onDragChange?: (deltaX: number, deltaY: number) => void;
   onDragEnd?: (deltaX: number, deltaY: number) => void;
@@ -17,7 +17,7 @@ export function registDragEvent({
   if (isTouchScreen) {
     return {
       onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) => {
-        if (stopPropagation) touchEvent.stopPropagation();
+        if (stopPropagation) touchEvent.stopPropagation(); // 트루일 경우 멈춤
 
         const touchMoveHandler = (moveEvent: TouchEvent) => {
           if (moveEvent.cancelable) moveEvent.preventDefault();
@@ -72,6 +72,8 @@ export function registDragEvent({
 }
 
 export const inrange = (v: number, min: number, max: number) => {
+  //최대 최소
+  console.log(v, min, max);
   if (v < min) return min;
   if (v > max) return max;
   return v;
@@ -88,7 +90,7 @@ export function useCarouselSize(
     aspectRadio: 1,
     initWidth: 0,
     initHeight: 0,
-  }
+  } //앞 부분은 default value 뒤는 default parameter
 ) {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [{ width, height }, setCarouselSize] = useState({

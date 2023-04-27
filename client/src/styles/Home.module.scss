@@ -1,5 +1,7 @@
 @import "../styles/variables";
-
+.all {
+  background-color: var(--hover);
+}
 .bodyWrapper {
   max-width: 1180px;
   margin: auto;
@@ -22,7 +24,7 @@
 
 .gyulMain {
   @include center();
-  background-color: orange;
+  background-color: var(--orange);
   width: 100%;
 
   height: 300px;
@@ -59,10 +61,9 @@
 }
 
 .boardParts {
-  @include center-se;
+  @include c-center();
   width: 100%;
-  height: 400px;
-  margin-top: 20px;
+  margin: 20px auto;
 }
 
 .carouselParts {

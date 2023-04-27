@@ -3,9 +3,8 @@ type Props = {};
 
 export default function index({}: Props) {
   return (
-    <>
+    <div>
       <MyPagePanel />
-      <div>index</div>
-    </>
+    </div>
   );
 }

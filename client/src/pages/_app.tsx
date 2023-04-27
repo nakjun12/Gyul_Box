@@ -10,12 +10,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <RecoilRoot>
-        <div className={styles.bodyWrapper}>
-          <Header />
-          <div className={styles.home}>
-            <Component {...pageProps} />
+        <div className={styles.all}>
+          <div className={styles.bodyWrapper}>
+            <Header />
+            <div className={styles.home}>
+              <Component {...pageProps} />
+            </div>
+            <Footer />
           </div>
-          <Footer />
         </div>
       </RecoilRoot>
     </>
