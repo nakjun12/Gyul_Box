@@ -7,6 +7,7 @@
   margin-top: -30px;
   position: relative;
   flex-direction: column;
+  height: auto;
   box-sizing: border-box; /* 추가 */
   .searchBar_bar {
     width: 500px;
@@ -36,9 +37,6 @@
       outline: none;
 
       box-shadow: none;
-      color: transparent;
-
-      text-shadow: 0 0 0 black;
     }
     .loading {
       position: absolute;
@@ -75,9 +73,8 @@
   position: absolute;
   z-index: 10px;
   top: 45px;
-  left: -2px;
+  left: 0px;
   width: 500px;
-
   background-color: white;
   padding: 8px;
   border-radius: 20px;
@@ -85,14 +82,11 @@
   border-color: white;
   z-index: 2000px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
   .autocomplete_item {
     padding: 10px;
     padding-left: 25px;
     border-radius: 20px;
     text-align: start;
-    &:hover {
-      background-color: var(--hover);
-      border-radius: 20px;
-    }
   }
 }
