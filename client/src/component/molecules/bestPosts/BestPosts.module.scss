@@ -15,21 +15,22 @@
   font-weight: 400;
 
   text-align: left;
-  width: 60%;
+  width: 750px;
   margin-bottom: 20px;
 }
 
 .bestposts {
   @include c-center();
-  width: 60%;
+  width: 70%;
   height: 100%;
   padding: 20px;
   margin-bottom: 20px;
   background-color: #ffffff;
   border-radius: 10px;
+  cursor: pointer;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   &:hover {
-    background-color: var(--green);
+    background-color: var(--hover);
   }
   .bestposts_title {
     @include center-sb();

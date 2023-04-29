@@ -1,40 +1,92 @@
-.SearchBarDiv {
+@import "./../../../styles/variables";
+
+.searchBarDiv {
   display: flex;
   text-align: center;
   justify-content: center;
   margin-top: -30px;
-
-  .aSearchBarDiv {
+  position: relative;
+  flex-direction: column;
+  height: auto;
+  box-sizing: border-box; /* 추가 */
+  .searchBar_bar {
     width: 500px;
-    border: 3px solid var(--orange);
+    border: 2px solid var(--orange);
     position: relative;
     display: flex;
     align-items: center;
-    border-radius: 20px;
-    padding-right: 9px;
+    border-radius: 40px 40px 40px 40px;
+
+    overflow: hidden;
+    background-color: var(--orange);
 
     .searchBarInput {
+      position: relative;
+      z-index: 1;
+      @include center();
       width: 100%;
       border-radius: 20px;
-      padding: 10px;
+      background-color: white;
       height: 40px;
       border: none;
+      outline: none;
+      font-size: 16px;
+      line-height: 40px;
+      padding-left: 30px;
+      border-bottom: none;
+      outline: none;
 
-      &:focus-within {
-        outline: none;
-      }
+      box-shadow: none;
+    }
+    .loading {
+      position: absolute;
+      right: 10px;
+      top: 10px;
     }
 
+    .search_div {
+      position: absolute;
+
+      right: 0px;
+      background-color: var(--orange);
+      width: 50px;
+      height: 80px;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .radius {
+      width: 20px;
+      height: 40px;
+
+      overflow: hidden;
+      z-index: 20;
+    }
     .searchImage {
       width: 17px;
       height: 17px;
     }
-    &:focus-within {
-      border: 3px solid var(--green);
-    }
   }
-
-  .listButton {
-    background-color: blue;
+}
+.autocomplete {
+  position: absolute;
+  z-index: 10px;
+  top: 45px;
+  left: 0px;
+  width: 500px;
+  background-color: white;
+  padding: 8px;
+  border-radius: 20px;
+  list-style: none;
+  border-color: white;
+  z-index: 2000px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  .autocomplete_item {
+    padding: 10px;
+    padding-left: 25px;
+    border-radius: 20px;
+    text-align: start;
   }
 }

@@ -2,7 +2,7 @@
 .wrapper {
   @include center-sb();
   width: 100%;
-  max-width: 1180px;
+  max-width: 1000px;
   height: 80px;
   border-bottom: 2px solid var(--orange);
   position: fixed;
