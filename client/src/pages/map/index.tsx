@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SearchBar from "../../component/molecules/searchBar/SearchBar";
 const kakao = typeof window !== "undefined" ? (window as any).kakao : null;
 
 interface Position {
@@ -255,10 +256,14 @@ export default function Ex() {
   }, [position]);
 
   return (
-    <>
-      <div>index</div>
-      <div id="map" style={{ width: "100%", height: "450px" }}></div>
-      <div className="btn">index</div>
-    </>
+    <div className="map_wrap">
+      <div className="map_top">
+        <SearchBar />
+      </div>
+      <div className="map_bottom">
+        <SearchBar />
+      </div>
+      <div id="map" style={{ width: "100%", height: "100%" }}></div>
+    </div>
   );
 }
