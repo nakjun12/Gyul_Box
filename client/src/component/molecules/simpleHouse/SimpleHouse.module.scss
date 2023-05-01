@@ -1,0 +1,27 @@
+.section {
+  width: 500px;
+  height: 100px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--hover);
+  }
+  /* 뷰포트 너비가 500px 이하일 때 */
+  @media (max-width: 500px) {
+    .section {
+      width: 100%;
+    }
+  }
+
+  /* 뷰포트 너비가 500px보다 클 때 */
+  @media (min-width: 501px) {
+    .section {
+      width: 500px;
+    }
+  }
+}

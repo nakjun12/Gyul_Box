@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import SearchBar from "../../component/molecules/searchBar/SearchBar";
+import SimpleHouse from "../../component/molecules/simpleHouse/SimpleHouse";
 const kakao = typeof window !== "undefined" ? (window as any).kakao : null;
 
 interface Position {
@@ -261,7 +262,7 @@ export default function Ex() {
         <SearchBar />
       </div>
       <div className="map_bottom">
-        <SearchBar />
+        <SimpleHouse />
       </div>
       <div id="map" style={{ width: "100%", height: "100%" }}></div>
     </div>
