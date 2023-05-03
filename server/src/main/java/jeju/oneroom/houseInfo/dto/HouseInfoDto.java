@@ -46,9 +46,6 @@ public class HouseInfoDto {
         private String platPlc;
         private double avgRate;
         private int reviewCount;
-
-        private Coordinate coordinate;
-
     }
 
     @Getter

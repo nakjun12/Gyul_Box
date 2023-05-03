@@ -40,6 +40,10 @@ public class ReviewDto {
         private String residenceYear;
         private String floor;
         private Rate rate;
+
+        public void setReviewId(long reviewId) {
+            this.reviewId = reviewId;
+        }
     }
 
     @Getter
@@ -55,7 +59,7 @@ public class ReviewDto {
         private String residenceYear;
         private String floor;
         private double avgRate;
-        private int likes;
+        private long likes;
 
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
@@ -75,7 +79,7 @@ public class ReviewDto {
         private String disadvantage;
         // 최다 추천 리뷰의 평균 별점
         private double avgRate;
-        private int likes;
+        private long likes;
 
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;

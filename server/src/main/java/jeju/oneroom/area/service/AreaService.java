@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -17,8 +20,11 @@ public class AreaService {
     private final AreaRepository areaRepository;
     private final AreaMapper areaMapper;
 
-    public AreaDto.Response findArea(long areaCode){
-        Area area = areaRepository.findById(areaCode).orElse(null);
-        return areaMapper.areaToResponseDto(area);
+    public List<AreaDto.Response> findAreasByAreaName(String areaName){
+        return areaRepository.findByAreaName(areaName).stream().map(areaMapper::areaToResponseDto).collect(Collectors.toList());
+    }
+
+    public Area findVerifiedAreaByAreaCode(long areaCode){
+        return areaRepository.findById(areaCode).orElseThrow(() -> new RuntimeException("AREA_NOT_FOUND"));
     }
 }

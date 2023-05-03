@@ -1,5 +1,6 @@
 package jeju.oneroom.review.repository;
 
+import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.review.entity.Review;
 import jeju.oneroom.user.entity.User;
@@ -11,11 +12,11 @@ import java.util.List;
 
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    List<Review> findByHouseInfo(HouseInfo houseInfo);
+    Page<Review> findByHouseInfo_Area(Area area, Pageable pageable);
+
+    List<Review> findTop5ByHouseInfo_Area(Area area);
 
     Page<Review> findByUser(User user, Pageable pageable);
 
-    List<Review> findTop5ByOrderByCreatedAtDesc(); // 최신 리뷰 5개
-
-    List<Review> findTop5ByOrderByLikesDesc(); // 최신 리뷰 5개
+    List<Review> findTop2ByOrderByLikesDesc(); // 최신 리뷰 2개
 }

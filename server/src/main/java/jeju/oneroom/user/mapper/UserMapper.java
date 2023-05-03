@@ -19,8 +19,6 @@ public interface UserMapper {
     //@Mapping(target = "town", expression = "user.get")
     UserDto.Response userToResponseDto(User user);
 
-    List<UserDto.Response> usersToResponseDtos(List<User> users);
-
     UserDto.SimpleResponseDto userToSimpleResponseDto(User user);
 
     default String toString(Area area){

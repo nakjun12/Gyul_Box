@@ -1,5 +1,7 @@
 package jeju.oneroom.houseInfo.controller;
 
+import jeju.oneroom.area.entity.Area;
+import jeju.oneroom.area.service.AreaService;
 import jeju.oneroom.common.dto.ListResponseDto;
 import jeju.oneroom.houseInfo.service.HouseInfoService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class HouseInfoController {
     private final HouseInfoService houseInfoService;
+    private final AreaService areaService;
 
     @PostMapping("/houseInfos")
     public ResponseEntity<?> post() {
@@ -41,6 +44,7 @@ public class HouseInfoController {
     @GetMapping("areas/{area-id}/houseInfos")
     public ResponseEntity<?> getAreaHouseInfos(@PathVariable("area-id") long areaCode,
                                                @RequestParam int level) {
-        return new ResponseEntity<>(new ListResponseDto<>(houseInfoService.findAreaHouseInfos(areaCode, level)), HttpStatus.OK);
+        Area area = areaService.findVerifiedAreaByAreaCode(areaCode);
+        return new ResponseEntity<>(new ListResponseDto<>(houseInfoService.findAreaHouseInfos(area, level)), HttpStatus.OK);
     }
 }

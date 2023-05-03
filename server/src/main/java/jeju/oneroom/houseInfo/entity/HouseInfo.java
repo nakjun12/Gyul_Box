@@ -9,7 +9,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
 public class HouseInfo extends BaseEntity {
     @Id
     @Column(name = "houseInfo_id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String houseName;
@@ -33,15 +33,15 @@ public class HouseInfo extends BaseEntity {
     private int ugrndFloor;
     private int elevator;
     private String platPlc;
-    @ColumnDefault("0")
+    @Basic(fetch=FetchType.LAZY)
+    @Formula("(select count(*) from review r where r.house_info_id = house_info_id)")
     private int reviewCount;
-
 
     @Embedded
     private Rate rate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "town_id")
+    @JoinColumn(name = "area_id")
     private Area area;
 
     @OneToMany(mappedBy = "houseInfo")
