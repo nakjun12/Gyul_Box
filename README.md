@@ -3,7 +3,7 @@
 # **프로젝트 소개**
  ## 제두도 한달살이
 
-- 배포 링크 : https://team-poject-hee8z5ef0-nakjun12.vercel.app/
+- 배포 링크 : https://team-poject-9f1tk38np-nakjun12.vercel.app
 (임시)
 - 서버 배포 링크 : 준비중
 - 프로젝트 wiki 바로가기 : 준비중
