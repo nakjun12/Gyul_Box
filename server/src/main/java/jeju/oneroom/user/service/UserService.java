@@ -33,7 +33,7 @@ public class UserService {
     }
 
     //회원 단건 조회
-    public UserDto.Response getMember(long userId) {
+    public UserDto.Response getUser(long userId) {
         return userMapper.userToResponseDto(userRepository.findById(userId).orElse(null));
     }
 
@@ -42,4 +42,8 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
+    // 유효한 회원 확인
+    public User findVerifiedUser(long userId) {
+        return userRepository.findById(userId).orElseThrow(() -> new RuntimeException("USER_NOT_FOUND"));
+    }
 }

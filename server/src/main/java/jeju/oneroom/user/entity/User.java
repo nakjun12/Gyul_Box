@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "USERS")
 public class User extends BaseEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long id;
 

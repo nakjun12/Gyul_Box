@@ -18,23 +18,27 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class HouseInfoService {
     private final HouseInfoRepository houseInfoRepository;
-    private final AreaRepository areaRepository;
 
     private final HouseInfoMapper houseInfoMapper;
 
-    public HouseInfoDto.Response findHouseInfo(long houseInfoId){
-        HouseInfo houseInfo = houseInfoRepository.findById(houseInfoId).orElse(null);
-        return houseInfoMapper.houseInfoToResponseDto(houseInfo);
+    public HouseInfoDto.Response findHouseInfo(long houseInfoId) {
+        return houseInfoMapper.houseInfoToResponseDto(findVerifiedHouseInfo(houseInfoId));
     }
 
-    public HouseInfoDto.SimpleResponse findHouseInfoSimple(long houseInfoId){
-        HouseInfo houseInfo = houseInfoRepository.findById(houseInfoId).orElse(null);
-        return houseInfoMapper.houseInfoToSimpleResponseDto(houseInfo);
+    public HouseInfoDto.SimpleResponse findHouseInfoSimple(long houseInfoId) {
+        return houseInfoMapper.houseInfoToSimpleResponseDto(findVerifiedHouseInfo(houseInfoId));
     }
 
-    public List<HouseInfoDto.SimpleCountResponse> findAreaHouseInfos(long areaCode, int level){
-        Area area = areaRepository.findById(areaCode).orElse(null);
+    public List<HouseInfoDto.SimpleCountResponse> findAreaHouseInfos(Area area, int level) {
         return level >= 9 ? houseInfoRepository.findTop20ByAreaOrderByReviewCount(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList())
                 : houseInfoRepository.findByArea(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList());
+    }
+
+    public HouseInfo findVerifiedHouseInfo(long houseInfoId) {
+        return houseInfoRepository.findById(houseInfoId).orElseThrow(() -> new RuntimeException("HOUSEINFO_NOT_FOUND"));
+    }
+
+    public HouseInfo findVerifiedHouseInfoByAddress(String address) {
+        return houseInfoRepository.findByPlatPlc(address).orElseThrow(() -> new RuntimeException("HOUSEINFO_NOT_FOUND"));
     }
 }

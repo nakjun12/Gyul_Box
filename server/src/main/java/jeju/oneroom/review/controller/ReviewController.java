@@ -1,21 +1,23 @@
 package jeju.oneroom.review.controller;
 
 import jeju.oneroom.area.entity.Area;
-import jeju.oneroom.area.repository.AreaRepository;
+import jeju.oneroom.area.service.AreaService;
 import jeju.oneroom.common.dto.ListResponseDto;
 import jeju.oneroom.common.dto.MultiResponseDto;
+import jeju.oneroom.houseInfo.entity.HouseInfo;
+import jeju.oneroom.houseInfo.service.HouseInfoService;
 import jeju.oneroom.review.dto.ReviewDto;
+import jeju.oneroom.review.entity.Review;
 import jeju.oneroom.review.service.ReviewService;
+import jeju.oneroom.user.entity.User;
+import jeju.oneroom.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Positive;
-
 import java.util.List;
 
 @RestController
@@ -23,41 +25,31 @@ import java.util.List;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final UserService userService;
+    private final AreaService areaService;
+    private final HouseInfoService houseInfoService;
 
     @PostMapping("/reviews")
-    public ResponseEntity<?> post(@Valid @RequestBody ReviewDto.Post postDto) {
-        reviewService.createReview(postDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<?> post(@Valid @RequestBody ReviewDto.Post postDto,
+                                  @RequestParam long userId) {
+        HouseInfo houseInfo = houseInfoService.findVerifiedHouseInfoByAddress(postDto.getAddress());
+        User user = userService.findVerifiedUser(userId);
+        Review review = reviewService.createReview(postDto, houseInfo, user);
+        return new ResponseEntity<>(review.getId(), HttpStatus.CREATED);
     }
 
     @PatchMapping("/reviews/{review-id}")
-    public ResponseEntity<?> patch(@Valid @RequestBody ReviewDto.Patch patchDto) {
-        reviewService.updateReview(patchDto);
-
-//        ReviewDto.Patch patchDto2 = ReviewDto.Patch.builder()
-//                .reviewId(reviewId)
-//                .advantage(patchDto.getAdvantage())
-//                .disadvantage(patchDto.getDisadvantage())
-//                .adminCost(patchDto.getAdminCost())
-//                .residenceYear(patchDto.getResidenceYear())
-//                .floor(patchDto.getFloor())
-//                .rate(patchDto.getRate())
-//                .build();
-
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> patch(@Valid @RequestBody ReviewDto.Patch patchDto,
+                                   @PathVariable("review-id") long reviewId) {
+        patchDto.setReviewId(reviewId);
+        Review review = reviewService.updateReview(patchDto);
+        return new ResponseEntity<>(review.getId(), HttpStatus.OK);
     }
 
     @DeleteMapping("/reviews/{review-id}")
     public ResponseEntity<?> delete(@PathVariable("review-id") long reviewId) {
         reviewService.deleteReview(reviewId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @PutMapping("/reviews/likes/{review-id}/{user-id}")
-    public ResponseEntity<?> putLikes(@PathVariable("review-id") @Positive long reviewId,
-                                      @PathVariable("user-id") @Positive long userId) {
-        reviewService.likeReview(reviewId, userId);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //  리뷰 단일 조회
@@ -67,40 +59,37 @@ public class ReviewController {
         return new ResponseEntity<>(findReview, HttpStatus.OK);
     }
 
-    @GetMapping("/reviews/latest5") // 최신순 5개
-    public ResponseEntity<?> getTop5LatestReviews() {
-        List<ReviewDto.SimpleResponse> top5LatestReviews = reviewService.findTop5LatestReviews();
-        return new ResponseEntity<>(new ListResponseDto<>(top5LatestReviews), HttpStatus.OK);
-    }
-
-    @GetMapping("/reviews/hottest5") // 추천순 5개
-    public ResponseEntity<?> getTop5HottestReviews() {
-        List<ReviewDto.SimpleResponse> top5HottestReviews = reviewService.findTop5HottestReviews();
-        return new ResponseEntity<>(new ListResponseDto<>(top5HottestReviews), HttpStatus.OK);
+    @GetMapping("/reviews/hottest2") // 추천순 2개
+    public ResponseEntity<?> getTop2HottestReviews() {
+        List<ReviewDto.SimpleResponse> top2HottestReviews = reviewService.findTop2HottestReviews();
+        return new ResponseEntity<>(new ListResponseDto<>(top2HottestReviews), HttpStatus.OK);
     }
 
     // 유저 관심 지역 추천 순 리뷰 5개
     @GetMapping("users/{user-id}/user-areas/reviews")
-    public ResponseEntity<?> getUserAreaReviews(@PathVariable("user-id") long userId) {
-        List<ReviewDto.SimpleResponse> userAreaReviews = reviewService.findUserAreaReviews(userId);
+    public ResponseEntity<?> getTop5UserAreaReviews(@PathVariable("user-id") long userId) {
+        User user = userService.findVerifiedUser(userId);
+        List<ReviewDto.SimpleResponse> userAreaReviews = reviewService.findTop5UserAreaReviews(user);
         return new ResponseEntity<>(new ListResponseDto<>(userAreaReviews), HttpStatus.OK);
     }
 
-    // 유저 리뷰 찾기  추후 findUserTownReviews 메서드와 통합 시도.
+    // 유저 리뷰 찾기
     @GetMapping("users/{user-id}/reviews")
     public ResponseEntity<?> getUserReviews(@RequestParam int page,
                                             @RequestParam int size,
                                             @PathVariable("user-id") long userId) {
-        Page<ReviewDto.SimpleResponse> userReviews = reviewService.findUserReviews(userId, page, size);
+        User user = userService.findVerifiedUser(userId);
+        Page<ReviewDto.SimpleResponse> userReviews = reviewService.findUserReviews(user, page, size);
         return new ResponseEntity<>(new MultiResponseDto<>(userReviews), HttpStatus.OK);
     }
 
-    // Town에 따른 거주 리뷰 아마 30개?
+    // Area에 따른 거주 리뷰 아마 30개?
     @GetMapping("areas/{area-id}/reviews")
     public ResponseEntity<?> getAreaReviews(@RequestParam int page,
                                             @RequestParam int size,
                                             @PathVariable("area-id") long areaCode) {
-        List<ReviewDto.SimpleResponse> areaReviews = reviewService.findAreaReviews(areaCode, page, size);
-        return new ResponseEntity<>(new ListResponseDto<>(areaReviews), HttpStatus.OK);
+        Area area = areaService.findVerifiedAreaByAreaCode(areaCode);
+        Page<ReviewDto.SimpleResponse> areaReviews = reviewService.findAreaReviews(area, page, size);
+        return new ResponseEntity<>(new MultiResponseDto<>(areaReviews), HttpStatus.OK);
     }
 }

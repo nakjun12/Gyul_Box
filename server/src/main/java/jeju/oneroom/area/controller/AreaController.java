@@ -5,6 +5,7 @@ import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.area.mapper.AreaMapper;
 import jeju.oneroom.area.repository.AreaRepository;
 import jeju.oneroom.area.service.AreaService;
+import jeju.oneroom.common.dto.ListResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +32,8 @@ public class AreaController {
     }
 
     // 프론트에서 동면읍, 시에 대한 정보를 데이터로 갖고 잊을건지?
-    @GetMapping("/areas/{area-id}")
-    public ResponseEntity<?> getArea(@PathVariable("area-id") long areaCode) {
-        return new ResponseEntity<>(areaService.findArea(areaCode), HttpStatus.OK);
+    @GetMapping("/areas")
+    public ResponseEntity<?> getArea(@RequestParam("name") String areaName) {
+        return new ResponseEntity<>(new ListResponseDto<>(areaService.findAreasByAreaName(areaName)), HttpStatus.OK);
     }
 }
