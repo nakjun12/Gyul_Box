@@ -65,7 +65,7 @@ public class ReviewDto {
         private LocalDateTime modifiedAt;
 
         // 작성자 정보는 머지 후 추가
-        private UserDto.SimpleResponseDto writer;
+        private UserDto.SimpleResponse writer;
     }
 
     // 특정 동의 추천 순 리뷰 30개

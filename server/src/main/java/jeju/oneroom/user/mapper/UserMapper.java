@@ -1,27 +1,16 @@
 package jeju.oneroom.user.mapper;
 
-import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.user.dto.UserDto;
 import jeju.oneroom.user.entity.User;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
-
-import java.util.List;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
     User postDtoToUser(UserDto.Post postDto);
 
-    @Mapping(target = "area", ignore=true)
-    User patchDtoToUser(UserDto.Patch patchDto);
-
-    //@Mapping(target = "town", expression = "user.get")
+    @Mapping(target = "areaName", source = "area.areaName")
+    @Mapping(target = "profileImageUrl", ignore = true)
     UserDto.Response userToResponseDto(User user);
 
-    UserDto.SimpleResponseDto userToSimpleResponseDto(User user);
-
-    default String toString(Area area){
-        return area.getAreaName();
-    }
+    UserDto.SimpleResponse userToSimpleResponseDto(User user);
 }

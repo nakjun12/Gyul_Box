@@ -33,7 +33,7 @@ public class ReviewController {
     public ResponseEntity<?> post(@Valid @RequestBody ReviewDto.Post postDto,
                                   @RequestParam long userId) {
         HouseInfo houseInfo = houseInfoService.findVerifiedHouseInfoByAddress(postDto.getAddress());
-        User user = userService.findVerifiedUser(userId);
+        User user = userService.verifyExistsUser(userId);
         Review review = reviewService.createReview(postDto, houseInfo, user);
         return new ResponseEntity<>(review.getId(), HttpStatus.CREATED);
     }
@@ -68,7 +68,7 @@ public class ReviewController {
     // 유저 관심 지역 추천 순 리뷰 5개
     @GetMapping("users/{user-id}/user-areas/reviews")
     public ResponseEntity<?> getTop5UserAreaReviews(@PathVariable("user-id") long userId) {
-        User user = userService.findVerifiedUser(userId);
+        User user = userService.verifyExistsUser(userId);
         List<ReviewDto.SimpleResponse> userAreaReviews = reviewService.findTop5UserAreaReviews(user);
         return new ResponseEntity<>(new ListResponseDto<>(userAreaReviews), HttpStatus.OK);
     }
@@ -78,7 +78,7 @@ public class ReviewController {
     public ResponseEntity<?> getUserReviews(@RequestParam int page,
                                             @RequestParam int size,
                                             @PathVariable("user-id") long userId) {
-        User user = userService.findVerifiedUser(userId);
+        User user = userService.verifyExistsUser(userId);
         Page<ReviewDto.SimpleResponse> userReviews = reviewService.findUserReviews(user, page, size);
         return new ResponseEntity<>(new MultiResponseDto<>(userReviews), HttpStatus.OK);
     }

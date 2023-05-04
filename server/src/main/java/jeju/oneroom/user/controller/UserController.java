@@ -1,45 +1,53 @@
 package jeju.oneroom.user.controller;
 
+import jeju.oneroom.area.entity.Area;
+import jeju.oneroom.area.service.AreaService;
 import jeju.oneroom.user.dto.UserDto;
+import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
+@Slf4j
+@Validated
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
-@Slf4j
 public class UserController {
 
     private final UserService userService;
+    private final AreaService areaService;
 
-    //회원 생성
     @PostMapping
-    public ResponseEntity<?> post(@Valid @RequestBody UserDto.Post postDto) {
-        UserDto.Response response = userService.createUser(postDto);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    public ResponseEntity<Long> post(@Valid @RequestBody UserDto.Post postDto) {
+        User user = userService.createUser(postDto);
+        return new ResponseEntity<>(user.getId(), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{user-id}")
-    public ResponseEntity<?> patch(@Valid @RequestBody UserDto.Patch patchDto) {
-        UserDto.Response response = userService.updateUser(patchDto);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<Long> patch(@PathVariable("user-id") @Positive Long userId,
+                                                  @Valid @RequestBody UserDto.Patch patchDto) {
+        patchDto.setUserId(userId);
+        Area area = areaService.findVerifiedAreaByAreaCode(patchDto.getAreaCode());
+        User user = userService.updateUser(patchDto, area);
+        return new ResponseEntity<>(user.getId(), HttpStatus.OK);
     }
 
     @GetMapping("/{user-id}")
-    public ResponseEntity<?> get(@PathVariable("user-id") @Positive long userId) {
-        UserDto.Response response = userService.getUser(userId);
+    public ResponseEntity<UserDto.Response> get(@PathVariable("user-id") @Positive Long userId) {
+        UserDto.Response response = userService.findUser(userId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @DeleteMapping("/{user-id}")
-    public ResponseEntity<?> delete(@PathVariable("user-id") @Positive long userId) {
+    public ResponseEntity<Void> delete(@PathVariable("user-id") @Positive Long userId) {
         userService.deleteUser(userId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

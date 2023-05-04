@@ -34,7 +34,7 @@ public class PostDto {
     @NoArgsConstructor
     public static class Response {
         private Long id; // postId
-        private UserDto.SimpleResponseDto writer;
+        private UserDto.SimpleResponse writer;
         private String title; // 제목
         private String content; // 내용
         private String houseAddress;
