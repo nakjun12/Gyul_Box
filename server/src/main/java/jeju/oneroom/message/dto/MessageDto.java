@@ -28,7 +28,7 @@ public class MessageDto {
         private Long id; // messageId
         private String content; // 내용
         private LocalDateTime createdAt; // 보낸시간
-        private UserDto.SimpleResponseDto user;
+        private UserDto.SimpleResponse user;
     }
 }
 

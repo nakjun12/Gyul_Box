@@ -14,36 +14,33 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class UserService {
-    private final UserRepository userRepository;
+
     private final UserMapper userMapper;
-    private final AreaRepository areaRepository;
+    private final UserRepository userRepository;
 
-    //회원 생성
-    public UserDto.Response createUser(UserDto.Post postDto) {
-        User createUser = userRepository.save(userMapper.postDtoToUser(postDto));
-        return userMapper.userToResponseDto(createUser);
+    @Transactional
+    public User createUser(UserDto.Post postDto) {
+        return userRepository.save(userMapper.postDtoToUser(postDto));
     }
 
-    //회원 정보 수정
-    public UserDto.Response updateUser(UserDto.Patch patchDto) {
-        User findUser = userMapper.patchDtoToUser(patchDto);
-        Area area = areaRepository.findById(patchDto.getAreaCode()).orElse(null);
-        findUser.setArea(area);
-        return userMapper.userToResponseDto(findUser);
+    @Transactional
+    public User updateUser(UserDto.Patch patchDto, Area area) {
+        User foundUser = verifyExistsUser(patchDto.getId());
+        foundUser.update(patchDto.getNickname(), area);
+        return foundUser;
     }
 
-    //회원 단건 조회
-    public UserDto.Response getUser(long userId) {
-        return userMapper.userToResponseDto(userRepository.findById(userId).orElse(null));
+    public UserDto.Response findUser(Long userId) {
+        User foundUser = verifyExistsUser(userId);
+        return userMapper.userToResponseDto(foundUser);
     }
 
-    //회원 탈퇴
-    public void deleteUser(long userId) {
+    @Transactional
+    public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }
 
-    // 유효한 회원 확인
-    public User findVerifiedUser(long userId) {
+    public User verifyExistsUser(Long userId) {
         return userRepository.findById(userId).orElseThrow(() -> new RuntimeException("USER_NOT_FOUND"));
     }
 }

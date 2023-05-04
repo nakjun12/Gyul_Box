@@ -32,6 +32,6 @@ public class PostCommentDto {
         private String content; // 내용
         private LocalDateTime createdAt; // 작성 날짜
         private LocalDateTime modifiedAt; // 수정날짜
-        private UserDto.SimpleResponseDto writer; // 작성자 정보
+        private UserDto.SimpleResponse writer; // 작성자 정보
     }
 }

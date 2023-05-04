@@ -17,11 +17,15 @@ import java.util.List;
 public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", insertable = false, updatable = false)
+    @Column(name = "user_id")
     private Long id;
 
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String nickname;
+
     private String profileImageUrl;
 
     @OneToMany(mappedBy = "sender")
@@ -46,6 +50,11 @@ public class User extends BaseEntity {
         this.area = area;
         this.reviews = reviews;
         this.id = id;
+    }
+
+    public void update(String nickname, Area area) {
+        this.nickname = nickname;
+        this.area = area;
     }
 
     public void setArea(Area area) {

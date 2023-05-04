@@ -5,43 +5,47 @@ import lombok.*;
 public class UserDto {
 
     @Getter
-    @AllArgsConstructor
     @Builder
     @NoArgsConstructor
+    @AllArgsConstructor
     public static class Post {
-        private String email; // 이메일
-        private String nickname; // 닉네임
+        private String email;
+        private String nickname;
     }
 
     @Getter
-    @AllArgsConstructor
     @Builder
     @NoArgsConstructor
+    @AllArgsConstructor
     public static class Patch {
         private Long id;
-        private String nickname; // 닉네임
+        private String nickname;
         private Long areaCode; // 관심지역
+
+        public void setUserId(Long id) {
+            this.id = id;
+        }
     }
 
     @Getter
-    @AllArgsConstructor
     @Builder
     @NoArgsConstructor
+    @AllArgsConstructor
     public static class Response {
-        private Long id; // id
-        private String email; // 이메일
-        private String area;
-        private String nickname; //닉네임
-        private String profileImageUrl;
+        private Long id;
+        private String email;
+        private String areaName;
+        private String nickname;
+        private String profileImageUrl; // 프로필 이미지 URL
     }
 
     @Getter
-    @AllArgsConstructor
     @Builder
     @NoArgsConstructor
-    public static class SimpleResponseDto {
-        private Long id; // userId 보내기
-        private String nickname; //닉네임
-        private String profileImageUrl; // 프로필 이미지 URL
+    @AllArgsConstructor
+    public static class SimpleResponse {
+        private Long id;
+        private String nickname;
+        private String profileImageUrl;
     }
 }
