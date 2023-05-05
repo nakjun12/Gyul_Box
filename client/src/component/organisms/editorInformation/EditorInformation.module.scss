@@ -1,0 +1,12 @@
+.buliding_wrapper {
+  width: 80%;
+  background-color: var(--inputGray);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  input {
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+  }
+}

@@ -8,7 +8,7 @@ import DragCarousel from "../component/organisms/dragCarousel/DragCarousel";
 import styles from "./../styles/Home.module.scss";
 type Props = {};
 
-export default function home({}: Props) {
+export default function Home({}: Props) {
   return (
     <>
       <div className={styles.wrapper}>
