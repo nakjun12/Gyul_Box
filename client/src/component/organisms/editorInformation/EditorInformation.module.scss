@@ -3,7 +3,7 @@
   background-color: var(--inputGray);
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 20px 30px;
   label {
     font-size: 16px;
     font-weight: bold;
@@ -16,7 +16,10 @@
     border-radius: 10px;
 
     &::placeholder {
-      color: red;
+      color: var(--textGray);
+      font-weight: 500;
+      font-family: var(--pretendard);
+      font-size: 16px;
     }
     ::-webkit-slider-thumb {
       -webkit-appearance: none;
@@ -32,7 +35,7 @@
     padding: 0;
     border-radius: 10px;
     width: 200px;
-    accent-color: var(--green);
+    accent-color: var(--orange);
   }
 }
 

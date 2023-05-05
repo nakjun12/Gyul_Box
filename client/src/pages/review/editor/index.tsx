@@ -1,5 +1,5 @@
 import Buliding from "../../../component/organisms/editorInformation/Buliding";
-
+import Satisfaction from "../../../component/organisms/editorInformation/Satisfaction";
 type Props = {};
 
 export default function Index({}: Props) {
@@ -11,10 +11,12 @@ export default function Index({}: Props) {
         </label>
         <Buliding />
       </div>
-      <label htmlFor="title" className="editor_title">
-        만족도
-      </label>
-      <div>하이</div>
+      <div className="editor_wrapper">
+        <label htmlFor="title" className="editor_title">
+          만족도
+        </label>
+        <Satisfaction />
+      </div>
     </main>
   );
 }
