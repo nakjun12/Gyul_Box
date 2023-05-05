@@ -15,7 +15,6 @@ const imageList = [
 ];
 
 export default function CarouselExample() {
-  const [hide, setHide] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [transX, setTransX] = useState(0);
 
@@ -28,7 +27,7 @@ export default function CarouselExample() {
         ref={ref}
         className={styles.carousel_wrapper}
         style={{
-          overflow: hide ? "hidden" : "visible",
+          overflow: "hidden",
         }}
       >
         <div
@@ -44,7 +43,6 @@ export default function CarouselExample() {
             },
             onDragEnd: (deltaX: any) => {
               const maxIndex = imageList.length - 2;
-              console.log(maxIndex, "히히", transX);
 
               if (deltaX < -10) {
                 setCurrentIndex(inrange(currentIndex + 1, 0, maxIndex));

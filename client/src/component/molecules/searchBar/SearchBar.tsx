@@ -26,7 +26,7 @@ export default function SearchBar({}: Props) {
   const divRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      console.log("기히")
+      console.log("기히");
       if (divRef.current && !divRef.current.contains(event.target)) {
         blur(); // 원하는 동작 수행
       }
@@ -91,7 +91,7 @@ export default function SearchBar({}: Props) {
   const blur = () => {
     setIsVisible(false);
     setSelected(-1);
-
+    if (inputRef.current) inputRef.current.blur();
     //밖에 눌렀을떄 -1되야함
     //1의 경우의수 밖 눌렀을때
     //2의 경우의 수 안을 눌렀을떄
