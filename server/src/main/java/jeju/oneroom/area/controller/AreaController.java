@@ -32,7 +32,7 @@ public class AreaController {
     }
 
     // 프론트에서 동면읍, 시에 대한 정보를 데이터로 갖고 잊을건지?
-    @GetMapping("/areas")
+    @GetMapping("/areas/search")
     public ResponseEntity<?> getArea(@RequestParam("name") String areaName) {
         return new ResponseEntity<>(new ListResponseDto<>(areaService.findAreasByAreaName(areaName)), HttpStatus.OK);
     }

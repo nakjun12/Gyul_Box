@@ -28,6 +28,9 @@ public class ReviewService {
     @Transactional
     public Review createReview(ReviewDto.Post postDto, HouseInfo houseInfo, User user) {
         Review review = reviewMapper.postDtoToReview(postDto);
+        double count = houseInfo.getReviewCount();
+        double newCount = (1/count)*review.getRate().getBuildingRate() + (count-1/count)*houseInfo.getRate().getBuildingRate();
+
         review.setProperties(houseInfo, user);
         return reviewRepository.save(review);
     }

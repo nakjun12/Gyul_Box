@@ -1,7 +1,7 @@
 package jeju.oneroom.houseInfo.service;
 
 import jeju.oneroom.area.entity.Area;
-import jeju.oneroom.area.repository.AreaRepository;
+import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.houseInfo.dto.HouseInfoDto;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.houseInfo.mapper.HouseInfoMapper;
@@ -29,16 +29,28 @@ public class HouseInfoService {
         return houseInfoMapper.houseInfoToSimpleResponseDto(findVerifiedHouseInfo(houseInfoId));
     }
 
-    public List<HouseInfoDto.SimpleCountResponse> findAreaHouseInfos(Area area, int level) {
+    public List<HouseInfoDto.SimpleCountResponse> findHouseInfosByArea(Area area, int level) {
         return level >= 9 ? houseInfoRepository.findTop20ByAreaOrderByReviewCount(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList())
                 : houseInfoRepository.findByArea(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList());
     }
 
-    public HouseInfo findVerifiedHouseInfo(long houseInfoId) {
-        return houseInfoRepository.findById(houseInfoId).orElseThrow(() -> new RuntimeException("HOUSEINFO_NOT_FOUND"));
+    public List<HouseInfoDto.SimpleContentResponse> findHouseInfosByContent(String content) {
+        return houseInfoRepository.findByPlatPlcContains(content).stream().map(houseInfoMapper::houseInfoToSimpleContentResponseDto).collect(Collectors.toList());
     }
 
-    public HouseInfo findVerifiedHouseInfoByAddress(String address) {
-        return houseInfoRepository.findByPlatPlc(address).orElseThrow(() -> new RuntimeException("HOUSEINFO_NOT_FOUND"));
+    public void updateHouseInfoRate(HouseInfo houseInfo, Rate rate) {
+        double reviewCount = houseInfo.getReviewCount();
+        Rate newRate = Rate.builder()
+                .buildingRate(Math.round((1 / reviewCount * rate.getBuildingRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getBuildingRate()) * 1000) / 100.0)
+                .securityRate(Math.round((1 / reviewCount * rate.getSecurityRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getSecurityRate()) * 1000) / 100.0)
+                .interiorRate(Math.round((1 / reviewCount * rate.getInteriorRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getInteriorRate()) * 1000) / 100.0)
+                .locationRate(Math.round((1 / reviewCount * rate.getLocationRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getLocationRate()) * 1000) / 100.0)
+                .trafficRate(Math.round((1 / reviewCount * rate.getTrafficRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getTrafficRate()) * 1000) / 100.0)
+                .build();
+        houseInfo.updateRate(newRate);
+    }
+
+    public HouseInfo findVerifiedHouseInfo(long houseInfoId) {
+        return houseInfoRepository.findById(houseInfoId).orElseThrow(() -> new RuntimeException("HOUSEINFO_NOT_FOUND"));
     }
 }

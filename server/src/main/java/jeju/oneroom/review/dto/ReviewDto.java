@@ -23,8 +23,8 @@ public class ReviewDto {
         private String floor;
         private Rate rate;
 
-        // houseInfo와 매핑하기 위한 주소
-        private String address;
+        // houseInfo와 매핑하기 위한 id
+        private long houseInfoId;
     }
 
     // 리뷰하는 건물이 달라지는 경우는 delete 후 새로 post

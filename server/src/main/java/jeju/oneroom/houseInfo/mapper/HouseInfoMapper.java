@@ -16,4 +16,6 @@ public interface HouseInfoMapper {
     HouseInfoDto.SimpleResponse houseInfoToSimpleResponseDto(HouseInfo houseInfo);
 
     HouseInfoDto.SimpleCountResponse houseInfoToSimpleCountResponseDto(HouseInfo houseInfo);
+
+    HouseInfoDto.SimpleContentResponse houseInfoToSimpleContentResponseDto(HouseInfo houseInfo);
 }

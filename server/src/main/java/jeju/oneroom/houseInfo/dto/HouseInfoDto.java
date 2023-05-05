@@ -58,4 +58,14 @@ public class HouseInfoDto {
 
         private Coordinate coordinate;
     }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class SimpleContentResponse{
+        private Long id;
+        private String houseName;
+        private String platPlc;
+    }
 }
