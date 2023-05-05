@@ -125,21 +125,38 @@ a {
   padding: 0 20px;
   padding-top: 20px;
   background-color: white;
-  height: auto;
-  @include c-center;
-
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
   .editor_wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
 
     width: 100%;
-    height: 100%;
+    height: auto;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
   }
 }
 
 .editor_title {
-  margin: 20px 0;
+  margin: 20px 20px;
+  padding: 0 10px;
   font-size: 20px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  .editor_title_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      cursor: pointer;
+      margin-left: 30px;
+    }
+  }
 }

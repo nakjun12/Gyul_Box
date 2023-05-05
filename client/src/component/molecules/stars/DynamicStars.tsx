@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { AiTwotoneStar } from "react-icons/ai";
 import styles from "./Stars.module.scss";
 type Props = {
   stars?: number;
+  show: number;
+  setShow: Dispatch<SetStateAction<number>>;
 };
 
-export default function DynamicStars({ stars = 5 }: Props) {
-  const [show, setShow] = useState<number>(0);
+export default function DynamicStars({ stars = 5, show, setShow }: Props) {
   const Stars = 5;
 
   const StarIcons = Array.from({ length: Stars });
@@ -26,15 +27,6 @@ export default function DynamicStars({ stars = 5 }: Props) {
           size={35}
         />
       ))}
-      {/* {grayStarIcons.map((_, i) => (
-        <AiTwotoneStar
-          className={styles.star}
-          key={i + yellowStars}
-          onClick={() => handler(i)}
-          size={35}
-          style={{ color: "#b2b2b2" }}
-        />
-      ))} */}
     </div>
   );
 }

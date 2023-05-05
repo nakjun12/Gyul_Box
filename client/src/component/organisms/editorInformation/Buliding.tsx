@@ -36,8 +36,8 @@ const IndexPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.rangeContainer}>
-        <div className={styles.yearLabel}>{startYear}</div>
+      <div>
+        <div>{startYear}</div>
         <input
           type="range"
           min={2019}
@@ -49,8 +49,8 @@ const IndexPage = () => {
         />
       </div>
 
-      <div className={styles.rangeContainer}>
-        <div className={styles.yearLabel}>{endYear}</div>
+      <div>
+        <div>{endYear}</div>
         <input
           type="range"
           min={startYear}

@@ -1,0 +1,18 @@
+.ment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 16px;
+
+  .ment_label {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .ment_p {
+    font-size: 14px;
+    font-weight: 700;
+    color: #999999;
+    cursor: pointer;
+  }
+}
