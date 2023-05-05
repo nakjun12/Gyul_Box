@@ -4,9 +4,17 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
   input {
     border: none;
     padding: 15px;
     border-radius: 10px;
+    &::placeholder {
+      color: red;
+    }
   }
 }

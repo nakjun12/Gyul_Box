@@ -1,0 +1,48 @@
+import { ChangeEvent, useState } from "react";
+
+interface RadioButtonProps {
+  label: string;
+  value: string;
+  checked: boolean;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+function RadioButton({ label, value, checked, onChange }: RadioButtonProps) {
+  return (
+    <label>
+      <input type="radio" value={value} checked={checked} onChange={onChange} />
+      {label}
+    </label>
+  );
+}
+
+interface RadioButtonsProps {
+  options: { label: string; value: string }[];
+  defaultOption: string;
+  onChange: (value: string) => void;
+}
+
+function RadioButtons({ options, defaultOption, onChange }: RadioButtonsProps) {
+  const [selectedOption, setSelectedOption] = useState(defaultOption);
+
+  const handleOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedOption(event.target.value);
+    onChange(event.target.value);
+  };
+
+  return (
+    <div>
+      {options.map((option) => (
+        <RadioButton
+          key={option.value}
+          label={option.label}
+          value={option.value}
+          checked={selectedOption === option.value}
+          onChange={handleOptionChange}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default RadioButtons;
