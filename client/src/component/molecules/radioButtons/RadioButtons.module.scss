@@ -1,0 +1,23 @@
+@import "../../../styles/variables.scss";
+
+.radio_buttons_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
+  .label_style {
+    flex-basis: 25%;
+    input[type="radio"] {
+      margin-right: 10px;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      accent-color: var(--green);
+    }
+    input[type="radio"]:hover {
+      background-color: red;
+    }
+    [type="radio"]:focus-visible {
+      outline: 2px solid var(--orange);
+    }
+  }
+}

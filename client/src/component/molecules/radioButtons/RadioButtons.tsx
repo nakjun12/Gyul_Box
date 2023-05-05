@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-
+import styles from "./RadioButtons.module.scss";
 interface RadioButtonProps {
   label: string;
   value: string;
@@ -9,10 +9,17 @@ interface RadioButtonProps {
 
 function RadioButton({ label, value, checked, onChange }: RadioButtonProps) {
   return (
-    <label>
-      <input type="radio" value={value} checked={checked} onChange={onChange} />
-      {label}
-    </label>
+    <>
+      <label className={styles.label_style}>
+        <input
+          type="radio"
+          value={value}
+          checked={checked}
+          onChange={onChange}
+        />
+        {label}
+      </label>
+    </>
   );
 }
 
@@ -31,7 +38,7 @@ function RadioButtons({ options, defaultOption, onChange }: RadioButtonsProps) {
   };
 
   return (
-    <div>
+    <div className={styles.radio_buttons_wrapper}>
       {options.map((option) => (
         <RadioButton
           key={option.value}

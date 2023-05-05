@@ -11,6 +11,10 @@ export default function Index({}: Props) {
         </label>
         <Buliding />
       </div>
+      <label htmlFor="title" className="editor_title">
+        만족도
+      </label>
+      <div>하이</div>
     </main>
   );
 }
