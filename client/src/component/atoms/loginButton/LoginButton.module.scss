@@ -6,8 +6,10 @@
   color: white;
   border: none;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
 
   &:hover {
-    background-color: var(--green);
+    transform: scale(1.1);
   }
 }

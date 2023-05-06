@@ -5,7 +5,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export default function OrangeButton({ onClick, children }: Props) {
+export default function LoginButton({ onClick, children }: Props) {
   return (
     <button className={styles.btn} onClick={onClick}>
       {children}

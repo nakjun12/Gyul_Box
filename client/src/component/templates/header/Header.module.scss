@@ -37,6 +37,9 @@
   font-size: 18px;
   color: var(--orange);
   cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .loginWrapper {

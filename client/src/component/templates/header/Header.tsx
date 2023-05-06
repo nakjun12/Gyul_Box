@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import gyulLogo from "../../../../public/icon/gyulLogo.png";
+import EditorButton from "./../../molecules/editorButton/EditorButton";
 import Modal from "./../../organisms/modal/Modal";
 import styles from "./Header.module.scss";
 type Props = {};
@@ -39,6 +40,7 @@ export default function Header({}: Props) {
       </div>
 
       <Modal isOpen={false} />
+      <EditorButton />
     </header>
   );
 }
