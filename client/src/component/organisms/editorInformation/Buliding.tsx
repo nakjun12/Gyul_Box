@@ -80,7 +80,9 @@ export default function Buliding({}: Props) {
 
   return (
     <section className={styles.buliding_wrapper}>
-      <label htmlFor="address">주소</label>
+      <label htmlFor="address" className={styles.label_style}>
+        주소
+      </label>
       <input
         type="text"
         value={address}
@@ -90,16 +92,22 @@ export default function Buliding({}: Props) {
         placeholder="주소를 입력해주세요"
         readOnly
       />
-      <label htmlFor="type">원룸 유형</label>
+      <label htmlFor="type" className={styles.label_style}>
+        원룸 유형
+      </label>
       <RadioButtons
         options={options}
         defaultOption={selectedOption}
         onChange={handleOptionChange}
       />
-      <label htmlFor="type">거주 기간</label>
+      <label htmlFor="type" className={styles.label_style}>
+        거주 기간
+      </label>
 
       <IndexPage />
-      <label htmlFor="type">거주층</label>
+      <label htmlFor="type" className={styles.label_style}>
+        거주층
+      </label>
       <RadioButtons
         options={position}
         defaultOption={isPosition}

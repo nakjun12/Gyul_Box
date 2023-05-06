@@ -7,11 +7,7 @@ type Props = {};
 
 export default function Index({}: Props) {
   const [onandoff, setOnandoff] = useState<boolean[]>([false, false, false]);
-  const [isExpanded, setIsExpanded] = useState(false);
 
-  const toggleAccordion = () => {
-    setIsExpanded(!isExpanded);
-  };
   const handler = (index: number) => {
     setOnandoff((prev) => {
       return prev.map((_, i) => {
@@ -25,27 +21,26 @@ export default function Index({}: Props) {
   return (
     <main className="review_editor_container">
       <div className="editor_wrapper">
-        <h2 className="editor_title">
-          <div className="editor_title_wrapper" onClick={toggleAccordion}>
+        <div className="editor_title">
+          <div className="editor_title_wrapper" onClick={() => handler(0)}>
             <label htmlFor="title">거주지 정보</label>
-            <SlArrowDown className="icon" onClick={() => handler(1)} />
+            <SlArrowDown
+              className="icon"
+              style={{
+                transform: onandoff[0] ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "all 0.3s ease-in-out",
+              }}
+            />
           </div>
-        </h2>
+        </div>
 
-        <section
-          className="editor_wrapper"
-          style={{
-            overflow: "hidden",
-            transition: "all 0.3s ease-in-out",
-          }}
-        >
+        <section className="editor_wrapper" style={{}}>
           <div
             className="editor_wrapper"
             style={{
-              transform: isExpanded ? "translateY(-50vh)" : "translateY(0)",
-              height: isExpanded ? "0" : "auto",
+              maxHeight: onandoff[0] ? "0px" : "500px",
               overflow: "hidden",
-              transition: "all 2s ease-in-out",
+              transition: "all 1s ease-in-out",
             }}
           >
             <Buliding />
@@ -53,10 +48,56 @@ export default function Index({}: Props) {
         </section>
       </div>
       <div className="editor_wrapper">
-        <label htmlFor="title" className="editor_title">
-          만족도
-        </label>
-        <Satisfactions />
+        <div className="editor_title">
+          <div className="editor_title_wrapper" onClick={() => handler(1)}>
+            <label htmlFor="title">만족도</label>
+            <SlArrowDown
+              className="icon"
+              style={{
+                transform: onandoff[1] ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "all 0.3s ease-in-out",
+              }}
+            />
+          </div>
+        </div>
+        <section className="editor_wrapper" style={{}}>
+          <div
+            className="editor_wrapper"
+            style={{
+              maxHeight: onandoff[1] ? "0px" : "500px",
+              overflow: "hidden",
+              transition: "all 1s ease-in-out",
+            }}
+          >
+            <Satisfactions />
+          </div>
+        </section>
+      </div>
+      <div className="editor_wrapper">
+        <div className="editor_title">
+          <div className="editor_title_wrapper" onClick={() => handler(2)}>
+            <label htmlFor="title">만족도</label>
+            <SlArrowDown
+              className="icon"
+              style={{
+                transform: onandoff[2] ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "all 0.3s ease-in-out",
+              }}
+            />
+          </div>
+        </div>
+        <section className="editor_wrapper">
+          <div
+            className="editor_wrapper"
+            style={{
+              maxHeight: onandoff[2] ? "0px" : "500px",
+              overflow: "hidden",
+              transition: "all 1s ease-in-out",
+            }}
+          >
+            <Satisfactions />
+          </div>
+        </section>
       </div>
     </main>
   );
