@@ -130,6 +130,7 @@ a {
   display: flex;
   flex-direction: column;
   margin: 0;
+  padding-bottom: 60px;
   .editor_wrapper {
     display: flex;
     flex-direction: column;
@@ -151,6 +152,7 @@ a {
   align-items: center;
   justify-content: space-between;
   width: 80%;
+
   .editor_title_wrapper {
     display: flex;
     align-items: center;
