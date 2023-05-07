@@ -1,7 +1,9 @@
 @import "../styles/variables";
-
+.all {
+  background-color: var(--hover);
+}
 .bodyWrapper {
-  max-width: 1180px;
+  max-width: 1000px;
   margin: auto;
   height: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -18,17 +20,18 @@
   background-color: white;
   width: 100%;
   height: auto;
+  position: relative;
 }
 
 .gyulMain {
   @include center();
-  background-color: orange;
+  background-color: var(--orange);
   width: 100%;
+
   height: 300px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding-bottom: 16px;
 }
 
 .lottieWrapper {
@@ -42,8 +45,9 @@
 .lottieDiv {
   @include center();
   overflow: hidden;
-  width: 150px;
+  width: 120px;
   height: 150px;
+  margin-top: 20px;
   background-color: black;
   margin-right: -20px;
 }
@@ -53,16 +57,15 @@
   background-color: white;
   height: 100px;
   font-weight: 700;
-  font-size: 20px;
-
+  font-size: 16px;
+  margin-top: 5px;
   padding-bottom: 10px;
 }
 
 .boardParts {
-  @include center-se;
+  @include c-center();
   width: 100%;
-  height: 400px;
-  margin-top: 20px;
+  margin: 20px auto;
 }
 
 .carouselParts {

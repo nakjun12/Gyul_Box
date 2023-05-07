@@ -1,0 +1,47 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+
+  .page_item {
+    margin: 0 0.25rem;
+
+    .page_link {
+      color: #333;
+      cursor: pointer;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+
+      &:hover {
+        color: var(--orange);
+      }
+
+      &[aria-disabled="true"] {
+        color: #666;
+        cursor: not-allowed;
+      }
+
+      &[aria-label="Previous"]::before {
+        content: "←";
+        display: inline-block;
+        margin-right: 0.5rem;
+      }
+
+      &[aria-label="Next"]::after {
+        content: "→";
+        display: inline-block;
+        margin-left: 0.5rem;
+      }
+    }
+
+    &.active .page_link {
+      background-color: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+  }
+}

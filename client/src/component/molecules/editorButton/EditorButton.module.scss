@@ -1,0 +1,14 @@
+.editor_button {
+  position: absolute;
+  bottom: -800%;
+  right: 7%;
+  background-color: var(--orange);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}

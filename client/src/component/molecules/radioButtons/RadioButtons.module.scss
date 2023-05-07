@@ -1,0 +1,32 @@
+.radio_buttons_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+  label {
+    margin-top: 20px;
+  }
+  .label_style {
+    display: flex;
+    align-items: center;
+
+    flex-basis: 25%;
+    margin-top: 0;
+    padding-bottom: 20px;
+    font-size: 14px;
+    input[type="radio"] {
+      margin-right: 10px;
+
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      accent-color: var(--orange);
+    }
+    input[type="radio"]:hover {
+      background-color: red;
+    }
+    [type="radio"]:focus-visible {
+      outline: 2px solid var(--orange);
+    }
+  }
+}

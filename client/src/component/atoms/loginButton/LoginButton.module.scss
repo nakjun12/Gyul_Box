@@ -1,0 +1,19 @@
+.btn {
+  background-color: var(--orange);
+  border-radius: 10px;
+  width: auto;
+  padding: 0px 18px;
+  height: 25px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--orange);
+  &:hover {
+    background-color: var(--hover);
+    border: 1px solid var(--hover);
+  }
+}

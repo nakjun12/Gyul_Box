@@ -1,0 +1,25 @@
+.container {
+  background-color: white;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  font-size: 16px;
+  min-width: 120px;
+  width: fit-content;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  color: white;
+  background-color: var(--green);
+  gap: 4px;
+  span {
+    width: auto;
+
+    text-align: center;
+  }
+  &:hover {
+    background-color: var(--hover);
+  }
+}

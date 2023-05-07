@@ -1,7 +1,12 @@
 import { useRecoilState } from "recoil";
-import type { User } from "../../types/typelist";
+
 import { userAtom } from "./ex";
 
+export interface User {
+  id: Number;
+  name: string;
+  email: string;
+}
 export default function MyComponent() {
   const [user, setUser] = useRecoilState<User | null>(userAtom);
 

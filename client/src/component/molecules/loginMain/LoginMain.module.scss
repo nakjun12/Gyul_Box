@@ -1,12 +1,14 @@
-@import "@/styles/_variables.scss";
+@import "./../../../styles/variables";
 
 .login {
   @include c-center();
   background-color: var(--lightGreen);
   height: 30rem;
-  overflow: hidden;
+
   width: 50%;
   padding-bottom: 1rem;
+  position: relative;
+  z-index: 500px;
 }
 
 .loginH1 {
@@ -71,8 +73,8 @@
     outline: none;
     cursor: pointer;
     &:checked {
-      background-color: #2196f3;
-      border-color: #2196f3;
+      background-color: var(--orange);
+      border-color: var(--orange);
 
       &::before {
         content: "✔";

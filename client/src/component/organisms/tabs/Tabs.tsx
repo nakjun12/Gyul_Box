@@ -1,6 +1,6 @@
-import Tab from "@/component/atoms/tab/Tab";
-import MyPagePanel from "@/component/molecules/tabPanel/MypagePanel";
 import { useState } from "react";
+import Tab from "./../../atoms/tab/Tab";
+import MyPagePanel from "./../../molecules/tabPanel/MypagePanel";
 import styles from "./Tabs.module.scss";
 interface TabsProps {}
 

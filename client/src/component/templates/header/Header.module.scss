@@ -1,13 +1,13 @@
-@import "@/styles/_variables.scss";
+@import "./../../../styles/variables";
 .wrapper {
   @include center-sb();
   width: 100%;
-  max-width: 1180px;
+  max-width: 1000px;
   height: 80px;
   border-bottom: 2px solid var(--orange);
   position: fixed;
   background-color: white;
-  z-index: 10;
+  z-index: 6000;
   padding: 0 2rem;
 }
 
@@ -37,6 +37,9 @@
   font-size: 18px;
   color: var(--orange);
   cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .loginWrapper {
@@ -45,4 +48,8 @@
   @include center();
   width: 25%;
   padding-left: 30px;
+}
+
+.logo {
+  cursor: pointer;
 }
