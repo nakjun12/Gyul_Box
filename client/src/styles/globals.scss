@@ -140,6 +140,29 @@ a {
     height: auto;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
+    .list_header {
+      @include center-sb();
+      width: 70%;
+      margin: 40px 0;
+
+      .list_header_right {
+        display: flex;
+        justify-items: space-between;
+        width: auto;
+        gap: 5px;
+      }
+    }
+    .title_lable {
+      width: auto;
+
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .header_search {
+    @include center();
+    margin-top: 80px;
   }
 }
 

@@ -44,7 +44,7 @@ export default function GoodBad({}: Props) {
 
       <div className={styles.goodbad_container}>
         <label htmlFor="address" className={styles.label_style}>
-          비고 😥
+          비고 📝
         </label>
         <input
           type="text"

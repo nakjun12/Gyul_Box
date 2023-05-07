@@ -40,7 +40,6 @@ export default function SearchBar({}: Props) {
   }, [isVisible]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log("발동");
     setInputValue(e.target.value);
     startTransition(() => {
       searchValueRef.current = e.target.value;

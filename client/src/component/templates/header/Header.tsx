@@ -44,7 +44,9 @@ export default function Header({}: Props) {
           <li className={styles.li} onClick={() => handler("map")}>
             지도
           </li>
-          <li className={styles.li}>양도 게시판</li>
+          <li className={styles.li} onClick={() => handler("/review/list")}>
+            양도 게시판
+          </li>
         </ul>
       </div>
 

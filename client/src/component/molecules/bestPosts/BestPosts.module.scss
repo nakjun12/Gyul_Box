@@ -10,8 +10,8 @@
 }
 
 .title {
-  margin-top: 40px;
-  font-size: 22px;
+  margin-top: 20px;
+  font-size: 20px;
   font-weight: 400;
 
   text-align: left;
@@ -35,8 +35,9 @@
   .bestposts_title {
     @include center-sb();
     width: 100%;
-    height: 50px;
-
+    height: 30px;
+    padding-bottom: 10px;
+    font-size: 16px;
     font-weight: 400;
     margin-bottom: 20px;
     border-bottom: 1px solid #e5e5e5;

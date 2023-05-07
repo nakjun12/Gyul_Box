@@ -8,7 +8,7 @@ type Props = {
 export default function LoginButton({ onClick, children }: Props) {
   return (
     <button className={styles.btn} onClick={onClick}>
-      {children}
+      <div>{children}</div>
     </button>
   );
 }
