@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import gyulLogo from "../../../../public/icon/gyulLogo.png";
 import EditorButton from "./../../molecules/editorButton/EditorButton";
 import Modal from "./../../organisms/modal/Modal";
@@ -7,10 +8,18 @@ import styles from "./Header.module.scss";
 type Props = {};
 
 export default function Header({}: Props) {
+  const [editorButton, setEditorButton] = useState<boolean>(true);
   const router = useRouter();
 
   const { pathname } = router;
   console.log(pathname);
+  useEffect(() => {
+    if (pathname === "/review/editor" || pathname === "/mypage") {
+      setEditorButton(false);
+    } else {
+      setEditorButton(true);
+    }
+  }, [pathname]);
   const handler = (path: string) => {
     router.push(`/${path}`);
   };
@@ -40,7 +49,7 @@ export default function Header({}: Props) {
       </div>
 
       <Modal isOpen={false} />
-      <EditorButton />
+      {editorButton && <EditorButton />}
     </header>
   );
 }

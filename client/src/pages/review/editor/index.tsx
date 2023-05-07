@@ -90,7 +90,7 @@ export default function Index({}: Props) {
           style={{
             maxHeight: onandoff[2] ? "0px" : "800px",
             overflow: "hidden",
-            transition: "all 1s ease-in-out",
+            transition: "all 1.2s ease-in-out",
           }}
         >
           <GoodBad />

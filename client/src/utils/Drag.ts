@@ -63,7 +63,7 @@ export function registDragEvent({
       const mouseUpHandler = (moveEvent: MouseEvent) => {
         const deltaX = moveEvent.pageX - clickEvent.pageX;
         const deltaY = moveEvent.pageY - clickEvent.pageY;
-
+        onDragEnd?.(deltaX, deltaY);
         document.removeEventListener("mousemove", mouseMoveHandler);
       };
 

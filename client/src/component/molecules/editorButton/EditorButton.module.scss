@@ -1,14 +1,14 @@
 .editor_button {
-  position: fixed; /* 위치를 고정 */
-  bottom: 8%; /* 아래에서 50px 만큼 떨어져 있음 */
-  right: 22%; /* 오른쪽에서 50px 만큼 떨어져 있음 */
+  position: fixed;
+  bottom: 8%;
+  right: 28%;
   background-color: var(--orange);
-  border-radius: 50%; /* 모서리를 둥글게 만들기 */
-  width: 70px; /* 버튼의 가로 길이를 50px으로 설정 */
-  height: 70px; /* 버튼의 세로 길이를 50px으로 설정 */
-  display: flex; /* 내부 컨텐츠를 중앙 정렬하기 위해 사용 */
-  justify-content: center; /* 내부 컨텐츠를 가로 중앙에 정렬 */
-  align-items: center; /* 내부 컨텐츠를 세로 중앙에 정렬 */
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   cursor: pointer;
 }
