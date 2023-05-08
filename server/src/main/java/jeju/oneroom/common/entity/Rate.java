@@ -32,6 +32,6 @@ public class Rate {
         this.trafficRate = trafficRate;
         this.securityRate = securityRate;
         this.locationRate = locationRate;
-        this.avgRate = Math.round(((interiorRate + buildingRate + trafficRate + securityRate + locationRate) / 5) * 1000) / 100.0;
+        this.avgRate = Math.round(((interiorRate + buildingRate + trafficRate + securityRate + locationRate) / 5) * 100) / 100.0;
     }
 }

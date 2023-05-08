@@ -33,9 +33,9 @@ public class ReviewController {
     public ResponseEntity<?> post(@Valid @RequestBody ReviewDto.Post postDto,
                                   @RequestParam long userId) {
         HouseInfo houseInfo = houseInfoService.findVerifiedHouseInfo(postDto.getHouseInfoId());
-        houseInfoService.updateHouseInfoRate(houseInfo,postDto.getRate());
         User user = userService.verifyExistsUser(userId);
         Review review = reviewService.createReview(postDto, houseInfo, user);
+        houseInfoService.updateHouseInfoRate(houseInfo,postDto.getRate());
         return new ResponseEntity<>(review.getId(), HttpStatus.CREATED);
     }
 
