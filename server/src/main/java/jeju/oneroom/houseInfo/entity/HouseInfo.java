@@ -67,6 +67,10 @@ public class HouseInfo extends BaseEntity {
         this.reviews = reviews;
         this.coordinate = coordinate;
     }
+
+    public void updateRate(Rate rate){
+        this.rate = rate;
+    }
 }
 /*
 level >= 9 -> 해당 시의 review 추천순 top 20에 해당하는 houseInfo 제공
