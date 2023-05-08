@@ -13,7 +13,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
   const pageRange = 2;
   let startPage = isPage - pageRange;
   let endPage = isPage + pageRange;
-
+  console.log(startPage, endPage);
   //다시 확인할것
   if (startPage < 1) {
     endPage += 1 - startPage;

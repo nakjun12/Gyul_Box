@@ -147,9 +147,8 @@ a {
 
       .list_header_right {
         display: flex;
-        justify-items: space-between;
-        width: auto;
-        gap: 5px;
+        width: fit-content;
+        gap: 10px;
       }
     }
     .title_lable {

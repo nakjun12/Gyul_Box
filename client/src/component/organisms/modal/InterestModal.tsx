@@ -21,7 +21,7 @@ const InterestModal: React.FC<ModalProps> = ({ isOpen = false, children }) => {
       <div
         className={show ? styles.container : styles.none}
         onClick={handler}
-      ></div>
+      />
 
       {show && (
         <div className={styles.modalcontainer}>
