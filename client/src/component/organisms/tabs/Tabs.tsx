@@ -1,6 +1,6 @@
 import { useState } from "react";
+import DetailTable from "../../molecules/detailTable/DetailTable";
 import Tab from "./../../atoms/tab/Tab";
-import MyPagePanel from "./../../molecules/tabPanel/MypagePanel";
 import styles from "./Tabs.module.scss";
 interface TabsProps {}
 
@@ -27,13 +27,12 @@ const Tabs = ({}: TabsProps) => {
           active={tabNumber === 2}
         />
       </nav>
-      <main>
-        {tabNumber === 1 && (
-          <>
-            <MyPagePanel />
-          </>
-        )}
-        {tabNumber === 2 && <div>내가 쓴 글</div>}
+      <main className={styles.detail_wrapper}>
+        <h4 className={styles.detail_top}>건물 정보</h4>
+        <DetailTable />
+
+        <h4 className={styles.detail_top}>종합 평가</h4>
+        <h4 className={styles.detail_top}>리뷰</h4>
       </main>
     </>
   );
