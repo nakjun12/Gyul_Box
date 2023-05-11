@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import gyulLogo from "../../../../public/icon/gyulLogo.png";
+import { useWindowSize } from "../../../utils/Helper";
 import EditorButton from "./../../molecules/editorButton/EditorButton";
 import Modal from "./../../organisms/modal/Modal";
 import styles from "./Header.module.scss";
@@ -23,7 +24,7 @@ export default function Header({}: Props) {
   const handler = (path: string) => {
     router.push(`/${path}`);
   };
-
+  console.log(useWindowSize());
   return (
     <header className={styles.wrapper}>
       <div>
@@ -44,7 +45,7 @@ export default function Header({}: Props) {
           <li className={styles.li} onClick={() => handler("map")}>
             지도
           </li>
-          <li className={styles.li} onClick={() => handler("/review/list")}>
+          <li className={styles.li} onClick={() => handler("review/list")}>
             양도 게시판
           </li>
         </ul>
