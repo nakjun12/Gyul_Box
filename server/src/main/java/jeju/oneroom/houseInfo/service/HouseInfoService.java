@@ -40,17 +40,21 @@ public class HouseInfoService {
 
     public void updateHouseInfoRate(HouseInfo houseInfo, Rate rate) {
         double reviewCount = houseInfo.getReviewCount();
-        Rate newRate = Rate.builder()
+        Rate newRate = getRate(houseInfo, rate, reviewCount);
+        houseInfo.updateRate(newRate);
+    }
+
+    public HouseInfo findVerifiedHouseInfo(long houseInfoId) {
+        return houseInfoRepository.findById(houseInfoId).orElseThrow(() -> new RuntimeException("HOUSEINFO_NOT_FOUND"));
+    }
+
+    private Rate getRate(HouseInfo houseInfo, Rate rate, double reviewCount) {
+        return Rate.builder()
                 .buildingRate(Math.round((1 / reviewCount * rate.getBuildingRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getBuildingRate()) * 1000) / 100.0)
                 .securityRate(Math.round((1 / reviewCount * rate.getSecurityRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getSecurityRate()) * 1000) / 100.0)
                 .interiorRate(Math.round((1 / reviewCount * rate.getInteriorRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getInteriorRate()) * 1000) / 100.0)
                 .locationRate(Math.round((1 / reviewCount * rate.getLocationRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getLocationRate()) * 1000) / 100.0)
                 .trafficRate(Math.round((1 / reviewCount * rate.getTrafficRate() + (reviewCount - 1) / reviewCount * houseInfo.getRate().getTrafficRate()) * 1000) / 100.0)
                 .build();
-        houseInfo.updateRate(newRate);
-    }
-
-    public HouseInfo findVerifiedHouseInfo(long houseInfoId) {
-        return houseInfoRepository.findById(houseInfoId).orElseThrow(() -> new RuntimeException("HOUSEINFO_NOT_FOUND"));
     }
 }
