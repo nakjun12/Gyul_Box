@@ -1,8 +1,11 @@
 import { useState } from "react";
 import DetailTable from "../../molecules/detailTable/DetailTable";
+import Pantagon from "../../molecules/pentagon/Pantagon";
 import Tab from "./../../atoms/tab/Tab";
 import styles from "./Tabs.module.scss";
 interface TabsProps {}
+
+const data = [5, 3, 2.2, 4, 1];
 
 const Tabs = ({}: TabsProps) => {
   const [tabNumber, setTabNumber] = useState<number>(1);
@@ -32,6 +35,7 @@ const Tabs = ({}: TabsProps) => {
         <DetailTable />
 
         <h4 className={styles.detail_top}>종합 평가</h4>
+        <Pantagon data={data} />
         <h4 className={styles.detail_top}>리뷰</h4>
       </main>
     </>
