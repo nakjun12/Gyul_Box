@@ -36,3 +36,21 @@
   position: absolute;
   bottom: -15px;
 }
+
+.more_btn {
+  padding: 10px 20px;
+  background-color: var(--orange);
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  border: 0;
+  &:hover {
+    background-color: var(--hover);
+  }
+}

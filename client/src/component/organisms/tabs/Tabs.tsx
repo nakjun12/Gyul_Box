@@ -63,7 +63,7 @@ const Tabs = ({}: TabsProps) => {
         <h4 className={styles.detail_top}>n개의 리뷰</h4>
 
         <Reviews />
-        <button>더보기 1/4</button>
+        <button className={styles.more_btn}>더보기 1/4</button>
 
         <DragCarousel />
       </main>
