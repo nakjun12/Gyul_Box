@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CategoryStars from "../../molecules/categoryStars/CategoryStars";
 import DetailTable from "../../molecules/detailTable/DetailTable";
 import Pantagon from "../../molecules/pentagon/Pantagon";
 import Tab from "./../../atoms/tab/Tab";
@@ -35,7 +36,10 @@ const Tabs = ({}: TabsProps) => {
         <DetailTable />
 
         <h4 className={styles.detail_top}>종합 평가</h4>
-        <Pantagon data={data} />
+        <div className={styles.group}>
+          <Pantagon data={data} />
+          <CategoryStars />
+        </div>
         <h4 className={styles.detail_top}>리뷰</h4>
       </main>
     </>

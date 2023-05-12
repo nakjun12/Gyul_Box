@@ -25,3 +25,10 @@
   font-size: 16px;
   margin-bottom: 5px;
 }
+
+.group {
+  display: flex;
+  @media (max-width: 768px) {
+    @include c-center();
+  }
+}
