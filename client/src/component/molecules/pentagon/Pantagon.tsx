@@ -47,7 +47,7 @@ const Pantagon: React.FC<ChartProps> = ({ data }) => {
             pointLabels: {
               font: {
                 size: 12,
-                weight: "bold",
+
                 family: "Pretendard-Regular",
               },
             },
@@ -58,7 +58,7 @@ const Pantagon: React.FC<ChartProps> = ({ data }) => {
             labels: {
               font: {
                 size: 16,
-                weight: "bold",
+
                 family: "Pretendard-Regular",
               },
             },
@@ -79,8 +79,8 @@ const Pantagon: React.FC<ChartProps> = ({ data }) => {
       ref={canvasRef}
       id="chart"
       aria-label="chart"
-      height={350}
-      width={580}
+      height={220}
+      width={300}
     />
   );
 };
