@@ -189,7 +189,7 @@ a {
 
 .detail_wrapper {
   background-color: white;
-  height: 300vh;
+  height: auto;
 
   .detail_header {
     @include center-sb();

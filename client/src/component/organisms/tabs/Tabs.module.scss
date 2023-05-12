@@ -32,3 +32,7 @@
     @include c-center();
   }
 }
+.scroll {
+  position: absolute;
+  bottom: -15px;
+}

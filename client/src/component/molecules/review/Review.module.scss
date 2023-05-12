@@ -1,0 +1,45 @@
+.container {
+  margin: 30px auto;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ebebeb;
+  width: 100%;
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    .header_id {
+      margin-left: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .header_container {
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin: 14px 0;
+    width: 100%;
+
+    .content_container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+  }
+}
