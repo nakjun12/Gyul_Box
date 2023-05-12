@@ -2,7 +2,6 @@ package jeju.oneroom.user.entity;
 
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.BaseEntity;
-import jeju.oneroom.message.entity.Message;
 import jeju.oneroom.review.entity.Review;
 import lombok.*;
 
@@ -28,12 +27,6 @@ public class User extends BaseEntity {
 
     private String profileImageUrl;
 
-    @OneToMany(mappedBy = "sender")
-    private List<Message> sends = new ArrayList<>();
-
-    @OneToMany(mappedBy = "receiver")
-    private List<Message> receives = new ArrayList<>();
-
     @OneToOne
     @JoinColumn(name = "area_id")
     private Area area;
@@ -42,11 +35,9 @@ public class User extends BaseEntity {
     private List<Review> reviews = new ArrayList<>();
 
     @Builder
-    public User(Long id, String email, String nickname, List<Message> sends, List<Message> receives, Area area, List<Review> reviews) {
+    public User(Long id, String email, String nickname, Area area, List<Review> reviews) {
         this.email = email;
         this.nickname = nickname;
-        this.sends = sends;
-        this.receives = receives;
         this.area = area;
         this.reviews = reviews;
         this.id = id;
