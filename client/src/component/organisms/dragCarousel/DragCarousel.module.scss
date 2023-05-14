@@ -4,6 +4,10 @@
   margin-bottom: 8px;
   text-align: left;
   width: 750px;
+  @media (max-width: 701px) {
+    width: 300px;
+    font-size: 16px;
+  }
 }
 
 .carousel_wrapper {

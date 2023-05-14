@@ -17,6 +17,10 @@
   text-align: left;
   width: 750px;
   margin-bottom: 20px;
+  @media (max-width: 701px) {
+    width: 300px;
+    font-size: 16px;
+  }
 }
 
 .bestposts {
@@ -31,6 +35,9 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   &:hover {
     background-color: var(--hover);
+  }
+  @media (max-width: 701px) {
+    width: 90%;
   }
   .bestposts_title {
     @include center-sb();
@@ -56,6 +63,10 @@
       height: 1.5rem;
       font-size: 14px;
       color: var(--orange);
+      @media (max-width: 701px) {
+        width: 16%;
+        font-size: 14px;
+      }
     }
     .bestposts_list_left_bad {
       width: 10%;
@@ -63,6 +74,10 @@
       font-size: 14px;
 
       color: var(--lightGreen);
+      @media (max-width: 701px) {
+        width: 16%;
+        font-size: 14px;
+      }
     }
     .bestposts_list_right {
       width: 100%;
