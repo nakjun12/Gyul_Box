@@ -15,7 +15,7 @@ const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState(
     isClient ? window.innerWidth : undefined
   );
-  console.log("렌더링");
+
   useEffect(() => {
     if (isClient) {
       let timeoutId: NodeJS.Timeout;
