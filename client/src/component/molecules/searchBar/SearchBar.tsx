@@ -10,23 +10,29 @@ import {
   useState,
 } from "react";
 import search from "../../../../public/svg/whiteSearch.svg";
+import { searchData } from "../../../pages/api/search";
 import { zone } from "../../../utils/Dummy";
+import type { SearchAddress_data } from "../../../utils/types/types";
 import styles from "./SearchBar.module.scss";
+type Props = {
+  isData: boolean;
+};
 
-type Props = {};
-
-export default function SearchBar({}: Props) {
-  const [inputValue, setInputValue] = useState("");
+export default function SearchBar({ isData }: Props) {
+  const [inputValue, setInputValue] = useState<string>("");
   const searchValueRef = useRef<string>("");
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [selected, setSelected] = useState(-1);
-  const [isComposing, setIsComposing] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
+  const [selected, setSelected] = useState<number>(-1);
+  const [isComposing, setIsComposing] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [isZone, setIsZone] = useState<SearchAddress_data[]>([]);
+  const [dummy, setDummy] = useState<string[]>([]); // dummy state
   const divRef = useRef<HTMLDivElement | null>(null);
+
+  console.log(isZone);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      console.log("기히");
       if (divRef.current && !divRef.current.contains(event.target)) {
         blur(); // 원하는 동작 수행
       }
@@ -39,10 +45,26 @@ export default function SearchBar({}: Props) {
     }
   }, [isVisible]);
 
+  useEffect(() => {
+    if (isData) {
+      if (searchValue === "") return;
+
+      searchData(searchValue).then((res) => {
+        setIsZone(res.data);
+      });
+    } else {
+      const filteredResults = zone.filter(function (item) {
+        return item.includes(searchValue);
+      });
+      setDummy(filteredResults);
+    }
+  }, [searchValue, isData]);
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
     setInputValue(e.target.value);
     startTransition(() => {
-      searchValueRef.current = e.target.value;
+      setSearchValue(e.target.value);
     });
     setSelected(-1);
     e.target.value.trim() === "" ? setIsVisible(false) : setIsVisible(true);
@@ -56,7 +78,6 @@ export default function SearchBar({}: Props) {
         return;
       }
 
-      console.log("히");
       const max = 5;
       setIsVisible(true);
       setSelected((p) => (p + 1) % max);
@@ -95,8 +116,8 @@ export default function SearchBar({}: Props) {
     //1의 경우의수 밖 눌렀을때
     //2의 경우의 수 안을 눌렀을떄
   };
+  console.log(isZone.length > 0);
 
-  console.log(selected, searchValueRef.current, isVisible, inputValue);
   return (
     <div className={styles.searchBarDiv} ref={divRef}>
       <form className={styles.searchBar_bar} onSubmit={handleSubmit}>
@@ -123,49 +144,55 @@ export default function SearchBar({}: Props) {
             height={22}
           />
         </div>
-        {/* {
-          <Suspense
-            fallback={
-              <div className={styles.loading}>
-                ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ로딩중
-              </div>
-            }
-          >
-            <ul className={styles.autocomplete}>
-              <li className={styles.autocomplete_item}>
-                ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ로딩중
-              </li>
-              <li className={styles.autocomplete_item}>
-                ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ로딩중
-              </li>
-            </ul>
-          </Suspense>
-        } */}
       </form>
       {isVisible && (
-        <Suspense
-          fallback={
-            <div className={styles.loading}>
-              ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ로딩중
-            </div>
-          }
-        >
+        <Suspense fallback={<div className={styles.loading}>로딩중</div>}>
           <ul className={styles.autocomplete}>
-            {zone.map((item, index) => (
-              <li
-                className={styles.autocomplete_item}
-                key={`${item}${index}`}
-                onClick={() => {
-                  setInputValue(item);
-                  setSelected(-1);
-                  setIsVisible(false);
-                }}
-                onMouseOver={() => setSelected(index)}
-                style={{ background: selected === index ? "#ffab4f" : "" }}
-              >
-                {item}
-              </li>
-            ))}
+            {isData ? (
+              isZone.length > 0 ? (
+                isZone.map((item: SearchAddress_data, index: number) => (
+                  <li
+                    className={styles.autocomplete_item}
+                    key={`${item.areaCode}${index}`}
+                    onClick={() => {
+                      setInputValue(item.areaName);
+                      setSelected(-1);
+                      setIsVisible(false);
+                    }}
+                    onMouseOver={() => setSelected(index)}
+                    style={{ background: selected === index ? "#ffab4f" : "" }}
+                  >
+                    {item.areaName}
+                  </li>
+                ))
+              ) : (
+                <li className={styles.autocomplete_item}>
+                  {"검색 결과가 없습니다."}
+                </li>
+              )
+            ) : dummy.length > 0 ? (
+              dummy.slice(0, Math.min(dummy.length, 5)).map((item, index) => (
+                <li
+                  className={styles.autocomplete_item}
+                  key={`${item}${index}`}
+                  onClick={() => {
+                    setInputValue(item);
+                    setSelected(-1);
+                    setIsVisible(false);
+                  }}
+                  onMouseOver={() => setSelected(index)}
+                  style={{ background: selected === index ? "#ffab4f" : "" }}
+                >
+                  {item}
+                </li>
+              ))
+            ) : (
+              <>
+                <li className={styles.autocomplete_item}>
+                  {"검색 결과가 없습니다."}
+                </li>
+              </>
+            )}
           </ul>
         </Suspense>
       )}
