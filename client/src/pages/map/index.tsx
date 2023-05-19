@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import SearchBar from "../../component/molecules/searchBar/SearchBar";
 import MapFooter from "../../component/organisms/mapfooter/MapFooter";
+import { getAddress } from "../../utils/Helper";
 
 const kakao = typeof window !== "undefined" ? (window as any).kakao : null;
 
@@ -11,16 +12,15 @@ interface Position {
 
 export default function Ex() {
   const [isCheck, setIsCheck] = useState<boolean>(false);
+  const [isGeo, setIsGeo] = useState<[string, number]>(["연동", 6]);
   const [position, setPosition] = useState<Position>({
     lat: 33.48972486175701,
     lng: 126.49657010389818,
   });
   //컴포넌트만 안에서 렌더링?
-  console.log("하이");
+
   // Make sure it's client-only
 
-  const markerImageSrc =
-    "https://velog.velcdn.com/images/wns450/post/6bbc8c55-8607-430c-b3f4-bf2ab143145d/image.png";
   // const markerImageSize = new kakao.maps.Size(64, 64);
   // const markerImageOption = { offset: new kakao.maps.Point(27, 69) };
   // const markerImage = new kakao.maps.MarkerImage(
@@ -52,7 +52,7 @@ export default function Ex() {
         // const imageSize = new kakao.maps.Size(60, 60);
         // const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
         const latlng = new kakao.maps.LatLng(position.lat, position.lng);
-        const num = 1;
+        const num = 3;
         const id = 24;
         const latlng2 = new kakao.maps.LatLng(
           33.48865701020525,
@@ -86,7 +86,7 @@ export default function Ex() {
           position: latlng,
           clickable: true,
         });
-        //id단축
+        // //id단축
         const markerBox = document.createElement("button");
         markerBox.setAttribute("class", "marker_box");
         markerBox.setAttribute("value", `${id}`);
@@ -99,64 +99,65 @@ export default function Ex() {
         popupWindow.setMap(map);
         //동계산하는거와 줌에 따른 비교가 필요함
 
-        const setClustererTexts = async function () {
-          const coord = new kakao.maps.LatLng(
-            37.56496830314491,
-            126.93990862062978
-          );
+        // const setClustererTexts = async function () {
+        //   const coord = new kakao.maps.LatLng(
+        //     37.56496830314491,
+        //     126.93990862062978
+        //   );
 
-          const result = await new Promise<string>((resolve) => {
-            console.log(coord.getLng(), coord.getLat());
-            geocoder.coord2RegionCode(
-              coord.getLng(),
-              coord.getLat(),
-              (result: any, status: any) => {
-                if (status === kakao.maps.services.Status.OK) {
-                  const address_name = result[0].address_name;
-                  console.log(address_name);
-                  resolve(address_name);
-                } else {
-                  resolve("");
-                }
-              }
-            );
-          });
-          console.log(result);
-          return result;
-        };
+        //   const result = await new Promise<string>((resolve) => {
+        //     console.log(coord.getLng(), coord.getLat());
+        //     geocoder.coord2RegionCode(
+        //       coord.getLng(),
+        //       coord.getLat(),
+        //       (result: any, status: any) => {
+        //         if (status === kakao.maps.services.Status.OK) {
+        //           const address_name = result[0].address_name;
+        //           console.log(address_name);
 
-        const getAddress = (lat: number, lng: number) => {
-          const coord = new kakao.maps.LatLng(lat, lng);
-          const callback = function (
-            result: any,
-            status: kakao.maps.services.Status
-          ) {
-            console.log(status);
-            if (status === kakao.maps.services.Status.OK) {
-              console.log(result[0].address.address_name);
-            }
-          };
-          geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-        };
-        getAddress(37.554722, 126.970833);
+        //           resolve(address_name);
+        //         } else {
+        //           resolve("");
+        //         }
+        //       }
+        //     );
+        //   });
+        //   console.log(result);
+        //   return result;
+        // };
 
-        const options = {
-          map: map,
-          clickable: true,
-          content: `<div style="cursor: pointer; font-weight: bold; height: 30px; width: 30px; background-color: white;  color: #ff6000; border: 1px solid #ff6000; border-radius: 50%; "
-          onmouseover="this.style.color='white'; this.style.backgroundColor='#ff6000';"
-      onmouseout="this.style.color='#ff6000'; this.style.backgroundColor='white';"
-     >${num}</div>`,
-          position: latlng2,
-        };
-        const customOverlay = new kakao.maps.CustomOverlay(options);
+        // const getAddress = (lat: number, lng: number) => {
+        //   const coord = new kakao.maps.LatLng(lat, lng);
+        //   const callback = function (
+        //     result: any,
+        //     status: kakao.maps.services.Status
+        //   ) {
+        //     console.log(status, "하이");
+        //     if (status === kakao.maps.services.Status.OK) {
+        //       console.log(result[0].address.address_name, "하이");
+        //     }
+        //   };
+        //   geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+        // // };
+        // console.log(getAddress(37.554722, 126.970833), "히히");
+
+        //     const options = {
+        //       map: map,
+        //       clickable: true,
+        //       content: `<div style="cursor: pointer; font-weight: bold; height: 30px; width: 30px; background-color: white;  color: #ff6000; border: 1px solid #ff6000; border-radius: 50%; "
+        //       onmouseover="this.style.color='white'; this.style.backgroundColor='#ff6000';"
+        //   onmouseout="this.style.color='#ff6000'; this.style.backgroundColor='white';"
+        //  >${num}</div>`,
+        //       position: latlng2,
+        //     };
+        //     const customOverlay = new kakao.maps.CustomOverlay(options);
         // customOverlay.setMap(map);
         // popupWindow.setMap(map);
-        const markers: kakao.maps.CustomOverlay | kakao.maps.Marker[] = [
-          popupWindow,
-          customOverlay,
-          popupWindow,
-        ];
+        // const markers: kakao.maps.CustomOverlay | kakao.maps.Marker[] = [
+        //   popupWindow,
+        //   customOverlay,
+        //   popupWindow,
+        // ];
 
         //첫번재 경우의 수, 오버레이 2개를 넣어봄
         //두번째 마커가 안되는 지 확인할 것
@@ -194,7 +195,20 @@ export default function Ex() {
             ", 경도 " +
             latlng.getLng() +
             "입니다";
-          getAddress(latlng.getLat(), latlng.getLng());
+          getAddress(latlng.getLat(), latlng.getLng())
+            .then((addressName: string) => {
+              const splitAddress = addressName.split(" ");
+              const location = splitAddress[2];
+              if (level <= 8) {
+                setIsGeo([location, level]);
+              } else {
+                setIsGeo(["제주시", level]);
+              }
+              console.log(addressName); // 결과 출력
+            })
+            .catch((error: Error) => {
+              console.error(error); // 에러 처리
+            });
 
           console.log(message, "히히");
         });
@@ -235,7 +249,22 @@ export default function Ex() {
             ", 경도 " +
             latlng.getLng() +
             "입니다";
-          getAddress(latlng.getLat(), latlng.getLng());
+
+          getAddress(latlng.getLat(), latlng.getLng())
+            .then((addressName: string) => {
+              const splitAddress = addressName.split(" ");
+              const location = splitAddress[2];
+              const si = splitAddress[1];
+              if (level <= 8) {
+                setIsGeo([location, level]);
+              } else {
+                setIsGeo([si, level]);
+              }
+              console.log(addressName); // 결과 출력
+            })
+            .catch((error) => {
+              console.error(error); // 에러 처리
+            });
         });
       }
     });
@@ -248,10 +277,10 @@ export default function Ex() {
   return (
     <div className="map_wrap">
       <div className="map_top">
-        <SearchBar />
+        <SearchBar isData={true} />
       </div>
       <div className="map_bottom">
-        <MapFooter />
+        <MapFooter geo={isGeo} />
       </div>
       <Suspense>
         <div id="map" style={{ width: "100%", height: "100%" }} />

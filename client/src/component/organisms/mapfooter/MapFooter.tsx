@@ -1,12 +1,13 @@
-import SimpleHouse from "../../molecules/simpleHouse/SimpleHouse";
-
 import Reload from "../../molecules/reload/Reload";
-type Props = {};
+import SimpleHouse from "../../molecules/simpleHouse/SimpleHouse";
+type Props = {
+  geo: [string, number];
+};
 
-export default function MapFooter({}: Props) {
+export default function MapFooter({ geo }: Props) {
   return (
     <>
-      <Reload />
+      <Reload geo={geo} />
       <SimpleHouse />
     </>
   );
