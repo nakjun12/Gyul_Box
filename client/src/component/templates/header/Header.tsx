@@ -68,7 +68,10 @@ export default function Header({}: Props) {
           <>
             <div className={styles.ulWrapper}>
               <ul className={styles.ul}>
-                <li className={styles.li} onClick={() => handler("mypage")}>
+                <li
+                  className={styles.li}
+                  onClick={() => handler("review/list/1")}
+                >
                   원룸 리뷰
                 </li>
                 <li className={styles.li} onClick={() => handler("map")}>
