@@ -1,8 +1,9 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import SearchBar from "../../component/molecules/searchBar/SearchBar";
 import MapFooter from "../../component/organisms/mapfooter/MapFooter";
-import { getAddress } from "../../utils/Helper";
-
+import { 삼도일동 } from "../../utils/Dummy";
+import { addMarker, getAddress, removeMarker } from "../../utils/Helper";
+import { Map_circle } from "../../utils/types/types";
 const kakao = typeof window !== "undefined" ? (window as any).kakao : null;
 
 interface Position {
@@ -12,32 +13,45 @@ interface Position {
 
 export default function Ex() {
   const [isCheck, setIsCheck] = useState<boolean>(false);
-  const [isGeo, setIsGeo] = useState<[string, number]>(["연동", 6]);
+  const [isGeo, setIsGeo] = useState<[string, number]>(["삼도일동", 4]);
   const [position, setPosition] = useState<Position>({
     lat: 33.48972486175701,
     lng: 126.49657010389818,
   });
-  //컴포넌트만 안에서 렌더링?
-
-  // Make sure it's client-only
-
-  // const markerImageSize = new kakao.maps.Size(64, 64);
-  // const markerImageOption = { offset: new kakao.maps.Point(27, 69) };
-  // const markerImage = new kakao.maps.MarkerImage(
-  //   markerImageSrc,
-  //   markerImageSize,
-  //   markerImageOption
-  // );
+  const [address, setAddress] = useState<Map_circle>({ data: [] });
+  const [deleteMarker, setDeleteMarker] = useState<kakao.maps.CustomOverlay[]>(
+    []
+  );
+  const [serverOn, setServerOn] = useState<boolean>(false);
   const mapElement: React.MutableRefObject<kakao.maps.Map | null> =
     useRef(null);
+
+  useEffect(() => {
+    if (mapElement.current !== null) {
+      console.log(address.data);
+      if (address.data.length === 0) {
+        console.log("없음");
+      } else {
+        console.log("있음");
+
+        const newMarkers = addMarker(address.data, mapElement.current);
+        setDeleteMarker((el) => {
+          removeMarker(el);
+          return newMarkers;
+        });
+      }
+    }
+
+    console.log(mapElement.current);
+  }, [address]);
 
   useEffect(() => {
     kakao.maps.load(() => {
       const geocoder = new kakao.maps.services.Geocoder();
       const mapContainer = document.getElementById("map"), // 지도를 표시할 div
         mapOption = {
-          center: new kakao.maps.LatLng(33.48972486175701, 126.49657010389818), // 지도의 중심좌표
-          level: 7, // 지도의 확대 레벨
+          center: new kakao.maps.LatLng(33.502212, 126.519043), // 지도의 중심좌표
+          level: 4, // 지도의 확대 레벨
         };
       if (mapContainer !== null && !mapContainer!.hasChildNodes()) {
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -51,13 +65,13 @@ export default function Ex() {
         //marker
         // const imageSize = new kakao.maps.Size(60, 60);
         // const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-        const latlng = new kakao.maps.LatLng(position.lat, position.lng);
-        const num = 3;
-        const id = 24;
-        const latlng2 = new kakao.maps.LatLng(
-          33.48865701020525,
-          126.49173155558593
-        );
+        // const latlng = new kakao.maps.LatLng(position.lat, position.lng);
+        // const num = 3;
+        // const id = 24;
+        // const latlng2 = new kakao.maps.LatLng(
+        //   33.48865701020525,
+        //   126.49173155558593
+        // );
 
         // const getTexts = (count: number) => {
         //   // 한 클러스터 객체가 포함하는 마커의 개수에 따라 다른 텍스트 값을 표시합니다
@@ -82,21 +96,21 @@ export default function Ex() {
         //   image: markerImage,
         // });
 
-        const popupWindow = new kakao.maps.CustomOverlay({
-          position: latlng,
-          clickable: true,
-        });
-        // //id단축
-        const markerBox = document.createElement("button");
-        markerBox.setAttribute("class", "marker_box");
-        markerBox.setAttribute("value", `${id}`);
-        markerBox.onclick = function () {
-          console.log(popupWindow.getPosition());
-        };
-        markerBox.textContent = String(num);
+        // const popupWindow = new kakao.maps.CustomOverlay({
+        //   position: latlng,
+        //   clickable: true,
+        // });
+        // // //id단축
+        // const markerBox = document.createElement("button");
+        // markerBox.setAttribute("class", "marker_box");
+        // markerBox.setAttribute("value", `${id}`);
+        // markerBox.onclick = function () {
+        //   console.log(popupWindow.getPosition());
+        // };
+        // markerBox.textContent = String(num);
 
-        popupWindow.setContent(markerBox);
-        popupWindow.setMap(map);
+        // popupWindow.setContent(markerBox);
+        // popupWindow.setMap(map);
         //동계산하는거와 줌에 따른 비교가 필요함
 
         // const setClustererTexts = async function () {
@@ -173,6 +187,8 @@ export default function Ex() {
         //   }
         // );
         // 지도에 컨트롤 추가
+
+        setDeleteMarker(addMarker(삼도일동.data, map));
         const mapTypeControl = new kakao.maps.MapTypeControl(); // 맵타입?
         map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
         const zoomControl = new kakao.maps.ZoomControl(); //줌아웃 인,?
@@ -186,15 +202,15 @@ export default function Ex() {
           // 지도의 중심좌표를 얻어옵니다
           const latlng = map.getCenter();
 
-          const message =
-            "지도 레벨은 " +
-            level +
-            " 이고" +
-            "중심 좌표는 위도 " +
-            latlng.getLat() +
-            ", 경도 " +
-            latlng.getLng() +
-            "입니다";
+          // const message =
+          //   "지도 레벨은 " +
+          //   level +
+          //   " 이고" +
+          //   "중심 좌표는 위도 " +
+          //   latlng.getLat() +
+          //   ", 경도 " +
+          //   latlng.getLng() +
+          //   "입니다";
           getAddress(latlng.getLat(), latlng.getLng())
             .then((addressName: string) => {
               const splitAddress = addressName.split(" ");
@@ -207,10 +223,11 @@ export default function Ex() {
               console.log(addressName); // 결과 출력
             })
             .catch((error: Error) => {
+              console.log("없어");
               console.error(error); // 에러 처리
             });
 
-          console.log(message, "히히");
+          // console.log(message, "히히");
         });
 
         // kakao.maps.event.addListener(map, "center_changed", function () {
@@ -240,15 +257,15 @@ export default function Ex() {
           // 지도의 중심좌표를 얻어옵니다
           const latlng = map.getCenter();
 
-          const message =
-            "지도 레벨은 " +
-            level +
-            " 이고" +
-            "중심 좌표는 위도 " +
-            latlng.getLat() +
-            ", 경도 " +
-            latlng.getLng() +
-            "입니다";
+          // const message =
+          //   "지도 레벨은 " +
+          //   level +
+          //   " 이고" +
+          //   "중심 좌표는 위도 " +
+          //   latlng.getLat() +
+          //   ", 경도 " +
+          //   latlng.getLng() +
+          //   "입니다";
 
           getAddress(latlng.getLat(), latlng.getLng())
             .then((addressName: string) => {
@@ -277,10 +294,10 @@ export default function Ex() {
   return (
     <div className="map_wrap">
       <div className="map_top">
-        <SearchBar isData={true} />
+        <SearchBar isData={serverOn} />
       </div>
       <div className="map_bottom">
-        <MapFooter geo={isGeo} />
+        <MapFooter geo={isGeo} setAddress={setAddress} serverOn={serverOn} />
       </div>
       <Suspense>
         <div id="map" style={{ width: "100%", height: "100%" }} />
