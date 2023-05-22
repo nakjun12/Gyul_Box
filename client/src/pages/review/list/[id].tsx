@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BiMap } from "react-icons/bi";
 import LoginButton from "../../../component/atoms/loginButton/LoginButton";
-import BestPost from "../../../component/molecules/bestPosts/BestPost";
 import Pagination from "../../../component/molecules/pagination/PagiNation";
 import SearchBar from "../../../component/molecules/searchBar/SearchBar";
 import InterestModal from "../../../component/organisms/modal/InterestModal";
@@ -10,6 +9,8 @@ type Props = {};
 
 export default function Index({}: Props) {
   const [isSort, setIsSort] = useState(true);
+  const [isData, setIsDate] = useState<boolean>(true);
+
   const handler = () => {
     setIsSort(!isSort);
   };
@@ -37,14 +38,14 @@ export default function Index({}: Props) {
               )}
             </div>
           </div>
+          {/* <BestPost />
           <BestPost />
           <BestPost />
-          <BestPost />
-          <BestPost />
+          <BestPost /> */}
         </div>
         <Pagination currentPage={4} totalPages={12} />
         <div className="header_search">
-          <SearchBar />
+          <SearchBar isData />
         </div>
       </main>
     </>
