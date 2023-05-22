@@ -30,7 +30,6 @@ export default function SearchBar({ isData }: Props) {
   const [dummy, setDummy] = useState<string[]>([]); // dummy state
   const divRef = useRef<HTMLDivElement | null>(null);
 
-  console.log(isZone);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (divRef.current && !divRef.current.contains(event.target)) {
@@ -61,7 +60,6 @@ export default function SearchBar({ isData }: Props) {
   }, [searchValue, isData]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setInputValue(e.target.value);
     startTransition(() => {
       setSearchValue(e.target.value);
@@ -116,7 +114,6 @@ export default function SearchBar({ isData }: Props) {
     //1의 경우의수 밖 눌렀을때
     //2의 경우의 수 안을 눌렀을떄
   };
-  console.log(isZone.length > 0);
 
   return (
     <div className={styles.searchBarDiv} ref={divRef}>
