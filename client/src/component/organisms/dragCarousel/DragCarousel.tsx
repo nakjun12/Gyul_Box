@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { Review_data } from "../../../utils/types/types";
 import { MainCard } from "../../molecules/mainCard/MainCard";
 import {
   inrange,
@@ -14,10 +15,15 @@ const imageList = [
   "https://blog.kakaocdn.net/dn/bG3iVL/btqUvCZPaRL/ofIjkNWJP1mj2bOG9fie51/img.jpg",
 ];
 
-export default function CarouselExample() {
+type Props = {
+  data: Review_data[];
+  isData: boolean;
+};
+
+export default function CarouselExample({ data, isData }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [transX, setTransX] = useState(0);
-
+  const dataBackup = data || [];
   const { ref, width, height } = useCarouselSize(); //1:1 비율 유지하게 도와줌
 
   return (
@@ -59,9 +65,9 @@ export default function CarouselExample() {
             },
           })}
         >
-          {imageList.map((url, i) => (
+          {data.map((review: Review_data, i) => (
             <div key={i} className={styles.carousel_slide}>
-              <MainCard />
+              <MainCard data={review} />
             </div>
           ))}
         </div>
