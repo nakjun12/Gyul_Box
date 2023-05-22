@@ -16,7 +16,13 @@ type Props = {
 
 export default function Home({ reviewData, userAreaData }: Props) {
   const isData = reviewData.data.length > 0;
-  console.log(reviewData.data, userAreaData.data, isData);
+  console.log(
+    reviewData.data,
+    userAreaData.data,
+    isData,
+    "isreal",
+    reviewData.data.length > 0
+  );
 
   // useEffect(() => {
   //   const area = addressToCode("일도일동");

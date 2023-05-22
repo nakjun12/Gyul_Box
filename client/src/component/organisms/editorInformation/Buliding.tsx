@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { startTransition, useEffect, useState } from "react";
+import { searchContent } from "../../../pages/api/search";
 import RadioButtons from "../../molecules/radioButtons/RadioButtons";
 import styles from "./EditorInformation.module.scss";
 type Props = {};
@@ -14,8 +15,13 @@ const position = [
   { label: "저층", value: "low" },
 ];
 
+type PlatPlc = { id: number; houseName: string; platPlc: string };
+type Content = {
+  data: PlatPlc[];
+};
+
 const IndexPage = () => {
-  const [startYear, setStartYear] = useState(2019);
+  const [startYear, setStartYear] = useState(2018);
   const [endYear, setEndYear] = useState(2023);
 
   const handleChangeStartYear = (
@@ -69,29 +75,80 @@ export default function Buliding({}: Props) {
   const [address, setAddress] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState("villa");
   const [isPosition, setPosition] = useState("high");
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [isZone, setIsZone] = useState<PlatPlc[]>([]);
+
+  useEffect(() => {
+    //문제 있음
+    if (searchValue === "") return;
+    searchContent(searchValue)
+      .then((res: Content) => {
+        setIsZone(res.data as PlatPlc[]);
+      })
+      .catch((err) => {
+        setIsZone([{ id: 36, houseName: "", platPlc: "검색 결과가 없습니다" }]);
+      });
+    // searchData(searchValue).then((res) => {
+    //   setIsZone(res.data);
+    // });
+    // } else {
+    //   const filteredResults = zone.filter(function (item) {
+    //     return item.includes(searchValue);
+    //   });
+    // setDummy(filteredResults);
+  }, [searchValue]);
+
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
   };
   const handlePositionChange = (value: string) => {
     setPosition(value);
   };
-  console.log(selectedOption);
-  const handleClick = () => {};
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setAddress(value);
+    startTransition(() => {
+      setSearchValue(value);
+    });
+    // Do something with the updated value
+  };
+
+  const handleClickSearch = (address: string) => {
+    setAddress(address);
+    setIsZone([]);
+  };
 
   return (
     <section className={styles.buliding_wrapper}>
       <label htmlFor="address" className={styles.label_style}>
         주소
       </label>
-      <input
-        type="text"
-        value={address}
-        onClick={handleClick}
-        name="address"
-        id="address"
-        placeholder="주소를 입력해주세요"
-        readOnly
-      />
+      <div className={styles.search}>
+        <input
+          type="text"
+          value={address}
+          onChange={handleChange} // Connect onchange event
+          name="address"
+          id="address"
+          placeholder="주소를 입력해주세요"
+        />
+        {isZone.length > 0 && (
+          <ul className={styles.search_list}>
+            {isZone.map((item: PlatPlc) => (
+              <li
+                key={item.id}
+                className={styles.search_item}
+                onClick={() =>
+                  handleClickSearch(item.platPlc + " " + item.houseName)
+                }
+              >
+                {item.platPlc + " " + item.houseName}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
       <label htmlFor="type" className={styles.label_style}>
         원룸 유형
       </label>

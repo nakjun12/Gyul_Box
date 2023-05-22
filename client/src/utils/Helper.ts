@@ -72,9 +72,10 @@ const getAddress = (lat: number, lng: number): Promise<string> => {
         const addressName = result[0].address.address_name;
         resolve(addressName); // Promise를 통해 addressName 반환
       } else {
-        reject(new Error("Failed to get address"));
+        reject(new Error("Failed to get address")); //주소 실패시
       }
     };
+
     geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
   });
 };
@@ -86,7 +87,7 @@ const addMarker = (arr: Map_data[], map: kakao.maps.Map) => {
       arr[i].coordinate.latitude,
       arr[i].coordinate.longitude
     );
-    const popupWindow = new kakao.maps.CustomOverlay({
+    const circleInfo = new kakao.maps.CustomOverlay({
       position: latlng,
       clickable: true,
     });
@@ -95,17 +96,18 @@ const addMarker = (arr: Map_data[], map: kakao.maps.Map) => {
     markerBox.setAttribute("class", "marker_box");
     markerBox.setAttribute("value", `${arr[i].id}`);
     markerBox.onclick = function () {
-      console.log(popupWindow.getPosition());
+      console.log(circleInfo.getPosition(), arr[i].id);
     };
     markerBox.textContent = String(arr[i].reviewCount);
 
-    popupWindow.setContent(markerBox);
-    popupWindow.setMap(map);
-    completeMarker.push(popupWindow);
+    circleInfo.setContent(markerBox);
+    circleInfo.setMap(map);
+    completeMarker.push(circleInfo);
   }
 
   return completeMarker;
 };
+
 function removeMarker(markers: kakao.maps.CustomOverlay[]) {
   for (let i = 0; i < markers.length; i++) {
     markers[i].setMap(null);

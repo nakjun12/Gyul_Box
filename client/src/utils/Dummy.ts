@@ -358,46 +358,46 @@ const 삼도일동: Map_circle = {
 
 const 일도일동: Map_circle = {
   data: [
-    {
-      id: 33,
-      reviewCount: 0,
-      coordinate: {
-        latitude: 33.506188,
-        longitude: 126.541041,
-      },
-    },
-    {
-      id: 34,
-      reviewCount: 0,
-      coordinate: {
-        latitude: 33.506196,
-        longitude: 126.540733,
-      },
-    },
-    {
-      id: 35,
-      reviewCount: 0,
-      coordinate: {
-        latitude: 33.505972,
-        longitude: 126.540818,
-      },
-    },
-    {
-      id: 36,
-      reviewCount: 0,
-      coordinate: {
-        latitude: 33.505772,
-        longitude: 126.540661,
-      },
-    },
-    {
-      id: 37,
-      reviewCount: 0,
-      coordinate: {
-        latitude: 33.506466,
-        longitude: 126.542192,
-      },
-    },
+    // {
+    //   id: 33,
+    //   reviewCount: 2,
+    //   coordinate: {
+    //     latitude: 33.506188,
+    //     longitude: 126.541041,
+    //   },
+    // },
+    // {
+    //   id: 34,
+    //   reviewCount: 3,
+    //   coordinate: {
+    //     latitude: 33.506196,
+    //     longitude: 126.540733,
+    //   },
+    // },
+    // {
+    //   id: 35,
+    //   reviewCount: 4,
+    //   coordinate: {
+    //     latitude: 33.505972,
+    //     longitude: 126.540818,
+    //   },
+    // },
+    // {
+    //   id: 36,
+    //   reviewCount: 5,
+    //   coordinate: {
+    //     latitude: 33.505772,
+    //     longitude: 126.540661,
+    //   },
+    // },
+    // {
+    //   id: 37,
+    //   reviewCount: 6,
+    //   coordinate: {
+    //     latitude: 33.506466,
+    //     longitude: 126.542192,
+    //   },
+    // },
     {
       id: 38,
       reviewCount: 3,
