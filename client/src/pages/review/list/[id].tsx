@@ -45,7 +45,7 @@ export default function Index({}: Props) {
         </div>
         <Pagination currentPage={4} totalPages={12} />
         <div className="header_search">
-          <SearchBar />
+          <SearchBar isData />
         </div>
       </main>
     </>

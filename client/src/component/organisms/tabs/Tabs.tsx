@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import CategoryStars from "../../molecules/categoryStars/CategoryStars";
 import DetailTable from "../../molecules/detailTable/DetailTable";
 import Pantagon from "../../molecules/pentagon/Pantagon";
-import DragCarousel from "../dragCarousel/DragCarousel";
 import Reviews from "../reviews/Reviews";
 import Tab from "./../../atoms/tab/Tab";
 import styles from "./Tabs.module.scss";
@@ -38,13 +37,13 @@ const Tabs = ({}: TabsProps) => {
     <>
       <nav className={styles.tabs}>
         <Tab
-          text="건물정보"
+          text="건물 정보"
           index={1}
           handleClick={handleClick}
           active={tabNumber === 1}
         />
         <Tab
-          text="내가 쓴 글"
+          text="리뷰 댓글"
           index={2}
           handleClick={handleClick}
           active={tabNumber === 2}
@@ -65,7 +64,7 @@ const Tabs = ({}: TabsProps) => {
         <Reviews />
         <button className={styles.more_btn}>더보기 1/4</button>
 
-        <DragCarousel />
+        {/* <DragCarousel /> */}
       </main>
     </>
   );
