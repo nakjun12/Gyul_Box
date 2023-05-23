@@ -1,19 +1,21 @@
 import { useEffect } from "react";
-import { sendMessage, subscribeToDestination } from "../../lib/sample";
+import useLiveChat from "../../component/organisms/message/message";
 const MyComponent = () => {
+  const { publish, disconnect, messageRoom, setMessageRoom, text, setText } =
+    useLiveChat();
+
+  console.log(messageRoom, "messageRoom");
   useEffect(() => {
-    const subscription = subscribeToDestination(
-      "https://0e69-39-120-170-15.ngrok-free.app"
-    );
+    // const subscription = subscribeToDestination(
+    //   "https://0e69-39-120-170-15.ngrok-free.app"
+    // );
 
     // Unsubscribe when component unmounts
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => {};
   }, []);
 
   const handleClick = () => {
-    sendMessage("YOUR_DESTINATION", "Hello, world!");
+    // sendMessage("YOUR_DESTINATION", "Hello, world!");
   };
 
   return (

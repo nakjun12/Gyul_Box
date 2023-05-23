@@ -9,22 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@stomp/stompjs": "^7.0.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.34",
     "@types/react-dom": "18.0.11",
     "chart.js": "^4.3.0",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
+    "http-proxy": "^1.18.1",
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-lottie-player": "^1.5.4",
     "recoil": "^0.7.7",
+    "sockjs-client": "^1.6.1",
     "swr": "^2.1.5",
     "typescript": "5.0.4"
   },
   "devDependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "@types/sockjs-client": "^1.5.1",
     "kakao.maps.d.ts": "^0.1.35",
     "react-icons": "^4.8.0",
     "sass": "^1.61.0",

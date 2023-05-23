@@ -1,9 +1,10 @@
 import * as StompJs from "@stomp/stompjs";
 import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
-
+import SockJS from "sockjs-client";
 import CurrentRoomIdState from "../../../lib/recoil/currentRoom";
 import Profile from "../../../lib/recoil/profile";
+import { WEBSOCKET_URL } from "../../../utils/ConfigHelper";
 type Props = {};
 
 interface Message {
@@ -27,54 +28,68 @@ const useLiveChat = () => {
   const [receiverId, setReceiverId] = useState(0);
   const client = useRef<StompJs.Client | null>(null); //
 
-  const URL = "https://api-tutordiff.site/stomp/content";
-
+  const URL = WEBSOCKET_URL;
+  console.log(URL);
+  console.log(URL, WEBSOCKET_URL);
   useEffect(() => {
     const setRoom = async () => {
-      await initialChatSetting();
+      // await initialChatSetting();
       connect();
     };
     setRoom();
     return () => disconnect();
-  }, [CurrentRoomId]);
+  }, []);
 
-  const initialChatSetting = async () => {
-    if (CurrentRoomId !== 0 && CurrentRoomId !== undefined) {
-      try {
-        const response = await fetch(
-          `/messages/rooms/${profileId}/${CurrentRoomId}`
-        );
-        const { data } = await response.json();
-        if (profileId === data.tuteeId) {
-          setReceiverId(data.tutorId);
-        } else {
-          setReceiverId(data.tuteeId);
-        }
-        setMessageRoom(data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
+  // const initialChatSetting = async () => {
+  //   if (CurrentRoomId !== 0 && CurrentRoomId !== undefined) {
+  //     try {
+  //       const response = await fetch(
+  //         `/messages/rooms/${profileId}/${CurrentRoomId}`
+  //       );
+  //       const { data } = await response.json();
+  //       if (profileId === data.tuteeId) {
+  //         setReceiverId(data.tutorId);
+  //       } else {
+  //         setReceiverId(data.tuteeId);
+  //       }
+  //       setMessageRoom(data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  // };
 
   const connect = () => {
     client.current = new StompJs.Client({
-      webSocketFactory: () => URL,
-      connectHeaders: {
-        Authorization: sessionStorage.getItem("authorization") || "",
+      webSocketFactory: () => {
+        const socket = new SockJS(URL);
+
+        // WebSocket 연결이 성공하면 헤더를 설정
+        // socket.onopen = () => {
+        //   socket.send("ngrok-skip-browser-warning: true");
+        // };
+
+        return socket;
       },
-      debug: () => {},
+      connectHeaders: {
+        ngrokskipbroswer: "true",
+      },
+      debug: () => {
+        console.log("하이");
+      },
       reconnectDelay: 3000,
       heartbeatIncoming: 2000,
       heartbeatOutgoing: 2000,
       onConnect: () => {
+        console.log("연결");
         subscribe();
       },
       onStompError: (frame) => {
         console.error(frame);
+        console.log("실패했다");
       },
     });
-
+    // Set the binaryType here
     client.current.activate();
   };
 
@@ -85,8 +100,9 @@ const useLiveChat = () => {
   };
 
   const subscribe = () => {
+    console.log("구독");
     if (client.current) {
-      client.current.subscribe(`/sub/room/${CurrentRoomId}`, (res) => {
+      client.current.subscribe(`/3`, (res) => {
         setMessageRoom((prev) => ({
           ...prev,
           // messages: [...prev.messages, JSON.parse(res.body)],
