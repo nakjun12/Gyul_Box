@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { SatisfactionMenu } from "../../../utils/types/types";
 import DynamicStars from "../stars/DynamicStars";
 import styles from "./Satisfaction.module.scss";
 type Props = {
   item: SatisfactionMenu;
+  handleSatisfaction: (value: string, rate: number) => void;
 };
 
-export default function Satisfaction({ item }: Props) {
+export default function Satisfaction({ item, handleSatisfaction }: Props) {
   const [show, setShow] = useState<number>(0);
-  console.log(item);
+  useEffect(() => {
+    handleSatisfaction(item.value, show);
+  }, [show, item.value, handleSatisfaction]);
+
   return (
     <article className={styles.ment}>
       <div>
