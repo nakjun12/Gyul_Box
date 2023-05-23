@@ -1,6 +1,10 @@
+import type { Detail_data } from "../../../utils/types/types";
 import styles from "./DetailTable.module.scss";
+type Props = {
+  data: Detail_data;
+};
 
-export default function DetailTable() {
+export default function DetailTable({ data }: Props) {
   return (
     <table className={styles.table}>
       <tbody className={styles.table_wrapper}>
