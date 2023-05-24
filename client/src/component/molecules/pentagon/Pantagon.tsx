@@ -1,14 +1,25 @@
 import Chart from "chart.js/auto";
-import React, { useEffect, useRef } from "react";
-
+import React, { useEffect, useMemo, useRef } from "react";
+import type { Detail_data } from "../../../utils/types/types";
 interface ChartProps {
-  data: number[];
+  dataList: Detail_data;
 }
 
-const Pantagon: React.FC<ChartProps> = ({ data }) => {
+const Pantagon: React.FC<ChartProps> = ({ dataList }) => {
   const chartRef = useRef<Chart>();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rate = dataList.rate;
 
+  const data = useMemo(
+    () => [
+      rate.interiorRate,
+      rate.buildingRate,
+      rate.trafficRate,
+      rate.securityRate,
+      rate.locationRate,
+    ],
+    [rate]
+  );
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) {

@@ -1,38 +1,32 @@
 import Stars from "../stars/Stars";
 import styles from "./CategoryStars.module.scss";
-type Props = {};
+type Props = {
+  rating: number[];
+};
 
-export default function CategoryStars({}: Props) {
+export default function CategoryStars({ rating }: Props) {
+  const categories = [
+    { label: "총점", average: rating[0] },
+    { label: "집내부", average: rating[1] },
+    { label: "생활 및 입지", average: rating[2] },
+    { label: "치안", average: rating[3] },
+    { label: "교통", average: rating[4] },
+    { label: "건물/단지", average: rating[5] },
+  ];
+
   return (
     <>
       <section className={styles.container}>
         <div className={styles.wrapper}>
-          <div className={styles.category_stars}>
-            <span className={styles.word}>총점</span> <Stars stars={3} />
-            <span className={styles.average}>3.0</span>
-          </div>
-          <div className={styles.category_stars}>
-            <span className={styles.word}>집내부</span> <Stars stars={3} />
-            <span className={styles.average}>3.0</span>
-          </div>
-          <div className={styles.category_stars}>
-            <span className={styles.word}>생활 및 입지</span>{" "}
-            <Stars stars={3} />
-            <span className={styles.average}>3.0</span>
-          </div>
-
-          <div className={styles.category_stars}>
-            <span className={styles.word}>치안</span> <Stars stars={3} />
-            <span className={styles.average}>3.0</span>
-          </div>
-          <div className={styles.category_stars}>
-            <span className={styles.word}>교통</span> <Stars stars={3} />
-            <span className={styles.average}>3.0</span>
-          </div>
-          <div className={styles.category_stars}>
-            <span className={styles.word}>건물/단지</span> <Stars stars={3} />
-            <span className={styles.average}>3.0</span>
-          </div>
+          {categories.map((category, index) => (
+            <div className={styles.category_stars} key={index}>
+              <span className={styles.word}>{category.label}</span>{" "}
+              <Stars stars={category.average} />
+              <span className={styles.average}>
+                {category.average.toFixed(1)}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
     </>

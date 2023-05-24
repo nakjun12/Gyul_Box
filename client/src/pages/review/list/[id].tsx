@@ -43,7 +43,7 @@ export default function Index({}: Props) {
           <BestPost />
           <BestPost /> */}
         </div>
-        <Pagination currentPage={4} totalPages={12} />
+        <Pagination currentPage={1} totalPages={12} />
         <div className="header_search">
           <SearchBar isData />
         </div>
