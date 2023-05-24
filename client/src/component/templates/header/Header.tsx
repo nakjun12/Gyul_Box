@@ -57,9 +57,11 @@ export default function Header({}: Props) {
               <div className={styles.dropdown_menu}>
                 <ul>
                   <li>로그인</li>
-                  <li>원룸 리뷰</li>
+                  <li onClick={() => handler("review/list/5011010100/1")}>
+                    원룸 리뷰
+                  </li>
                   <li onClick={() => handler("map")}>지도</li>
-                  <li onClick={() => handler("review/list")}>양도게시판</li>
+                  <li onClick={() => handler("assignment")}>양도게시판</li>
                 </ul>
               </div>
             )}
@@ -70,17 +72,14 @@ export default function Header({}: Props) {
               <ul className={styles.ul}>
                 <li
                   className={styles.li}
-                  onClick={() => handler("review/list/1")}
+                  onClick={() => handler("review/list/5011010100/1")}
                 >
                   원룸 리뷰
                 </li>
                 <li className={styles.li} onClick={() => handler("map")}>
                   지도
                 </li>
-                <li
-                  className={styles.li}
-                  onClick={() => handler("review/list")}
-                >
+                <li className={styles.li} onClick={() => handler("assignment")}>
                   양도 게시판
                 </li>
               </ul>

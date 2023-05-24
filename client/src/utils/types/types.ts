@@ -4,18 +4,8 @@ interface SatisfactionMenu {
   question: string;
 }
 
-interface Review_data {
-  reviewId: number;
-  advantage: string;
-  disadvantage: string;
-  avgRate: number;
-  reviewLikes: number;
-  createdAt: string;
-  modifiedAt: string | null;
-  address: string;
-}
 interface Review_simple {
-  data: Review_data[];
+  data: Review_list_data[];
 }
 
 interface Map_data {
@@ -136,6 +126,7 @@ type Review_list = {
 };
 
 export type {
+  Review_list_data,
   Review_list,
   Detail_data,
   Review_detail,
@@ -143,7 +134,6 @@ export type {
   Rate,
   Editor_type,
   SatisfactionMenu,
-  Review_data,
   Review_simple,
   SearchAddress,
   SearchAddress_data,
