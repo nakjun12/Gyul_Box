@@ -6,13 +6,20 @@ import styles from "./PagiNation.module.scss";
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
+  area: string;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
+const Pagination: React.FC<PaginationProps> = ({
+  currentPage,
+  totalPages,
+  area,
+}) => {
   const [isPage, setIsPage] = useState(currentPage);
   const prevPage = isPage > 1 ? isPage - 1 : 0;
+  const href = area ? `/review/list/${area}` : `/review/list`;
   const nextPage = isPage < totalPages ? isPage + 1 : 0;
-  console.log(nextPage, "히히히히ㅣ히ㅣ");
+
+  console.log(nextPage, isPage, totalPages, "히히히히ㅣ히ㅣ");
   const pageRange = 2;
   let startPage = isPage - pageRange;
   let endPage = isPage + pageRange;
@@ -42,7 +49,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
             onClick={() => setIsPage(prevPage)}
             style={{ opacity: prevPage ? 1 : 0 }}
           >
-            <Link href={`/review/list/${prevPage}`} passHref>
+            <Link href={`${href}/${prevPage}`} passHref>
               <div className={styles.page_link} aria-label="Previous" />
             </Link>
           </li>
@@ -56,7 +63,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
               isPage === page ? styles.active : ""
             }`}
           >
-            <Link href={`/review/list/${page}`} passHref>
+            <Link href={`${href}/${page}`} passHref>
               <div className={styles.page_link}>{page}</div>
             </Link>
           </li>
@@ -66,9 +73,9 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
           <li
             className={styles.page_item}
             onClick={() => setIsPage(nextPage)}
-            style={{ opacity: prevPage ? 1 : 0 }}
+            style={{ opacity: nextPage ? 1 : 0 }}
           >
-            <Link href={`/review/list/${nextPage}`} passHref>
+            <Link href={`${href}/${nextPage}`} passHref>
               <div className={styles.page_link} aria-label="Next" />
             </Link>
           </li>
