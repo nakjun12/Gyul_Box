@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 import type { Review_detail, writer } from "../../../utils/types/types";
 import Stars from "../stars/Stars";
 import styles from "./Review.module.scss";
@@ -8,12 +9,35 @@ type Props = {
 };
 
 export default function Review({ review }: Props) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleImageClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   const writer: writer = review.writer || {};
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Image src="/icon/gyul1.svg" alt="id" width={50} height={50} />
+        <div className={styles.dropdownWrapper}>
+          <Image
+            src="/icon/gyul1.svg"
+            alt="id"
+            width={50}
+            height={50}
+            className={styles.image}
+            onClick={handleImageClick}
+          />
+          {isDropdownOpen && (
+            <div className={styles.dropdown}>
+              {/* 드롭다운 메뉴 내용을 추가하세요 */}
+              <button onClick={() => console.log("쪽지 보내기")}>
+                쪽지 보내기
+              </button>
+            </div>
+          )}
+        </div>
         <div className={styles.header_id}>
           <div className={styles.header_container}>
             {writer.nickname || "익명"} <Stars stars={review.avgRate || 3} />

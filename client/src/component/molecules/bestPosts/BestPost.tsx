@@ -1,11 +1,10 @@
-import type { Review_data } from "../../../utils/types/types";
+import type { Review_list_data } from "../../../utils/types/types";
 import Recommand from "../../atoms/recommand/Recommand";
 import YellowStar from "../../atoms/yellowStars/YellowStars";
 import styles from "./BestPosts.module.scss";
 
 type Props = {
-  data: Review_data;
-  isData: boolean;
+  data: Review_list_data;
 };
 
 export default function BestPost({ data }: Props) {
@@ -18,7 +17,7 @@ export default function BestPost({ data }: Props) {
           <YellowStar />
           &nbsp; {data.avgRate || 4} &emsp;
           <Recommand />
-          &nbsp; {data.reviewLikes || 2}
+          &nbsp; {data.likes || 2}
         </div>
       </header>
       <div className={styles.bestposts_list}>

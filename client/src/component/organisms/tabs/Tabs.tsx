@@ -37,7 +37,7 @@ const Tabs = ({ data }: TabsProps) => {
         // 리뷰 섹션으로 스크롤합니다.
         reviewSectionRef.current.scrollIntoView({
           behavior: "smooth",
-          block: "start",
+          block: "center",
         });
       } else if (tabNumber === 1) {
         // 페이지 맨 위로 스크롤합니다.
@@ -74,11 +74,12 @@ const Tabs = ({ data }: TabsProps) => {
         <div className={styles.group}>
           <Pantagon dataList={data} />
           <CategoryStars rating={rating} />
-          <div ref={reviewSectionRef} />
         </div>
-        <div className={styles.scroll} ref={reviewSectionRef} />
-        <h4 className={styles.detail_top}>n개의 리뷰</h4>
 
+        <div className={styles.scroll} />
+
+        <h4 className={styles.detail_top}>n개의 리뷰</h4>
+        <div ref={reviewSectionRef} />
         <Reviews reviews={data.reviews} />
 
         {/* <DragCarousel /> */}
