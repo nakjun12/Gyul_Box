@@ -21,10 +21,13 @@ public class ReviewDto {
         private String adminCost;
         private String residenceYear;
         private String floor;
+        private String buildingType;
         private Rate rate;
 
         // houseInfo와 매핑하기 위한 id
         private long houseInfoId;
+
+        private String userEmail;
     }
 
     // 리뷰하는 건물이 달라지는 경우는 delete 후 새로 post
@@ -39,6 +42,7 @@ public class ReviewDto {
         private String adminCost;
         private String residenceYear;
         private String floor;
+        private String buildingType;
         private Rate rate;
 
         public void setReviewId(long reviewId) {
@@ -58,6 +62,7 @@ public class ReviewDto {
         private String adminCost;
         private String residenceYear;
         private String floor;
+        private String buildingType;
         private double avgRate;
         private long likes;
 
