@@ -59,13 +59,13 @@ public class SecurityConfiguration {
                     .and()
                     .formLogin().disable()
                     .httpBasic().disable()
-                    .exceptionHandling()  // 추가
-                    .authenticationEntryPoint(new MemberAuthenticationEntryPoint())  // 추가
-                    .accessDeniedHandler(new UserAccessDeniedHandler())            // 추가
+                    .exceptionHandling()
+                    .authenticationEntryPoint(new MemberAuthenticationEntryPoint())
+                    .accessDeniedHandler(new UserAccessDeniedHandler())
                     .and()
-                    .apply(new CustomFilterConfigurer())  // 추가
+                    .apply(new CustomFilterConfigurer())
                     .and()
-                    .authorizeHttpRequests(authorize -> authorize // url authorization 전체 추가
+                    .authorizeHttpRequests(authorize -> authorize
 //                            .antMatchers(HttpMethod.POST, "/reviews").hasRole("USER")
                             .anyRequest().permitAll()
                     )
@@ -86,13 +86,12 @@ public class SecurityConfiguration {
             return source;
         }
 
-        // 추가
         public class CustomFilterConfigurer extends AbstractHttpConfigurer<CustomFilterConfigurer, HttpSecurity> {
             @Override
             public void configure(HttpSecurity builder) throws Exception {
                 JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenizer, authorityUtils);
 
-                builder.addFilterAfter(jwtVerificationFilter, OAuth2LoginAuthenticationFilter.class); // (1)
+                builder.addFilterAfter(jwtVerificationFilter, OAuth2LoginAuthenticationFilter.class);
             }
         }
     }
