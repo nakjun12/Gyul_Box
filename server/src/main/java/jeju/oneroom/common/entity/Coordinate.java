@@ -10,7 +10,6 @@ import javax.persistence.Embeddable;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Coordinate {
-    // Geocoder 이용하여 주소를 위도 경도로.
     private double latitude;
     private double longitude;
 

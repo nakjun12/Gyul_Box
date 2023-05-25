@@ -10,6 +10,7 @@ import jeju.oneroom.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -78,5 +79,9 @@ public class ReviewService {
     // 리뷰가 존재하는지 확인
     public Review findVerifiedReview(long reviewId) {
         return reviewRepository.findById(reviewId).orElseThrow(() -> new RuntimeException("REVIEW_NOT_FOUND"));
+    }
+
+    public Page<ReviewDto.Response> findHouseInfoReview(HouseInfo houseInfo, int page, int size) {
+        return reviewRepository.findByHouseInfo(houseInfo, PageRequest.of(page - 1, size)).map(reviewMapper::reviewToResponseDto);
     }
 }

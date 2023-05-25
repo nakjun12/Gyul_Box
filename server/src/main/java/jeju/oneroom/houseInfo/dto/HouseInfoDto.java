@@ -30,8 +30,6 @@ public class HouseInfoDto {
 
         private Coordinate coordinate;
         private Rate rate;
-
-        private List<ReviewDto.Response> reviews;
     }
 
     @Getter
