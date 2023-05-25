@@ -1,6 +1,7 @@
 package jeju.oneroom.houseInfo.entity;
 
 import jeju.oneroom.area.entity.Area;
+import jeju.oneroom.area.repository.AreaRepository;
 import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
@@ -20,12 +21,15 @@ class HouseInfoTest {
     @Autowired
     HouseInfoRepository houseInfoRepository;
 
+    @Autowired
+    AreaRepository areaRepository;
+
     @Test
     public void HouseInfo_생성_테스트() throws Exception{
         //given
         Coordinate coordinate = new Coordinate(11.11111, 11.11111);
         Rate rate = getRate();
-        Area area = getTownWithoutSi(coordinate);
+        Area area = areaRepository.findById(11111L).orElse(null);
         HouseInfo houseInfo = getHouseInfo(coordinate, rate, area);
 
         houseInfoRepository.save(houseInfo);

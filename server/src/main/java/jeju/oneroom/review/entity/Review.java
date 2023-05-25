@@ -31,6 +31,7 @@ public class Review extends BaseEntity {
     private String adminCost;
     private String residenceYear;
     private String floor;
+    private String buildingType;
     @Basic(fetch = FetchType.LAZY)
     @Formula("(select count(*) from review_like l where l.review_id = review_id)")
     private long likes;
@@ -51,9 +52,10 @@ public class Review extends BaseEntity {
     @OneToMany(mappedBy = "review")
     private List<ReviewLike> reviewLikes = new ArrayList<>();
 
+
     @Builder
     public Review(String buildingName, String address, String advantage, String disadvantage, String adminCost,
-                  String residenceYear, String floor, Rate rate, HouseInfo houseInfo, User user) {
+                  String residenceYear, String floor, String buildingType, Rate rate, HouseInfo houseInfo, User user) {
         this.buildingName = buildingName;
         this.address = address;
         this.advantage = advantage;
@@ -61,6 +63,7 @@ public class Review extends BaseEntity {
         this.adminCost = adminCost;
         this.residenceYear = residenceYear;
         this.floor = floor;
+        this.buildingType = buildingType;
         this.rate = rate;
         this.houseInfo = houseInfo;
         this.user = user;

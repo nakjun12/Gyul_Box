@@ -22,6 +22,7 @@ public class Rate {
     private double securityRate;
     @ColumnDefault("0")
     private double locationRate;
+    // 프론트에서 안뜨게 처리하자.
     @ColumnDefault("0")
     private double avgRate;
 
