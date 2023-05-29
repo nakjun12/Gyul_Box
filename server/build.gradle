@@ -50,6 +50,12 @@ dependencies {
 	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
 	implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
 	implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.1'
+
+	// open api 데이터 변환
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	// WebClient
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
 
 tasks.named('test') {
