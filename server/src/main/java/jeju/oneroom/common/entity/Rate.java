@@ -13,26 +13,26 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Rate {
     @ColumnDefault("0")
-    private double interiorRate;
+    private Double interiorRate;
     @ColumnDefault("0")
-    private double buildingRate;
+    private Double buildingRate;
     @ColumnDefault("0")
-    private double trafficRate;
+    private Double trafficRate;
     @ColumnDefault("0")
-    private double securityRate;
+    private Double securityRate;
     @ColumnDefault("0")
-    private double locationRate;
+    private Double locationRate;
     // 프론트에서 안뜨게 처리하자.
     @ColumnDefault("0")
-    private double avgRate;
+    private Double avgRate;
 
     @Builder
-    public Rate(double interiorRate, double buildingRate, double trafficRate, double securityRate, double locationRate) {
-        this.interiorRate = interiorRate;
-        this.buildingRate = buildingRate;
-        this.trafficRate = trafficRate;
-        this.securityRate = securityRate;
-        this.locationRate = locationRate;
-        this.avgRate = Math.round(((interiorRate + buildingRate + trafficRate + securityRate + locationRate) / 5) * 100) / 100.0;
+    public Rate(Double interiorRate, Double buildingRate, Double trafficRate, Double securityRate, Double locationRate) {
+        this.interiorRate = interiorRate != null ? interiorRate : 0;
+        this.buildingRate = buildingRate != null ? buildingRate : 0;
+        this.trafficRate = trafficRate != null ? trafficRate : 0;
+        this.securityRate = securityRate != null ? securityRate : 0;
+        this.locationRate = locationRate != null ? locationRate : 0;
+        this.avgRate = Math.round(((this.interiorRate + this.buildingRate + this.trafficRate + this.securityRate + this.locationRate) / 5) * 100) / 100.0;
     }
 }

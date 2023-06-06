@@ -56,6 +56,8 @@ dependencies {
 	// WebClient
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	// MySQL
+	implementation "mysql:mysql-connector-java:8.0.32"
 }
 
 tasks.named('test') {
