@@ -1,33 +1,32 @@
 package jeju.oneroom.openapi.service;
 
 import com.google.gson.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
-@ConfigurationProperties("secret.open-api")
+@Transactional
+@RequiredArgsConstructor
 public class GeoPointService {
 
     private final WebClient webClient;
-    private final String clientId;
-    private final String clientSecret;
 
-    public GeoPointService(WebClient.Builder webClientBuilder, @Value("${naver.cloud.client-id}") String clientId,
-                           @Value("${naver.cloud.client-secret}") String clientSecret) {
-        this.webClient = webClientBuilder
-                .baseUrl("https://naveropenapi.apigw.ntruss.com/map-geocode/v2")
-                .build();
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-    }
+    @Value("${open-api.naver-cloud.id}")
+    private String clientId;
+
+    @Value("${open-api.naver-cloud.secret}")
+    private String clientSecret;
 
     public double[] findGeoPoint(String location) {
         String response = webClient.get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/geocode")
+                        .scheme("https")
+                        .host("naveropenapi.apigw.ntruss.com")
+                        .path("/map-geocode/v2/geocode")
                         .queryParam("query", location)
                         .build())
                 .header("X-NCP-APIGW-API-KEY-ID", clientId)
