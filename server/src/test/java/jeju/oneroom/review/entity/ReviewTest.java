@@ -75,11 +75,11 @@ class ReviewTest {
 
     private Rate getRate() {
         return Rate.builder()
-                .buildingRate(5)
-                .interiorRate(5)
-                .locationRate(5)
-                .securityRate(5)
-                .trafficRate(5)
+                .buildingRate(5.0)
+                .interiorRate(5.0)
+                .locationRate(5.0)
+                .securityRate(5.0)
+                .trafficRate(5.0)
                 .build();
     }
 

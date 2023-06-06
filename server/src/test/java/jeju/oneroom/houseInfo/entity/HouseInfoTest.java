@@ -13,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @SpringBootTest
 @Transactional
 @Rollback(value = false)
@@ -26,6 +28,15 @@ class HouseInfoTest {
 
     @Test
     public void HouseInfo_생성_테스트() throws Exception{
+        Area area = areaRepository.findById(5013031000L).orElse(null);
+        List<HouseInfo> houseInfos = houseInfoRepository.findByPlatPlcContains(area.getAreaName());
+        for (HouseInfo houseInfo : houseInfos) {
+            houseInfo.setArea(area);
+        }
+    }
+
+    @Test
+    public void HouseInfo_생성_테스트2() throws Exception{
         //given
         Coordinate coordinate = new Coordinate(11.11111, 11.11111);
         Rate rate = getRate();
@@ -75,11 +86,11 @@ class HouseInfoTest {
 
     private Rate getRate() {
         return Rate.builder()
-                .buildingRate(5)
-                .interiorRate(5)
-                .locationRate(5)
-                .securityRate(5)
-                .trafficRate(5)
+                .buildingRate(5.0)
+                .interiorRate(5.0)
+                .locationRate(5.0)
+                .securityRate(5.0)
+                .trafficRate(5.0)
                 .build();
     }
 

@@ -24,6 +24,7 @@ public class HouseInfo extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String mainPurpsCdNm;
     private String houseName;
     private String buildUes;
     private String buildingStructure;
@@ -51,8 +52,9 @@ public class HouseInfo extends BaseEntity {
     private Coordinate coordinate;
 
     @Builder
-    public HouseInfo(String houseName, String buildUes, String buildingStructure, int houseHold, String useAprDay, int grndFloor, int ugrndFloor,
+    public HouseInfo(String mainPurpsCdNm, String houseName, String buildUes, String buildingStructure, int houseHold, String useAprDay, int grndFloor, int ugrndFloor,
                      int elevator, String platPlc, Rate rate, Area area, List<Review> reviews, Coordinate coordinate) {
+        this.mainPurpsCdNm = mainPurpsCdNm;
         this.houseName = houseName;
         this.buildUes = buildUes;
         this.buildingStructure = buildingStructure;
@@ -70,6 +72,14 @@ public class HouseInfo extends BaseEntity {
 
     public void updateRate(Rate rate){
         this.rate = rate;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
     }
 }
 /*

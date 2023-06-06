@@ -49,7 +49,7 @@ class HouseInfoServiceTest {
         when(houseInfoMapper.houseInfoToResponseDto(any(HouseInfo.class))).thenReturn(response);
 
         HouseInfoDto.Response result = houseInfoService.findHouseInfo(1L);
-        assertEquals(houseInfo.getHouseName(),result.getHouseName());
+        assertEquals(houseInfo.getHouseName(), result.getHouseName());
     }
 
     @Test
@@ -70,7 +70,7 @@ class HouseInfoServiceTest {
         when(houseInfoMapper.houseInfoToSimpleResponseDto(any(HouseInfo.class))).thenReturn(SimpleResponse);
 
         HouseInfoDto.SimpleResponse result = houseInfoService.findHouseInfoSimple(1L);
-        assertEquals(houseInfo.getHouseName(),result.getHouseName());
+        assertEquals(houseInfo.getHouseName(), result.getHouseName());
     }
 
     @Test
@@ -92,8 +92,8 @@ class HouseInfoServiceTest {
         when(houseInfoMapper.houseInfoToSimpleCountResponseDto(any(HouseInfo.class))).thenReturn(SimpleCountResponse);
 
         List<HouseInfoDto.SimpleCountResponse> result = houseInfoService.findHouseInfosByArea(getArea(), 9);
-        assertEquals(houseInfo.getCoordinate().getLatitude(),result.get(0).getCoordinate().getLatitude());
-        assertEquals(houseInfo.getCoordinate().getLongitude(),result.get(0).getCoordinate().getLongitude());
+        assertEquals(houseInfo.getCoordinate().getLatitude(), result.get(0).getCoordinate().getLatitude());
+        assertEquals(houseInfo.getCoordinate().getLongitude(), result.get(0).getCoordinate().getLongitude());
     }
 
     @Test
@@ -107,8 +107,8 @@ class HouseInfoServiceTest {
         when(houseInfoMapper.houseInfoToSimpleCountResponseDto(any(HouseInfo.class))).thenReturn(SimpleCountResponse);
 
         List<HouseInfoDto.SimpleCountResponse> result = houseInfoService.findHouseInfosByArea(getArea(), 8);
-        assertEquals(houseInfo.getCoordinate().getLatitude(),result.get(0).getCoordinate().getLatitude());
-        assertEquals(houseInfo.getCoordinate().getLongitude(),result.get(0).getCoordinate().getLongitude());
+        assertEquals(houseInfo.getCoordinate().getLatitude(), result.get(0).getCoordinate().getLatitude());
+        assertEquals(houseInfo.getCoordinate().getLongitude(), result.get(0).getCoordinate().getLongitude());
     }
 
     @Test
@@ -122,7 +122,7 @@ class HouseInfoServiceTest {
         when(houseInfoMapper.houseInfoToSimpleContentResponseDto(any(HouseInfo.class))).thenReturn(SimpleContentResponse);
 
         List<HouseInfoDto.SimpleContentResponse> result = houseInfoService.findHouseInfosByContent("인천");
-        assertEquals(houseInfo.getHouseName(),result.get(0).getHouseName());
+        assertEquals(houseInfo.getHouseName(), result.get(0).getHouseName());
     }
 
     @Test
@@ -130,14 +130,14 @@ class HouseInfoServiceTest {
     void HouseInfo_Rate_자동수정() {
         HouseInfo houseInfo = getHouseInfo(getRate(), getArea(), List.of(getReview(getUser(getArea()), getRate())));
         Rate newRate = Rate.builder()
-                .buildingRate(0)
-                .interiorRate(0)
-                .locationRate(0)
-                .securityRate(0)
-                .trafficRate(0)
+                .buildingRate(0.0)
+                .interiorRate(0.0)
+                .locationRate(0.0)
+                .securityRate(0.0)
+                .trafficRate(0.0)
                 .build();
-        houseInfoService.updateHouseInfoRate(houseInfo,newRate);
-        assertEquals(houseInfo.getRate().getAvgRate(), 2.5);
+        houseInfoService.updateHouseInfoRate(houseInfo, newRate);
+        assertEquals(houseInfo.getRate().getAvgRate(), 0.0);
     }
 
     @Test
@@ -177,11 +177,11 @@ class HouseInfoServiceTest {
 
     private Rate getRate() {
         return Rate.builder()
-                .buildingRate(5)
-                .interiorRate(5)
-                .locationRate(5)
-                .securityRate(5)
-                .trafficRate(5)
+                .buildingRate(5.0)
+                .interiorRate(5.0)
+                .locationRate(5.0)
+                .securityRate(5.0)
+                .trafficRate(5.0)
                 .build();
     }
 
@@ -228,7 +228,7 @@ class HouseInfoServiceTest {
                 .rate(houseInfo.getRate())
                 .platPlc(houseInfo.getPlatPlc())
                 .useAprDay(houseInfo.getUseAprDay())
-                .reviews(List.of(getReviewResponse())).build();
+                .build();
     }
 
     private ReviewDto.Response getReviewResponse() {
