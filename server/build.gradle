@@ -58,6 +58,10 @@ dependencies {
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	// MySQL
 	implementation "mysql:mysql-connector-java:8.0.32"
+	// WebSocket
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	// Redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 tasks.named('test') {
