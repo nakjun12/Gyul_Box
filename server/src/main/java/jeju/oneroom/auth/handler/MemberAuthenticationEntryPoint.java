@@ -15,6 +15,7 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class MemberAuthenticationEntryPoint implements AuthenticationEntryPoint {
+    // 인증 에러 발생 시 엔드포인트
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         Exception exception = (Exception) request.getAttribute("exception");
@@ -23,6 +24,7 @@ public class MemberAuthenticationEntryPoint implements AuthenticationEntryPoint 
         logExceptionMessage(authException, exception);
     }
 
+    // 로그 기록을 위한 메서드
     private void logExceptionMessage(AuthenticationException authException, Exception exception) {
         String message = exception != null ? exception.getMessage() : authException.getMessage();
         log.warn("Unauthorized error happened: {}", message);

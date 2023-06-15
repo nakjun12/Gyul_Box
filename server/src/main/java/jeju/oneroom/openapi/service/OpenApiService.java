@@ -1,6 +1,5 @@
 package jeju.oneroom.openapi.service;
 
-import jeju.oneroom.area.repository.AreaRepository;
 import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.houseInfo.repository.HouseInfoRepository;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+// OpenApi를 통해 받아온 Json자료 파싱 후 데이터베이스에 저장
 @Slf4j
 @Service
 @RequiredArgsConstructor

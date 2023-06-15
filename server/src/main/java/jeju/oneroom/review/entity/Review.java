@@ -32,11 +32,10 @@ public class Review extends BaseEntity {
     private String residenceYear;
     private String floor;
     private String buildingType;
+    // 리뷰의 좋아요 - Count쿼리 최적화를 위해 @Formula로 관리
     @Basic(fetch = FetchType.LAZY)
     @Formula("(select count(*) from review_like l where l.review_id = review_id)")
     private long likes;
-//    @Formula("(select count(*) from review_like l where l.review_id = review_id)")
-//    private long weekLikes;
 
     @Embedded
     private Rate rate;
@@ -49,7 +48,7 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "review")
+    @OneToMany(mappedBy = "review", orphanRemoval = true)
     private List<ReviewLike> reviewLikes = new ArrayList<>();
 
 
@@ -69,6 +68,7 @@ public class Review extends BaseEntity {
         this.user = user;
     }
 
+    // Update 가능한 요소만 추가
     public void update(String advantage, String disadvantage, String adminCost, String residenceYear, String floor, Rate rate) {
         this.advantage = advantage;
         this.disadvantage = disadvantage;
@@ -78,6 +78,7 @@ public class Review extends BaseEntity {
         this.rate = rate;
     }
 
+    // create 후 연관관계 매핑을 위한 매서드
     public void setProperties(HouseInfo houseInfo, User user) {
         this.houseInfo = houseInfo;
         this.user = user;

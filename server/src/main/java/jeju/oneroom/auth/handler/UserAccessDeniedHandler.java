@@ -16,6 +16,7 @@ import java.io.IOException;
 @Component
 public class UserAccessDeniedHandler implements AccessDeniedHandler {
 
+    // 인가 에러 발생 시 엔드포인트
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
         ErrorResponder.sendErrorResponse(response, HttpStatus.FORBIDDEN);

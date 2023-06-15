@@ -10,7 +10,6 @@ import jeju.oneroom.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,7 +57,6 @@ public class ReviewService {
         return reviews.stream().map(reviewMapper::reviewToSimpleResponseDto).collect(Collectors.toList());
     }
 
-    // userRepository 의존성 수정 필요...............................................................
     //유저 관심 지역에 해당하는 리뷰 중 추천수 top5
     public List<ReviewDto.SimpleResponse> findTop5UserAreaReviews(User user) {
         Area area = user.getArea();
@@ -70,8 +68,7 @@ public class ReviewService {
         return reviewRepository.findByUser(user, PageRequest.of(page - 1, size)).map(reviewMapper::reviewToSimpleResponseDto);
     }
 
-    //지역에 따른 리뷰 x개 가져오기.
-    // 페이지네이션 적용
+    //지역에 따른 리뷰 페이지네이션 적용
     public Page<ReviewDto.SimpleResponse> findAreaReviews(Area area, int page, int size) {
         return reviewRepository.findByHouseInfo_Area(area, PageRequest.of(page - 1, size)).map(reviewMapper::reviewToSimpleResponseDto);
     }
@@ -81,6 +78,7 @@ public class ReviewService {
         return reviewRepository.findById(reviewId).orElseThrow(() -> new RuntimeException("REVIEW_NOT_FOUND"));
     }
 
+    // 건물 정보에 존재하는 리뷰
     public Page<ReviewDto.Response> findHouseInfoReview(HouseInfo houseInfo, int page, int size) {
         return reviewRepository.findByHouseInfo(houseInfo, PageRequest.of(page - 1, size)).map(reviewMapper::reviewToResponseDto);
     }

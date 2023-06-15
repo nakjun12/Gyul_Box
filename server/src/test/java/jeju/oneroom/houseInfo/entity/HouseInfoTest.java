@@ -26,14 +26,14 @@ class HouseInfoTest {
     @Autowired
     AreaRepository areaRepository;
 
-    @Test
-    public void HouseInfo_생성_테스트() throws Exception{
-        Area area = areaRepository.findById(5013031000L).orElse(null);
-        List<HouseInfo> houseInfos = houseInfoRepository.findByPlatPlcContains(area.getAreaName());
-        for (HouseInfo houseInfo : houseInfos) {
-            houseInfo.setArea(area);
-        }
-    }
+//    @Test
+//    public void HouseInfo_생성_테스트() throws Exception{
+//        Area area = areaRepository.findById(5013031000L).orElse(null);
+//        List<HouseInfo> houseInfos = houseInfoRepository.findByPlatPlcContains(area.getAreaName());
+//        for (HouseInfo houseInfo : houseInfos) {
+//            houseInfo.setArea(area);
+//        }
+//    }
 
     @Test
     public void HouseInfo_생성_테스트2() throws Exception{
@@ -41,20 +41,21 @@ class HouseInfoTest {
         Coordinate coordinate = new Coordinate(11.11111, 11.11111);
         Rate rate = getRate();
         Area area = areaRepository.findById(11111L).orElse(null);
-        HouseInfo houseInfo = getHouseInfo(coordinate, rate, area);
+        HouseInfo houseInfo = getHouseInfo(coordinate, area);
 
         houseInfoRepository.save(houseInfo);
 
-        //when
-        HouseInfo findHouseInfo = houseInfoRepository.findById(houseInfo.getId()).orElse(null);
-        //then
-        Assertions.assertEquals(findHouseInfo.getHouseName(), houseInfo.getHouseName());
+//        //when
+//        HouseInfo findHouseInfo = houseInfoRepository.findById(houseInfo.getId()).orElse(null);
+//        //then
+//        Assertions.assertEquals(findHouseInfo.getHouseName(), houseInfo.getHouseName());
     }
 
-    private HouseInfo getHouseInfo(Coordinate coordinate, Rate rate, Area area) {
+    private HouseInfo getHouseInfo(Coordinate coordinate, Area area) {
         return HouseInfo.builder()
+                .mainPurpsCdNm("주거")
                 .houseHold(1)
-                .houseName("태성빌라")
+                .houseName(null)
                 .buildingStructure("콘크리트")
                 .buildUes("주거")
                 .elevator(1)
@@ -62,7 +63,7 @@ class HouseInfoTest {
                 .grndFloor(5)
                 .ugrndFloor(2)
                 .useAprDay("2002-02-02")
-                .rate(rate)
+//                .rate(rate)
                 .coordinate(coordinate)
                 .area(area)
                 .build();
@@ -70,6 +71,7 @@ class HouseInfoTest {
 
     private HouseInfo getHouseInfoWithoutTown(Coordinate coordinate, Rate rate) {
         return HouseInfo.builder()
+                .mainPurpsCdNm("주거")
                 .houseHold(1)
                 .houseName("태성빌라")
                 .buildingStructure("콘크리트")

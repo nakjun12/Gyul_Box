@@ -32,10 +32,11 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     private final CustomAuthorityUtils authorityUtils;
     private final UserService userService;
 
+    // Google API 인증 성공시 클라이언트로 Redirect 하기 위한 포인트
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         System.out.println("# Redirect to Frontend");
-        var oAuth2User = (OAuth2User)authentication.getPrincipal();
+        var oAuth2User = (OAuth2User) authentication.getPrincipal();
         String email = String.valueOf(oAuth2User.getAttributes().get("email"));
         String picture = String.valueOf(oAuth2User.getAttributes().get("picture"));
         String name = String.valueOf(oAuth2User.getAttributes().get("name"));
@@ -45,11 +46,13 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         redirect(request, response, email, authorities);
     }
 
+    // DB에 oAuth2User를 통해 얻은 정보 저장
     private void saveMember(String email, String picture, String name) {
         User user = User.builder().email(email).profileImageUrl(picture).nickname(name).build();
         userService.createUser(user);
     }
 
+    // 유저 정보와 토큰 Redirect를 위한 메서드
     private void redirect(HttpServletRequest request, HttpServletResponse response, String username, List<String> authorities) throws IOException {
         String accessToken = delegateAccessToken(username, authorities);
         String refreshToken = delegateRefreshToken(username);
@@ -58,6 +61,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         getRedirectStrategy().sendRedirect(request, response, uri);
     }
 
+    // 제공되는 AccessToken 제작
     private String delegateAccessToken(String username, List<String> authorities) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", username);
@@ -73,6 +77,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         return accessToken;
     }
 
+    // 제공되는 RefreshToken 제작
     private String delegateRefreshToken(String username) {
         String subject = username;
         Date expiration = jwtTokenizer.getTokenExpiration(jwtTokenizer.getRefreshTokenExpirationMinutes());
@@ -83,6 +88,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         return refreshToken;
     }
 
+    // Redirect 할 uri 생성
     private URI createURI(String accessToken, String refreshToken, String username) {
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
         queryParams.add("access_token", accessToken);
