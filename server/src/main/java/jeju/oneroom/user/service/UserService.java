@@ -41,6 +41,11 @@ public class UserService {
         return findUser;
     }
 
+    // 단일 유저에 대한 조회
+    public UserDto.Response findUser(Long userId) {
+        return userMapper.userToResponseDto(verifyExistsUser(userId));
+    }
+
     // 유저 삭제
     @Transactional
     public void deleteUser(Long userId) {

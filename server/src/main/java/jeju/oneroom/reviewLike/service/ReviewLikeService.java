@@ -18,6 +18,7 @@ public class ReviewLikeService {
 
     // 좋아요 및 취소
     // 좋아요를 누르지 않은 유저는 좋아요 추가, 좋아요를 누른 유저는 좋아요 삭제
+    @Transactional
     public void pushLike(Review review, User user) {
         checkSameUser(review, user);
         reviewLikeRepository.findByReviewAndUser(review, user)
