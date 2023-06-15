@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 
+// Area와 HouseInfo에 필요한 위도, 경도
 @Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

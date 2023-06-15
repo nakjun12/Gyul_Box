@@ -1,4 +1,8 @@
 package jeju.oneroom.auth.service;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
@@ -13,7 +17,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
-// (1)
 @Component
 public class JwtTokenizer {
     @Getter
@@ -28,10 +31,12 @@ public class JwtTokenizer {
     @Value("${jwt.refresh-token-expiration-minutes}")
     private int refreshTokenExpirationMinutes;
 
+    // 비밀번호 인코딩
     public String encodeBase64SecretKey(String secretKey) {
         return Encoders.BASE64.encode(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
+    // Access 토큰 생성
     public String generateAccessToken(Map<String, Object> claims,
                                       String subject,
                                       Date expiration,
@@ -47,6 +52,7 @@ public class JwtTokenizer {
                 .compact();
     }
 
+    // Refresh 토큰 생성
     public String generateRefreshToken(String subject, Date expiration, String base64EncodedSecretKey) {
         Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
 
@@ -58,6 +64,7 @@ public class JwtTokenizer {
                 .compact();
     }
 
+    // 키를 통해서 토큰의 유효성 검사
     public Jws<Claims> getClaims(String jws, String base64EncodedSecretKey) {
         Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
 
@@ -68,6 +75,7 @@ public class JwtTokenizer {
         return claims;
     }
 
+    // 토큰 만료 기간 생성 및 설정
     public void verifyAccessToken(
             String accessToken
     ) {
@@ -96,6 +104,7 @@ public class JwtTokenizer {
         return expiration;
     }
 
+    // 암호화된 키 복호화
     private Key getKeyFromBase64EncodedKey(String base64EncodedSecretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(base64EncodedSecretKey);
         Key key = Keys.hmacShaKeyFor(keyBytes);

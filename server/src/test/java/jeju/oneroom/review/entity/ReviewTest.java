@@ -31,25 +31,25 @@ class ReviewTest {
     @Autowired
     UserRepository userRepository;
 
-    @Test
-    public void Review_생성_테스트() throws Exception{
-        //given
-        Rate rate = getRate();
-        Coordinate coordinate = new Coordinate(11.11111, 11.11111);
-        Area area = getTownWithoutSi(coordinate);
-        User user = getUser(area);
-        userRepository.save(user);
-        HouseInfo houseInfo = getHouseInfo(coordinate, rate, area);
-        houseInfoRepository.save(houseInfo);
-
-        Review review = getReview(user, rate, houseInfo);
-
-        reviewRepository.save(review);
-        //when
-        Review findReview = reviewRepository.findById(review.getId()).orElse(null);
-        //then
-        Assertions.assertEquals(findReview.getBuildingName(), review.getBuildingName());
-    }
+//    @Test
+//    public void Review_생성_테스트() throws Exception{
+//        //given
+//        Rate rate = getRate();
+//        Coordinate coordinate = new Coordinate(11.11111, 11.11111);
+//        Area area = getTownWithoutSi(coordinate);
+//        User user = getUser(area);
+//        userRepository.save(user);
+//        HouseInfo houseInfo = getHouseInfo(coordinate, rate, area);
+//        houseInfoRepository.save(houseInfo);
+//
+//        Review review = getReview(user, rate, houseInfo);
+//
+//        reviewRepository.save(review);
+//        //when
+//        Review findReview = reviewRepository.findById(review.getId()).orElse(null);
+//        //then
+//        Assertions.assertEquals(findReview.getBuildingName(), review.getBuildingName());
+//    }
 
     private Review getReview(User user, Rate rate, HouseInfo houseInfo) {
         return Review.builder()

@@ -13,12 +13,8 @@ import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Slice;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,17 +31,20 @@ public class ReviewController {
 
     @PostMapping("/reviews")
     public ResponseEntity<?> post(@Valid @RequestBody ReviewDto.Post postDto) {
+        // 유효한 건물 정보, 유저 정보 확인
         HouseInfo houseInfo = houseInfoService.findVerifiedHouseInfo(postDto.getHouseInfoId());
         User user = userService.verifyExistsUserByEmail(postDto.getUserEmail());
+        // houseInfo와 user 매핑하며 review 생성
         Review review = reviewService.createReview(postDto, houseInfo, user);
-        houseInfoService.updateHouseInfoRate(houseInfo,postDto.getRate());
+        // 건물 정보에 기입된 평점이 있는지 확인 후 별점 설정
+        houseInfoService.checkRate(houseInfo, postDto);
         return new ResponseEntity<>(review.getId(), HttpStatus.CREATED);
-        // 원룸 유형 받아주는 것 추가
     }
 
     @PatchMapping("/reviews/{review-id}")
     public ResponseEntity<?> patch(@Valid @RequestBody ReviewDto.Patch patchDto,
                                    @PathVariable("review-id") long reviewId) {
+        // patchDto에 Id를 넣어 서비스 단에 제공
         patchDto.setReviewId(reviewId);
         Review review = reviewService.updateReview(patchDto);
         return new ResponseEntity<>(review.getId(), HttpStatus.OK);
@@ -64,7 +63,8 @@ public class ReviewController {
         return new ResponseEntity<>(findReview, HttpStatus.OK);
     }
 
-    @GetMapping("/reviews/hottest2") // 추천순 2개
+    // 추천순 리뷰 2개
+    @GetMapping("/reviews/hottest2")
     public ResponseEntity<?> getTop2HottestReviews() {
         List<ReviewDto.SimpleResponse> top2HottestReviews = reviewService.findTop2HottestReviews();
         return new ResponseEntity<>(new ListResponseDto<>(top2HottestReviews), HttpStatus.OK);
@@ -88,8 +88,7 @@ public class ReviewController {
         return new ResponseEntity<>(new MultiResponseDto<>(userReviews), HttpStatus.OK);
     }
 
-    // Area에 따른 거주 리뷰 아마 30개?
-    //api 문서 추가 page
+    // Area에 따른 거주 리뷰 페이징
     @GetMapping("areas/{area-id}/reviews")
     public ResponseEntity<?> getAreaReviews(@RequestParam int page,
                                             @RequestParam int size,
@@ -102,8 +101,8 @@ public class ReviewController {
     // houseInfo에 따른 Review Slice로 for 무한스크롤
     @GetMapping("houseInfos/{houseInfo-id}/reviews")
     public ResponseEntity<?> getHouseInfoReviews(@RequestParam int page,
-                                            @RequestParam int size,
-                                            @PathVariable("houseInfo-id") long houseInfoId) {
+                                                 @RequestParam int size,
+                                                 @PathVariable("houseInfo-id") long houseInfoId) {
         HouseInfo houseInfo = houseInfoService.findVerifiedHouseInfo(houseInfoId);
         Page<ReviewDto.Response> houseInfoReviews = reviewService.findHouseInfoReview(houseInfo, page, size);
         return new ResponseEntity<>(new MultiResponseDto<>(houseInfoReviews), HttpStatus.OK);

@@ -1,7 +1,6 @@
 package jeju.oneroom.auth.utils;
 
 import com.google.gson.Gson;
-
 import jeju.oneroom.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,6 +8,7 @@ import org.springframework.http.MediaType;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// 인증, 인가 에러 발생 시 Responder
 public class ErrorResponder {
     public static void sendErrorResponse(HttpServletResponse response, HttpStatus status) throws IOException {
         Gson gson = new Gson();
