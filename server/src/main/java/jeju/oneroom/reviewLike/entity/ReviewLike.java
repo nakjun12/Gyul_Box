@@ -1,13 +1,11 @@
 package jeju.oneroom.reviewLike.entity;
 
-import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.review.entity.Review;
 import jeju.oneroom.user.entity.User;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Formula;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -18,7 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
-public class ReviewLike{
+public class ReviewLike {
     @Id
     @Column(name = "reviewLike_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

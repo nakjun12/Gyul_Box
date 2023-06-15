@@ -4,27 +4,31 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.Embeddable;
+import javax.persistence.PrePersist;
 
+// Review와 HouseInfo에 제공되는 평점 정보
 @Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Rate {
-    @ColumnDefault("0")
     private Double interiorRate;
-    @ColumnDefault("0")
+
     private Double buildingRate;
-    @ColumnDefault("0")
+
     private Double trafficRate;
-    @ColumnDefault("0")
+
     private Double securityRate;
-    @ColumnDefault("0")
+
     private Double locationRate;
-    // 프론트에서 안뜨게 처리하자.
-    @ColumnDefault("0")
+
     private Double avgRate;
+
+    @PrePersist
+    private void calculateAvgRate() {
+        this.avgRate = Math.round(((interiorRate + buildingRate + trafficRate + securityRate + locationRate) / 5) * 100) / 100.0;
+    }
 
     @Builder
     public Rate(Double interiorRate, Double buildingRate, Double trafficRate, Double securityRate, Double locationRate) {

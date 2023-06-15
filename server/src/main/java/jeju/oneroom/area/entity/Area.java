@@ -16,6 +16,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Area extends BaseEntity {
+    // GeneratedValue 사용하지 않고 동면읍 코드를 Id로 사용
     @Id
     @Column(name = "area_id")
     private Long areaCode;

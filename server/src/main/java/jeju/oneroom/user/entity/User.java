@@ -3,8 +3,10 @@ package jeju.oneroom.user.entity;
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.BaseEntity;
 import jeju.oneroom.review.entity.Review;
-import lombok.*;
-import org.springframework.lang.Nullable;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -55,16 +57,11 @@ public class User extends BaseEntity {
         this.area = area;
     }
 
-    public User updateProfile(String nickname, String profileImageUrl){
-        this.nickname = nickname;
-        this.profileImageUrl = profileImageUrl;
-
-        return this;
-    }
-
     public void setArea(Area area) {
         this.area = area;
     }
 
-    public void setRoles(List<String> roles){this.roles = roles;}
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 }

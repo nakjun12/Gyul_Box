@@ -21,14 +21,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final CustomAuthorityUtils authorityUtils;
 
-    @Transactional
-    public User createUser(UserDto.Post postDto) {
-        User user = userMapper.postDtoToUser(postDto);
-        List<String> roles = authorityUtils.createRoles(postDto.getEmail());
-        user.setRoles(roles);
-        return userRepository.save(user);
-    }
-
+    // Oauth2를 통한 로그인 시 첫 로그인 유저만 save
     @Transactional
     public User createUser(User user) {
         if (userRepository.findByEmail(user.getEmail()).isEmpty()) {
@@ -40,27 +33,31 @@ public class UserService {
         }
     }
 
+    // User의 nickname과 area에 대한 수정
     @Transactional
     public User updateUser(UserDto.Patch patchDto, Area area) {
-        User foundUser = verifyExistsUser(patchDto.getId());
-        foundUser.update(patchDto.getNickname(), area);
-        return foundUser;
+        User findUser = verifyExistsUser(patchDto.getId());
+        findUser.update(patchDto.getNickname(), area);
+        return findUser;
     }
 
+    // 단일 유저에 대한 조회
     public UserDto.Response findUser(Long userId) {
-        User foundUser = verifyExistsUser(userId);
-        return userMapper.userToResponseDto(foundUser);
+        return userMapper.userToResponseDto(verifyExistsUser(userId));
     }
 
+    // 유저 삭제
     @Transactional
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }
 
+    // userId를 통한 유저 유효성 확인
     public User verifyExistsUser(Long userId) {
         return userRepository.findById(userId).orElseThrow(() -> new RuntimeException("USER_NOT_FOUND"));
     }
 
+    // email을 통한 유저 유효성 확인
     public User verifyExistsUserByEmail(String email) {
         return userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("USER_NOT_FOUND"));
     }

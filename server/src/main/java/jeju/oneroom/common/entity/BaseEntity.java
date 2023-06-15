@@ -10,6 +10,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+// Audit를 위한 Base 객체
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass

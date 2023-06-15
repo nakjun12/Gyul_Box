@@ -2,7 +2,8 @@ package jeju.oneroom.exception;
 
 import lombok.Getter;
 
-public enum ExceptionCode {;
+public enum ExceptionCode {
+    ;
 
     @Getter
     private int status;

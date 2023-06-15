@@ -3,6 +3,7 @@ package jeju.oneroom.common.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+// 페이지 정보
 @AllArgsConstructor
 @Getter
 public class PageInfo {

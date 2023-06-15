@@ -27,6 +27,7 @@ public class ReviewDto {
         // houseInfo와 매핑하기 위한 id
         private long houseInfoId;
 
+        // 로그인 한 유저 정보
         private String userEmail;
     }
 
@@ -63,7 +64,7 @@ public class ReviewDto {
         private String residenceYear;
         private String floor;
         private String buildingType;
-        private double avgRate;
+        private Double avgRate;
         private long likes;
 
         private LocalDateTime createdAt;
@@ -89,8 +90,7 @@ public class ReviewDto {
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
 
-        //매핑 된 HouseInfo의 주소
-        private String address;
-        // houseInfo Id 제공해야함.
+        // 베너 클릭 시 get요청을 위한 houseInfo id
+        private long houseInfo;
     }
 }
