@@ -3,6 +3,7 @@ package jeju.oneroom.auth.service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
@@ -75,6 +76,26 @@ public class JwtTokenizer {
     }
 
     // 토큰 만료 기간 생성 및 설정
+    public void verifyAccessToken(
+            String accessToken
+    ) {
+        String base64SecretKey = encodeBase64SecretKey(getSecretKey());
+        try {
+            verifySignature(accessToken, base64SecretKey);
+        } catch (ExpiredJwtException e) {
+            throw new RuntimeException("EXPIRED_ACCESS_TOKEN");
+        }
+    }
+
+    public void verifySignature(String jws, String base64EncodedSecretKey) {
+        Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
+
+        Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(jws);
+    }
+
     public Date getTokenExpiration(int expirationMinutes) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MINUTE, expirationMinutes);
