@@ -52,11 +52,6 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    // 단일 유저에 대한 조회
-    public UserDto.Response findUser(Long userId) {
-        return userMapper.userToResponseDto(verifyExistsUser(userId));
-    }
-
     // userId를 통한 유저 유효성 확인
     public User verifyExistsUser(Long userId) {
         return userRepository.findById(userId).orElseThrow(() -> new RuntimeException("USER_NOT_FOUND"));
