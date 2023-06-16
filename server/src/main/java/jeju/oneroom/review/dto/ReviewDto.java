@@ -2,11 +2,14 @@ package jeju.oneroom.review.dto;
 
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.user.dto.UserDto;
+import jeju.oneroom.validation.ValidRate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class ReviewDto {
@@ -15,19 +18,36 @@ public class ReviewDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Post {
+        @NotBlank
         private String buildingName;
+
+        @NotBlank
         private String advantage;
+
+        @NotBlank
         private String disadvantage;
+
+        @NotBlank
         private String adminCost;
+
+        @NotBlank
         private String residenceYear;
+
+        @NotBlank
         private String floor;
+
+        @NotBlank
         private String buildingType;
+
+        @ValidRate
         private Rate rate;
 
         // houseInfo와 매핑하기 위한 id
-        private long houseInfoId;
+        @NotNull
+        private Long houseInfoId;
 
         // 로그인 한 유저 정보
+        @NotBlank
         private String userEmail;
     }
 
@@ -37,16 +57,30 @@ public class ReviewDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Patch {
-        private long reviewId;
+        private Long reviewId;
+
+        @NotBlank
         private String advantage;
+
+        @NotBlank
         private String disadvantage;
+
+        @NotBlank
         private String adminCost;
+
+        @NotBlank
         private String residenceYear;
+
+        @NotBlank
         private String floor;
+
+        @NotBlank
         private String buildingType;
+
+        @ValidRate
         private Rate rate;
 
-        public void setReviewId(long reviewId) {
+        public void setReviewId(Long reviewId) {
             this.reviewId = reviewId;
         }
     }
@@ -56,7 +90,7 @@ public class ReviewDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-        private long reviewId;
+        private Long reviewId;
         private String buildingName;
         private String advantage;
         private String disadvantage;
@@ -80,17 +114,17 @@ public class ReviewDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class SimpleResponse {
-        private long reviewId;
+        private Long reviewId;
         private String advantage;
         private String disadvantage;
         // 최다 추천 리뷰의 평균 별점
-        private double avgRate;
+        private Double avgRate;
         private long likes;
 
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
 
         // 베너 클릭 시 get요청을 위한 houseInfo id
-        private long houseInfo;
+        private Long houseInfo;
     }
 }

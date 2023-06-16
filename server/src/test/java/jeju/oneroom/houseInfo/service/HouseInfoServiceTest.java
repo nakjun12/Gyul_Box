@@ -236,7 +236,7 @@ class HouseInfoServiceTest {
                 .adminCost("3만원")
                 .advantage("장점")
                 .disadvantage("단점")
-                .avgRate(5)
+                .avgRate(5.0)
                 .buildingName("태성빌라")
                 .floor("중층")
                 .reviewId(1L)
@@ -255,7 +255,7 @@ class HouseInfoServiceTest {
 
     private HouseInfoDto.SimpleResponse getHouseInfoSimpleResponse() {
         return HouseInfoDto.SimpleResponse.builder()
-                .avgRate(5)
+                .avgRate(5.0)
                 .houseName("태성빌라")
                 .platPlc("인천 연수구")
                 .reviewCount(2)

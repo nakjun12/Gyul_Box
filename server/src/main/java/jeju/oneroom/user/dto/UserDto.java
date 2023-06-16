@@ -5,16 +5,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-public class UserDto {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Post {
-        private String email;
-        private String nickname;
-    }
+public class UserDto {
 
     @Getter
     @Builder
@@ -22,7 +16,11 @@ public class UserDto {
     @AllArgsConstructor
     public static class Patch {
         private Long id;
+
+        @NotBlank(message = "닉네임은 공백이 될 수 없습니다")
         private String nickname;
+
+        @NotNull(message = "지역코드는 공백이 될 수 없습니다")
         private Long areaCode; // 관심지역
 
         public void setUserId(Long id) {
