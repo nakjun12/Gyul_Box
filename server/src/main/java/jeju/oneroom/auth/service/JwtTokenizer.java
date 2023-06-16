@@ -7,6 +7,9 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
+import jeju.oneroom.exception.BusinessLogicException;
+import jeju.oneroom.exception.ExceptionCode;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -68,11 +71,16 @@ public class JwtTokenizer {
     public Jws<Claims> getClaims(String jws, String base64EncodedSecretKey) {
         Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
 
-        Jws<Claims> claims = Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(jws);
-        return claims;
+        try{
+            Jws<Claims> claims = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(jws);
+            return claims;
+        }catch (SignatureException e){
+            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED);
+        }
+
     }
 
     // 토큰 만료 기간 생성 및 설정
@@ -83,7 +91,7 @@ public class JwtTokenizer {
         try {
             verifySignature(accessToken, base64SecretKey);
         } catch (ExpiredJwtException e) {
-            throw new RuntimeException("EXPIRED_ACCESS_TOKEN");
+            throw new BusinessLogicException(ExceptionCode.CODE_EXPIRATION);
         }
     }
 

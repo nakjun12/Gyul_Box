@@ -2,6 +2,8 @@ package jeju.oneroom.user.service;
 
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.auth.utils.CustomAuthorityUtils;
+import jeju.oneroom.exception.BusinessLogicException;
+import jeju.oneroom.exception.ExceptionCode;
 import jeju.oneroom.user.dto.UserDto;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.mapper.UserMapper;
@@ -52,18 +54,13 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    // 단일 유저에 대한 조회
-    public UserDto.Response findUser(Long userId) {
-        return userMapper.userToResponseDto(verifyExistsUser(userId));
-    }
-
     // userId를 통한 유저 유효성 확인
     public User verifyExistsUser(Long userId) {
-        return userRepository.findById(userId).orElseThrow(() -> new RuntimeException("USER_NOT_FOUND"));
+        return userRepository.findById(userId).orElseThrow(() -> new BusinessLogicException(ExceptionCode.NOT_FOUND_USER));
     }
 
     // email을 통한 유저 유효성 확인
     public User verifyExistsUserByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("USER_NOT_FOUND"));
+        return userRepository.findByEmail(email).orElseThrow(() -> new BusinessLogicException(ExceptionCode.NOT_FOUND_USER));
     }
 }

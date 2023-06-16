@@ -1,5 +1,7 @@
 package jeju.oneroom.messageroom.service;
 
+import jeju.oneroom.exception.BusinessLogicException;
+import jeju.oneroom.exception.ExceptionCode;
 import jeju.oneroom.message.entity.Message;
 import jeju.oneroom.message.redis.RedisSubscriber;
 import jeju.oneroom.message.repository.MessageRepository;
@@ -37,7 +39,7 @@ public class MessageRoomService {
     @Transactional
     public MessageRoomDto.SimpleResponse createMessageRoom(MessageRoomDto.Post postDto, User sender, User receiver) {
         if (messageRoomRepository.findMessageRoom(sender.getId(), receiver.getId()) != null) {
-            throw new RuntimeException("CHATROOM_ALREADY_EXISTS");
+            throw new BusinessLogicException(ExceptionCode.EXISTS_MESSAGEROOM);
         }
 
         MessageRoom messageRoom = messageRoomMapper.messageRoomPostDtoToMessageRoom(postDto);
@@ -95,7 +97,7 @@ public class MessageRoomService {
 
     public MessageRoom findVerifiedMessageRoom(Long messageRoomId) {
         return messageRoomRepository.findById(messageRoomId)
-                .orElseThrow(() -> new RuntimeException("MESSAGEROOM_NOT_FOUND"));
+                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.NOT_FOUND_MESSAGE_ROOM));
     }
 
     private void sendTopic(Long messageRoomId) {

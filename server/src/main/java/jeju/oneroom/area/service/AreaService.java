@@ -4,6 +4,8 @@ import jeju.oneroom.area.dto.AreaDto;
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.area.mapper.AreaMapper;
 import jeju.oneroom.area.repository.AreaRepository;
+import jeju.oneroom.exception.BusinessLogicException;
+import jeju.oneroom.exception.ExceptionCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,6 @@ public class AreaService {
     }
 
     public Area findVerifiedAreaByAreaCode(long areaCode) {
-        return areaRepository.findById(areaCode).orElseThrow(() -> new RuntimeException("AREA_NOT_FOUND"));
+        return areaRepository.findById(areaCode).orElseThrow(() -> new BusinessLogicException(ExceptionCode.NOT_FOUND_AREA));
     }
 }
