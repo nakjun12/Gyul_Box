@@ -42,13 +42,13 @@ public class ReviewDto {
         private Rate rate;
 
         // houseInfo와 매핑하기 위한 id
-        @NotNull(message = "유효한 HouseInfo Id를 입력해주세요")
+        @NotNull
         private Long houseInfoId;
 
         // 로그인 한 유저 정보
         @NotBlank
         @Pattern(regexp = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
-                message = "정확한 이메일을 입력해 주세요.")
+                message = "올바른 이메일 형식을 입력해 주세요.")
         private String userEmail;
     }
 
