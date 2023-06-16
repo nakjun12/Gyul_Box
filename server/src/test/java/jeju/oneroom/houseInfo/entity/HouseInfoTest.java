@@ -59,7 +59,7 @@ class HouseInfoTest {
                 .buildingStructure("콘크리트")
                 .buildUes("주거")
                 .elevator(1)
-                .platPlc("인천 연수구 먼우금로")
+                .platPlc("인천 연수구 먼우금로 141")
                 .grndFloor(5)
                 .ugrndFloor(2)
                 .useAprDay("2002-02-02")

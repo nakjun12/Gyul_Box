@@ -42,7 +42,7 @@ public class HouseInfoDto {
         // 건물 이름 없을 경우? 주소 명으로 대체
         private String houseName;
         private String platPlc;
-        private double avgRate;
+        private Double avgRate;
         private int reviewCount;
     }
 

@@ -15,11 +15,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.util.List;
 
+@Validated
 @RestController
 @RequiredArgsConstructor
 public class ReviewController {
@@ -43,7 +46,7 @@ public class ReviewController {
 
     @PatchMapping("/reviews/{review-id}")
     public ResponseEntity<?> patch(@Valid @RequestBody ReviewDto.Patch patchDto,
-                                   @PathVariable("review-id") long reviewId) {
+                                   @PathVariable("review-id") @Positive long reviewId) {
         // patchDto에 Id를 넣어 서비스 단에 제공
         patchDto.setReviewId(reviewId);
         Review review = reviewService.updateReview(patchDto);
@@ -51,14 +54,14 @@ public class ReviewController {
     }
 
     @DeleteMapping("/reviews/{review-id}")
-    public ResponseEntity<?> delete(@PathVariable("review-id") long reviewId) {
+    public ResponseEntity<?> delete(@PathVariable("review-id") @Positive long reviewId) {
         reviewService.deleteReview(reviewId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     //  리뷰 단일 조회
     @GetMapping("/reviews/{review-id}")
-    public ResponseEntity<?> getReview(@PathVariable("review-id") long reviewId) {
+    public ResponseEntity<?> getReview(@PathVariable("review-id") @Positive long reviewId) {
         ReviewDto.Response findReview = reviewService.findReview(reviewId);
         return new ResponseEntity<>(findReview, HttpStatus.OK);
     }
@@ -72,7 +75,7 @@ public class ReviewController {
 
     // 유저 관심 지역 추천 순 리뷰 5개
     @GetMapping("users/{user-id}/user-areas/reviews")
-    public ResponseEntity<?> getTop5UserAreaReviews(@PathVariable("user-id") long userId) {
+    public ResponseEntity<?> getTop5UserAreaReviews(@PathVariable("user-id") @Positive long userId) {
         User user = userService.verifyExistsUser(userId);
         List<ReviewDto.SimpleResponse> userAreaReviews = reviewService.findTop5UserAreaReviews(user);
         return new ResponseEntity<>(new ListResponseDto<>(userAreaReviews), HttpStatus.OK);
@@ -82,7 +85,7 @@ public class ReviewController {
     @GetMapping("users/{user-id}/reviews")
     public ResponseEntity<?> getUserReviews(@RequestParam int page,
                                             @RequestParam int size,
-                                            @PathVariable("user-id") long userId) {
+                                            @PathVariable("user-id") @Positive long userId) {
         User user = userService.verifyExistsUser(userId);
         Page<ReviewDto.SimpleResponse> userReviews = reviewService.findUserReviews(user, page, size);
         return new ResponseEntity<>(new MultiResponseDto<>(userReviews), HttpStatus.OK);
@@ -92,7 +95,7 @@ public class ReviewController {
     @GetMapping("areas/{area-id}/reviews")
     public ResponseEntity<?> getAreaReviews(@RequestParam int page,
                                             @RequestParam int size,
-                                            @PathVariable("area-id") long areaCode) {
+                                            @PathVariable("area-id") @Positive long areaCode) {
         Area area = areaService.findVerifiedAreaByAreaCode(areaCode);
         Page<ReviewDto.SimpleResponse> areaReviews = reviewService.findAreaReviews(area, page, size);
         return new ResponseEntity<>(new MultiResponseDto<>(areaReviews), HttpStatus.OK);
@@ -102,7 +105,7 @@ public class ReviewController {
     @GetMapping("houseInfos/{houseInfo-id}/reviews")
     public ResponseEntity<?> getHouseInfoReviews(@RequestParam int page,
                                                  @RequestParam int size,
-                                                 @PathVariable("houseInfo-id") long houseInfoId) {
+                                                 @PathVariable("houseInfo-id") @Positive long houseInfoId) {
         HouseInfo houseInfo = houseInfoService.findVerifiedHouseInfo(houseInfoId);
         Page<ReviewDto.Response> houseInfoReviews = reviewService.findHouseInfoReview(houseInfo, page, size);
         return new ResponseEntity<>(new MultiResponseDto<>(houseInfoReviews), HttpStatus.OK);

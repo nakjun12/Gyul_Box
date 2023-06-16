@@ -1,6 +1,7 @@
 package jeju.oneroom.review.entity;
 
 import jeju.oneroom.area.entity.Area;
+import jeju.oneroom.area.repository.AreaRepository;
 import jeju.oneroom.common.entity.Coordinate;
 import jeju.oneroom.common.entity.Rate;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
@@ -31,38 +32,43 @@ class ReviewTest {
     @Autowired
     UserRepository userRepository;
 
-//    @Test
-//    public void Review_생성_테스트() throws Exception{
-//        //given
-//        Rate rate = getRate();
-//        Coordinate coordinate = new Coordinate(11.11111, 11.11111);
-//        Area area = getTownWithoutSi(coordinate);
-//        User user = getUser(area);
-//        userRepository.save(user);
-//        HouseInfo houseInfo = getHouseInfo(coordinate, rate, area);
-//        houseInfoRepository.save(houseInfo);
-//
-//        Review review = getReview(user, rate, houseInfo);
-//
-//        reviewRepository.save(review);
+    @Autowired
+    AreaRepository areaRepository;
+
+    @Test
+    public void Review_생성_테스트() throws Exception{
+        //given
+        for (int i = 0; i < 10000; i++) {
+            Rate rate = getRate();
+            Coordinate coordinate = new Coordinate(11.11111, 11.11111);
+            Area area = areaRepository.findById(11111L).orElse(null);
+            User user = userRepository.findById((long) i).orElse(null);
+            HouseInfo houseInfo = houseInfoRepository.findById(2L).orElse(null);
+
+            Review review = getReview(user, rate, houseInfo);
+
+            reviewRepository.save(review);
+        }
+
 //        //when
 //        Review findReview = reviewRepository.findById(review.getId()).orElse(null);
 //        //then
 //        Assertions.assertEquals(findReview.getBuildingName(), review.getBuildingName());
-//    }
+    }
 
     private Review getReview(User user, Rate rate, HouseInfo houseInfo) {
         return Review.builder()
                 .buildingName("태성빌라")
-                .adminCost("3000/50")
-                .advantage("넓어요!")
-                .disadvantage("드러워요!")
+                .adminCost("3000/50 입니다~~~~~")
+                .advantage("넓어요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                .disadvantage("드러워요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 .floor("중층")
                 .residenceYear("약 2년")
                 .address("인천 연수구 먼우금로")
                 .user(user)
                 .rate(rate)
                 .houseInfo(houseInfo)
+                .buildingType("오피스텔")
                 .build();
     }
 

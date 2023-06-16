@@ -35,13 +35,13 @@ public class HouseInfoService {
     }
 
     // 지도에서 노드에 대한 정보 요청
-    public List<HouseInfoDto.SimpleCountResponse> findHouseInfosByArea(Area area, int level) {
+    public List<HouseInfoDto.SimpleCountResponse> findHouseInfosByArea(long areaCode, int level) {
         /*
         level >= 9 -> 해당 시의 review 추천순 top 20에 해당하는 houseInfo 제공
         level <= 8 -> 해당 동의 모든 houseInfo 제공
         */
-        return level >= 9 ? houseInfoRepository.findTop20ByAreaOrderByReviewCount(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList())
-                : houseInfoRepository.findByArea(area).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList());
+        return level >= 9 ? houseInfoRepository.findTop20ByArea_AreaCodeOrderByReviewCount(areaCode).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList())
+                : houseInfoRepository.findByArea_AreaCode(areaCode).stream().map(houseInfoMapper::houseInfoToSimpleCountResponseDto).collect(Collectors.toList());
     }
 
     // 건물 주소를 통한 조뢰
@@ -60,9 +60,7 @@ public class HouseInfoService {
     // 리뷰 생성에 따른 건물 정보 별점 업데이트
     @Transactional
     public void updateHouseInfoRate(HouseInfo houseInfo, Rate rate) {
-        double reviewCount = houseInfo.getReviewCount();
-        Rate newRate = getRate(houseInfo, rate, reviewCount);
-        houseInfo.updateRate(newRate);
+        houseInfo.updateRate(getRate(houseInfo, rate, houseInfo.getReviewCount()));
     }
 
     // 유효한 건물 정보 확인
