@@ -1,5 +1,6 @@
 package jeju.oneroom.response;
 
+import jeju.oneroom.exception.BusinessLogicException;
 import jeju.oneroom.exception.ExceptionCode;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,10 @@ public class ErrorResponse {
 
     public static ErrorResponse of(Set<ConstraintViolation<?>> violations) {
         return new ErrorResponse(null, ConstraintViolationError.of(violations));
+    }
+
+    public static ErrorResponse of(BusinessLogicException e) {
+        return new ErrorResponse(e.getExceptionCode().getStatus(), e.getMessage());
     }
 
     public static ErrorResponse of(ExceptionCode exceptionCode) {

@@ -2,6 +2,8 @@ package jeju.oneroom.houseInfo.service;
 
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.Rate;
+import jeju.oneroom.exception.BusinessLogicException;
+import jeju.oneroom.exception.ExceptionCode;
 import jeju.oneroom.houseInfo.dto.HouseInfoDto;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.houseInfo.mapper.HouseInfoMapper;
@@ -65,7 +67,7 @@ public class HouseInfoService {
 
     // 유효한 건물 정보 확인
     public HouseInfo findVerifiedHouseInfo(long houseInfoId) {
-        return houseInfoRepository.findById(houseInfoId).orElseThrow(() -> new RuntimeException("HOUSEINFO_NOT_FOUND"));
+        return houseInfoRepository.findById(houseInfoId).orElseThrow(() -> new BusinessLogicException(ExceptionCode.NOT_FOUND_HOUSE_INFO));
     }
 
     // 건물 정보에 들어있는 별점의 평균과 새로 기입된 리뷰의 별점 조합

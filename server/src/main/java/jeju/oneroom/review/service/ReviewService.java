@@ -1,6 +1,8 @@
 package jeju.oneroom.review.service;
 
 import jeju.oneroom.area.entity.Area;
+import jeju.oneroom.exception.BusinessLogicException;
+import jeju.oneroom.exception.ExceptionCode;
 import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.review.dto.ReviewDto;
 import jeju.oneroom.review.entity.Review;
@@ -75,7 +77,7 @@ public class ReviewService {
 
     // 리뷰가 존재하는지 확인
     public Review findVerifiedReview(long reviewId) {
-        return reviewRepository.findById(reviewId).orElseThrow(() -> new RuntimeException("REVIEW_NOT_FOUND"));
+        return reviewRepository.findById(reviewId).orElseThrow(() -> new BusinessLogicException(ExceptionCode.NOT_FOUND_REVIEW));
     }
 
     // 건물 정보에 존재하는 리뷰
