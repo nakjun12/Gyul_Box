@@ -38,8 +38,7 @@ public class HouseInfoController {
     @GetMapping("/areas/{area-id}/houseInfos")
     public ResponseEntity<?> getAreaHouseInfos(@PathVariable("area-id") @Positive long areaCode,
                                                @RequestParam int level) {
-        Area area = areaService.findVerifiedAreaByAreaCode(areaCode);
-        return new ResponseEntity<>(new ListResponseDto<>(houseInfoService.findHouseInfosByArea(area, level)), HttpStatus.OK);
+        return new ResponseEntity<>(new ListResponseDto<>(houseInfoService.findHouseInfosByArea(areaCode, level)), HttpStatus.OK);
     }
 
     // 건물 주소를 통한 건물 정보 검색. Review create 시 사용
