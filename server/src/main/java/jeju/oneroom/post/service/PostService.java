@@ -25,7 +25,7 @@ public class PostService {
     // 게시글 생성
     @Transactional
     public Post createPost(PostDto.Post postDto, HouseInfo houseInfo, User user) {
-        Post post = postMapper.PostDtoToPost(postDto);
+        Post post = postMapper.postDtoToPost(postDto);
         post.setProperties(houseInfo, user);
 
         return postRepository.save(post);

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {PostCommentMapper.class})
 public interface PostMapper {
-    Post PostDtoToPost(PostDto.Post postDto);
+    Post postDtoToPost(PostDto.Post postDto);
 
     @Mapping(target = "writer", source = "user")
     @Mapping(target = "houseAddress", expression = "java(post.getHouseInfo().getPlatPlc())")

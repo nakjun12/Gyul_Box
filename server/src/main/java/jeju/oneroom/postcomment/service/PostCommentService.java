@@ -27,9 +27,6 @@ public class PostCommentService {
     // 게시판 댓글 생성
     public PostComment createPostComment(PostCommentDto.Post postDto, Post post, User user) {
         PostComment postComment = postCommentMapper.postDtoToPostComment(postDto);
-        log.info("postComment.post : {}", postComment.getPost());
-        log.info("postComment.user : {}", postComment.getUser());
-
         postComment.setProperties(post, user);
 
         return postCommentRepository.save(postComment);
