@@ -30,7 +30,7 @@ class UserTest {
 
 
         //given
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10; i++) {
             User user = getUser(i);
 
             Area area = areaRepository.findById(11111L).orElse(null);

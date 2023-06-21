@@ -27,6 +27,8 @@ public enum ExceptionCode {
     NOT_FOUND_USER(404,"User Not Found"),
     NOT_FOUND_CATEGORY(404, "Category Not Found"),
     NOT_FOUND_SHOWCASE(404,"Showcase Not Found"),
+    NOT_FOUND_POST(404, "Post Not Found"),
+    NOT_FOUND_POSTCOMMENT(404, "PostComment Not Found"),
 
     // Conflict
     EXISTS_MESSAGEROOM(409,"MessageRoom Is Exists"),

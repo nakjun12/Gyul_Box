@@ -38,9 +38,9 @@ class HouseInfoTest {
     @Test
     public void HouseInfo_생성_테스트2() throws Exception{
         //given
-        Coordinate coordinate = new Coordinate(11.11111, 11.11111);
+        Coordinate coordinate = new Coordinate(21.11111, 21.11111);
         Rate rate = getRate();
-        Area area = areaRepository.findById(11111L).orElse(null);
+        Area area = areaRepository.findById(21111L).orElse(null);
         HouseInfo houseInfo = getHouseInfo(coordinate, area);
 
         houseInfoRepository.save(houseInfo);

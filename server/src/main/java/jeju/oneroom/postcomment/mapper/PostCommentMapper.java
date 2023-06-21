@@ -1,19 +1,15 @@
-package jeju.oneroom.postComment.mapper;
+package jeju.oneroom.postcomment.mapper;
 
-import jeju.oneroom.postComment.dto.PostCommentDto;
-import jeju.oneroom.postComment.entity.PostComment;
+import jeju.oneroom.postcomment.dto.PostCommentDto;
+import jeju.oneroom.postcomment.entity.PostComment;
 import jeju.oneroom.user.mapper.UserMapper;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {UserMapper.class})
 public interface PostCommentMapper {
     PostComment postDtoToPostComment(PostCommentDto.Post postDto);
-
-    PostComment patchDtoToPostComment(PostCommentDto.Patch patchDto);
 
     @Mapping(target = "writer", source = "user")
     PostCommentDto.Response postCommentToResponseDto(PostComment postComment);
