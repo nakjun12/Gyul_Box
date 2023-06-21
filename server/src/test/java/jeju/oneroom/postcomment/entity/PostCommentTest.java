@@ -1,10 +1,10 @@
-package jeju.oneroom.postComment.entity;
+package jeju.oneroom.postcomment.entity;
 
-import jeju.oneroom.post.entitiy.Post;
+import jeju.oneroom.post.entity.Post;
 import jeju.oneroom.post.repository.PostRepository;
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.Coordinate;
-import jeju.oneroom.postComment.repository.PostCommentRepository;
+import jeju.oneroom.postcomment.repository.PostCommentRepository;
 import jeju.oneroom.user.entity.User;
 import jeju.oneroom.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
