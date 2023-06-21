@@ -1,20 +1,28 @@
 package jeju.oneroom.post.repository;
 
-import jeju.oneroom.post.entitiy.Post;
+import jeju.oneroom.houseInfo.entity.HouseInfo;
+import jeju.oneroom.post.entity.Post;
 import jeju.oneroom.user.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
-@Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-    Page<Post> findByUser(User user, Pageable pageable);
+    @EntityGraph(attributePaths = {"user", "houseInfo", "postComments","postComments.user"})
+    Optional<Post> findById(long postId);
 
-    Page<Post> findByTitleContaining(String keyword, Pageable pageable); // 제목으로 게시글 찾기
+    Page<Post> findAllByUserOrderByCreatedAtDesc(User user, Pageable pageable);
 
-    //    Page<Post> findAll(Pageable pageable);
-    List<Post> findTop5ByOrderByCreatedAtDesc();
+    @EntityGraph(attributePaths = {"user"})
+    Page<Post> findAllByOrderByCreatedAtDesc(Pageable pageable);
+
+    @EntityGraph(attributePaths = {"user"})
+    Page<Post> findAllByTitleContainsIgnoreCaseOrderByCreatedAtDesc(String title, Pageable pageable);
+
+    @EntityGraph(attributePaths = {"user"})
+    Page<Post> findByHouseInfoIn(List<HouseInfo> houseInfos, Pageable pageable);
 }

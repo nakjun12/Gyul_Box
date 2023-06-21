@@ -2,6 +2,7 @@ package jeju.oneroom.user.entity;
 
 import jeju.oneroom.area.entity.Area;
 import jeju.oneroom.common.entity.BaseEntity;
+import jeju.oneroom.post.entity.Post;
 import jeju.oneroom.review.entity.Review;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -37,6 +38,10 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
+
+    // 유저 삭제 시, 연관된 모든 게시글 삭제
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private List<Post> posts = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Column(nullable = false)

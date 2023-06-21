@@ -26,14 +26,14 @@ class AreaTest {
     }
 
     private Coordinate getCoordinate() {
-        Coordinate coordinate = new Coordinate(11.11111, 11.11111);
+        Coordinate coordinate = new Coordinate(21.11111, 21.11111);
         return coordinate;
     }
 
     private Area setArea(Coordinate coordinate) {
         Area area = Area.builder()
                 .areaCode(11111L)
-                .areaName("동춘동")
+                .areaName("동춘동1")
                 .coordinate(coordinate)
                 .build();
         return area;

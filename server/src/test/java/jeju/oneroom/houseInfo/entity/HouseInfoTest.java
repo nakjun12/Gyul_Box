@@ -38,9 +38,9 @@ class HouseInfoTest {
     @Test
     public void HouseInfo_생성_테스트2() throws Exception{
         //given
-        Coordinate coordinate = new Coordinate(11.11111, 11.11111);
+        Coordinate coordinate = new Coordinate(21.11111, 21.11111);
         Rate rate = getRate();
-        Area area = areaRepository.findById(11111L).orElse(null);
+        Area area = areaRepository.findById(21111L).orElse(null);
         HouseInfo houseInfo = getHouseInfo(coordinate, area);
 
         houseInfoRepository.save(houseInfo);
@@ -59,7 +59,7 @@ class HouseInfoTest {
                 .buildingStructure("콘크리트")
                 .buildUes("주거")
                 .elevator(1)
-                .platPlc("인천 연수구 먼우금로 141")
+                .platPlc("인천 연수구 먼우금로 113")
                 .grndFloor(5)
                 .ugrndFloor(2)
                 .useAprDay("2002-02-02")

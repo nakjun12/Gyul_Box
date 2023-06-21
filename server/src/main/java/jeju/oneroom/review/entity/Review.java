@@ -25,7 +25,6 @@ public class Review extends BaseEntity {
     private Long id;
 
     private String buildingName;
-    private String address;
     private String advantage;
     private String disadvantage;
     private String adminCost;
@@ -53,10 +52,9 @@ public class Review extends BaseEntity {
 
 
     @Builder
-    public Review(String buildingName, String address, String advantage, String disadvantage, String adminCost,
+    public Review(String buildingName, String advantage, String disadvantage, String adminCost,
                   String residenceYear, String floor, String buildingType, Rate rate, HouseInfo houseInfo, User user) {
         this.buildingName = buildingName;
-        this.address = address;
         this.advantage = advantage;
         this.disadvantage = disadvantage;
         this.adminCost = adminCost;
