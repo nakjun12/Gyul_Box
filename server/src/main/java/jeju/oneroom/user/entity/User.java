@@ -32,7 +32,7 @@ public class User extends BaseEntity {
     @Column
     private String profileImageUrl;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "area_id")
     private Area area;
 
@@ -43,7 +43,7 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Post> posts = new ArrayList<>();
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection(fetch = FetchType.LAZY)
     @Column(nullable = false)
     private List<String> roles = new ArrayList<>();
 

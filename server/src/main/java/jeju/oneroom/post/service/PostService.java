@@ -14,6 +14,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -55,12 +57,6 @@ public class PostService {
                 .map(postMapper::postToSimpleResponseDto);
     }
 
-    // 주소를 통한 다중 게시글 최신순으로 조회
-    public Page<PostDto.SimpleResponseDto> findPostsByAddress(String address, int page, int size) {
-        return postRepository.findAllByHouseInfoAddressIsIgnoreCaseOrderByCreatedAtDesc(address, PageRequest.of(page - 1, size))
-                .map(postMapper::postToSimpleResponseDto);
-    }
-
     // 제목을 통한 다중 게시글 최신순으로 조회
     public Page<PostDto.SimpleResponseDto> findPostsByTitle(String title, int page, int size) {
         return postRepository.findAllByTitleContainsIgnoreCaseOrderByCreatedAtDesc(title, PageRequest.of(page - 1, size))
@@ -70,6 +66,11 @@ public class PostService {
     // 모든 게시글 최신순으로 조회
     public Page<PostDto.SimpleResponseDto> findAllPost(int page, int size) {
         return postRepository.findAllByOrderByCreatedAtDesc(PageRequest.of(page - 1, size))
+                .map(postMapper::postToSimpleResponseDto);
+    }
+
+    public Page<PostDto.SimpleResponseDto> findPostsByHouseInfos(List<HouseInfo> houseInfos, int page, int size) {
+        return postRepository.findByHouseInfoIn(houseInfos, PageRequest.of(page - 1, size))
                 .map(postMapper::postToSimpleResponseDto);
     }
 

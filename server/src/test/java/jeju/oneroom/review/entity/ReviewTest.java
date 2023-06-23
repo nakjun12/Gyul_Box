@@ -64,7 +64,6 @@ class ReviewTest {
                 .disadvantage("드러워요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 .floor("중층")
                 .residenceYear("약 2년")
-                .address("인천 연수구 먼우금로")
                 .user(user)
                 .rate(rate)
                 .houseInfo(houseInfo)

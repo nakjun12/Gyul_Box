@@ -1,5 +1,6 @@
 package jeju.oneroom.postcomment.dto;
 
+import jeju.oneroom.post.dto.PostDto;
 import jeju.oneroom.user.dto.UserDto;
 import lombok.*;
 
@@ -50,6 +51,9 @@ public class PostCommentDto {
     @AllArgsConstructor
     public static class Response {
         private Long id; // postCommentId
+//        private PostDto.SimpleResponseDto post; // comment의 post 간단 정보
+        private Long postId;
+        private String postTitle;
         private String content; // 내용
         private LocalDateTime createdAt; // 작성 날짜
         private LocalDateTime modifiedAt; // 수정 날짜

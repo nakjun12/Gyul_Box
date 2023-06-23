@@ -32,8 +32,8 @@ class AreaTest {
 
     private Area setArea(Coordinate coordinate) {
         Area area = Area.builder()
-                .areaCode(21111L)
-                .areaName("동춘동2")
+                .areaCode(11111L)
+                .areaName("동춘동1")
                 .coordinate(coordinate)
                 .build();
         return area;
