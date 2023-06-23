@@ -5,7 +5,10 @@ import jeju.oneroom.houseInfo.entity.HouseInfo;
 import jeju.oneroom.postcomment.entity.PostComment;
 import jeju.oneroom.postlike.entity.PostLike;
 import jeju.oneroom.user.entity.User;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
@@ -30,8 +33,6 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "houseInfo_id")
     private HouseInfo houseInfo;
 
-    private String houseInfoAddress;
-
     // 게시글의 댓글 수
     @Basic(fetch = FetchType.LAZY)
     @Formula("(select count(*) from post_comment pc where pc.post_id = post_id)")
@@ -55,22 +56,18 @@ public class Post extends BaseEntity {
     private List<PostLike> postLikes = new ArrayList<>();
 
     @Builder
-    public Post(String title, String content, int views, HouseInfo houseInfo, String houseInfoAddress, User user, List<PostComment> postComments, long commentsCount, int likes) {
+    public Post(String title, String content, int views, HouseInfo houseInfo, User user, List<PostComment> postComments) {
         this.title = title;
         this.content = content;
         this.views = views;
         this.houseInfo = houseInfo;
-        this.houseInfoAddress = houseInfoAddress;
         this.user = user;
         this.postComments = postComments;
-        this.commentsCount = commentsCount;
-        this.likes = likes;
     }
 
     public void setProperties(HouseInfo houseInfo, User user) {
         this.houseInfo = houseInfo;
         this.user = user;
-        this.houseInfoAddress = houseInfo.getPlatPlc();
     }
 
     public void update(String title, String content) {

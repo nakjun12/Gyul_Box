@@ -83,4 +83,9 @@ public class HouseInfoService {
     public Optional<Rate> getOptionalRate(HouseInfo houseInfo) {
         return Optional.ofNullable(houseInfo.getRate());
     }
+
+    public List<HouseInfo> findHouseInfosByAddress(String content) {
+        return houseInfoRepository.findByPlatPlcContains(content);
+    }
+
 }

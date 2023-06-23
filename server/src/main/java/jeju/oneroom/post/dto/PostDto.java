@@ -1,5 +1,6 @@
 package jeju.oneroom.post.dto;
 
+import jeju.oneroom.houseInfo.dto.HouseInfoDto;
 import jeju.oneroom.postcomment.dto.PostCommentDto;
 import jeju.oneroom.user.dto.UserDto;
 import lombok.*;
@@ -67,7 +68,7 @@ public class PostDto {
         private UserDto.SimpleResponse writer;  // 작성자
         private String title; // 제목
         private String content; // 내용
-        private String houseAddress; // 집 주소
+        private HouseInfoDto.SimpleContentResponse houseInfo; // 집 정보
         private int likes; // 좋아요 수
         private int views; // 조회 수
         private LocalDateTime createdAt; // 작성 날짜

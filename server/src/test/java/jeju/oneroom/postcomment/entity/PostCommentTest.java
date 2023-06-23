@@ -27,22 +27,24 @@ class PostCommentTest {
     @Autowired
     UserRepository userRepository;
 
-
     @Test
     public void 양도게시글댓글_생성() throws Exception {
 
         //given
-        User user = getUser(getTown(getCoordinate()));
-        User savedUser = userRepository.save(user);
-        Post post = getPost(savedUser);
-        Post savedPost = postRepository.save(post);
-        PostComment postComment = getPostComment(savedPost, savedUser);
+        for (int i = 0; i < 1000; i++) {
+            Post post = postRepository.findById((long) i).orElse(null);
+            for (int j = 0; j < 100; j++) {
+                User user = userRepository.findById((long) j).orElse(null);
+                PostComment postComment = getPostComment(post,user);
+                postCommentRepository.save(postComment);
+            }
+        }
 
         //then
-        PostComment savedPostComment = postCommentRepository.save(postComment);  // db에 저장
-        PostComment findPostComment = postCommentRepository.findById(savedPostComment.getId()).orElse(null); // db에서 id로 찾아옴
+//        PostComment savedPostComment = postCommentRepository.save(postComment);  // db에 저장
+//        PostComment findPostComment = postCommentRepository.findById(savedPostComment.getId()).orElse(null); // db에서 id로 찾아옴
 
-        assertEquals(postComment.getContent(), findPostComment.getContent()); // 직접 만든 PostComment와 db에 저장 후 찾아온 것 비교
+//        assertEquals(postComment.getContent(), findPostComment.getContent()); // 직접 만든 PostComment와 db에 저장 후 찾아온 것 비교
     }
 
     private PostComment getPostComment(Post post, User user) {

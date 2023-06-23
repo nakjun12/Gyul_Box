@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 @Validated
 @RestController
@@ -72,7 +73,8 @@ public class PostController {
     public ResponseEntity<MultiResponseDto<PostDto.SimpleResponseDto>> getPostsByAddress(@RequestParam("query") String query,
                                                                                          @RequestParam int page,
                                                                                          @RequestParam int size) {
-        Page<PostDto.SimpleResponseDto> findPosts = postService.findPostsByAddress(query, page, size);
+        List<HouseInfo> houseInfos = houseInfoService.findHouseInfosByAddress(query);
+        Page<PostDto.SimpleResponseDto> findPosts = postService.findPostsByHouseInfos(houseInfos, page, size);
 
         return new ResponseEntity<>(new MultiResponseDto<>(findPosts), HttpStatus.OK);
     }
