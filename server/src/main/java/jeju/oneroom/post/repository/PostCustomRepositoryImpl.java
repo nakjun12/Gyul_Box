@@ -62,7 +62,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
         Long count = jpaQueryFactory.select(post.count())
                 .from(post)
-                .where(post.title.containsIgnoreCase(title.toLowerCase()))
+                .where(post.title.toUpperCase().contains(title.toUpperCase()))
                 .fetchOne();
 
         return new PageImpl<>(posts, pageable, count);
