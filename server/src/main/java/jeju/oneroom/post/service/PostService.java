@@ -46,7 +46,7 @@ public class PostService {
     @Transactional
     public PostDto.Response findPostByPostId(long postId) {
         Post verifiedPost = findVerifiedPost(postId);
-        verifiedPost.updateViews(verifiedPost.getViews() + 1);  // 단일 게시글 조회 시, 조회 수 1씩 증가
+        postRepository.updateViewCount(postId);  // 단일 게시글 조회 시, 조회 수 1씩 증가
 
         return postMapper.postToResponseDto(verifiedPost);
     }
@@ -59,18 +59,19 @@ public class PostService {
 
     // 제목을 통한 다중 게시글 최신순으로 조회
     public Page<PostDto.SimpleResponseDto> findPostsByTitle(String title, int page, int size) {
-        return postRepository.findAllByTitleContainsIgnoreCaseOrderByCreatedAtDesc(title, PageRequest.of(page - 1, size))
+        return postRepository.findPostsByTitleContains(title, PageRequest.of(page - 1, size))
                 .map(postMapper::postToSimpleResponseDto);
     }
 
     // 모든 게시글 최신순으로 조회
     public Page<PostDto.SimpleResponseDto> findAllPost(int page, int size) {
-        return postRepository.findAllByOrderByCreatedAtDesc(PageRequest.of(page - 1, size))
+        return postRepository.findAllPosts(PageRequest.of(page - 1, size))
                 .map(postMapper::postToSimpleResponseDto);
     }
 
+    // 다수의 건물에 속한 다중 게시글 조회
     public Page<PostDto.SimpleResponseDto> findPostsByHouseInfos(List<HouseInfo> houseInfos, int page, int size) {
-        return postRepository.findByHouseInfoIn(houseInfos, PageRequest.of(page - 1, size))
+        return postRepository.findPostsByHouseInfoIn(houseInfos, PageRequest.of(page - 1, size))
                 .map(postMapper::postToSimpleResponseDto);
     }
 
@@ -83,7 +84,7 @@ public class PostService {
     // 게시글 id로 존재 여부 검증
     @Transactional
     public Post findVerifiedPost(long postId) {
-        return postRepository.findById(postId)
+        return postRepository.findPostById(postId)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.NOT_FOUND_POST));
     }
 }
