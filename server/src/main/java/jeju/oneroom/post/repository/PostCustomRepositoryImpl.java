@@ -34,20 +34,6 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
         return Optional.ofNullable(post1);
     }
 
-//    @Override
-//    public Page<Post> findByHouseInfoIn(List<HouseInfo> houseInfos, Pageable pageable) {
-//        List<Post> posts = jpaQueryFactory.selectDistinct(post)
-//                .from(post)
-//                .leftJoin(post.user, user).fetchJoin()
-//                .where(post.houseInfo.in(houseInfos))
-//                .orderBy(post.createdAt.desc())
-//                .offset(pageable.getOffset())
-//                .limit(pageable.getPageSize())
-//                .fetch();
-//
-//        return new PageImpl<>(posts, pageable, posts.size());
-//    }
-
     @Override
     public Page<Post> findPostsByHouseInfoIn(List<HouseInfo> houseInfos, Pageable pageable) {
         List<Post> posts = getPostsByHouseInfoIn(houseInfos, pageable);
