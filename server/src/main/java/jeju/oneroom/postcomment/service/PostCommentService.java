@@ -43,7 +43,7 @@ public class PostCommentService {
     // 유저의 모든 게시글 댓글 최신순으로 조회
     @Transactional(readOnly = true)
     public Page<PostCommentDto.Response> findPostCommentsByUser(User user, int page, int size) {
-        return postCommentRepository.findAllByUserOrderByCreatedAtDesc(user, PageRequest.of(page - 1, size))
+        return postCommentRepository.findPostCommentsByUser(user, PageRequest.of(page - 1, size))
                 .map(postCommentMapper::postCommentToResponseDto);
     }
 
