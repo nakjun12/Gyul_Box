@@ -49,13 +49,20 @@ public class ReviewController {
                                    @PathVariable("review-id") @Positive long reviewId) {
         // patchDto에 Id를 넣어 서비스 단에 제공
         patchDto.setReviewId(reviewId);
-        Review review = reviewService.updateReview(patchDto);
+        User user = userService.verifyExistsUserByEmail(patchDto.getUserEmail());
+
+        Review review = reviewService.updateReview(user, patchDto);
+
         return new ResponseEntity<>(review.getId(), HttpStatus.OK);
     }
 
     @DeleteMapping("/reviews/{review-id}")
-    public ResponseEntity<?> delete(@PathVariable("review-id") @Positive long reviewId) {
-        reviewService.deleteReview(reviewId);
+    public ResponseEntity<?> delete(@PathVariable("review-id") @Positive long reviewId,
+                                    @Valid @RequestBody ReviewDto.Delete deleteDto) {
+        User user = userService.verifyExistsUserByEmail(deleteDto.getUserEmail());
+
+        reviewService.deleteReview(user, reviewId);
+
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

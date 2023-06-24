@@ -36,16 +36,28 @@ public class ReviewService {
 
     //리뷰 수정
     @Transactional
-    public Review updateReview(ReviewDto.Patch patchDto) {
+    public Review updateReview(User user, ReviewDto.Patch patchDto) {
         Review findReview = findVerifiedReview(patchDto.getReviewId());
-        findReview.update(patchDto.getAdvantage(), patchDto.getDisadvantage(), patchDto.getAdminCost(), patchDto.getResidenceYear(), patchDto.getFloor(), patchDto.getRate());
+
+        if (findReview.isAuthor(user)) {
+            findReview.update(patchDto.getAdvantage(), patchDto.getDisadvantage(), patchDto.getAdminCost(), patchDto.getResidenceYear(), patchDto.getFloor(), patchDto.getRate());
+        } else {
+            throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_TO_EDIT);
+        }
+
         return findReview;
     }
 
     //리뷰 삭제
     @Transactional
-    public void deleteReview(long reviewId) {
-        reviewRepository.delete(findVerifiedReview(reviewId));
+    public void deleteReview(User user, long reviewId) {
+        Review verifiedReview = findVerifiedReview(reviewId);
+
+        if (verifiedReview.isAuthor(user)) {
+            reviewRepository.delete(findVerifiedReview(reviewId));
+        } else {
+            throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_TO_DELETE);
+        }
     }
 
     //단건 조회

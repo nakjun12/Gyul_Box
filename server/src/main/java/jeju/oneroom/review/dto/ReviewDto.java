@@ -60,6 +60,12 @@ public class ReviewDto {
     public static class Patch {
         private Long reviewId;
 
+        // 로그인 한 유저 정보
+        @NotBlank
+        @Pattern(regexp = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+                message = "올바른 이메일 형식을 입력해 주세요.")
+        private String userEmail;
+
         @NotBlank
         @Size(min = 50, message = "최소 50자 이상 입력해주세요")
         private String advantage;
@@ -87,6 +93,18 @@ public class ReviewDto {
         public void setReviewId(Long reviewId) {
             this.reviewId = reviewId;
         }
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Delete {
+        // 로그인 한 유저 정보
+        @NotBlank
+        @Pattern(regexp = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+                message = "올바른 이메일 형식을 입력해 주세요.")
+        private String userEmail;
     }
 
     @Getter
