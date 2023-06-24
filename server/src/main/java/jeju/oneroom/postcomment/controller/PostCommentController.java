@@ -45,7 +45,9 @@ public class PostCommentController {
                                              @Valid @RequestBody PostCommentDto.Patch patchDto) {
         postService.findVerifiedPost(postId);   // 존재하는 게시글인지부터 검증
         patchDto.setPostCommentId(postCommentId);
-        PostComment updatePostComment = postCommentService.updatePostComment(patchDto);
+        User user = userService.verifyExistsUserByEmail(patchDto.getUserEmail());
+
+        PostComment updatePostComment = postCommentService.updatePostComment(user, patchDto);
 
         return new ResponseEntity<>(updatePostComment.getId(), HttpStatus.OK);
     }
@@ -64,9 +66,12 @@ public class PostCommentController {
     // 특정 게시글의 댓글 삭제 기능
     @DeleteMapping("/posts/{post-id}/comments/{comments-id}")
     public ResponseEntity<HttpStatus> deleteComment(@PathVariable("post-id") @Positive long postId,
-                                                    @PathVariable("comments-id") @Positive long postCommentId) {
+                                                    @PathVariable("comments-id") @Positive long postCommentId,
+                                                    @Valid @RequestBody PostCommentDto.Delete deleteDto) {
         postService.findVerifiedPost(postId);   // 존재하는 게시글인지부터 검증
-        postCommentService.deletePostComment(postCommentId);
+        User user = userService.verifyExistsUserByEmail(deleteDto.getUserEmail());
+
+        postCommentService.deletePostComment(user, postCommentId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

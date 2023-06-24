@@ -44,7 +44,9 @@ public class PostController {
     public ResponseEntity<Long> patchPost(@PathVariable("post-id") @Positive long postId,
                                           @Valid @RequestBody PostDto.Patch patchDto) {
         patchDto.setPostId(postId);
-        Post updatedPost = postService.updatePost(patchDto);
+        User user = userService.verifyExistsUserByEmail(patchDto.getUserEmail());
+
+        Post updatedPost = postService.updatePost(user, patchDto);
 
         return new ResponseEntity<>(updatedPost.getId(), HttpStatus.OK);
     }
@@ -100,8 +102,11 @@ public class PostController {
 
     // post-id로 단일 게시글 삭제
     @DeleteMapping("/{post-id}")
-    public ResponseEntity<HttpStatus> deletePost(@PathVariable("post-id") @Positive long postId) {
-        postService.deletePost(postId);
+    public ResponseEntity<HttpStatus> deletePost(@PathVariable("post-id") @Positive long postId,
+                                                 @Valid @RequestBody PostDto.Delete deleteDto) {
+        User user = userService.verifyExistsUserByEmail(deleteDto.getUserEmail());
+
+        postService.deletePost(user, postId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -81,4 +81,9 @@ public class Review extends BaseEntity {
         this.houseInfo = houseInfo;
         this.user = user;
     }
+
+    // 동일 유저 검증
+    public boolean isAuthor(User user) {
+        return this.user.equals(user);
+    }
 }

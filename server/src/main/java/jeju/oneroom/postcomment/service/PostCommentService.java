@@ -33,9 +33,14 @@ public class PostCommentService {
     }
 
     // 게시판 댓글 수정
-    public PostComment updatePostComment(PostCommentDto.Patch patchDto) {
+    public PostComment updatePostComment(User user, PostCommentDto.Patch patchDto) {
         PostComment verifiedPostComment = findVerifiedPostComment(patchDto.getPostCommentId());
-        verifiedPostComment.update(patchDto.getContent());
+
+        if (verifiedPostComment.isAuthor(user)) {
+            verifiedPostComment.update(patchDto.getContent());
+        } else {
+            throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_TO_EDIT);
+        }
 
         return verifiedPostComment;
     }
@@ -48,8 +53,14 @@ public class PostCommentService {
     }
 
     // 게시판 댓글 삭제
-    public void deletePostComment(long postCommentId) {
-        postCommentRepository.deleteById(postCommentId);
+    public void deletePostComment(User user, long postCommentId) {
+        PostComment verifiedPostComment = findVerifiedPostComment(postCommentId);
+
+        if (verifiedPostComment.isAuthor(user)) {
+            postCommentRepository.deleteById(postCommentId);
+        } else {
+            throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_TO_DELETE);
+        }
     }
 
     private PostComment findVerifiedPostComment(long postCommentId) {

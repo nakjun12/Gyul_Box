@@ -42,4 +42,9 @@ public class PostComment extends BaseEntity {
     public void update(String content) {
         this.content = content;
     }
+
+    // 동일 유저 검증
+    public boolean isAuthor(User user) {
+        return this.user.equals(user);
+    }
 }

@@ -35,9 +35,14 @@ public class PostService {
 
     // 게시글 수정
     @Transactional
-    public Post updatePost(PostDto.Patch patchDto) {
+    public Post updatePost(User user, PostDto.Patch patchDto) {
         Post verifiedPost = findVerifiedPost(patchDto.getPostId());
-        verifiedPost.update(patchDto.getTitle(), patchDto.getContent());
+
+        if (verifiedPost.isAuthor(user)) {
+            verifiedPost.update(patchDto.getTitle(), patchDto.getContent());
+        } else {
+            throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_TO_EDIT);
+        }
 
         return verifiedPost;
     }
@@ -77,8 +82,14 @@ public class PostService {
 
     // 게시글 id로 단일 게시글 삭제
     @Transactional
-    public void deletePost(long postId) {
-        postRepository.deleteById(postId);
+    public void deletePost(User user, long postId) {
+        Post verifiedPost = findVerifiedPost(postId);
+
+        if (verifiedPost.isAuthor(user)) {
+            postRepository.deleteById(postId);
+        } else {
+            throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_TO_DELETE);
+        }
     }
 
     // 게시글 id로 존재 여부 검증
