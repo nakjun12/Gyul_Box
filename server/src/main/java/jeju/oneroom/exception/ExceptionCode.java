@@ -12,9 +12,9 @@ public enum ExceptionCode {
     NOT_CERTIFIED(401,"Certification required."),
 
     // FORBIDDEN
-    NO_PERMISSION_TO_EDIT(403, ""),
-    NO_PERMISSION_TO_CREATE(403, ""),
-    NO_PERMISSION_TO_DELETE(403, ""),
+    NO_PERMISSION_TO_EDIT(403, "Author Can't Edit"),
+    NO_PERMISSION_TO_CREATE(403, "Author Can't Create"),
+    NO_PERMISSION_TO_DELETE(403, "Author Can't Delete"),
     NO_PERMISSION_TO_LIKE(403,"Author Can't Click"),
     NOT_MATCH_MEMBER(403, "Doesn't Belong This Member"),
 
