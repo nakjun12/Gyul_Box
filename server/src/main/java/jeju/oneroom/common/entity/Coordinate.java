@@ -6,15 +6,15 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 
+// Area와 HouseInfo에 필요한 위도, 경도
 @Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Coordinate {
-    // Geocoder 이용하여 주소를 위도 경도로.
-    private double latitude;
-    private double longitude;
+    private Double latitude;
+    private Double longitude;
 
-    public Coordinate(double latitude, double longitude) {
+    public Coordinate(Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }

@@ -17,9 +17,16 @@
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-lottie-player": "^1.5.4",
+    "recoil": "^0.7.7",
+    "swr": "^2.1.5",
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "sass": "^1.61.0"
+    "@react-icons/all-files": "^4.1.0",
+    "kakao.maps.d.ts": "^0.1.35",
+    "react-icons": "^4.8.0",
+    "sass": "^1.61.0",
+    "sass-loader": "^13.2.2"
   }
 }

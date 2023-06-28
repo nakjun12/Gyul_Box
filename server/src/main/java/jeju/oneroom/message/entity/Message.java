@@ -1,34 +1,48 @@
 package jeju.oneroom.message.entity;
 
+import jeju.oneroom.common.entity.BaseEntity;
+import jeju.oneroom.messageroom.entity.MessageRoom;
 import jeju.oneroom.user.entity.User;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Message {
+public class Message extends BaseEntity {
+
     @Id
-    @GeneratedValue
-    @Column(name = "message_id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long messageId;
 
+    @Setter
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
-    private Boolean readed;
 
-    @CreatedDate
-    private LocalDateTime dispatchTime;
+    @Setter
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    private MessageRoom messageRoom;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @Setter
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private User sender;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @Setter
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private User receiver;
+
+    @Builder
+    public Message(MessageRoom messageRoom, User sender, User receiver, String content) {
+        this.messageRoom = messageRoom;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.content = content;
+    }
+
+    public void setProperties(MessageRoom messageRoom, User sender, User receiver) {
+        this.messageRoom = messageRoom;
+        this.sender = sender;
+        this.receiver = receiver;
+    }
 }

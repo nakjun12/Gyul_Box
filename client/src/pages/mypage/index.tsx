@@ -1,9 +1,10 @@
-import React from 'react'
-
-type Props = {}
+import MyPagePanel from "./../../component/molecules/tabPanel/MypagePanel";
+type Props = {};
 
 export default function index({}: Props) {
   return (
-    <div>index</div>
-  )
+    <div>
+      <MyPagePanel />
+    </div>
+  );
 }

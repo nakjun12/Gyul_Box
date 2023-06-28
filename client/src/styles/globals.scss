@@ -1,29 +1,188 @@
-$primary-color: #007bff;
-$btn-border-radius: 4px;
+@import "./variables";
 
-// 스타일 설정
-.btn {
-  display: inline-block;
-  padding: 8px 16px;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  border: 1px solid $primary-color;
-  border-radius: $btn-border-radius;
-  background-color: $primary-color;
-  color: #fff;
+// font-family: 'Noto Sans KR', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+// font-family: 'Poppins', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+// font-family: 'Be Vietnam Pro', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+// font-family: "GmarketSansBold";
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+// font-family: "LeferiPoint-WhiteObliqueA";
+@font-face {
+  font-family: "LeferiPoint-WhiteObliqueA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
   text-decoration: none;
+}
 
-  &:hover {
-    background-color: darken($primary-color, 10%);
-    border-color: darken($primary-color, 10%);
+:root {
+  font-family: "Pretendard-Regular", sans-serif;
+  --pretendard: "Pretendard-Regular", sans-serif;
+  --notoSansKR: "Noto Sans KR", sans-serif;
+  --poppins: "Poppins", sans-serif;
+  --beVietnamPro: "Be Vietnam Pro", sans-serif;
+  --gmarketSansBold: "GmarketSansBold", sans-serif;
+  --leferiPointWhiteObliqueA: "LeferiPoint-WhiteObliqueA", sans-serif;
+
+  // 적용법 var(--orange)
+  --orange: #ff6000;
+  --lightGreen: #8dc53e;
+  --green: #019267;
+  --whiteOrange: #ffe6c7;
+  --gray: #eeeeee;
+  --inputGray: #f8f8f8;
+  --textGray: #b2b2b2;
+  --yellow: #f8f838;
+  --textBlack: #333333;
+  --blueGray: #8b9bba;
+  --hover: #ffab4f;
+  input:focus {
+    outline: none;
+  }
+}
+
+.marker_box {
+  background-color: white;
+  color: #ff6000;
+  border: 1px solid #ff6000;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-right: 1px;
+  &:hover,
+  &:focus {
+    color: white;
+    cursor: pointer;
+    background-color: #ff6000;
+  }
+}
+
+.map_wrap {
+  position: relative;
+
+  width: 100%;
+  height: 888px;
+  .map_top {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+
+    width: auto;
+    height: auto;
+
+    cursor: pointer;
+    z-index: 500;
   }
 
-  &:focus,
-  &:active {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  .map_bottom {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+
+    width: 50%;
+    height: auto;
+    max-width: 500px;
+    min-width: 280px;
+    cursor: pointer;
+    z-index: 500;
+  }
+}
+
+.review_editor_container {
+  width: auto;
+  padding: 0 20px;
+  padding-top: 20px;
+  background-color: white;
+  height: auto;
+  min-height: 74vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding-bottom: 60px;
+  .editor_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    .list_header {
+      @include center-sb();
+      width: 70%;
+      margin: 40px 0;
+
+      .list_header_right {
+        display: flex;
+        justify-items: space-between;
+        width: auto;
+        gap: 5px;
+      }
+    }
+    .title_lable {
+      width: auto;
+
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .header_search {
+    @include center();
+    margin-top: 80px;
+  }
+}
+
+.editor_title {
+  margin: 20px 20px;
+  padding: 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+
+  .editor_title_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      cursor: pointer;
+      margin-left: 30px;
+    }
   }
 }

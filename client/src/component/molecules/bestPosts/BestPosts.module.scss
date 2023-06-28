@@ -1,0 +1,80 @@
+@import "../../../styles/variables.scss";
+
+.wrapper {
+  @include c-center();
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 400;
+
+  text-align: left;
+  width: 750px;
+  margin-bottom: 20px;
+}
+
+.bestposts {
+  @include c-center();
+  width: 70%;
+  height: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  &:hover {
+    background-color: var(--hover);
+  }
+  .bestposts_title {
+    @include center-sb();
+    width: 100%;
+    height: 30px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    .left {
+      @include center();
+    }
+  }
+
+  .bestposts_list {
+    @include center();
+    width: 100%;
+    height: 100%;
+
+    .bestposts_list_left_good {
+      width: 10%;
+      height: 1.5rem;
+      font-size: 14px;
+      color: var(--orange);
+    }
+    .bestposts_list_left_bad {
+      width: 10%;
+      height: 1.5rem;
+      font-size: 14px;
+
+      color: var(--lightGreen);
+    }
+    .bestposts_list_right {
+      width: 100%;
+      overflow: hidden;
+      color: var(--textBlack);
+      font-size: 14px;
+      font-weight: 100;
+      margin-bottom: 8px;
+      height: 1.5rem;
+      text-overflow: ellipsis;
+      line-height: 1.5rem;
+      white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+    }
+  }
+}

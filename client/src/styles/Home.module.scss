@@ -1,29 +1,75 @@
-$primary-color: #007b0f;
-$btn-border-radius: 4px;
+@import "../styles/variables";
+.all {
+  background-color: var(--hover);
+}
+.bodyWrapper {
+  max-width: 1000px;
+  margin: auto;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
-// 스타일 설정
-.btn {
-  display: inline-block;
-  padding: 8px 16px;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  border: 1px solid $primary-color;
-  border-radius: $btn-border-radius;
-  background-color: $primary-color;
-  color: #fff;
-  text-decoration: none;
+.home {
+  padding-top: 80px;
+}
 
-  &:hover {
-    background-color: darken($primary-color, 10%);
-    border-color: darken($primary-color, 10%);
-  }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
 
-  &:focus,
-  &:active {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
+.gyulMain {
+  @include center();
+  background-color: var(--orange);
+  width: 100%;
+
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lottieWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 110px;
+  margin-left: -30px;
+}
+
+.lottieDiv {
+  @include center();
+  overflow: hidden;
+  width: 120px;
+  height: 150px;
+  margin-top: 20px;
+  background-color: black;
+  margin-right: -20px;
+}
+
+.whereDiv {
+  @include center();
+  background-color: white;
+  height: 100px;
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 5px;
+  padding-bottom: 10px;
+}
+
+.boardParts {
+  @include c-center();
+  width: 100%;
+  margin: 20px auto;
+}
+
+.carouselParts {
+  @include center;
+  width: 100%;
+  height: 600px;
 }

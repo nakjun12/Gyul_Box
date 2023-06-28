@@ -1,0 +1,55 @@
+@import "./../../../styles/variables";
+.wrapper {
+  @include center-sb();
+  width: 100%;
+  max-width: 1000px;
+  height: 80px;
+  border-bottom: 2px solid var(--orange);
+  position: fixed;
+  background-color: white;
+  z-index: 6000;
+  padding: 0 2rem;
+}
+
+.ulWrapper {
+  width: 50%;
+  height: 100%;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ul {
+  @include center();
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.li {
+  width: 100%;
+  height: 100%;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--orange);
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.loginWrapper {
+  width: 100%;
+  height: 100%;
+  @include center();
+  width: 25%;
+  padding-left: 30px;
+}
+
+.logo {
+  cursor: pointer;
+}
