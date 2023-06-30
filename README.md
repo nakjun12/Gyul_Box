@@ -1,8 +1,7 @@
-<h1>🌿 IncreaF</h1>
-<img src="https://user-images.githubusercontent.com/110921798/216459211-262c75a2-9637-4870-a918-d4751a971db4.jpg" />
+<h1>🍊 Gyul_Box</h1>
 
 <div align="center"> 
-  <h3>" 나보다 소중한 반려식물, 당신의 반려식물을 소개하고, 매력적인 콘텐츠를 만들어보세요! "</h3><br />
+  <h3>" 제주도, 양도, 원룸, 리 "</h3><br />
   <div>반려식물판 소셜 미디어 플랫폼</div>
 </div>
 <strong>배포링크</strong> : https://increaf.com/
