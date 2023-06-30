@@ -1,109 +1,76 @@
 <h1>🍊 Gyul_Box</h1>
 
 <div align="center"> 
-  <h3>" 제주도 원룸 양도와 생생한 리뷰를 통해 편리하고 안전한게 원룸을 찾고 양도할 수 있는 서비스입니다. 당신의 제주 살이를 응원합니다! "</h3><br />
-  <div>반려식물판 소셜 미디어 플랫폼</div>
+  <h3>" 제주도 원룸 양도와 생생한 리뷰를 제공하는 서비스입니다. 당신의 제주 살이를 응원합니다! "</h3><br />
+  <div>원룸 리뷰 및 양도 플랫폼</div>
 </div>
-<strong>배포링크</strong> : https://increaf.com/
-
-- TEST ID : test, PW : q1w2e3r4!!<br />
-(게스트 아이디 및 패스워드 정보입니다)
+<strong>배포링크</strong> : ***
 
 <br />
 
 ## 💡 프로젝트 소개 및 구상배경
 
-- **팀 명 :** 식테크맨
-- **프로젝트 기간 :** 2023.01.03 - 2023.02.03
-
-
-  최근 코로나19로 인해 집에서 생활하는 시간이 늘어나면서 집 안에서 반려식물을 키우는 사람들이 더욱 늘어나고 있는 요즘,</br>
-반려식물은 ‘사람이 정서적으로 의지하고자 가까이 두고 기르는 식물’을 뜻합니다. 사람과 함께 생활하며 마음을 나누는 반려동물과 비슷한 의미의 이름을 식물에게도 준 것입니다. <br /> <br /> 
- 정성들여 키우는 식물은 인테리어 뿐만 아니라 외로움과 우울함 극복에도 도움이 됩니다. 이렇듯 우리 삶에 함께 하는 반려식물들을 혼자 키우고 감상하기보다 식물을 사랑하는 다른 사람들과 함께 공유하는 플랫폼을 만들고싶어 본 프로젝트를 기획하게 되었습니다. 
-  <br /> <br /> 식물을 좋아하는 모든 사람들이 함께 본인이 키운 식물, 이외에도 여러 식물 사진들을 공유하고 소통할 수 있는 Increaf에 당신도 <span><strong><i>지금 참여하세요!</i></strong></span>
-
- 
-<br />
+- **팀 명 :** 귤박스
+- **프로젝트 기간 :** 2023.04 - 2023.06
 
 ## 💻 주요 페이지 및 기능
 
-## 랜딩페이지 및 회원가입/로그인 
+## 메인페이지 및 로그인 페이지
 
 <div width="100%">
 
-|랜딩페이지|회원가입/로그인|
+|메인페이지|회원가입/로그인|
 |:-:|:-:|
-|<img src="https://user-images.githubusercontent.com/110921798/216432112-c6fa5121-0e9d-4a64-9adb-da2b153457c5.gif" />|<img src="https://user-images.githubusercontent.com/110921798/216432873-5f6e5918-b899-42e1-afb2-bf06e9d5ba0c.gif" />|
+|<img src=* />|<img src=* />|
 
 </div>
 
 
-## My plants 등록하기/My plants 갤러리 관리
+## 회원 정보/내가 쓴 글
 
 <div>
 
-|My plants 날짜 등록|My plants 갤러리 관리|
+|회원 정보|내가 쓴 글|
 |-|-|
-|<img src="https://user-images.githubusercontent.com/110921798/216431739-25407ec1-36fc-4813-adbd-b1ff1d3f016d.gif" />|<img src="https://user-images.githubusercontent.com/110921798/216433963-0e1ab88c-9ed2-422f-8187-fe562f93e89c.gif" />|
+|<img src=* />|<img src=* />|
 
 </div>
 
-## 게시글 관리
+## 리뷰 관리
 
 <div>
 
-|게시글 등록하기|게시글 수정하기|게시글 삭제하기|
+|지도|지도 내부의 리뷰|
+|-|-|
+|<img src=* />|<img src=*/>|
+
+</div>
+
+<div>
+
+|리뷰 작성|특정 동의 리뷰|특정 건물의 리뷰|
 |-|-|-|
-|<img src="https://user-images.githubusercontent.com/110921798/216434628-6c9696d0-7a33-49ef-bc62-b5e135aafb64.gif" />|<img src="https://user-images.githubusercontent.com/110921798/216434848-e495010f-91b0-4113-bfd3-c82872402c59.gif"/>|<img src="https://user-images.githubusercontent.com/110921798/216436794-92b9bc9b-8b52-4c33-8e8b-93f6b4c0f2b0.gif" />|
+|<img src="*"/>|<img src="*" />|<img src="*" />|
 
 </div>
 
-<div>
-
-|게시글 스크랩|전체 게시글 및 인기글(좋아요 순)조회하기|
-|-|-|
-|<img src="https://user-images.githubusercontent.com/110921798/216441172-852e6e64-1de6-4449-9f38-2690f82016d3.gif"/>|<img src="https://user-images.githubusercontent.com/110921798/216441870-8c622c93-1608-4549-8986-3471351dcdf1.gif" />|
-
-</div>
-
-## 댓글 관리
+## 양도글 관리
 
 <div>
 
-|댓글 등록하기|댓글 삭제하기|댓글 좋아요|
+|양도글 작성|양도글 게시판|양도글 상세|
 |-|-|-|
-|<img src="https://user-images.githubusercontent.com/110921798/216437316-cfe8ae8c-3198-445e-b21d-6d38f4a6b1e9.gif" />|<img src="https://user-images.githubusercontent.com/110921798/216437323-7913bdea-90e1-4ecc-9985-b7c59ee4119b.gif" />|<img src="https://user-images.githubusercontent.com/110921798/216439694-8229701c-1480-4fdb-a17a-4935888e9114.gif">|
+|<img src=* />|<img src=* />|<img src=*>|
 
 </div>
 
-## 채팅 및 알림
+## 채팅
 
 <div>
 
-|채팅(서로 맞팔일 경우 가능)|실시간 알림|
+|채팅방 리스트|채팅방|
 |-|-|
-|<img src="https://user-images.githubusercontent.com/110921798/216440115-1f4cad29-9087-42cf-8afb-ec20d8cb4203.gif" />|<img src="https://user-images.githubusercontent.com/110921798/216440233-14f9a463-04ce-4ddd-a52b-ba6004848420.gif" />|
-
-</div>
-
-## My Page 조회 및 회원정보 수정
-
-<div>
-
-|My Page 조회 | 회원정보 수정/ 회원 탈퇴|
-|-|-|
-|<img src="https://user-images.githubusercontent.com/110921798/216443041-44d9767a-7550-483c-9002-02612ac294d5.gif" />|<img src="https://user-images.githubusercontent.com/110921798/216442964-f203ab18-8ed7-4b8c-a058-7b7b3787789f.gif" />|
-
-</div>
-
-<br />
-
-## 👨‍👩‍👧‍👦 팀원 소개
-
-|<img src="https://user-images.githubusercontent.com/110921798/216306152-bcccdea4-9a5e-477a-a7c7-77e84a3fd43e.png" width="150px" />|<img src="https://user-images.githubusercontent.com/110921798/216306669-aa1ac13c-2128-4fd1-9027-d6917eda4c3e.png" width="150px" />|<img src="https://user-images.githubusercontent.com/110921798/216306673-2927e119-56e9-43ed-a049-0df8cc4a29a6.png" width="150px"/>|<img src="https://user-images.githubusercontent.com/110921798/216306679-6f27ae43-8995-4b3d-b53e-e9a13769b27c.png" width="150px" />|<img src="https://user-images.githubusercontent.com/110921798/216306682-713b4972-fa6e-4dac-9026-f32ea7e91963.png" width="150px"/>|<img src="https://user-images.githubusercontent.com/110921798/216306660-e4c7ec7f-703c-4e69-bac4-bc3a782df13d.png" width="150px" />|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|[이민훈](https://github.com/lmimoh)|[강래헌](https://github.com/kanglaeheon)|[장은지](https://github.com/ohmegle)|[김태현](https://github.com/taebong98)|[김혜인](https://github.com/gimhae-person)|[한대호](https://github.com/oheadnah)
-|FE 팀장|FE 팀원|FE 팀원|BE 부팀장|BE 팀원|BE 팀원|
+|<img src=* />|<img src=* />|
 
 <br />
 
@@ -163,22 +130,18 @@
 <br />
 
 ## 📎 문서
-- [Notion](https://www.notion.so/codestates/IncreaF-2d1ac8dc113646d9b74dfa27903105f2)
-- [API Document](https://increaf.site/docs/index.html)
-- [사용자요구사항명세서](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e7d4868d-4cd3-4b6d-a0cf-e6cc8e693981/SEB_MAIN_19_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD_%EB%AA%85%EC%84%B8%EC%84%9C.xlsx_-_%EC%82%AC%EC%9A%A9%EC%9E%90_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD_%EB%AA%85%EC%84%B8%EC%84%9C_%EC%B5%9C%EC%A2%85.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230202%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230202T113336Z&X-Amz-Expires=86400&X-Amz-Signature=bb3178d15679258f672428d47ce23c97dd09d1fae8b7c9c73e9d91322f324e15&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22SEB_MAIN_19_%25EC%259A%2594%25EA%25B5%25AC%25EC%2582%25AC%25ED%2595%25AD_%25EB%25AA%2585%25EC%2584%25B8%25EC%2584%259C.xlsx%2520-%2520%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%2520%25EC%259A%2594%25EA%25B5%25AC%25EC%2582%25AC%25ED%2595%25AD%2520%25EB%25AA%2585%25EC%2584%25B8%25EC%2584%259C%2520%25EC%25B5%259C%25EC%25A2%2585.pdf%22&x-id=GetObject)
-- [데이터베이스 ERD](https://dbdiagram.io/d/63b410cf7d39e42284e89f32)
-- [User Flow](https://www.figma.com/file/86u3BwyD8Nk8EnLb8N49UL/User-Flow?node-id=0%3A1&t=A2tmj0ac6pqI4hkB-1)
-- [화면정의서](https://www.figma.com/file/hfoLmpqoYZbYu2S5GyHZTh/%ED%99%94%EB%A9%B4%EC%A0%95%EC%9D%98%EC%84%9C?t=A2tmj0ac6pqI4hkB-1)
+- [Notion](https://www.notion.so/First-Project-23ccbfa58cad4fa59828e0243529313f)
+- [API Document](https://documenter.getpostman.com/view/23682640/2s93Y3w1ff#9f7a8583-bf34-4c88-a442-22a69fb58f4c)
+- [사용자요구사항명세서](https://www.notion.so/First-Project-23ccbfa58cad4fa59828e0243529313f?p=5eaa56e9e36143429d1347a9b7821546&pm=s)
+- [데이터베이스 ERD](https://www.notion.so/First-Project-23ccbfa58cad4fa59828e0243529313f?p=465faaef72174f4184c08a508e106aac&pm=s)
+- [화면정의서](https://www.notion.so/First-Project-23ccbfa58cad4fa59828e0243529313f?p=ff9291eaa5014855ad707ec37d8e086f&pm=s)
 
 ## ❗ 팀 규칙
-- 5분 지각한 사람 1000원 벌금
-- 불참해야 할 일 생길 때, 하루 전에는 말을 해주기
-- 공지 확인 시 12시간 내에 답장 해주기 + 공지 확인 후에 ✅ 체크 필수
-- 공부하다 모르는 내용 생기면 공유하고 서로 같이 고민하기
-- 이후 회식 때 벌금만큼 돈 더 내기
-- 코어타임 지키기
-
-## 🖤 Git Convention
+1. **쿠션어 사용하기**
+2. **상시 온라인 시간(13~18시) 지키기 (5분내로 연락 응답)**
+3. **불가피한 사정으로 자리 이탈 시 채팅방에 공유**
+4. **평일 오후(5시) 회의 및 진척도 공유**
+    1. 오후 회의: 지금까지 진행한 업무 공유 및 내일 일정 정리
 
 <aside>
 ### 1. 커밋 유형 지정
