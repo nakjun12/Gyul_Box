@@ -1,181 +1,196 @@
+<h1>🍊 Gyul_Box</h1>
 
+<br />
+
+<div align="center"> 
+  <h3>" 제주도 원룸 양도와 생생한 리뷰를 제공하는 서비스입니다. 당신의 제주살이를 응원합니다! "</h3><br />
+  <div>원룸 리뷰 및 양도 플랫폼</div>
+</div>
+
+<br />
+<br />
+
+<strong>배포링크</strong> : https://team-poject-cisibx65a-nakjun12.vercel.app
+(임시)
+<br />
+<br />
+
+### 💡 프로젝트 개요
+
+- **팀 명 :** 귤박스
+- **프로젝트 기간 :** 2023.04 - 2023.06
+
+
+
+### 📎 문서
+- [Notion](https://www.notion.so/First-Project-23ccbfa58cad4fa59828e0243529313f)
+- [API Document](https://documenter.getpostman.com/view/23682640/2s93Y3w1ff#9f7a8583-bf34-4c88-a442-22a69fb58f4c)
+- [사용자요구사항명세서](https://www.notion.so/First-Project-23ccbfa58cad4fa59828e0243529313f?p=5eaa56e9e36143429d1347a9b7821546&pm=s)
+- [데이터베이스 ERD](https://www.notion.so/First-Project-23ccbfa58cad4fa59828e0243529313f?p=465faaef72174f4184c08a508e106aac&pm=s)
+- [화면정의서](https://www.notion.so/First-Project-23ccbfa58cad4fa59828e0243529313f?p=ff9291eaa5014855ad707ec37d8e086f&pm=s)
+
+
+
+### 📖 기술 스택 
+**FrontEnd**
+
+<div> 
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"> 
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
+  <img src="https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=Sass&logoColor=white">
+  <img src="https://img.shields.io/badge/SWR-000000?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Recoil-61DAFB?style=for-the-badge">
+</div>
+
+
+**BackEnd**
+<div>
+  <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white">
+  <img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=Gradle&logoColor=white">
+  <img src="https://img.shields.io/badge/MapStruct-007f00?style=for-the-badge&logo=MapStruct&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring Data JPA-6DB33F?style=for-the-badge&logo=Spring Data JPA&logoColor=white">
+  <img src="https://img.shields.io/badge/QueryDSL-FF7F00?style=for-the-badge&logo=QueryDSL&logoColor=white">
+  <img src="https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=JUnit5&logoColor=white">
+  <img src="https://img.shields.io/badge/Mockito-007BFF?style=for-the-badge&logo=Mockito&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white">
+  <img src="https://img.shields.io/badge/OAuth2.0-FF7F00?style=for-the-badge&logo=OAuth2.0&logoColor=white">
+  <img src="https://img.shields.io/badge/WebSocket-00FFFF?style=for-the-badge&logo=WebSocket&logoColor=white">
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=Redis&logoColor=white"> 
+  <img src="https://img.shields.io/badge/WebClient-008000?style=for-the-badge&logo=WebClient&logoColor=white">
+  <img src="https://img.shields.io/badge/H2-FF69B4?style=for-the-badge&logo=H2&logoColor=white">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+ </div>
+ 
+**Cloud**
+<div>
+  <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white">
+  <img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=for-the-badge&logo=Amazon RDS&logoColor=white">
+</div>
+
+**Tool**
+<div>
+  <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white">
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
+  <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white">
+  <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
+  <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
+</div>
+
+<br />
+
+### 💻 주요 페이지 및 기능
+
+### 메인페이지 및 로그인 페이지
+
+<div width="100%">
+
+|메인페이지|회원가입/로그인|
+|:-:|:-:|
+|<img src=* />|<img src=* />|
+
+</div>
+
+
+
+### 회원 정보/내가 쓴 글
+
+<div>
+
+|회원 정보|내가 쓴 글|
+|-|-|
+|<img src=* />|<img src=* />|
+
+</div>
+
+
+
+### 리뷰 관리
+
+<div>
+
+|지도|지도 내부의 리뷰|
+|-|-|
+|<img src=* />|<img src=*/>|
+
+</div>
+
+
+
+<div>
+
+|리뷰 작성|특정 동의 리뷰|특정 건물의 리뷰|
+|-|-|-|
+|<img src="*"/>|<img src="*" />|<img src="*" />|
+
+</div>
+
+
+
+### 양도글 관리
+
+<div>
+
+|양도글 작성|양도글 게시판|양도글 상세|
+|-|-|-|
+|<img src=* />|<img src=* />|<img src=*>|
+
+</div>
+
+
+
+### 채팅
+
+<div>
+
+|채팅방 리스트|채팅방|
+|-|-|
+|<img src=* />|<img src=* />|
+
+</div>
+
+<br />
+
+
+### 🛠 아키텍쳐 
+
+
+<br />
+
+### ❗ 팀 규칙
+1. **쿠션어 사용하기**
+2. **상시 온라인 시간(13 ~ 18시) 지키기 (5분내로 연락 응답)**
+3. **불가피한 사정으로 자리 이탈 시 채팅방에 공유**
+4. **평일 오후(5시) 회의 및 진척도 공유**
+5. **오후 회의: 지금까지 진행한 업무 공유 및 내일 일정 정리**
+
+
+
+<aside>
+
+### ❗ Github issue 관리
+- 미리 다 쌓아두지 않고 기존 milestone 완료 시 다음 milestone제작
+- Issue의 최소 단위를 나눠두고 일정관리 하기
+- 스프린트를 시작할 떄 어느정도 issue를 처리할 것인지
+- 이후 issue들이 걸리는 시간을 조율을 함
+  
+### ❗ 커밋 유형 지정
     
-# **프로젝트 소개**
-- 배포 링크 : 
-- 서버 배포 링크 : 
-- 프로젝트 wiki 바로가기 : 
-## **👨‍🌾 LOGO**
+| 커밋 유형 | 의미 |
+| --- | --- |
+| feat | 새로운 기능을 추가할 경우 |
+| fix | 버그를 고친 경 |
+| style | 코드 포맷 변경, 세미 콜론 누락, 코드 수정이 없는 경우 |
+| refactor | 프로덕션 코드 리팩토링 |
+| comment | 필요한 주석 추가 및 변경 |
+| docs | 문서를 수정한 경우 |
+| test | 테스트 추가, 테스트 리팩토링(프로덕션 코드 변경 X) |
+| chore | 빌드 테스트 업데이트, 패키지 매니저를 설정하는 경우(프로덕션 코드 변경 X) |
+| rename | 파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우 |
+| remove | 파일을 삭제하는 작업만 수행한 경우 |
 
-## **✨Feature✨**
-### 리스트 & 배너
-<details>
-    <summary> 무한스크롤 & 스켈레톤</summary>
-        
-        •  상품 리스트 무한 스크롤 구현
-        
-        •  모든 상품 스켈레톤 적용
-</details>
-<details>        
-    <summary>페이지네이션</summary>
-        
-        •  상품 리스트를 페이지로 나누어  특정 페이지로 이동할 수 있음
-</details>        
-<details>        
-    <summary> 검색 및 상품분류</summary>
-        
-        •  상품 검색 기능 구현
-        
-        •  nav바를 통한 상품 분류 페이지로 이동
-        
-        •  검색어를 입력하지 않은 경우 상품 추천
-</details>        
-<details>
-    <summary>캐러셀</summary>
-        
-        •  react-material 라이브러리를 활용한 메인 캐러셀 구현
-        
-        •  react-slick 라이브러리를 활용한 상품 캐러셀 구현
-</details>        
-<details>        
-    <summary> 리뷰(평점, 상품평, 이미지)</summary>
-        
-        •  리뷰 평점을 종합하여 상품 평점 반영 
-        
-        •  이미지 등록
-</details>     
+</aside>
 
-### 전역 상태 관리 및 환경 변수 관리 
-<details>
-    <summary> 상태 관리 라이브러리 (Redux Toolkit)</summary>
-        
-        •  장바구니 관련 내용 관리
-        
-        •  장바구니 수량 확인
-</details>        
-<details>        
-    <summary> 상태 관리 라이브러리 (React Query)</summary>
-        
-        •  서버 데이터 관리 및 업데이트
-</details>        
-<details>        
-    <summary> Local Storage 활용</summary>
-        
-        •  새로고침 시 데이터를 받아옴
-        
-        •  JWT 토큰 관리
-</details>    
-    
-### 반응형 웹 
-<details>
-    <summary> 메인</summary>
-        
-        •  캐러셀, 신상품, 베스트상품, 푸터 반응형 웹 구현 
-</details>        
-<details>        
-    <summary> 검색페이지</summary>
-        
-        •  nav바, 상품 목록 반응형 웹 구현
-</details>        
-        
-### 결제 기능 
-<details>
-    <summary> 상품 결제 (KakaoPay)</summary>
-        
-        •  카카오페이 결제 가능(테스트 구현)
-</details>
-        
-### 로그인 기능 
-<details>
-    <summary> 소셜 로그인 (OAuth2.0)</summary> 
-        
-        •  OAuth2.0 소셜 회원가입 및 로그인 (구글 연동)
-        
-        •  로그인 여부에 따라 진입 가능 페이지 결정
-</details>
-        
-###  알림 
-<details>
-    <summary> 토스트 방식(react-toastify) 알림</summary>
-        
-        •  장바구니에 상품 담았을 때 토스트로 알림
-        
-        •  회원정보 수정, 배송지 저장 시 토스트로 알림
-</details>        
-<details>
-    <summary> 모달(material) 방식 알림</summary>
-        
-        •  필수 체크박스 모달창으로 알림
-        
-        •  회원 탈퇴, 주문조회 모달창으로 알림
-</details>     
-
-### 어드민 기능 
-    - 상품 글 작성(유튜브, 그림 업로드, 옵션 추가, 조건부 작성)
-    - 카테고리 생성 및 삭제
-    - 상품 삭제 및 캐시, 로컬스토리지 비우기
-    
-### 정보 관리 기능 
-    - 장바구니 수정 및 삭제
-    - 주소록 수정 및 삭제(우편번호 라이브러리 사용)
-    - 리뷰 수정 및 삭제
-    - 회원 정보 수정 및 탈퇴
-    
-### 공통 컴포넌트화 
-    - 모달
-    - 스켈레톤 디자인
-    - 캐러셀
-    - 내 정보관리 수정 Form
-    - 아코디언
-    - 상품 목록
-    
-## 📷 Page GIF
-<details>
-<summary> 회원 가입 및 로그인</summary>
-
-![리뷰기능](https://github.com/Ksiyeong/FarmAndPeople-gif/blob/main/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%EB%B0%8F%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif?raw=true)
-</details>
-<details>
-<summary>메인페이지</summary>
-
-![메인페이지](https://github.com/Ksiyeong/FarmAndPeople-gif/blob/main/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.gif?raw=true)
-</details>
-<details>
-<summary>상품검색</summary>
-
-![상품검색](https://github.com/Ksiyeong/FarmAndPeople-gif/blob/main/%EC%83%81%ED%92%88%EA%B2%80%EC%83%89.gif?raw=true)
-</details>
-<details>
-<summary>특정물품 페이지</summary>
-
-![특정물품페이지](https://github.com/Ksiyeong/FarmAndPeople-gif/blob/main/%ED%8A%B9%EC%A0%95%EB%AC%BC%ED%92%88%ED%8E%98%EC%9D%B4%EC%A7%80.gif?raw=true)
-</details>
-<details>
-<summary>장바구니 페이지</summary>
-
-![장바구니페이지](https://github.com/Ksiyeong/FarmAndPeople-gif/blob/main/%EC%9E%A5%EB%B0%94%EA%B5%AC%EB%8B%88%ED%8E%98%EC%9D%B4%EC%A7%80.gif?raw=true)
-</details>
-<details>
-<summary>결제 페이지</summary>
-
-![결제페이지](https://user-images.githubusercontent.com/107738517/215788133-63edb67b-0343-4e7d-81ce-e7c7513f2cbd.gif)
-
-</details>
-<details>
-<summary>마이페이지</summary>
-
-![마이페이지](https://github.com/Ksiyeong/FarmAndPeople-gif/blob/main/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80.gif?raw=true)
-</details>
-
-## **🛠️ 기술 스택**
-
-### 프론트엔드
-
-SWR SCSS
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"> <img src="https://img.shields.io/badge/React%20Query-FF4154?style=for-the-badge&logo=React%20Query&logoColor=white"> <img src="https://img.shields.io/badge/Styled Component-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"> <img src="https://img.shields.io/badge/Redux Toolkit-764ABC?style=for-the-badge&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
-
-### 백엔드
-<img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white"> <img src="https://img.shields.io/badge/Spring Data Jpa-6DB33F?style=for-the-badge"> <img src="https://img.shields.io/badge/Query%20Dsl-59666C?style=for-the-badge&logo=&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"> <img src="https://img.shields.io/badge/JSON%20Web%20Tokens-000000?style=for-the-badge&logo=JSON%20Web%20Tokens&logoColor=white"> <img src="https://img.shields.io/badge/OAuth2.0-000000?style=for-the-badge&logo=&logoColor=white">
-
-### CI/CD
-<img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white"> <img src="https://img.shields.io/badge/Amazon%20S3-569A31?style=for-the-badge&logo=Amazon%20S3&logoColor=white"> <img src="https://img.shields.io/badge/AWS%20Amplifyt-FF9900?style=for-the-badge&logo=AWS%20Amplify&logoColor=white"> <img src="https://img.shields.io/badge/Amazon%20RDS-527FFF?style=for-the-badge&logo=Amazon%20RDS&logoColor=white"> <img src="https://img.shields.io/badge/linode-00A95C?style=for-the-badge&logo=linode&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white">
 
