@@ -1,8 +1,13 @@
 
     
 # **프로젝트 소개**
+
  ## 제두도 한달살이🍊
-2023.04 ~ 2023.05
+
+제주도 한달살이들을 위한 커뮤니티
+
+### 2023.04 ~ 2023.05
+
 - 배포 링크 : [https://team-poject-cisibx65a-nakjun12.vercel.app](https://team-poject-cisibx65a-nakjun12.vercel.app/review/editor)
 (임시)
 
