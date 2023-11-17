@@ -15,7 +15,7 @@ export default function DynamicStars({ stars = 5, show, setShow }: Props) {
   const handler = (i: number) => {
     setShow(i + 1);
   };
-  console.log(show, Stars);
+
   return (
     <div className={styles.stars}>
       {StarIcons.map((_, i) => (

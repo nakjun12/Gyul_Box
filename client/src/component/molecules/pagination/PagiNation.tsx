@@ -1,19 +1,29 @@
+import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { useState } from "react";
+import { BACK_URL } from "../../../utils/ConfigHelper";
 import styles from "./PagiNation.module.scss";
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
+  area: string;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
+const Pagination: React.FC<PaginationProps> = ({
+  currentPage,
+  totalPages,
+  area,
+}) => {
   const [isPage, setIsPage] = useState(currentPage);
-  const prevPage = isPage > 1 ? isPage - 1 : null;
-  const nextPage = isPage < totalPages ? isPage + 1 : null;
+  const prevPage = isPage > 1 ? isPage - 1 : 0;
+  const href = area ? `/review/list/${area}` : `/review/list`;
+  const nextPage = isPage < totalPages ? isPage + 1 : 0;
+
+  console.log(nextPage, isPage, totalPages, "히히히히ㅣ히ㅣ");
   const pageRange = 2;
   let startPage = isPage - pageRange;
   let endPage = isPage + pageRange;
-
+  console.log(startPage, endPage);
   //다시 확인할것
   if (startPage < 1) {
     endPage += 1 - startPage;
@@ -29,17 +39,21 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
     { length: endPage - startPage + 1 },
     (_, i) => startPage + i
   );
-  console.log(pages, isPage);
+
   return (
     <nav>
       <ul className={styles.pagination}>
-        {prevPage && (
-          <li className={styles.page_item}>
-            <Link href={`/review/list?page=${prevPage}`} passHref>
+        {
+          <li
+            className={styles.page_item}
+            onClick={() => setIsPage(prevPage)}
+            style={{ opacity: prevPage ? 1 : 0 }}
+          >
+            <Link href={`${href}/${prevPage}`} passHref>
               <div className={styles.page_link} aria-label="Previous" />
             </Link>
           </li>
-        )}
+        }
 
         {pages.map((page) => (
           <li
@@ -49,22 +63,55 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
               isPage === page ? styles.active : ""
             }`}
           >
-            <Link href={`/review/list?page=${page}`} passHref>
+            <Link href={`${href}/${page}`} passHref>
               <div className={styles.page_link}>{page}</div>
             </Link>
           </li>
         ))}
 
-        {nextPage && (
-          <li className={styles.page_item}>
-            <Link href={`/review/list?page=${nextPage}`} passHref>
+        {
+          <li
+            className={styles.page_item}
+            onClick={() => setIsPage(nextPage)}
+            style={{ opacity: nextPage ? 1 : 0 }}
+          >
+            <Link href={`${href}/${nextPage}`} passHref>
               <div className={styles.page_link} aria-label="Next" />
             </Link>
           </li>
-        )}
+        }
       </ul>
     </nav>
   );
 };
 
 export default Pagination;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  try {
+    const user_id = params?.id as string;
+    //worldcups/1
+
+    const res = await fetch(
+      `${BACK_URL}users/${user_id}/reviews?page=1&size=10`
+    ); //수정해야함
+    console.log(res, "res");
+    const data = await res.json();
+
+    if (res.status === 404) {
+      return { notFound: true };
+    }
+
+    return { props: { data } };
+  } catch (error) {
+    console.error("An error occurred during the fetch request:", error);
+    return { props: {} };
+  }
+};

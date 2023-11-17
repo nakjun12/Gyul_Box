@@ -4,6 +4,10 @@
   margin-bottom: 8px;
   text-align: left;
   width: 750px;
+  @media (max-width: 701px) {
+    width: 300px;
+    font-size: 16px;
+  }
 }
 
 .carousel_wrapper {
@@ -13,10 +17,12 @@
   max-width: 770px; //310 310
 
   margin-bottom: 50px;
+  box-shadow: 2px;
 }
 
 .carousel_viewer {
   overflow: hidden;
+  box-shadow: 5px;
 }
 
 .carousel_slider {
@@ -24,7 +30,7 @@
   width: 3000px;
   user-select: none;
   padding: 10px 10px;
-
+  box-shadow: 5px;
   .carousel_slide {
     width: 300px;
     height: 180px;

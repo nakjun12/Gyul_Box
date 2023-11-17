@@ -1,0 +1,38 @@
+@import "../../../styles/variables.scss";
+
+.container {
+  height: auto;
+  @include c-center();
+  margin-left: 80px;
+  @media (max-width: 768px) {
+    @include c-center();
+    margin-top: 30px;
+    margin-left: 0px;
+  }
+  .wrapper {
+    &:last-child {
+      @media (max-width: 768px) {
+        margin-left: 0%;
+      }
+    }
+    .category_stars {
+      @include center-sb();
+      width: 15%;
+      min-width: 150px;
+      margin: 16px 0;
+     
+      .word {
+        font-size: 14px;
+
+        font-family: var(--pretendard);
+        min-width: 80px;
+      }
+
+      .average {
+        font-size: 14px;
+        width: 30px;
+        margin-left: 20px;
+      }
+    }
+  }
+}

@@ -10,7 +10,9 @@
   height: auto;
   box-sizing: border-box; /* 추가 */
   .searchBar_bar {
-    width: 500px;
+    min-width: 500px;
+    width: 100%;
+
     border: 2px solid var(--orange);
     position: relative;
     display: flex;
@@ -19,7 +21,9 @@
 
     overflow: hidden;
     background-color: var(--orange);
-
+    @media (max-width: 600px) {
+      min-width: 300px;
+    }
     .searchBarInput {
       position: relative;
       z-index: 1;
@@ -35,7 +39,6 @@
       padding-left: 30px;
       border-bottom: none;
       outline: none;
-
       box-shadow: none;
     }
     .loading {
@@ -46,7 +49,6 @@
 
     .search_div {
       position: absolute;
-
       right: 0px;
       background-color: var(--orange);
       width: 50px;
@@ -83,6 +85,9 @@
   z-index: 2000px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   pointer-events: auto;
+  @media (max-width: 600px) {
+    width: 300px;
+  }
   .autocomplete_item {
     padding: 10px;
     padding-left: 25px;

@@ -113,6 +113,7 @@ const Map = () => {
       markerBox.setAttribute("value", `${"이름"}`);
       markerBox.onclick = function () {
         setName(markerBox.value);
+        console.log("하이");
       };
       markerBox.textContent = String(num);
 
@@ -142,7 +143,7 @@ const Map = () => {
       const markers = [marker, marker, marker, marker, marker];
 
       // clusterer.setMap(map);
-      map.setCenter(latlng); //위치 고정
+      // map.setCenter(latlng); //위치 고정
       // customOverlay.setMap(map);
 
       // console.log("position", position);

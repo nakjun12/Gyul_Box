@@ -1,3 +1,5 @@
+import type { Review_simple } from "./types/types";
+import { Map_circle } from "./types/types";
 const zone = [
   "구좌읍",
   "남원읍",
@@ -45,7 +47,6 @@ const zone = [
   "안덕면",
 ];
 const sort_zone = zone.sort();
-export { zone, sort_zone };
 
 export const addressToCode = (address: string) => {
   if (address !== null) {
@@ -209,3 +210,392 @@ export const addressToCode = (address: string) => {
     }
   }
 };
+export const codeToAddress = (code: string) => {
+  if (code !== null) {
+    switch (code) {
+      case "5011000000":
+        return "제주시";
+      case "5011010100":
+        return "일도일동";
+      case "5011010200":
+        return "일도이동";
+      case "5011010300":
+        return "이도일동";
+      case "5011010400":
+        return "이도이동";
+      case "5011010500":
+        return "삼도일동";
+      case "5011010600":
+        return "삼도이동";
+      case "5011010700":
+        return "건입동";
+      case "5011010800":
+        return "용담일동";
+      case "5011010900":
+        return "용담이동";
+      case "5011011000":
+        return "용담삼동";
+      case "5011011100":
+        return "화북일동";
+      case "5011011200":
+        return "화북이동";
+      case "5011011300":
+        return "삼양일동";
+      case "5011011400":
+        return "삼양이동";
+      case "5011011500":
+        return "삼양삼동";
+      case "5011011600":
+        return "봉개동";
+      case "5011011700":
+        return "아라일동";
+      case "5011011800":
+        return "아라이동";
+      case "5011011900":
+        return "오라일동";
+      case "5011012000":
+        return "오라이동";
+      case "5011012100":
+        return "오라삼동";
+      case "5011012200":
+        return "노형동";
+      case "5011012300":
+        return "외도일동";
+      case "5011012400":
+        return "외도이동";
+      case "5011012500":
+        return "이호일동";
+      case "5011012600":
+        return "이호이동";
+      case "5011012700":
+        return "도두일동";
+      case "5011012800":
+        return "도두이동";
+      case "5011012900":
+        return "도남동";
+      case "5011013000":
+        return "도련일동";
+      case "5011013100":
+        return "도련이동";
+      case "5011013200":
+        return "용강동";
+      case "5011013300":
+        return "회천동";
+      case "5011013400":
+        return "오등동";
+      case "5011013500":
+        return "월평동";
+      case "5011013600":
+        return "영평동";
+      case "5011013700":
+        return "연동";
+      case "5011013800":
+        return "도평동";
+      case "5011013900":
+        return "해안동";
+      case "5011014000":
+        return "내도동";
+      case "5011025000":
+        return "한림읍";
+      case "5011025300":
+        return "애월읍";
+      case "5011025600":
+        return "구좌읍";
+      case "5011025900":
+        return "조천읍";
+      case "5011031000":
+        return "한경면";
+      case "5011032000":
+        return "추자면";
+      case "5011033000":
+        return "우도면";
+      case "5013000000":
+        return "서귀포";
+      case "5013010100":
+        return "서귀동";
+      case "5013010200":
+        return "법환동";
+      case "5013010300":
+        return "서호동";
+      case "5013010400":
+        return "호근동";
+      case "5013010500":
+        return "동홍동";
+      case "5013010600":
+        return "서홍동";
+      case "5013010700":
+        return "상효동";
+      case "5013010800":
+        return "하효동";
+      case "5013010900":
+        return "신효동";
+      case "5013011000":
+        return "보목동";
+      case "5013011100":
+        return "토평동";
+      case "5013011200":
+        return "중문동";
+      case "5013011300":
+        return "회수동";
+      case "5013011400":
+        return "대포동";
+      case "5013011500":
+        return "월평동";
+      case "5013011600":
+        return "강정동";
+      case "5013011700":
+        return "도순동";
+      case "5013011800":
+        return "하원동";
+      case "5013011900":
+        return "색달동";
+      case "5013012000":
+        return "상예동";
+      case "5013012100":
+        return "하예동";
+      case "5013012200":
+        return "영남동";
+      case "5013025000":
+        return "대정읍";
+      case "5013025300":
+        return "남원읍";
+      case "5013025900":
+        return "성산읍";
+      case "5013031000":
+        return "안덕면";
+      case "5013032000":
+        return "표선면";
+    }
+  }
+};
+const hottest2: Review_simple = {
+  data: [
+    {
+      reviewId: 1,
+      advantage: "넓어요!",
+      disadvantage: "드러워요!",
+      avgRate: 4.5,
+      likes: 3,
+      createdAt: "2023-04-27T17:38:23.184019",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로",
+    },
+    {
+      reviewId: 2,
+      advantage: "넓어서 최고에용",
+      disadvantage: "드러워서 별로에요~",
+      avgRate: 3.7,
+      likes: 4,
+      createdAt: "2023-04-27T17:38:23.184019",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로",
+    },
+  ],
+};
+const dragResult: Review_simple = {
+  data: [
+    {
+      reviewId: 1,
+      advantage: "넓어요! 집주인이 착해요 ",
+      disadvantage: "드러워요!",
+      avgRate: 3.4,
+      likes: 44,
+      createdAt: "2023-04-26T18:55:15.044352",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로",
+    },
+    {
+      reviewId: 2,
+      advantage: "넓어요! 단점이 없는게 장점이에요",
+      disadvantage: "드러워요!",
+      avgRate: 3.7,
+      likes: 44,
+      createdAt: "2023-04-26T18:58:39.283013",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로",
+    },
+    {
+      reviewId: 3,
+      advantage: "넓기만해요!",
+      disadvantage: "드러워요!",
+      avgRate: 4.4,
+      likes: 44,
+      createdAt: "2023-04-26T19:00:11.233554",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로",
+    },
+    {
+      reviewId: 4,
+      advantage: "넓어요!",
+      disadvantage: "드러워요!",
+      avgRate: 4.5,
+      likes: 34,
+      createdAt: "2023-04-26T19:01:57.113102",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로",
+    },
+    {
+      reviewId: 5,
+      advantage: "넓어요!ㅎㅎㅎ",
+      disadvantage: "드러워요!",
+      avgRate: 3.2,
+      likes: 44,
+      createdAt: "2023-04-26T19:02:33.724266",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로",
+    },
+    {
+      reviewId: 6,
+      advantage: "좋아요!!!",
+      disadvantage: "드러워요!",
+      avgRate: 4.8,
+      likes: 44,
+      createdAt: "2023-04-26T19:04:16.308149",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로",
+    },
+    {
+      reviewId: 7,
+      advantage: "최고에요!",
+      disadvantage: "드러워요!",
+      avgRate: 3.7,
+      likes: 44,
+      createdAt: "2023-04-26T19:05:51.052947",
+      modifiedAt: null,
+      address: "인천 연수구 먼우금로 2기",
+    },
+  ],
+};
+
+const 삼도일동: Map_circle = {
+  //삼도일동
+  data: [
+    {
+      id: 43,
+      reviewCount: 1,
+      coordinate: {
+        latitude: 33.502212,
+        longitude: 126.519043,
+      },
+    },
+    {
+      id: 44,
+      reviewCount: 3,
+      coordinate: {
+        latitude: 33.505212,
+        longitude: 126.518885,
+      },
+    },
+    {
+      id: 45,
+      reviewCount: 1,
+      coordinate: {
+        latitude: 33.504183,
+        longitude: 126.517414,
+      },
+    },
+    {
+      id: 46,
+      reviewCount: 2,
+      coordinate: {
+        latitude: 33.501796,
+        longitude: 126.519489,
+      },
+    },
+    {
+      id: 47,
+      reviewCount: 1,
+      coordinate: {
+        latitude: 33.504183,
+        longitude: 126.521722,
+      },
+    },
+  ],
+};
+
+const 일도일동: Map_circle = {
+  data: [
+    // {
+    //   id: 33,
+    //   reviewCount: 2,
+    //   coordinate: {
+    //     latitude: 33.506188,
+    //     longitude: 126.541041,
+    //   },
+    // },
+    // {
+    //   id: 34,
+    //   reviewCount: 3,
+    //   coordinate: {
+    //     latitude: 33.506196,
+    //     longitude: 126.540733,
+    //   },
+    // },
+    // {
+    //   id: 35,
+    //   reviewCount: 4,
+    //   coordinate: {
+    //     latitude: 33.505972,
+    //     longitude: 126.540818,
+    //   },
+    // },
+    // {
+    //   id: 36,
+    //   reviewCount: 5,
+    //   coordinate: {
+    //     latitude: 33.505772,
+    //     longitude: 126.540661,
+    //   },
+    // },
+    // {
+    //   id: 37,
+    //   reviewCount: 6,
+    //   coordinate: {
+    //     latitude: 33.506466,
+    //     longitude: 126.542192,
+    //   },
+    // },
+    {
+      id: 38,
+      reviewCount: 3,
+      coordinate: {
+        latitude: 33.514179,
+        longitude: 126.527441,
+      },
+    },
+    {
+      id: 39,
+      reviewCount: 1,
+      coordinate: {
+        latitude: 33.513746,
+        longitude: 126.529539,
+      },
+    },
+    {
+      id: 40,
+      reviewCount: 2,
+      coordinate: {
+        latitude: 33.513444,
+        longitude: 126.529654,
+      },
+    },
+    {
+      id: 41,
+      reviewCount: 4,
+      coordinate: {
+        latitude: 33.512956,
+        longitude: 126.522835,
+      },
+    },
+    {
+      id: 42,
+      reviewCount: 2,
+      coordinate: {
+        latitude: 33.516115,
+        longitude: 126.522612,
+      },
+    },
+  ],
+};
+
+export { hottest2, dragResult, zone, sort_zone, 삼도일동, 일도일동 };

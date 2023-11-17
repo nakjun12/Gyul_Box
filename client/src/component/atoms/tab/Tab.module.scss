@@ -3,17 +3,19 @@
 .tab,
 .active {
   @include center();
-  background-color: var(--inputGray);
-  width: 100%;
-  height: 4rem;
-  font-size: 1.5rem;
+
+  width: 30%;
+  height: 100%;
+  font-size: 1rem;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  border-bottom: 3px solid var(--inputGray);
+  color: var(--textGray);
+  border-bottom: 3px solid white;
   font-family: var(--pretendard);
-
+  background-color: white;
   &.active {
-    border-bottom-color: var(--green);
+    color: var(--orange);
+    border-bottom: 3px solid var(--orange);
   }
 }

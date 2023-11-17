@@ -1,10 +1,56 @@
 @import "./../../../styles/variables";
 
 .tabs {
-  @include center-sb();
+  @include center-se();
   width: 100%;
-  height: 100%;
+  height: 50px;
   padding: 0 20px;
+  margin-top: 20px;
   border: none;
   box-sizing: border-box;
+  position: sticky;
+  top: 80px;
+  background-color: white;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.detail_wrapper {
+  @include c-center-sb();
+  padding: 20px 20px;
+  margin: 0 auto;
+}
+.detail_top {
+  width: 80%;
+  margin-top: 40px;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.group {
+  display: flex;
+  @media (max-width: 768px) {
+    @include c-center();
+  }
+}
+.scroll {
+  position: absolute;
+  bottom: -15px;
+}
+
+.more_btn {
+  padding: 10px 20px;
+  background-color: var(--orange);
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  border: 0;
+  &:hover {
+    background-color: var(--hover);
+  }
 }

@@ -1,5 +1,5 @@
 import { AiTwotoneStar } from "react-icons/ai";
-
+import styles from "./Stars.module.scss";
 type Props = {
   stars: number;
 };
@@ -9,9 +9,9 @@ export default function Stars({ stars = 5 }: Props) {
   const grayStars = 5 - yellowStars;
   const yellowStarIcons = Array.from({ length: yellowStars });
   const grayStarIcons = Array.from({ length: grayStars });
-  console.log(yellowStarIcons);
+
   return (
-    <div>
+    <div className={styles.star_wrapper}>
       {yellowStarIcons.map((_, i) => (
         <AiTwotoneStar key={i} style={{ color: "var(--yellow)" }} />
       ))}

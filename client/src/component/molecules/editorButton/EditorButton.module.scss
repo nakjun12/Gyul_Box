@@ -1,6 +1,6 @@
 .editor_button {
   position: absolute;
-  bottom: -800%;
+  bottom: -900%;
   right: 7%;
   background-color: var(--orange);
   border-radius: 50%;
@@ -11,4 +11,13 @@
   align-items: center;
   border: none;
   cursor: pointer;
+  z-index: 90;
+  @media (max-width: 700px) {
+    width: 40px;
+    height: 40px;
+  }
+  @media (max-height: 780px) {
+    bottom: -700%;
+    right: 7%;
+  }
 }

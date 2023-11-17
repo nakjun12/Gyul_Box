@@ -13,7 +13,7 @@
 
   opacity: 0.8;
   pointer-events: auto;
-  z-index: 20;
+  z-index: 120;
   animation: modal 1s forwards;
 
   @keyframes modal {
@@ -24,18 +24,20 @@
       opacity: 0.8;
     }
   }
-  .none {
-    display: none;
-  }
 }
 
+.none {
+  display: none;
+  width: 0px;
+  height: 0px;
+}
 .modalcontainer {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 140;
   @include center();
   pointer-events: none;
 }
@@ -66,7 +68,8 @@
 
 .button_modal {
   @include center();
-  width: 100%;
+  cursor: pointer;
+  width: auto;
 }
 
 .inter_box {
