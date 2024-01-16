@@ -14,21 +14,21 @@
 
 ### 메인
 
-<details>
+<details open>
 <summary>로그인 화면 모달</summary>
 
 ![로그인 창](client/public/gif/login-modal.gif)
 
 </details>
 
-<details>
+<details open>
 <summary>상하 이동 검색창</summary>
 
 ![메인 검색창](client/public/gif/main-search-bar.gif)
 
 </details>
 
-<details>
+<details open>
 <summary>드래그 캐러셀</summary>
 
 ![드래그 캐러셀](client/public/gif/drag-carousel.gif)
@@ -37,13 +37,13 @@
 
 ### 건물
 
-<details>
+<details open>
 <summary>에디터 페이지</summary>
 
 ![에디터 페이지](client/public/gif/editor-page.gif)
 
 </details>
-<details>
+<details open>
 <summary>리뷰 페이지</summary>
 
 ![리뷰 페이지](client/public/gif/details-page.gif)
@@ -52,15 +52,12 @@
 
 ### 기타
 
-<details>
+<details open>
 <summary>위도별 리뷰 찾기</summary>
 
 ![위도별 리뷰 찾기](client/public/gif/legal-district-map-search.gif)
 
 </details>
-<details>
-<summary>마이 페이지 관심지역 찾기</summary>
-![마이 페이지 관심지역 찾기](client/public/gif/my-page-favorite-locations.gif)
-</details>
+
 
 
